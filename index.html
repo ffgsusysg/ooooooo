@@ -768,23 +768,23 @@
         let currentLectureIndex = 0;
         let currentLectureLink = "";
 
-        // Categories data - الملفات المحلية بدلاً من API
+        // Categories data
         const categories = {
             "year-2026": {
                 title: "الصفوف الدراسية 2026",
-                file: "data/data2.json" // ملف سنة 2026
+                endpoint: "https://edson1.netlify.app/data2.json"
             },
             "year-2025": {
                 title: "الصفوف الدراسية 2025",
-                file: "data/data.json" // ملف سنة 2025
+                endpoint: "https://edson1.glitch.me/api/data"
             },
             "distinguished": {
                 title: "قسم المتميزين",
-                file: "data/dd.json" // ملف المتميزين
+                endpoint: "https://edson1.glitch.me/api/dd"
             },
             "literary": {
                 title: "القسم الأدبي",
-                file: "data/mm.json" // ملف الأدبي
+                endpoint: "https://edson1.glitch.me/api/mm"
             }
         };
 
@@ -793,45 +793,8 @@
             if (!category) return;
 
             categoryTitle.textContent = category.title;
-            loadLocalData(category.file); // تحميل البيانات من الملف المحلي
+            loadData(category.endpoint);
             navigate("category");
-        }
-
-        // وظيفة جديدة لتحميل البيانات من الملفات المحلية
-        function loadLocalData(filePath) {
-            // عرض مؤشر تحميل
-            teachersGrid.innerHTML = `
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-            `;
-
-            // جلب البيانات من الملف المحلي
-            fetch(filePath)
-                .then(response => response.json())
-                .then(data => {
-                    teachers = data.teachers;
-                    renderTeachers();
-                })
-                .catch(error => {
-                    console.error('حدث خطأ في تحميل البيانات:', error);
-                    teachersGrid.innerHTML = `
-                        <p style="color:red">حدث خطأ في تحميل البيانات.</p>
-                        <button class="btn" onclick="location.reload()">إعادة المحاولة</button>
-                    `;
-                });
         }
 
         function renderTeachers(list = teachers) {
@@ -1099,6 +1062,48 @@
         });
 
         searchBtn.addEventListener("click", handleSearch);
+
+        /* ========= تحميل البيانات ========= */
+        function loadData(endpoint) {
+            const err =
+                '<p style="color:red">حدث خطأ في تحميل البيانات.</p><button class="btn" onclick="location.reload()">إعادة المحاولة</button>';
+
+            teachersGrid.innerHTML = `
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+            `;
+
+            fetch(endpoint, {
+                headers: {
+                    Referer: "https://careful-burnt-honesty.glitch.me/",
+                    "Cache-Control": "no-cache",
+                },
+            })
+                .then((r) => {
+                    if (!r.ok) throw new Error();
+                    return r.json();
+                })
+                .then((data) => {
+                    teachers = data.teachers;
+                    renderTeachers();
+                })
+                .catch(() => {
+                    teachersGrid.innerHTML = err;
+                });
+        }
 
         // Initialize
         lucide.createIcons();
