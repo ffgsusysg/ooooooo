@@ -9,19 +9,18 @@
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
-    <script defer src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+        <script defer src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
-    
-    <!-- Shaka Player -->
-    <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.5.3/dist/shaka-player.compiled.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.5.3/dist/controls.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
     :root {
         --primary-1: #1a56db;
@@ -426,17 +425,12 @@
         background: #000;
         border-radius: var(--radius);
         overflow: hidden;
-        aspect-ratio: 16/9;
+    aspect-ratio: 16/9; /* إرجاع النسبة الأصلية للطول والعرض */
     }
 
-    #shaka-player {
-        width: 100%;
-        height: 100%;
+    .plyr {
         border-radius: var(--radius);
         overflow: hidden;
-    }
-
-    .shaka-video-container {
         width: 100%;
         height: 100%;
     }
@@ -478,58 +472,6 @@
         padding-bottom: 0.5rem;
         border-bottom: 2px solid var(--primary-1);
         color: var(--primary-1);
-    }
-
-    /* شاشة التحميل */
-    .loading-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        z-index: 100;
-        border-radius: var(--radius);
-    }
-
-    .loading-spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        border-top-color: var(--accent);
-        animation: spin 1s ease-in-out infinite;
-    }
-
-    @keyframes spin {
-        to { transform: rotate(360deg); }
-    }
-
-    .loading-text {
-        color: white;
-        margin-top: 15px;
-        font-size: 1.1rem;
-    }
-
-    /* أزرار التحكم */
-    .shaka-controls-button-panel {
-        background: rgba(0, 0, 0, 0.6) !important;
-        border-radius: 8px;
-        padding: 5px 10px;
-    }
-
-    .shaka-overflow-menu {
-        background: rgba(0, 0, 0, 0.8) !important;
-        border-radius: 8px;
-    }
-
-    .shaka-text-container {
-        background: rgba(0, 0, 0, 0.7) !important;
-        border-radius: 4px;
     }
 
     @media (max-width: 768px) {
@@ -594,11 +536,6 @@
 
         .site-title {
             font-size: 1.5rem;
-        }
-        
-        .shaka-controls-button-panel {
-            transform: scale(0.8);
-            transform-origin: bottom right;
         }
     }
 </style>
@@ -737,6 +674,9 @@
         </div>
     </div>
 
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <script type="text/babel">
         // Initialize theme
         function initializeTheme() {
@@ -779,7 +719,6 @@
         const categoryTitle = document.getElementById("categoryTitle");
         const classesList = document.getElementById("classesList");
         const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer");
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
@@ -1000,64 +939,47 @@
                 return;
             }
 
-            // ✅ دعم فيديوهات .m3u8 باستخدام Shaka Player
+          
+            // ✅ دعم فيديوهات .m3u8 عبر proxy.eduiraq.my
             playerContainer.innerHTML = `
-                <div id="shaka-player">
-                    <div class="loading-overlay">
-                        <div class="loading-spinner"></div>
-                        <div class="loading-text">جاري تحميل المحاضرة...</div>
-                    </div>
-                    <video id="shaka-video" width="100%" height="100%" autoplay playsinline></video>
-                </div>
+                <video id="player" playsinline controls></video>
             `;
-            
             lucide.createIcons();
             
-            const videoElement = document.getElementById('shaka-video');
-            const loadingOverlay = document.querySelector('.loading-overlay');
-            
-            // إنشاء مشغل Shaka جديد
-            player = new shaka.Player(videoElement);
-            
-            // تهيئة المشغل
-            player.configure({
-                streaming: {
-                    bufferingGoal: 60,
-                    rebufferingGoal: 10,
-                    bufferBehind: 30
-                },
-                abr: {
-                    enabled: true,
-                    defaultBandwidthEstimate: 5000000,
-                    switchInterval: 5
-                },
-                manifest: {
-                    dash: {
-                        ignoreMinBufferTime: true
-                    }
-                }
+            const videoElement = document.getElementById("player");
+            const isHLS = url.endsWith(".m3u8");
+            const referer = "https://abwaab.com";
+            const proxyUrl = isHLS
+    ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(
+        url
+    )}&referer=${encodeURIComponent(referer)}`
+    : url;
+
+            const savedTime = lectureProgress[url]
+                ? (lectureProgress[url] / 100) * (player?.duration || 0)
+                : 0;
+
+            // إنشاء مشغل جديد
+            player = new Plyr("#player", {
+                controls: [
+                    "play-large",
+                    "play",
+                    "progress",
+                    "current-time",
+                    "fullscreen",
+                    "settings",
+                ],
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
-            
-            // تتبع الأخطاء
-            player.addEventListener('error', (event) => {
-                console.error('خطأ في تشغيل الفيديو:', event.detail);
-                loadingOverlay.innerHTML = `
-                    <div style="text-align: center; padding: 20px; color: white;">
-                        <i data-lucide="alert-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
-                        <h3 style="margin-bottom: 10px;">تعذر تشغيل المحاضرة</h3>
-                        <p>${event.detail.message}</p>
-                        <button class="btn" style="margin-top: 20px;" onclick="playLecture(${ci}, ${li}, '${url}', '${title}', '${desc}')">
-                            <i data-lucide="refresh-ccw"></i> إعادة المحاولة
-                        </button>
-                    </div>
-                `;
-                lucide.createIcons();
-            });
-            
+
             // تتبع التقدم
             window.progressInterval = setInterval(() => {
-                if (player && videoElement.duration > 0) {
-                    const progress = (videoElement.currentTime / videoElement.duration) * 100;
+                if (player && player.duration > 0) {
+                    const progress = (player.currentTime / player.duration) * 100;
                     lectureProgress[url] = progress;
                     localStorage.setItem(
                         "lectureProgress",
@@ -1065,69 +987,60 @@
                     );
                 }
             }, 5000);
-            
-            // إعداد واجهة التحكم
-            const ui = new shaka.ui.Overlay(player, playerContainer, videoElement);
-            
-            // تخصيص واجهة التحكم للغة العربية
-            shaka.ui.Controls.DEFAULT_LOCALE = 'ar';
-            
-            // تهيئة واجهة التحكم
-            const controls = ui.getControls();
-            controls.configure({
-                controlPanelElements: [
-                    'play_pause',
-                    'time_and_duration',
-                    'spacer',
-                    'mute',
-                    'volume',
-                    'fullscreen',
-                    'overflow_menu'
-                ],
-                overflowMenuButtons: [
-                    'quality',
-                    'playback_rate',
-                    'picture_in_picture',
-                    'cast'
-                ]
-            });
-            
-            // إضافة ترجمة عربية (اختيارية)
-            const arabicSubtitle = new shaka.text.SimpleTextChannel();
-            player.setTextDisplayFactory(() => arabicSubtitle);
-            
-            // تحميل الفيديو
-            const proxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent('https://abwaab.com')}`;
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (videoElement.duration || 0) : 0;
-            
-            player.load(proxyUrl)
-                .then(() => {
-                    // إخفاء شاشة التحميل
-                    loadingOverlay.style.display = 'none';
-                    
-                    // استئناف من المكان السابق
-                    if (savedTime > 0) {
-                        videoElement.currentTime = savedTime;
-                    }
-                    
-                    // بدء التشغيل
-                    videoElement.play().catch(e => console.log('تعذر التشغيل التلقائي:', e));
-                })
-                .catch(error => {
-                    console.error('خطأ في تحميل الفيديو:', error);
-                    loadingOverlay.innerHTML = `
-                        <div style="text-align: center; padding: 20px; color: white;">
-                            <i data-lucide="alert-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
-                            <h3 style="margin-bottom: 10px;">تعذر تحميل المحاضرة</h3>
-                            <p>${error.message}</p>
-                            <button class="btn" style="margin-top: 20px;" onclick="playLecture(${ci}, ${li}, '${url}', '${title}', '${desc}')">
-                                <i data-lucide="refresh-ccw"></i> إعادة المحاولة
-                            </button>
-                        </div>
-                    `;
-                    lucide.createIcons();
-                });
 
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(proxyUrl);
+
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player
+                            .play()
+                            .then(() => {
+                                if (savedTime > 0) player.currentTime = savedTime;
+                            })
+                            .catch(console.error);
+                    });
+
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    hls.startLoad();
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    hls.recoverMediaError();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [
+                            {
+                                src: proxyUrl,
+                                type: isHLS ? "application/x-mpegURL" : "video/mp4",
+                            },
+                        ],
+                    };
+
+                    player
+                        .play()
+                        .then(() => {
+                            if (savedTime > 0) player.currentTime = savedTime;
+                        })
+                        .catch(() => {
+                            console.log("تعذر تشغيل الفيديو");
+                        });
+                }
+            }
+
+            tryPlay();
             navigate("video");
         };
 
@@ -1195,9 +1108,6 @@
 
         // Initialize
         lucide.createIcons();
-        
-        // تهيئة Shaka Player
-        shaka.polyfill.installAll();
     </script>
 </body>
 </html>
