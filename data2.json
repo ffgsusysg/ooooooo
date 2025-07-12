@@ -1,161 +1,141 @@
 {
-  "teachers": [
-    {
-      "id": 1746651021373,
-      "name": "حسين محمد 2026",
-      "subject": "مدرس مادة الفيزياء",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTEdZAcrlB7qUxfbC9A0n1u02EUjp6d2rMQ&s",
-      "classes": [
-        {
-          "name": "الفصل الاول: المتسعات",
-          "lectures": [ب
-            {
-              "title": "اساس عمل المتسعة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/623af7df-e18e-49a5-a140-5db6238d2d0b"
-            },
-            {
-              "title": "اشكال المتسعات",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b1e8199a-1e73-41f2-817b-195170e3fb2a"
-            },
-            {
-              "title": "عوازل المتسعات ",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c1c1be8d-4121-43a3-98d7-e251226d320e"
-            },
-            {
-              "title": "المتسعة بوجود عازل",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b9071139-ffe3-403c-aea5-ee3b00e403eb"
-            },
-            {
-              "title": "قوانين المجموعة الاولى",
-              "description": "المتسعة بوجود عازل",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e245ad79-ba95-4afe-8b4d-1ec2fe769cd0"
-            },
-            {
-              "title": "قوانين المتسعة الواحدة بوجود عازل",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/117aec35-b995-41d3-8c1d-d24f813d3eef"
-            },
-            {
-              "title": "الجزء الثالث والاخير",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/29ff00cc-3930-4027-b6e6-08b1de32b7fe"
-            },
-            {
-              "title": "الواجبات",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/82e1e202-452a-431a-b9d6-3a98b3cb7e0c"
-            },
-            {
-              "title": "الاثرائيات",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/5e13260c-c8d1-4619-b726-a08375c2ebbc"
-            },
-            {
-              "title": "كلاميات",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/30656e48-8624-4306-89d4-5cf415d5383c"
-            },
-            {
-              "title": "اسئلة مزعجة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b43feaed-fd2f-488e-a6d5-45958d7af870"
-            },
-            {
-              "title": "ربط توالي+توازي ",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/79c20fa4-2c9b-4a03-b0dc-43fef6a31ca7"
-            },
-            {
-              "title": "واجبات",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c888152a-0c5c-4ff3-9143-47f2edbfa7fc"
-            },
-            {
-             "title": "المحاضرة 13 : مسائل ربط التوالي والتوازي - الواجبات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/c888152a-0c5c-4ff3-9143-47f2edbfa7fc"
-  },
-  {
-    "title": "المحاضرة 14 : مسائل الربط المختلط",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/46d17f34-f1c4-4448-988a-ad56a289b8a9"
-  },
-  {
-    "title": "المحاضرة 15 : مسائل الربط المختلط - اسئلة الطلاب",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/dc82532a-98a1-4a3b-be9c-183dc44ad00c"
-  },
-  {
-    "title": "المحاضرة 16 : مسائل الربط المختلط - الوزاريات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/7b26005c-71e8-439a-8ad9-534f23da148d"
-  },
-  {
-    "title": "المحاضرة 17 : مسائل ربط التوازي والتوالي بوجود العازل",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/93c78d14-4210-44a4-b25d-febeba82d3c0"
-  },
-  {
-    "title": "المحاضرة 18 : مسائل ربط التوازي والتوالي بوجود العازل - الوزاريات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/8b3a2db4-16eb-4bfa-b6bb-5185406967d9"
-  },
-  {
-    "title": "المحاضرة 19 : مسائل ربط التوازي والتوالي وثابت العزل مجهول",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/4cf144d9-db30-48bf-aea9-bd74d0128160"
-  },
-  {
-    "title": "المحاضرة 20 : مسائل ربط التوازي والتوالي وثابت العزل مجهول - وزاريات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/23484d02-7eb1-4afd-bd74-cd302b9f0d80"
-  },
-  {
-    "title": "المحاضرة 21 : مسائل ربط المتسعة مع المقاومة",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/2b4de1d5-e098-44e8-9074-b668455ea4f5"
-  },
-  {
-    "title": "المحاضرة 22 : مسائل ربط المتسعة مع المقاومة - الواجبات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/6a8009e9-7117-4e37-b3c2-8ce656102d6f"
-  },
-  {
-    "title": "المحاضرة 23 : مسائل المتسعات - الوزاريات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/50b10e8a-0ed8-4fe9-af1f-e5ad8438beb6"
-  },
-  {
-    "title": "المحاضرة 24 : مسائل المتسعات الوزاريات - الجزء الثاني",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/b246b037-8321-42e3-920c-ac30eef481d2"
-  },
-  {
-    "title": "المحاضرة 25 : مراجعة الربط المختلط",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/ad55c7aa-6b0e-4710-ab7f-371ec07833de"
-  },
-  {
-    "title": "المحاضرة 26 : مسائل المتسعات الوزاريات - الجزء الثالث",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/a4ea4723-b5bf-43ba-bdd3-5956a26c5623"
-  },
-  {
-    "title": "المحاضرة 27 : مسائل المتسعات الوزاريات - الجزء الرابع",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/5121cbff-9ead-40b2-922e-89c380bff05d"
-          
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1746651198934,
+  "record": {
+    "teachers": [
+      {
+        "id": 1746651021373,
+        "name": "حسين محمد 2026",
+        "subject": "مدرس مادة الفيزياء",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbTEdZAcrlB7qUxfbC9A0n1u02EUjp6d2rMQ&s",
+        "classes": [
+          {
+            "name": "الفصل الاول: المتسعات",
+            "lectures": [
+              {
+                "title": "اساس عمل المتسعة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/623af7df-e18e-49a5-a140-5db6238d2d0b"
+              },
+              {
+                "title": "اشكال المتسعات",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b1e8199a-1e73-41f2-817b-195170e3fb2a"
+              },
+              {
+                "title": "عوازل المتسعات ",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c1c1be8d-4121-43a3-98d7-e251226d320e"
+              },
+              {
+                "title": "المتسعة بوجود عازل",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b9071139-ffe3-403c-aea5-ee3b00e403eb"
+              },
+              {
+                "title": "قوانين المجموعة الاولى",
+                "description": "المتسعة بوجود عازل",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e245ad79-ba95-4afe-8b4d-1ec2fe769cd0"
+              },
+              {
+                "title": "قوانين المتسعة الواحدة بوجود عازل",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/117aec35-b995-41d3-8c1d-d24f813d3eef"
+              },
+              {
+                "title": "الجزء الثالث والاخير",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/29ff00cc-3930-4027-b6e6-08b1de32b7fe"
+              },
+              {
+                "title": "الواجبات",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/82e1e202-452a-431a-b9d6-3a98b3cb7e0c"
+              },
+              {
+                "title": "الاثرائيات",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/5e13260c-c8d1-4619-b726-a08375c2ebbc"
+              },
+              {
+                "title": "كلاميات",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/30656e48-8624-4306-89d4-5cf415d5383c"
+              },
+              {
+                "title": "اسئلة مزعجة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b43feaed-fd2f-488e-a6d5-45958d7af870"
+              },
+              {
+                "title": "ربط توالي+توازي ",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/79c20fa4-2c9b-4a03-b0dc-43fef6a31ca7"
+              },
+              {
+                "title": "واجبات",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c888152a-0c5c-4ff3-9143-47f2edbfa7fc"
+              },
+              {
+                "title": "المحاضرة 13 : مسائل ربط مختلط",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/46d17f34-f1c4-4448-988a-ad56a289b8a9"
+              },
+              {
+                "title": "اشكال خاصة ",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b88f6c24-c638-4ec1-9422-70edb87cfea4"
+              },
+              {
+                "title": "الاشكال الخاصة",
+                "description": "مرحبا ادرس زين وراك أهل شماته",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b88f6c24-c638-4ec1-9422-70edb87cfea4"
+              },
+              {
+                "title": "محاضرة اسئلة الطلاب",
+                "description": "ادرس وراك شماته",
+                "url": "https://iframe.mediadelivery.net/embed/215061/dc82532a-98a1-4a3b-be9c-183dc44ad00c"
+              },
+              {
+                "title": "وزاريات الربط المختلط ",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/7b26005c-71e8-439a-8ad9-534f23da148d"
+              },
+              {
+                "title": "مسائل ربط التوازي والتوالي بوجود العازل",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/93c78d14-4210-44a4-b25d-febeba82d3c0"
+              },
+              {
+                "title": "مسائل ربط التوازي والتوالي بوجود العازل (الوزاريات)",
+                "description": "احبك",
+                "url": "https://iframe.mediadelivery.net/embed/215061/8b3a2db4-16eb-4bfa-b6bb-5185406967d9"
+              },
+              {
+                "title": "مسائل ربط التوازي والتوالي وثابت العزل مجهول",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/4cf144d9-db30-48bf-aea9-bd74d0128160"
+              },
+              {
+                "title": "مسائل ربط المتسعة مع المقاومة) المحاضرة 21",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/2b4de1d5-e098-44e8-9074-b668455ea4f5"
+              },
+              {
+                "title": "المحاضرة 22 (مسائل ربط المتسعة مع المقاومة (الواجبات))",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/6a8009e9-7117-4e37-b3c2-8ce656102d6f"
+              },
+              {
+                "title": "المحاضرة 23 (مسائل المتسعات (الوزاريات))",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/50b10e8a-0ed8-4fe9-af1f-e5ad8438beb6"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1746651198934,
         "name": "حيدر عبدالائمة 2026",
         "subject": "مدرس مادة الرياضيات",
         "image": "https://i.ytimg.com/vi/eJf7EK3D_Nc/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGEAgWShyMA8=&rs=AOn4CLDj-lcDxTjcqvEEaUuqJeTCADdErA",
@@ -282,1433 +262,1374 @@
                 "title": "ديموافر الاسئلة الوزارية",
                 "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
                 "url": "https://iframe.mediadelivery.net/embed/215061/d66810b4-d1e9-4c75-b151-b04e233ef064"
-            }
-          ]
-        },
-        {
-          "name": "اثرائيا هنا فقط",
-          "lectures": [
-            {
-              "title": "اثرائيات 1",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3b2b9cc8-fa0c-49f8-9a92-00417ed380ca"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1746651370580,
-      "name": "سجاد العبيدي 2026",
-      "subject": "مدرس مادة اللغة الانكليزية",
-      "image": "https://i.imghippo.com/files/xH1865lU.jpg",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/fae0d70a-e4c7-46e0-a046-e8b52436e9fa/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1138f878-d8fa-4ed2-8228-f4c237b53d16/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5cb01382-c193-420f-a418-e6b10e0959d2/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "اليونت الاول",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/cce812a8-9008-44cf-a16e-00d7d82235a2/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3954a176-e22e-477a-be35-f5c65c0d1d16/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4473a98c-71c0-4586-aa98-ed529584f9b3/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/551c769b-a25b-4706-a689-82a1b77bd06e/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/603fabc7-aa58-478e-8759-99937ba45b13/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/03d0562c-15b7-4946-b7aa-bae0042cc94e/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/53035cc9-b698-401f-b442-be0a1a2102e8/480p/video.m3u8"
-            },
-            {
-              "title": "اسقاطات الوحدة الاولى",
-              "description": "وصف",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9aa6fca5-83e2-4925-bce2-b654f26bcc27/480p/video.m3u8"
-            },
-            {
-              "title": "الافعال المركبة ",
-              "description": "وصف",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/032cc79d-fc78-46f2-b1f6-f3a5adb5a0dc/480p/video.m3u8"
-            },
-            {
-              "title": "الاضافات ",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/75364eca-106c-4ab6-9e93-6cf3816fb5ab"
-            },
-            {
-              "title": "النصائح الامرية",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/11690a72-fe77-44c5-ad97-9c086194dbdf"
-            },
-            {
-              "title": "المعدود وغير معدود",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/41384cdd-cf86-45ac-8e4a-f68433d5ef97"
-            },
-            {
-              "title": "موضوع Used to",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/bd777b07-9563-4dbc-b8a0-f5d596509378"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1746651481946,
-      "name": "هاشم الغرباوي 2026",
-      "subject": "مدرس مادة الكيمياء",
-      "image": "https://i.imghippo.com/files/zcWE3715uRc.jpg",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/092c23a8-0cbe-44a6-a4b4-cefb20910478"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/916fe1c7-c230-4495-b525-c8a5bf9fbb41"
-            }
-          ]
-        },
-        {
-          "name": "الفصل الاول: الثرموداينمك",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/a5450272-34bf-47cd-8e63-4fbcbdd180f5"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/6869ca33-4b1b-4bfd-9082-37096ed81aa7"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/62027efe-1168-400f-b70c-5d15fdf75f70"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fd9d7806-6e19-4aae-8039-182568c41dc5"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/9304a327-2543-40b6-8edf-8772431b583a"
-            },
-            {
-              "title": "المحاضرة 6 ",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0bcec746-94f4-4361-9ce2-265e64672493"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d2711074-80bf-4670-ba69-dce58b289c82"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f4622f4d-2cf4-40ae-96e2-954bcbdfb242"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/1b47ad43-8b7f-419e-9e7e-5245fb2de6da"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b616633f-7255-4e29-aa6d-f0186e2bbd3b"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/9d535868-8cf7-4ea1-9528-0136c1d6a6b0"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/a1356270-2ea9-49e6-b815-0ad0d56cc69b"
-            },
-            {
-              "title": "محاضرة 13 : حل واجبات الفصل الاول من 1 الى15",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/a440035b-ccda-4951-a9be-bee9c8ee1270"
-            },
-            {
-              "title": "محاضرة 14 : (حساب مجموع الانثالبي)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c08436d8-bc21-422a-a14f-6fe79079c03e"
-            },
-            {
-              "title": "محاضرة 15 : (العمليات التلقائية والانتروبي)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/7d705e4a-06fa-4471-b0d0-2e9676740862"
-            },
-            {
-              "title": "الانتروبي",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f2115efe-13fe-4ea3-a340-53cdfb73764e"
-            },
-            {
-              "title": "المحاضرة 16",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/72ce818a-c62e-414f-b294-e3bbcddc34a0"
-            },
-            {
-              "title": "المحاضرة 17",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e08a8a8f-7ced-4469-9c22-0535dd8da458"
-            },
-            {
-              "title": "المحاضرة 18",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3cc86244-78d6-4a78-95f3-aede200a4d9f"
-            },
-            {
-              "title": "محاضرة 19",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e832a41f-65f9-4080-a6b2-95ec3a030202"
-            },
-            {
-              "title": "محاضرة 20",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3371de36-202c-4b66-b785-f07e12449559"
-            }
-          ]
-        },
-        {
-          "name": "مراجعة الفصل الاول",
-          "lectures": [
-            {
-              "title": "مراجعة مركزة فصل اول ج 1",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/a31f2692-36ba-4900-ac76-3df7cd34656e"
-            },
-            {
-              "title": "مراجعة مركزة ج2",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/8f9a9353-668d-4443-985b-ad83044766b2"
-            },
-            {
-              "title": "حل واجبات الفصل الاول من 1_15",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/88a4d4a2-16f0-406b-871a-ddce38bbb7d8"
-            },
-            {
-              "title": "المحاضرة الثانية (واجبات من سؤال ١٦ الى٢٤)",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/efdacbc2-2134-4839-ad32-818b8831a362"
-            }
-          ]
-        },
-        {
-          "name": "الفصل الثاني (الاتزان الكيميائي)",
-          "lectures": [
-            {
-             "title": "الدرس 1 : مقدمة الاتزان الكيميائي",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/d92636ee-eba1-4f9d-8657-f3fbd872d8fb"
+              }
+            ]
+          },
+          {
+            "name": "اثرائيا هنا فقط",
+            "lectures": [
+              {
+                "title": "اثرائيات 1",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3b2b9cc8-fa0c-49f8-9a92-00417ed380ca"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1746651370580,
+        "name": "سجاد العبيدي 2026",
+        "subject": "مدرس مادة اللغة الانكليزية",
+        "image": "https://i.imghippo.com/files/xH1865lU.jpg",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/fae0d70a-e4c7-46e0-a046-e8b52436e9fa/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/1138f878-d8fa-4ed2-8228-f4c237b53d16/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/5cb01382-c193-420f-a418-e6b10e0959d2/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "اليونت الاول",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/cce812a8-9008-44cf-a16e-00d7d82235a2/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/3954a176-e22e-477a-be35-f5c65c0d1d16/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/4473a98c-71c0-4586-aa98-ed529584f9b3/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/551c769b-a25b-4706-a689-82a1b77bd06e/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/603fabc7-aa58-478e-8759-99937ba45b13/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/03d0562c-15b7-4946-b7aa-bae0042cc94e/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/53035cc9-b698-401f-b442-be0a1a2102e8/480p/video.m3u8"
+              },
+              {
+                "title": "اسقاطات الوحدة الاولى",
+                "description": "وصف",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/9aa6fca5-83e2-4925-bce2-b654f26bcc27/480p/video.m3u8"
+              },
+              {
+                "title": "الافعال المركبة ",
+                "description": "وصف",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/032cc79d-fc78-46f2-b1f6-f3a5adb5a0dc/480p/video.m3u8"
+              },
+              {
+                "title": "الاضافات ",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/75364eca-106c-4ab6-9e93-6cf3816fb5ab"
+              },
+              {
+                "title": "النصائح الامرية",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/11690a72-fe77-44c5-ad97-9c086194dbdf"
+              },
+              {
+                "title": "المعدود وغير معدود",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/41384cdd-cf86-45ac-8e4a-f68433d5ef97"
+              },
+              {
+                "title": "موضوع Used to",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/bd777b07-9563-4dbc-b8a0-f5d596509378"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1746651481946,
+        "name": "هاشم الغرباوي 2026",
+        "subject": "مدرس مادة الكيمياء",
+        "image": "https://i.imghippo.com/files/zcWE3715uRc.jpg",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/092c23a8-0cbe-44a6-a4b4-cefb20910478"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/916fe1c7-c230-4495-b525-c8a5bf9fbb41"
+              }
+            ]
+          },
+          {
+            "name": "الفصل الاول: الثرموداينمك",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a5450272-34bf-47cd-8e63-4fbcbdd180f5"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/6869ca33-4b1b-4bfd-9082-37096ed81aa7"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/62027efe-1168-400f-b70c-5d15fdf75f70"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fd9d7806-6e19-4aae-8039-182568c41dc5"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/9304a327-2543-40b6-8edf-8772431b583a"
+              },
+              {
+                "title": "المحاضرة 6 ",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/0bcec746-94f4-4361-9ce2-265e64672493"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/d2711074-80bf-4670-ba69-dce58b289c82"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/f4622f4d-2cf4-40ae-96e2-954bcbdfb242"
+              },
+              {
+                "title": "محاضرة 9",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/1b47ad43-8b7f-419e-9e7e-5245fb2de6da"
+              },
+              {
+                "title": "محاضرة 10",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b616633f-7255-4e29-aa6d-f0186e2bbd3b"
+              },
+              {
+                "title": "محاضرة 11",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/9d535868-8cf7-4ea1-9528-0136c1d6a6b0"
+              },
+              {
+                "title": "محاضرة 12",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a1356270-2ea9-49e6-b815-0ad0d56cc69b"
+              },
+              {
+                "title": "محاضرة 13 : حل واجبات الفصل الاول من 1 الى15",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a440035b-ccda-4951-a9be-bee9c8ee1270"
+              },
+              {
+                "title": "محاضرة 14 : (حساب مجموع الانثالبي)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c08436d8-bc21-422a-a14f-6fe79079c03e"
+              },
+              {
+                "title": "محاضرة 15 : (العمليات التلقائية والانتروبي)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/7d705e4a-06fa-4471-b0d0-2e9676740862"
+              },
+              {
+                "title": "الانتروبي",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/f2115efe-13fe-4ea3-a340-53cdfb73764e"
+              },
+              {
+                "title": "المحاضرة 16",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/72ce818a-c62e-414f-b294-e3bbcddc34a0"
+              },
+              {
+                "title": "المحاضرة 17",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e08a8a8f-7ced-4469-9c22-0535dd8da458"
+              },
+              {
+                "title": "المحاضرة 18",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3cc86244-78d6-4a78-95f3-aede200a4d9f"
+              },
+              {
+                "title": "محاضرة 19",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e832a41f-65f9-4080-a6b2-95ec3a030202"
+              },
+              {
+                "title": "محاضرة 20",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3371de36-202c-4b66-b785-f07e12449559"
+              }
+            ]
+          },
+          {
+            "name": "مراجعة الفصل الاول",
+            "lectures": [
+              {
+                "title": "مراجعة مركزة فصل اول ج 1",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a31f2692-36ba-4900-ac76-3df7cd34656e"
+              },
+              {
+                "title": "مراجعة مركزة ج2",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/8f9a9353-668d-4443-985b-ad83044766b2"
+              },
+              {
+                "title": "حل واجبات الفصل الاول من 1_15",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/88a4d4a2-16f0-406b-871a-ddce38bbb7d8"
+              },
+              {
+                "title": "المحاضرة الثانية (واجبات من سؤال ١٦ الى٢٤)",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/efdacbc2-2134-4839-ad32-818b8831a362"
+              }
+            ]
+          },
+          {
+            "name": "الفصل الثاني (الاتزان الكيميائي)",
+            "lectures": [
+              {
+                "title": "الدرس الاول",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/d92636ee-eba1-4f9d-8657-f3fbd872d8fb"
+              },
+              {
+                "title": "الدرس الثاني",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/03b679cb-d532-4d9e-9daa-db8f3ca95f95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1746651647110,
+        "name": "علي السوداني 2026",
+        "subject": "مدرس مادة الفيزياء",
+        "image": "https://i.imghippo.com/files/vQEt1997wIc.jpg",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "الاساسيات 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/583c5061-6c9e-4d79-b4c0-f4274fa4af84"
+              },
+              {
+                "title": "الاساسيات 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/0290b143-5dae-4ad3-9af2-6af5b33da003"
+              },
+              {
+                "title": "الاساسيات 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/156d9561-0cdf-45c4-85ca-118f490ec6f9"
+              }
+            ]
+          },
+          {
+            "name": "الفصل الاول: المتسعات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cb0aaac5-1614-4c41-a2b8-50d7463c9a68"
+              },
+              {
+                "title": "المحاضرة 2 (المتسعة وسعة المتسعة)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e1bcbd27-d90a-4e9e-b930-5c41d4f89ba7"
+              },
+              {
+                "title": "محاضرة 3 : سعة المتسعة الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/2b0c371f-0038-4d0e-a6c1-4f8ad98ebe96"
+              },
+              {
+                "title": "محاضرة 4 : العازل الكهربائي",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e2b3b8e7-e2a4-4029-8c03-f9db48b17431"
+              },
+              {
+                "title": "محاضرة 5 : قوة العزل الكهربائي",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/15f473a2-6f45-447a-9771-43059321c296"
+              },
+              {
+                "title": "محاضرة 6 : تجربة فاراداي",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c97e68b9-e4ec-43fe-b105-88d5449061ed"
+              },
+              {
+                "title": "محاضرة 7 : تأثير المساحة السطحية والبعد بين صفيحتين على المتسعة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b3e3b411-c003-4300-a1ae-98a4d1a75e4b"
+              },
+              {
+                "title": "محاضرة 8 : تأثير العازل على المتسعة المتصلة والمنفصلة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ec6fd490-98ea-4808-925a-4df02dfaea03"
+              },
+              {
+                "title": "محاضرة 9 : سلوك المتسعة عند توصيلها بالبطارية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/8c7f09a6-863d-497e-9b4a-593aae156285"
+              },
+              {
+                "title": "محاضرة 10",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/492f37fc-d850-4aaa-bfcf-62ce04a551fc"
+              },
+              {
+                "title": "محاضرة 11 العوامل المؤثرة في الشحنة والطاقة ",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/dc3c915e-9e2a-4ba7-a4ba-c403c9f99dc5"
+              },
+              {
+                "title": "محاضرة 12",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3f00b418-c23e-4fae-aabf-08b33a6a46e6"
+              },
+              {
+                "title": "محاضرة 13",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/63e0f94d-7aa3-4d95-a59f-f41bf2db5dea"
+              },
+              {
+                "title": "محاضرة 14",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/88fa6975-b555-4355-9b85-920d645488ff"
+              },
+              {
+                "title": "محاضرة 15",
+                "description": "تم صنع المنصة من ميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/4f48060e-efb1-4c2a-a4ac-cf4af3f6e90f"
+              },
+              {
+                "title": "محاضرة 16",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ea5c2287-ec1c-47c8-9114-65bffcaaf998"
+              },
+              {
+                "title": "محاضرة 17",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/bab39653-ec65-4535-9a05-3faf2c0ad0f2"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1746651781084,
+        "name": "احمد النعيمي 2026",
+        "subject": "مدرس مادة اللغة العربية",
+        "image": "https://i.ytimg.com/vi/6yce3v7bZOA/maxresdefault.jpg",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة تعريفية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/7550c67d-6ba9-450d-8bed-c7fc19b6b69b/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/d97a2215-e814-4de9-81eb-89a223aab559/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/57d3660a-f5a9-4083-84c8-3bdc1fcebc55/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/c849fc4e-4a4e-4a9a-95dc-aaa7359ad93d/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/aee74655-0c7d-4333-8d3c-3e743a955537/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/8f2d121b-d686-40cf-be23-f3e8a371cbae/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/8c95e867-241d-47b1-ac11-52e5d80947b8/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/52fb6ea2-7561-4305-bb8f-6df7a12c04cb/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/36d002b5-d2ca-4a39-8475-dd41dc01b1c0/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "الادب الحديث: الفصل الدراسي الاول",
+            "lectures": [
+              {
+                "title": "محاضرة تعريفية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/69825c11-7c85-46af-9c01-1ebc227405d3/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 1 جزء اول",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/bf44a418-ccc3-4bd0-b0b9-b4a27838a9df/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 1 جزء ثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/ef4f08f1-b1f4-4ff6-89e5-ea9cab85f378/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2 جزء اول",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/a671a241-4e31-4efe-98e0-212f0c842186/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2 جزء ثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/f69bc0e6-2c20-449e-84f0-524c2848aebe/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "اسلوب الاستفهام ",
+            "lectures": [
+              {
+                "title": "محاضرة جديدة",
+                "description": "وصف",
+                "url": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747134235630,
+        "name": "رفل الزبيدي 2026",
+        "subject": "مدرسة مادة اللغة العربية",
+        "image": "https://i.imghippo.com/files/lRLb8828ozI.jpg",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/2414378d-0a9b-4de1-88d2-7279dacac70b/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/2eec9771-a153-4fec-ad1c-73536702b9df/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/02923885-9386-4ac3-bc44-fbf527407006/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/59e2edde-97ec-4f01-9143-c26f42642321/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/03c0c583-26db-48c2-9ef6-5a353471fe54/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/66660390-3cac-4582-bf2b-90eb62719a03/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "الاستفهام 2026",
+            "lectures": [
+              {
+                "title": "استفهام 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/81bbefa8-4140-4813-a7ad-4cde88757689"
+              },
+              {
+                "title": "الاستفهام المحاضرة الثانية ",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/6757a3de-75d2-4d8d-8aea-d1b4b6d886d0"
+              },
+              {
+                "title": "المحاضرة 3 : همزة التسوية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/d02d4f2c-34f8-4e43-80af-57d13be84b75"
+              },
+              {
+                "title": "المحاضرة 4 : تحويل الاستفهام من نوع لآخر",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a1462667-ef76-4f81-8804-d0452ed746f1"
+              },
+              {
+                "title": "المحاضرة 5 : صيغ الأسئلة الوزارية الخاصة بـ (أنواع الاستفهام)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/28597271-08f0-4fb0-a672-5a94bb0515e8"
+              },
+              {
+                "title": "المحاضرة 6 : حل أسئلة الاستفهام الوزارية (الجزء الأول)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/79e93601-0ca2-426a-b8ae-a7b853890b7e"
+              },
+              {
+                "title": "المحاضرة 7 : حل أسئلة الاستفهام الوزارية (الجزء الثاني)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fcfb085b-5b2e-473c-9345-792d2d029351"
+              },
+              {
+                "title": "حل الاسئلة الجزء الثالث",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cbcfb368-e265-4d4f-b3a4-5dafbe68ff23"
+              },
+              {
+                "title": "خصائص حروف الاستفهام ",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ab7d6908-cbf0-44ea-9798-10ce48e5526b"
+              },
+              {
+                "title": "خصائص الحروف الجزء الثاني",
+                "description": "وص",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cc4e6ed8-594c-43c6-953c-427aaf5e5781"
+              },
+              {
+                "title": "حل اسئلة الاستفهام الوزارية الجزء الرابع",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/65846fe1-9247-472b-bb46-c1efa23149cc"
+              },
+              {
+                "title": "حل اسئلة الاستفهام الوزارية الجزء الخامس",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3f401262-0bfb-4dc7-b9a7-90b5d9bbb7c5"
+              },
+              {
+                "title": "دلالات أسماء الاستفهام للعاقل وغير العاقل وإعرابها (الجزء الأول",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/f2b3465c-0fd2-476b-adb5-ca94f694092f"
+              },
+              {
+                "title": "دلالات أسماء الاستفهام للعاقل وغير العاقل وإعرابها (الجزء الثاني)",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/14823dac-16dc-41a2-91d5-850508d5062d"
+              }
+            ]
+          },
+          {
+            "name": "الادب الحديث (الفصل الاول)",
+            "lectures": [
+              {
+                "title": "المحاضرة 1 : الادب الحديث",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/88e2e437-5664-4d5b-8f75-1f0bba0d8bb2"
+              },
+              {
+                "title": "المحاضرة 2 : الشعر الحديث",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/1c1b6e4f-4831-4c80-8d25-03294217c376"
+              },
+              {
+                "title": "المحاضرة 3 : مدرسة الاحياء",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/7eed7474-1946-4d80-ba18-167ea2b5bcf5"
+              },
+              {
+                "title": "الشاعر محمد سعيد الحبوبي (التعليق النقدي",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/486f9206-31e5-44ff-86b4-c2d47d55ecf0"
+              },
+              {
+                "title": "علي الشرقي",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/dbca7f16-743b-4227-a8de-47699c96c9fe"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747135061704,
+        "name": "عباس الدراجي 2026",
+        "subject": "مدرس مادة الرياضيات",
+        "image": "https://yt3.googleusercontent.com/l0QnUF1_R9JLkyK-Zeao8qA5yfYKZndunAVkGua2EmuPIQyAXTXVdM_MiqxZx0m02B1Ucjly=s900-c-k-c0x00ffffff-no-rj",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/bd049c3e-6a1e-46e4-860c-1c073720d48f/1080p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747135115898,
+        "name": "مهند السوداني 2026",
+        "subject": "مدرس مادة الكيمياء",
+        "image": "https://i.imghippo.com/files/aBBk4164FCo.png",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/e2684c45-e39e-487b-b885-38128feb9632/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 1 الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/8476d313-0533-439e-9560-b47630e0dd0b/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/09213e06-c38b-4bf8-836f-5ebb182556f9/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2 : الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/14dda732-23d5-4110-a03f-25e57166c178/480p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "الفصل الاول : الثرموداينمك",
+            "lectures": [
+              {
+                "title": "محاضرة 1 : مقدمة الثرموداينمك",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/4be13215-4fe2-4f5d-875a-cdded674b64a/480p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747135191495,
+        "name": "نورس الموسوي 2026",
+        "subject": "مدرس مادة الاحياء",
+        "image": "https://yt3.googleusercontent.com/B_86-v0AFl5PN_mJXykCJ-pyzQetoKg8DL5wISXMt5IDs8yyE8dBbzZCtyXdo57GjBM54QTDlA=s900-c-k-c0x00ffffff-no-rj",
+        "classes": [
+          {
+            "name": "المقدمة",
+            "lectures": [
+              {
+                "title": "محاضرة تعريفية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/caadbdff-8861-4ac2-9bff-083dfe171752/1080p/video.m3u8"
+              },
+              {
+                "title": "تقسيمات منهج الاحياء",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/d2873133-0933-402f-86bf-17125efbdf3b/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "الفصل الاول: الخلية",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/4a8313b5-f032-4868-bb91-df3202078817/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/0b33b9e6-0263-4d8f-b536-f757cc81b28d/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/f70fc1b9-3f9f-4969-8148-fb5f3c17d23d/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/7484dc7e-43ca-4139-8d4d-86d06c220e6d/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/bab2a5c1-4435-4d45-a242-454ef8289324/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/7e4b1d89-36f6-418b-91c1-b655b70dcc64/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 7 : الفجوات والمحتويات الغير حية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/7e244e05-3916-4757-92b1-43f505d202f5/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 8 : النواة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/a2799dd5-58f5-43c3-84c2-771c6afbae5c/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 9 : المراجعة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/0db0414a-1bdb-42e5-81b0-f098726a529b/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 10 : الانشطة الخلوية (الانتشار والنفوذية)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/09838d77-b03e-4046-9255-b548cfebcd6f/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 11 : مراجعة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/afaa0557-fe6e-4a6a-8272-143a33eb4532/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 12 : التناضح",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-54093f22-07f.b-cdn.net/3d8317bc-0550-4561-95d1-c18dc20a56d6/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 13 : التناضح الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-54093f22-07f.b-cdn.net/5e9c2b27-2c25-4587-95d2-644c45a4bb27/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة جديدة",
+                "description": "وصف",
+                "url": ""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747135309060,
+        "name": "محمد العنزي 2026",
+        "subject": "مدرس مادة الاحياء",
+        "image": "https://yt3.googleusercontent.com/ZlU3eaDmkqFusRHMp7jHZCcm6QavK-UhdVWtRVwMt7lCgcTcS7SLoKSbmc0JDzopwbEfM0HydA=s900-c-k-c0x00ffffff-no-rj",
+        "classes": [
+          {
+            "name": "الفصل الاول: الخلية",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/a61f4f3e-30f4-45e8-bb4b-06c70370f55a/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/ea246c9f-0114-4d3e-be49-285e42de6b8b/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/a71542ed-492e-485f-baed-595f05d38a36/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/f34df3d5-d3bb-49b7-a65c-04dcbc5fdd61/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "ملخصات الفصل الاول",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/551bfacd-7195-4c17-8f3d-dfcb03e88311/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/b73dc4ec-86bc-4ced-b180-c3ab302710e4/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/2e499328-fbb5-42b6-ba00-4e95c2a267d7/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/5db0861d-2245-4105-b5a3-7c748db4c7ab/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "رسومات الفصل الاول",
+            "lectures": [
+              {
+                "title": "رسم البكتريا",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/1f1510ee-1f01-40e8-9c28-f7dd05dfb96d/1080p/video.m3u8"
+              },
+              {
+                "title": "رسم الغشاء البلازمي",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/d6fec5f3-27f9-4b4e-ae4d-89d07ff753c4/1080p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747135348651,
+        "name": "ازل سلوان 2026",
+        "subject": "مدرسة مادة اللغة الانكليزية",
+        "image": "https://yt3.googleusercontent.com/8HQeUmCfq8xI4YzMJiVtMX_rflqNOchtXvrICB1Erbfk5avv3K4HaqtfVEy3pEw5txM4_xJl=s900-c-k-c0x00ffffff-no-rj",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/948fe702-a077-4b44-a9bb-263b4e69593a/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/dc35c551-71d0-47b4-8ad9-acf162b42fde/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/a7ad9252-934f-440e-ae81-b721f5965c06/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/0d17ee36-155d-4028-9018-b4a8369ed0a6/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "اليونت الاول",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/cd9d2db3-8b4e-4768-89e8-db49d6f084b5/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/c231cef1-ba04-4144-b132-fcdf372e7008/1080p/video.m3u8"
+              },
+              {
+                "title": "ادوات الربط ج 1",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fb4c38ba-2bf9-4cfd-820c-9f5e8671dc02"
+              },
+              {
+                "title": "ادوات الربط ج2",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/63245858-3f61-43e0-ba7c-c61f31f4ff7e"
+              },
+              {
+                "title": "الصفات المنتهية ب ed .ing",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/11857f14-04f9-4586-a364-4469ba4c573e"
+              },
+              {
+                "title": "وزاريات الصفات ed/ing",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/5b275e87-9aeb-49fb-9038-04febffab2e2"
+              },
+              {
+                "title": "الكلمات المنتهية ب full/fully ",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/37484dc4-20c9-4f37-a575-35a1b2255d38"
+              },
+              {
+                "title": "زيد طارق",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/4d6de8bc-8831-4d0c-8c3a-da4280558d30"
+              },
+              {
+                "title": "اسئلة عن زيد طارق",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/be7fe6e3-9368-48bb-9ed4-99cbbbff7b09"
+              },
+              {
+                "title": "العبارات الفعلية",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b6a26b88-5a2f-4f8f-92ab-55a8669d7a1f"
+              },
+              {
+                "title": "الاضافات",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3114d4a3-fe5f-493d-a010-1ae73cdf5061"
+              },
+              {
+                "title": "المعدود وغير معدود",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c7eec707-b01e-4732-b3b2-84c1d1a72026"
+              },
+              {
+                "title": "تمارين ",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/472db03f-d8b0-44e6-b7ee-7a240ae32c42"
+              },
+              {
+                "title": "Used to",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/df97b5ae-15a9-44b0-9543-6b6e880a3df1"
+              },
+              {
+                "title": "وزاريات Used to",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/c4c4f6ec-c22c-46ec-bd0c-75f9a252f5ac"
+              },
+              {
+                "title": "المقارنه",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3955ade1-e887-41ef-80d1-aa495b9f1a34"
+              },
+              {
+                "title": "انشاء الوحدة الاولى",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cfbd79ac-377f-494e-83a8-d95d26d2025e"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747248287872,
+        "name": "يوسف الربيعي 2026",
+        "subject": "مدرس مادة الكيمياء",
+        "image": "https://i.imghippo.com/files/OMB7015GqE.png",
+        "classes": [
+          {
+            "name": "الفصل الاول: الثرموداينمك",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/9896e8e3-1eb4-4493-993b-689b3722595d/1080p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747248378740,
+        "name": "احمد الجاف 2026",
+        "subject": "مدرس مادة الاحياء",
+        "image": "https://i.imghippo.com/files/jNNu3933bA.png",
+        "classes": [
+          {
+            "name": "الفصل الاول: الخلية",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/c1c9da16-963b-4d4d-bfb4-c45203b5f8cd/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/03a7118b-dc49-43f5-920c-9c78ff38e9d7/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/eb747dcb-c3d6-4081-92e2-fabf980494dd/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/0ef32cb8-9733-44c2-8291-4ea9d4b0c9fd/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/7a9311ab-cf4f-465a-8ade-d930f78ee19f/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/1b8f53a5-75d0-4e3e-9bce-1a6c6b3e8911/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/0b698ad4-765d-4612-9c4e-eb103e817c16/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/a86f7fe0-eebd-47cf-ad6a-a560394b4d86/1080p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747248446817,
+        "name": "حسن عبدالكاظم 2026",
+        "subject": "مدرس مادة الفيزياء",
+        "image": "https://i.imghippo.com/files/JlU4380EFY.png",
+        "classes": [
+          {
+            "name": "الفصل الاول: المتسعات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/25d2a253-f759-4e3c-9d54-1b8988bdb2d1/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/d487b539-8389-49c4-a756-0e0b731ce417/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/54ecc6ca-b7e3-4b08-a4fc-e2e76dbdff37/1080p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747248538708,
+        "name": "محمد قاسم 2026",
+        "subject": "مدرس مادة الرياضيات",
+        "image": "https://i.imghippo.com/files/xRk9364Rk.png",
+        "classes": [
+          {
+            "name": "الاعداد المركبة",
+            "lectures": [
+              {
+                "title": "محاضرة 1 : مقدمة الاعداد المركبة",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/f840ac1e-4f31-4717-ae52-4e6aaa95493c/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2 : قوى (i)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/555c3369-af4a-4f22-b3dc-bfba92004d97/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3 : العدد المركب",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/035ffc65-8cbd-4a86-a775-c15ed6083384/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4 : العمليات الحسابية على مجموعة الأعداد المركبة الجزء الأول",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/e70c0704-1222-42d3-a052-b1b49ee6e22e/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5 : (العمليات الحسابية على مجموعة الأعداد المركبة الجزء الثاني)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/c9724919-8980-4fb8-890c-e25e0f34dc16/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6 : (الأقواس في الاعداد المركبة)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/5762f351-a1f5-471d-abf4-671fbf0591bd/480p/video.m3u8"
+              },
+              {
+                "title": "السابعة (الأقواس في الاعداد المركبة - الجزء الثاني)",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/e28b7f49-92d7-4207-b5c8-3733f73ec593"
+              },
+              {
+                "title": "الثامنة ",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b6aa3ef5-82a2-46b3-98a2-89313e0360b1"
+              },
+              {
+                "title": "التاسعة",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/76969b88-4e83-479e-8583-eee00e4f6154"
+              },
+              {
+                "title": "العاشرة ",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/527977fc-23da-4831-8b50-0210969f4a98"
+              },
+              {
+                "title": "الحادية عشر ",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/3b533b3c-d386-4f9b-aca9-511b6c25393e"
+              },
+              {
+                "title": "12 الثانية عشر",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/616f86b2-a381-49b9-8880-47e53c99afc4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1747551898072,
+        "name": "هشام المعموري 2026",
+        "subject": "مدرس مادة اللغة العربية",
+        "image": "https://i.imghippo.com/files/eVG7803isI.png",
+        "classes": [
+          {
+            "name": "الاساسيات",
+            "lectures": [
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/54cbcb8a-12db-4895-b44b-3f0f82e3ec12/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/8c2d5271-85be-4618-af61-1c08dd057076/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/bde728cf-be21-4fa5-986d-8f920be941d0/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/9cce2e3f-02db-4c2a-bc86-5de6ae9b737f/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/5be7c60e-72d7-4889-b9cc-00b5eb0c4925/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/e6af4501-07a4-4793-8514-77589bde9817/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/5e687bfc-3ed6-4e9a-96ea-1f697172ae3e/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/1128dacd-ab91-4c37-8516-ba3c27ef6333/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 9",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/4bcff57b-208f-4998-888e-32450ca6fecc/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 10",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/27d1c2fc-aea2-4805-9058-8e95d44a9859/1080p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 11",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/0e88b3de-f003-4963-ac0a-7411c933dc1f/1080p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "أسلوب الاستفهام",
+            "lectures": [
+              {
+                "title": "المحاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/e774c265-4a30-4b72-bc9a-97689fd61b9a/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/f1a5241b-45a3-4e20-99a5-04ea44fb8d8b/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 3 : دلالات اسماء الاستفهام - الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/d1999f94-eb76-4c2a-b3fa-65feb156bac9/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 4 : أنواع الاستفهام",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/b4855f35-0325-4144-adfd-1d027781a374/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 5 : أنواع (أم)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/e4c5574b-39a9-4918-b98f-687a1938f6d9/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 6 : كيفية صياغة جملة استفهامية (الجزء الاول)",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/9146e360-0803-4ce8-92d7-62b2f3dfb36c/480p/video.m3u8"
+              }
+            ]
+          },
+          {
+            "name": "الادب الحديث (الفصل الاول)",
+            "lectures": [
+              {
+                "title": "المحاضرة 1 : الادب الحديث",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/5faa5837-6207-4564-8da4-3e8645d6368c/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 2 : الشعر الحديث ومدرسة الاحياء",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/edddea04-8b1e-4fff-91c5-be0ba36e88bb/480p/video.m3u8"
+              },
+              {
+                "title": "المحاضرة 3 : محمد سعيد الحبوبي",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-b26dd76f-dc1.b-cdn.net/d02f4737-5649-49b6-aac0-30f9b1463783/480p/video.m3u8"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1751285746593,
+        "name": "جعفر الحسني ",
+        "subject": "الاحياء 2026",
+        "image": "https://i.imghippo.com/files/bXD9639qk.jpg",
+        "classes": [
+          {
+            "name": "فصل 1 (الخلية)",
+            "lectures": [
+              {
+                "title": "المحاضرة الأولى ",
+                "description": "",
+                "url": "https://iframe.mediadelivery.net/embed/215061/6ac87d79-0aad-4a00-8f43-2ef602e1ce5a"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/34ed7080-f767-4f02-a6cc-446df5e51689"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/0d269959-42b3-4db4-81f4-b1dc44fa8127"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fab505b2-b7e3-4673-9bd7-7e0a85be5199"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/6e670408-4924-44de-95e7-47cb490525b0"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/541490bb-ee10-4b90-91e3-29b1b44965f2"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/7109bbf8-5613-43e1-af19-f28d4fbaf4bd"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/d85fbc7e-83a2-4871-b5f5-3d388b2c8d51"
+              },
+              {
+                "title": "محاضرة 9",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fc470ef4-93ce-494d-afd7-c22a66ecfc80"
+              },
+              {
+                "title": "محاضرة 10",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/331f9744-d435-42e9-925b-71482846c2c2"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
-  {
-    "title": "الدرس 2 : ثابت الاتزان الكيميائي",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/03b679cb-d532-4d9e-9daa-db8f3ca95f95"
-  },
-  {
-    "title": "الدرس 3 : فرضية مسائل ثابت الاتزان للتراكيز وثابت الاتزان للضغوط",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/bc2bee10-b7f5-438d-9526-24761c696c92"
-  },
-  {
-    "title": "الدرس 4 : مراجعة الفرضية وحل بعض المسائل",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/d390ae74-54ac-4f21-acc1-3ee6518dc518"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1746651647110,
-      "name": "علي السوداني 2026",
-      "subject": "مدرس مادة الفيزياء",
-      "image": "https://i.imghippo.com/files/vQEt1997wIc.jpg",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "الاساسيات 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/583c5061-6c9e-4d79-b4c0-f4274fa4af84"
-            },
-            {
-              "title": "الاساسيات 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0290b143-5dae-4ad3-9af2-6af5b33da003"
-            },
-            {
-              "title": "الاساسيات 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/156d9561-0cdf-45c4-85ca-118f490ec6f9"
-            }
-          ]
-        },
-        {
-          "name": "الفصل الاول: المتسعات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cb0aaac5-1614-4c41-a2b8-50d7463c9a68"
-            },
-            {
-              "title": "المحاضرة 2 (المتسعة وسعة المتسعة)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e1bcbd27-d90a-4e9e-b930-5c41d4f89ba7"
-            },
-            {
-              "title": "محاضرة 3 : سعة المتسعة الجزء الثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/2b0c371f-0038-4d0e-a6c1-4f8ad98ebe96"
-            },
-            {
-              "title": "محاضرة 4 : العازل الكهربائي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e2b3b8e7-e2a4-4029-8c03-f9db48b17431"
-            },
-            {
-              "title": "محاضرة 5 : قوة العزل الكهربائي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/15f473a2-6f45-447a-9771-43059321c296"
-            },
-            {
-              "title": "محاضرة 6 : تجربة فاراداي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c97e68b9-e4ec-43fe-b105-88d5449061ed"
-            },
-            {
-              "title": "محاضرة 7 : تأثير المساحة السطحية والبعد بين صفيحتين على المتسعة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b3e3b411-c003-4300-a1ae-98a4d1a75e4b"
-            },
-            {
-              "title": "محاضرة 8 : تأثير العازل على المتسعة المتصلة والمنفصلة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ec6fd490-98ea-4808-925a-4df02dfaea03"
-            },
-            {
-              "title": "محاضرة 9 : سلوك المتسعة عند توصيلها بالبطارية",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/8c7f09a6-863d-497e-9b4a-593aae156285"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/492f37fc-d850-4aaa-bfcf-62ce04a551fc"
-            },
-            {
-              "title": "محاضرة 11 العوامل المؤثرة في الشحنة والطاقة ",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/dc3c915e-9e2a-4ba7-a4ba-c403c9f99dc5"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3f00b418-c23e-4fae-aabf-08b33a6a46e6"
-            },
-            {
-              "title": "محاضرة 13",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/63e0f94d-7aa3-4d95-a59f-f41bf2db5dea"
-            },
-            {
-              "title": "محاضرة 14",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/88fa6975-b555-4355-9b85-920d645488ff"
-            },
-            {
-              "title": "محاضرة 15",
-              "description": "تم صنع المنصة من ميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/4f48060e-efb1-4c2a-a4ac-cf4af3f6e90f"
-            },
-            {
-              "title": "محاضرة 16",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ea5c2287-ec1c-47c8-9114-65bffcaaf998"
-            },
-            {
-              "title": "محاضرة 17",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/bab39653-ec65-4535-9a05-3faf2c0ad0f2"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1746651781084,
-      "name": "احمد النعيمي 2026",
-      "subject": "مدرس مادة اللغة العربية",
-      "image": "https://i.ytimg.com/vi/6yce3v7bZOA/maxresdefault.jpg",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة تعريفية",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/7550c67d-6ba9-450d-8bed-c7fc19b6b69b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d97a2215-e814-4de9-81eb-89a223aab559/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/57d3660a-f5a9-4083-84c8-3bdc1fcebc55/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c849fc4e-4a4e-4a9a-95dc-aaa7359ad93d/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/aee74655-0c7d-4333-8d3c-3e743a955537/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8f2d121b-d686-40cf-be23-f3e8a371cbae/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8c95e867-241d-47b1-ac11-52e5d80947b8/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/52fb6ea2-7561-4305-bb8f-6df7a12c04cb/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/36d002b5-d2ca-4a39-8475-dd41dc01b1c0/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "الادب الحديث: الفصل الدراسي الاول",
-          "lectures": [
-            {
-              "title": "محاضرة تعريفية",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/69825c11-7c85-46af-9c01-1ebc227405d3/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 1 جزء اول",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/bf44a418-ccc3-4bd0-b0b9-b4a27838a9df/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 1 جزء ثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ef4f08f1-b1f4-4ff6-89e5-ea9cab85f378/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2 جزء اول",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a671a241-4e31-4efe-98e0-212f0c842186/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2 جزء ثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f69bc0e6-2c20-449e-84f0-524c2848aebe/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "اسلوب الاستفهام ",
-          "lectures": [
-            {
-              "title": "محاضرة جديدة",
-              "description": "وصف",
-              "url": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747134235630,
-      "name": "رفل الزبيدي 2026",
-      "subject": "مدرسة مادة اللغة العربية",
-      "image": "https://i.imghippo.com/files/lRLb8828ozI.jpg",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/2414378d-0a9b-4de1-88d2-7279dacac70b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/2eec9771-a153-4fec-ad1c-73536702b9df/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/02923885-9386-4ac3-bc44-fbf527407006/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/59e2edde-97ec-4f01-9143-c26f42642321/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/03c0c583-26db-48c2-9ef6-5a353471fe54/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/66660390-3cac-4582-bf2b-90eb62719a03/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "الاستفهام 2026",
-          "lectures": [
-            {
-              "title": "استفهام 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/81bbefa8-4140-4813-a7ad-4cde88757689"
-            },
-            {
-              "title": "الاستفهام المحاضرة الثانية ",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/6757a3de-75d2-4d8d-8aea-d1b4b6d886d0"
-            },
-            {
-              "title": "المحاضرة 3 : همزة التسوية",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d02d4f2c-34f8-4e43-80af-57d13be84b75"
-            },
-            {
-              "title": "المحاضرة 4 : تحويل الاستفهام من نوع لآخر",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/a1462667-ef76-4f81-8804-d0452ed746f1"
-            },
-            {
-              "title": "المحاضرة 5 : صيغ الأسئلة الوزارية الخاصة بـ (أنواع الاستفهام)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/28597271-08f0-4fb0-a672-5a94bb0515e8"
-            },
-            {
-              "title": "المحاضرة 6 : حل أسئلة الاستفهام الوزارية (الجزء الأول)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/79e93601-0ca2-426a-b8ae-a7b853890b7e"
-            },
-            {
-              "title": "المحاضرة 7 : حل أسئلة الاستفهام الوزارية (الجزء الثاني)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fcfb085b-5b2e-473c-9345-792d2d029351"
-            },
-            {
-              "title": "حل الاسئلة الجزء الثالث",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cbcfb368-e265-4d4f-b3a4-5dafbe68ff23"
-            },
-            {
-              "title": "خصائص حروف الاستفهام ",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ab7d6908-cbf0-44ea-9798-10ce48e5526b"
-            },
-            {
-              "title": "خصائص الحروف الجزء الثاني",
-              "description": "وص",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cc4e6ed8-594c-43c6-953c-427aaf5e5781"
-            },
-            {
-              "title": "حل اسئلة الاستفهام الوزارية الجزء الرابع",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/65846fe1-9247-472b-bb46-c1efa23149cc"
-            },
-            {
-              "title": "حل اسئلة الاستفهام الوزارية الجزء الخامس",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3f401262-0bfb-4dc7-b9a7-90b5d9bbb7c5"
-            },
-            {
-              "title": "دلالات أسماء الاستفهام للعاقل وغير العاقل وإعرابها (الجزء الأول",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f2b3465c-0fd2-476b-adb5-ca94f694092f"
-            },
-            {
-             "title": "دلالات أسماء الاستفهام للعاقل وغير العاقل وإعرابها - الجزء الثاني",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/14823dac-16dc-41a2-91d5-850508d5062d"
-  },
-  {
-    "title": "إعراب أسماء الاستفهام الدالة على العاقل وغير العاقل - الجزء الأول",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/61fbc9b9-baad-468f-bab8-b9a8ec47901f"
-  },
-  {
-    "title": "إعراب أسماء الاستفهام الدالة على العاقل وغير العاقل - الجزء الثاني",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/abd3d76e-bc0f-47ee-a8da-0efad9b7952a"
-            }
-          ]
-        },
-        {
-          "name": "الادب الحديث (الفصل الاول)",
-          "lectures": [
-            {
-              "title": "المحاضرة 1 : الادب الحديث",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/88e2e437-5664-4d5b-8f75-1f0bba0d8bb2"
-            },
-            {
-              "title": "المحاضرة 2 : الشعر الحديث",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/1c1b6e4f-4831-4c80-8d25-03294217c376"
-            },
-            {
-              "title": "المحاضرة 3 : مدرسة الاحياء",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/7eed7474-1946-4d80-ba18-167ea2b5bcf5"
-            },
-            {
-              "title": "الشاعر محمد سعيد الحبوبي (التعليق النقدي",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/486f9206-31e5-44ff-86b4-c2d47d55ecf0"
-            },
-            {
-              "title": "علي الشرقي",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/dbca7f16-743b-4227-a8de-47699c96c9fe"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747135061704,
-      "name": "عباس الدراجي 2026",
-      "subject": "مدرس مادة الرياضيات",
-      "image": "https://yt3.googleusercontent.com/l0QnUF1_R9JLkyK-Zeao8qA5yfYKZndunAVkGua2EmuPIQyAXTXVdM_MiqxZx0m02B1Ucjly=s900-c-k-c0x00ffffff-no-rj",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/bd049c3e-6a1e-46e4-860c-1c073720d48f/1080p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747135115898,
-      "name": "مهند السوداني 2026",
-      "subject": "مدرس مادة الكيمياء",
-      "image": "https://i.imghippo.com/files/aBBk4164FCo.png",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/e2684c45-e39e-487b-b885-38128feb9632/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 1 الجزء الثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/8476d313-0533-439e-9560-b47630e0dd0b/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/09213e06-c38b-4bf8-836f-5ebb182556f9/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2 : الجزء الثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/14dda732-23d5-4110-a03f-25e57166c178/480p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "الفصل الاول : الثرموداينمك",
-          "lectures": [
-            {
-              "title": "محاضرة 1 : مقدمة الثرموداينمك",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/4be13215-4fe2-4f5d-875a-cdded674b64a/480p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747135191495,
-      "name": "نورس الموسوي 2026",
-      "subject": "مدرس مادة الاحياء",
-      "image": "https://yt3.googleusercontent.com/B_86-v0AFl5PN_mJXykCJ-pyzQetoKg8DL5wISXMt5IDs8yyE8dBbzZCtyXdo57GjBM54QTDlA=s900-c-k-c0x00ffffff-no-rj",
-      "classes": [
-        {
-          "name": "الفصل الاول: الخلية",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/caadbdff-8861-4ac2-9bff-083dfe171752"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d2873133-0933-402f-86bf-17125efbdf3b"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/7aa6fb87-1860-4584-9a2f-3638ac95ef84"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0b33b9e6-0263-4d8f-b536-f757cc81b28d"
-            },
-            {
-              "title": "السايتوبلازم و الشبكة البلازمية وجهاز كولجي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f70fc1b9-3f9f-4969-8148-fb5f3c17d23d"
-            },
-            {
-              "title": "المحاضرة الرابعة (المايتوكندريا والبلاستيدات) 🔗",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/4b2e558d-4af8-4a5d-8b3f-079f6d2d80cd"
-            },
-            {
-              "title": "المحاضرة الخامسة (الجسيمات الحالة وهيكل الخلية) 🔗",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/7e244e05-3916-4757-92b1-43f505d202f5/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/063095f6-8ba8-4b01-bf50-fc9f41aa20f9"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/24fd982b-eb63-480e-bf83-9a77a4fcdb86"
-            },
-            {
-              "title": "محاضرة 8 النواة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/266101a5-a1c9-403d-b328-6c67fc7b18ac"
-            },
-            {
-              "title": "محاضرة 9 : مراجعة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e5724825-cd33-4ad6-b9f2-c80bd955076a"
-            },
-            {
-              "title": "المحاضرة العاشرة الانشطة الخلوية (الانتشار والنفوذية) 🔗",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0d2dba87-5a64-40e6-bfb5-9cffb3e4003b"
-            },
-            {
-              "title": "محاضرة وزاريات ",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c3e03871-1273-4f04-82c5-50dfee890e55"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/43712c75-8e11-46c7-a4c1-b4e6eb149e75"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/5550161b-708d-499a-8ded-bbe6635932d3"
-            },
-            {
-              "title": "محاضرة 13",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e70ff835-758e-4e48-8f37-d1cc5575902c"
-            },
-            {
-              "title": "محاضرة 14",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b1ce5033-1065-434f-b030-aa005d29e63c"
-            },
-            {
-              "title": "محاضرة 15",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/2160af0f-aa26-41d2-827c-a541b0f26f12"
-            },
-            {
-              "title": "محاضرة 16",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/38bd1d53-4c34-4b04-95cd-3849cc44da55"
-            },
-            {
-              "title": "محاضرة 17",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0227138c-b351-49fb-8c24-e4f9baed9ebb"
-            },
-            {
-              "title": "محاضرة 18",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/68c41c42-8d53-4ad7-9aba-dc4b58a642bd"
-            },
-            {
-              "title": "مراجعة الايض الخلوي",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0d50085b-9dd2-4734-a7ea-d2f1c93c0e70"
-            },
-            {
-              "title": "عمليات البناء",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ef69e51f-03d1-41ba-8946-d34aeb96f664"
-            },
-            {
-              "title": "مراجعة وزاريات كولجي والمايتوكندريا",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c3e03871-1273-4f04-82c5-50dfee890e55"
-            },
-            {
-              "title": "الانقسام الخيطي",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/eccb1232-f04b-4288-b26a-228271cd6760"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747135309060,
-      "name": "محمد العنزي 2026",
-      "subject": "مدرس مادة الاحياء",
-      "image": "https://yt3.googleusercontent.com/ZlU3eaDmkqFusRHMp7jHZCcm6QavK-UhdVWtRVwMt7lCgcTcS7SLoKSbmc0JDzopwbEfM0HydA=s900-c-k-c0x00ffffff-no-rj",
-      "classes": [
-        {
-          "name": "الفصل الاول: الخلية",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a61f4f3e-30f4-45e8-bb4b-06c70370f55a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ea246c9f-0114-4d3e-be49-285e42de6b8b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a71542ed-492e-485f-baed-595f05d38a36/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f34df3d5-d3bb-49b7-a65c-04dcbc5fdd61/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "ملخصات الفصل الاول",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/551bfacd-7195-4c17-8f3d-dfcb03e88311/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/b73dc4ec-86bc-4ced-b180-c3ab302710e4/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/2e499328-fbb5-42b6-ba00-4e95c2a267d7/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5db0861d-2245-4105-b5a3-7c748db4c7ab/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "رسومات الفصل الاول",
-          "lectures": [
-            {
-              "title": "رسم البكتريا",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1f1510ee-1f01-40e8-9c28-f7dd05dfb96d/1080p/video.m3u8"
-            },
-            {
-              "title": "رسم الغشاء البلازمي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d6fec5f3-27f9-4b4e-ae4d-89d07ff753c4/1080p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747135348651,
-      "name": "ازل سلوان 2026",
-      "subject": "مدرسة مادة اللغة الانكليزية",
-      "image": "https://yt3.googleusercontent.com/8HQeUmCfq8xI4YzMJiVtMX_rflqNOchtXvrICB1Erbfk5avv3K4HaqtfVEy3pEw5txM4_xJl=s900-c-k-c0x00ffffff-no-rj",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/948fe702-a077-4b44-a9bb-263b4e69593a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/dc35c551-71d0-47b4-8ad9-acf162b42fde/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a7ad9252-934f-440e-ae81-b721f5965c06/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0d17ee36-155d-4028-9018-b4a8369ed0a6/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "اليونت الاول",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/cd9d2db3-8b4e-4768-89e8-db49d6f084b5/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c231cef1-ba04-4144-b132-fcdf372e7008/1080p/video.m3u8"
-            },
-            {
-              "title": "ادوات الربط ج 1",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fb4c38ba-2bf9-4cfd-820c-9f5e8671dc02"
-            },
-            {
-              "title": "ادوات الربط ج2",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/63245858-3f61-43e0-ba7c-c61f31f4ff7e"
-            },
-            {
-              "title": "الصفات المنتهية ب ed .ing",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/11857f14-04f9-4586-a364-4469ba4c573e"
-            },
-            {
-              "title": "وزاريات الصفات ed/ing",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/5b275e87-9aeb-49fb-9038-04febffab2e2"
-            },
-            {
-              "title": "الكلمات المنتهية ب full/fully ",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/37484dc4-20c9-4f37-a575-35a1b2255d38"
-            },
-            {
-              "title": "زيد طارق",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/4d6de8bc-8831-4d0c-8c3a-da4280558d30"
-            },
-            {
-              "title": "اسئلة عن زيد طارق",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/be7fe6e3-9368-48bb-9ed4-99cbbbff7b09"
-            },
-            {
-              "title": "العبارات الفعلية",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b6a26b88-5a2f-4f8f-92ab-55a8669d7a1f"
-            },
-            {
-              "title": "الاضافات",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3114d4a3-fe5f-493d-a010-1ae73cdf5061"
-            },
-            {
-              "title": "المعدود وغير معدود",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c7eec707-b01e-4732-b3b2-84c1d1a72026"
-            },
-            {
-              "title": "تمارين ",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/472db03f-d8b0-44e6-b7ee-7a240ae32c42"
-            },
-            {
-              "title": "Used to",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/df97b5ae-15a9-44b0-9543-6b6e880a3df1"
-            },
-            {
-              "title": "وزاريات Used to",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/c4c4f6ec-c22c-46ec-bd0c-75f9a252f5ac"
-            },
-            {
-              "title": "المقارنه",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3955ade1-e887-41ef-80d1-aa495b9f1a34"
-            },
-            {
-              "title": "انشاء الوحدة الاولى",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cfbd79ac-377f-494e-83a8-d95d26d2025e"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747248287872,
-      "name": "يوسف الربيعي 2026",
-      "subject": "مدرس مادة الكيمياء",
-      "image": "https://i.imghippo.com/files/OMB7015GqE.png",
-      "classes": [
-        {
-          "name": "الفصل الاول: الثرموداينمك",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9896e8e3-1eb4-4493-993b-689b3722595d/1080p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747248378740,
-      "name": "احمد الجاف 2026",
-      "subject": "مدرس مادة الاحياء",
-      "image": "https://i.imghippo.com/files/jNNu3933bA.png",
-      "classes": [
-        {
-          "name": "الفصل الاول: الخلية",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c1c9da16-963b-4d4d-bfb4-c45203b5f8cd/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/03a7118b-dc49-43f5-920c-9c78ff38e9d7/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/eb747dcb-c3d6-4081-92e2-fabf980494dd/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0ef32cb8-9733-44c2-8291-4ea9d4b0c9fd/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/7a9311ab-cf4f-465a-8ade-d930f78ee19f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1b8f53a5-75d0-4e3e-9bce-1a6c6b3e8911/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0b698ad4-765d-4612-9c4e-eb103e817c16/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a86f7fe0-eebd-47cf-ad6a-a560394b4d86/1080p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747248446817,
-      "name": "حسن عبدالكاظم 2026",
-      "subject": "مدرس مادة الفيزياء",
-      "image": "https://i.imghippo.com/files/JlU4380EFY.png",
-      "classes": [
-        {
-          "name": "الفصل الاول: المتسعات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/25d2a253-f759-4e3c-9d54-1b8988bdb2d1/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d487b539-8389-49c4-a756-0e0b731ce417/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/54ecc6ca-b7e3-4b08-a4fc-e2e76dbdff37/1080p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747248538708,
-      "name": "محمد قاسم 2026",
-      "subject": "مدرس مادة الرياضيات",
-      "image": "https://i.imghippo.com/files/xRk9364Rk.png",
-      "classes": [
-        {
-          "name": "الاعداد المركبة",
-          "lectures": [
-            {
-              "title": "محاضرة 1 : مقدمة الاعداد المركبة",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/f840ac1e-4f31-4717-ae52-4e6aaa95493c/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2 : قوى (i)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/555c3369-af4a-4f22-b3dc-bfba92004d97/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3 : العدد المركب",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/035ffc65-8cbd-4a86-a775-c15ed6083384/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4 : العمليات الحسابية على مجموعة الأعداد المركبة الجزء الأول",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/e70c0704-1222-42d3-a052-b1b49ee6e22e/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5 : (العمليات الحسابية على مجموعة الأعداد المركبة الجزء الثاني)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/c9724919-8980-4fb8-890c-e25e0f34dc16/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6 : (الأقواس في الاعداد المركبة)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/5762f351-a1f5-471d-abf4-671fbf0591bd/480p/video.m3u8"
-            },
-            {
-              "title": "السابعة (الأقواس في الاعداد المركبة - الجزء الثاني)",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/e28b7f49-92d7-4207-b5c8-3733f73ec593"
-            },
-            {
-              "title": "الثامنة ",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b6aa3ef5-82a2-46b3-98a2-89313e0360b1"
-            },
-            {
-              "title": "التاسعة",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/76969b88-4e83-479e-8583-eee00e4f6154"
-            },
-            {
-              "title": "العاشرة ",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/527977fc-23da-4831-8b50-0210969f4a98"
-            },
-            {
-              "title": "الحادية عشر ",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/3b533b3c-d386-4f9b-aca9-511b6c25393e"
-            },
-            {
-              "title": "12 الثانية عشر",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/616f86b2-a381-49b9-8880-47e53c99afc4"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1747551898072,
-      "name": "هشام المعموري 2026",
-      "subject": "مدرس مادة اللغة العربية",
-      "image": "https://i.imghippo.com/files/eVG7803isI.png",
-      "classes": [
-        {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/54cbcb8a-12db-4895-b44b-3f0f82e3ec12/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8c2d5271-85be-4618-af61-1c08dd057076/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/bde728cf-be21-4fa5-986d-8f920be941d0/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9cce2e3f-02db-4c2a-bc86-5de6ae9b737f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5be7c60e-72d7-4889-b9cc-00b5eb0c4925/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/e6af4501-07a4-4793-8514-77589bde9817/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5e687bfc-3ed6-4e9a-96ea-1f697172ae3e/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1128dacd-ab91-4c37-8516-ba3c27ef6333/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4bcff57b-208f-4998-888e-32450ca6fecc/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/27d1c2fc-aea2-4805-9058-8e95d44a9859/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0e88b3de-f003-4963-ac0a-7411c933dc1f/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "أسلوب الاستفهام",
-          "lectures": [
-            {
-              "title": "المحاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/e774c265-4a30-4b72-bc9a-97689fd61b9a/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f1a5241b-45a3-4e20-99a5-04ea44fb8d8b/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 3 : دلالات اسماء الاستفهام - الجزء الثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/d1999f94-eb76-4c2a-b3fa-65feb156bac9/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 4 : أنواع الاستفهام",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/b4855f35-0325-4144-adfd-1d027781a374/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 5 : أنواع (أم)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/e4c5574b-39a9-4918-b98f-687a1938f6d9/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 6 : كيفية صياغة جملة استفهامية (الجزء الاول)",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/9146e360-0803-4ce8-92d7-62b2f3dfb36c/480p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "الادب الحديث (الفصل الاول)",
-          "lectures": [
-            {
-              "title": "المحاضرة 1 : الادب الحديث",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/5faa5837-6207-4564-8da4-3e8645d6368c/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 2 : الشعر الحديث ومدرسة الاحياء",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/edddea04-8b1e-4fff-91c5-be0ba36e88bb/480p/video.m3u8"
-            },
-            {
-              "title": "المحاضرة 3 : محمد سعيد الحبوبي",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-b26dd76f-dc1.b-cdn.net/d02f4737-5649-49b6-aac0-30f9b1463783/480p/video.m3u8"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1751285746593,
-      "name": "جعفر الحسني ",
-      "subject": "الاحياء 2026",
-      "image": "https://i.imghippo.com/files/bXD9639qk.jpg",
-      "classes": [
-        {
-          "name": "فصل 1 (الخلية)",
-          "lectures": [
-            {
-              "title": "المحاضرة الأولى ",
-              "description": "",
-              "url": "https://iframe.mediadelivery.net/embed/215061/6ac87d79-0aad-4a00-8f43-2ef602e1ce5a"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/34ed7080-f767-4f02-a6cc-446df5e51689"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0d269959-42b3-4db4-81f4-b1dc44fa8127"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fab505b2-b7e3-4673-9bd7-7e0a85be5199"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/6e670408-4924-44de-95e7-47cb490525b0"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/541490bb-ee10-4b90-91e3-29b1b44965f2"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/7109bbf8-5613-43e1-af19-f28d4fbaf4bd"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d85fbc7e-83a2-4871-b5f5-3d388b2c8d51"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fc470ef4-93ce-494d-afd7-c22a66ecfc80"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/331f9744-d435-42e9-925b-71482846c2c2"
-            },
-            {
-              "title": "محاضرة  11",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d1e1fea3-5e16-4dd3-aefc-fcc84650640b"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  "metadata": {
+    "id": "686d80733071972f90f69929",
+    "private": false,
+    "createdAt": "2025-07-08T20:32:51.882Z"
+  }
 }
