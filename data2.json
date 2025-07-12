@@ -156,152 +156,132 @@
     },
     {
       "id": 1746651198934,
-      "name": "حيدر عبدالائمة 2026",
-      "subject": "مدرس مادة الرياضيات",
-      "image": "https://i.ytimg.com/vi/eJf7EK3D_Nc/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGEAgWShyMA8=&rs=AOn4CLDj-lcDxTjcqvEEaUuqJeTCADdErA",
-      "classes": [
-        {
-          "name": "الفصل الاول: الاعداد المركبة",
-          "lectures": [
-            {
-              "title": "المحاضرة التعريفية",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/53e98122-e177-4b9b-a06c-525b9da6d895"
-            },
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cd2d15a6-156b-420e-9f31-4efbdfb85ba3"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/27af24cb-6ef1-4f16-9d74-320dc8915bf9"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/73a0ef12-89ba-482a-88e3-e8bbe90d40f7"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/5d58ba54-c960-4fae-b0e6-a92561185627"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fc69f7eb-d36b-4946-b027-d85a041229a8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ee5dbccd-ec8d-41c2-ba0c-366d78d3cb16"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/18b7dd60-0da0-4d4a-9285-e4f81bf41eea"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/094997e9-f9da-4457-80f0-b6e0094ebef5"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/b3e837b9-084f-4008-b92f-8ee2cef84c82"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d3b79625-a579-4ddb-a6f4-5ea410866f31/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 11 : وزاريات ايجاد الثوابت الجزء الثاني",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ccdfa255-cd65-4ff2-89f5-057069c92456"
-            },
-            {
-              "title": "محاضرة 12 : وزاريات ايجاد الثوابت الجزء الثالث",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/da00e5bf-6adf-4f51-8a21-7f949ea95482"
-            },
-            {
-              "title": "محاضرة 13 : تحليل الفرق بين مربعين",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cc610415-6fd5-4462-bc57-e3aa600c3161"
-            },
-            {
-              "title": "محاضرة 14 : الجذور التربيعية للعدد المركب",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f6690928-fda3-4e4a-85a1-44c42f5cfdc1"
-            },
-            {
-              "title": "محاضرة 15 : (الجذور التربيعية للعدد المركب (النوع الثالث)",
-              "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ca2d0c98-6712-4727-a74a-5f4f492f1bad"
-            },
-            {
-              "title": "محاضرة 16 : (حل المعادلة من الدرجة الثانية)",
-              "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
-              "url": "https://iframe.mediadelivery.net/embed/215061/93c4a9dd-3b5e-4b7a-92b9-fc3ac53b9850"
-            },
-            {
-              "title": "محاضرة 17",
-              "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
-              "url": "https://iframe.mediadelivery.net/embed/215061/664866fe-e1a2-452e-a07a-6015b7ddeb09"
-            },
-            {
-              "title": "المحاضرة الثامنة عشر",
-              "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
-              "url": "https://iframe.mediadelivery.net/embed/215061/9976236e-380c-4c16-bdce-b4fd6cf14330"
-            },
-            {
-              "title": "التاسعة عشر",
-              "description": "وصف",
-              "url": "https://iframe.mediadelivery.net/embed/215061/5362a3cd-b6ab-46fe-8742-3366874d56e4"
-            },
-            {
-              "title": "المحاضرة 20 : التمثيل الهندسي للأعداد المركبة - شكل أرجاند",
-    "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-    "url": "https://iframe.mediadelivery.net/embed/215061/a7879e08-18db-495c-9de1-3e053a06803c"
-  },
-  {
-    "title": "المحاضرة 21",
-    "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-    "url": "https://iframe.mediadelivery.net/embed/215061/ed36016f-7e84-4eda-afcd-dbb2c19af608"
-  },
-  {
-    "title": "المحاضرة 22",
-    "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-    "url": "https://iframe.mediadelivery.net/embed/215061/ca2f90c6-1f8c-4bfa-b478-d77c628265b9"
-  },
-  {
-    "title": "ديموافر - الأسئلة الوزارية",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/d66810b4-d1e9-4c75-b151-b04e233ef064"
-  },
-  {
-    "title": "المحاضرة 24 : مبرهنة ديموافر",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/86d64837-70ca-41a5-8551-d2bdc5eab887"
-  },
-  {
-    "title": "تطبيق مبرهنة ديموافر",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/5cda0e84-2dd9-4a60-b3ab-b4785bf976e6"
-  },
-  {
-    "title": "مبرهنة ديموافر - وزاريات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/0c0f268b-a2b8-4f8e-8ea2-3ed992b167e1"
-  },
-  {
-    "title": "المحاضرة 27 : مبرهنة ديموافر - إثرائيات",
-    "description": "تم رفع المحاضرة بواسطة حميد",
-    "url": "https://iframe.mediadelivery.net/embed/215061/5b9a468e-24d9-4ed1-8dbe-6d0c58420a6e"
+        "name": "حيدر عبدالائمة 2026",
+        "subject": "مدرس مادة الرياضيات",
+        "image": "https://i.ytimg.com/vi/eJf7EK3D_Nc/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGEAgWShyMA8=&rs=AOn4CLDj-lcDxTjcqvEEaUuqJeTCADdErA",
+        "classes": [
+          {
+            "name": "الفصل الاول: الاعداد المركبة",
+            "lectures": [
+              {
+                "title": "المحاضرة التعريفية",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/53e98122-e177-4b9b-a06c-525b9da6d895"
+              },
+              {
+                "title": "محاضرة 1",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cd2d15a6-156b-420e-9f31-4efbdfb85ba3"
+              },
+              {
+                "title": "محاضرة 2",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/27af24cb-6ef1-4f16-9d74-320dc8915bf9"
+              },
+              {
+                "title": "محاضرة 3",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/73a0ef12-89ba-482a-88e3-e8bbe90d40f7"
+              },
+              {
+                "title": "محاضرة 4",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/5d58ba54-c960-4fae-b0e6-a92561185627"
+              },
+              {
+                "title": "محاضرة 5",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/fc69f7eb-d36b-4946-b027-d85a041229a8"
+              },
+              {
+                "title": "محاضرة 6",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ee5dbccd-ec8d-41c2-ba0c-366d78d3cb16"
+              },
+              {
+                "title": "محاضرة 7",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/18b7dd60-0da0-4d4a-9285-e4f81bf41eea"
+              },
+              {
+                "title": "محاضرة 8",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/094997e9-f9da-4457-80f0-b6e0094ebef5"
+              },
+              {
+                "title": "محاضرة 9",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/b3e837b9-084f-4008-b92f-8ee2cef84c82"
+              },
+              {
+                "title": "محاضرة 10",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://vz-99e5c202-ca5.b-cdn.net/d3b79625-a579-4ddb-a6f4-5ea410866f31/480p/video.m3u8"
+              },
+              {
+                "title": "محاضرة 11 : وزاريات ايجاد الثوابت الجزء الثاني",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ccdfa255-cd65-4ff2-89f5-057069c92456"
+              },
+              {
+                "title": "محاضرة 12 : وزاريات ايجاد الثوابت الجزء الثالث",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/da00e5bf-6adf-4f51-8a21-7f949ea95482"
+              },
+              {
+                "title": "محاضرة 13 : تحليل الفرق بين مربعين",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/cc610415-6fd5-4462-bc57-e3aa600c3161"
+              },
+              {
+                "title": "محاضرة 14 : الجذور التربيعية للعدد المركب",
+                "description": "ممكن تقرأ وماتسخت ؟",
+                "url": "https://iframe.mediadelivery.net/embed/215061/f6690928-fda3-4e4a-85a1-44c42f5cfdc1"
+              },
+              {
+                "title": "محاضرة 15 : (الجذور التربيعية للعدد المركب (النوع الثالث)",
+                "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ca2d0c98-6712-4727-a74a-5f4f492f1bad"
+              },
+              {
+                "title": "محاضرة 16 : (حل المعادلة من الدرجة الثانية)",
+                "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
+                "url": "https://iframe.mediadelivery.net/embed/215061/93c4a9dd-3b5e-4b7a-92b9-fc3ac53b9850"
+              },
+              {
+                "title": "محاضرة 17",
+                "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
+                "url": "https://iframe.mediadelivery.net/embed/215061/664866fe-e1a2-452e-a07a-6015b7ddeb09"
+              },
+              {
+                "title": "المحاضرة الثامنة عشر",
+                "description": "لا تنسى تشيل الكتم من قناة اديسون حتى توصلك اخبار حلوة ",
+                "url": "https://iframe.mediadelivery.net/embed/215061/9976236e-380c-4c16-bdce-b4fd6cf14330"
+              },
+              {
+                "title": "التاسعة عشر",
+                "description": "وصف",
+                "url": "https://iframe.mediadelivery.net/embed/215061/5362a3cd-b6ab-46fe-8742-3366874d56e4"
+              },
+              {
+                "title": "العشرون (التمثيل الهندسي للاعداد المركبة - شكل ارجاند)",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/a7879e08-18db-495c-9de1-3e053a06803c"
+              },
+              {
+                "title": "المحاضرة 21",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ed36016f-7e84-4eda-afcd-dbb2c19af608"
+              },
+              {
+                "title": "محاضرة 22",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/ca2f90c6-1f8c-4bfa-b478-d77c628265b9"
+              },
+              {
+                "title": "ديموافر الاسئلة الوزارية",
+                "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+                "url": "https://iframe.mediadelivery.net/embed/215061/d66810b4-d1e9-4c75-b151-b04e233ef064"
             }
           ]
         },
