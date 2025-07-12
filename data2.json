@@ -575,14 +575,24 @@
           "name": "الفصل الثاني (الاتزان الكيميائي)",
           "lectures": [
             {
-              "title": "الدرس الاول",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/d92636ee-eba1-4f9d-8657-f3fbd872d8fb"
-            },
-            {
-              "title": "الدرس الثاني",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/03b679cb-d532-4d9e-9daa-db8f3ca95f95"
+             "title": "الدرس 1 : مقدمة الاتزان الكيميائي",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/d92636ee-eba1-4f9d-8657-f3fbd872d8fb"
+  },
+  {
+    "title": "الدرس 2 : ثابت الاتزان الكيميائي",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/03b679cb-d532-4d9e-9daa-db8f3ca95f95"
+  },
+  {
+    "title": "الدرس 3 : فرضية مسائل ثابت الاتزان للتراكيز وثابت الاتزان للضغوط",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/bc2bee10-b7f5-438d-9526-24761c696c92"
+  },
+  {
+    "title": "الدرس 4 : مراجعة الفرضية وحل بعض المسائل",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/d390ae74-54ac-4f21-acc1-3ee6518dc518"
             }
           ]
         }
