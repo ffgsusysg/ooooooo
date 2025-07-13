@@ -51,32 +51,52 @@
 		  },
 		  {
 			"id": 3,
-			"name": "عباس العامري",
-			"subject": "مدرس مادة الاقتصاد",
+			"name": "مضر الجبوري",
+			"subject": " مادة الجغرافية",
 			"image": "https://i.imghippo.comiles/KME9848tKM.png",
 			"classes": [
 			  {
-				"name": "علم الاقتصاد، المشكلة الاقتصادية، ملامح من الفكر الاقتصادي",
+				"name": "جغرافية السكان: التعريف ومجالات الاهتمام",
 				"lectures": [
 					{
-						"title": "علم الاقتصاد وعلاقته بالعلوم الاخرى",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/59d27c9a-80b5-44a2-872b-4557cbef952b/720p/video.m3u8"
-					  },
-					  {
-						"title": "(المشكلة الاقتصادية (الندرة والاختيار",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/a616f3fa-4b6b-446c-877c-0159687775af/720p/video.m3u8"
-					  },
-					  {
-						"title": "التنظيم الاقتصادي في حضارة وادي الرافدين",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/16ed489d-5a7f-4aee-9d6b-70b5d3635489/720p/video.m3u8"
-					  },
-					  {
-						"title": "الفكر الاقتصادي عند الاغريق",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/bd9f9e7b-4ae2-49ec-b536-4ab242af177a/720p/video.m3u8"
+						 "title": "المحاضرة الأولى: جغرافية السكان",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ceb207b8-a10e-4b52-bdd7-88c024d979c7"
+        },
+        {
+          "title": "تقسيم الفصول",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/780061a2-7bf2-4459-81b0-3f0c5f4896de"
+        },
+        {
+          "title": "المحاضرة الثانية: التوزيع الجغرافي للسكان",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f49a3775-a6b5-4b79-9a0d-1c16f497d9cf"
+        },
+        {
+          "title": "العوامل الطبيعية في توزيع السكان",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0d065d40-c013-428c-9672-7ee4aed03408"
+        },
+        {
+          "title": "المحاضرة الرابعة: العوامل البشرية ونمو السكان",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/fe2e37f7-9ec0-491a-b301-a57ec97aab65"
+        },
+        {
+          "title": "نمو السكان في العالم",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/cd540266-b62d-4a64-ade8-259f68228453"
+        },
+        {
+          "title": "تركيب السكان وهرم السكان",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/593058e3-29d7-46ed-98a4-ceb0146fb47c"
+        },
+        {
+          "title": "قريبًا",
+          "description": "سيتم رفع المحاضرة قريبًا",
+          "url": "https://iframe.mediadelivery.net/embed/215061/7aebeb2d-2e9b-4593-9b47-321f3271183b"
 					  }
 				]
 			  }
