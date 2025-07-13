@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script defer src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
@@ -26,33 +27,33 @@
         --primary-1: #1a56db;
         --primary-2: #0ea5e9;
         --primary-3: #2563eb;
-        --accent: #ff6f00; /* تغيير اللون الأساسي إلى البرتقالي */
-        --accent-2: #ff8f00; /* لون البرتقالي الفاتح */
-        --accent-3: #e65100; /* لون البرتقالي الغامق */
+        --accent: #ff6f00;
+        --accent-2: #ff8f00;
+        --accent-3: #e65100;
         --radius: 12px;
-        --bg: #0a0a0a; /* خلفية داكنة */
-        --bg-glass: rgba(30, 30, 30, 0.92); /* زجاجي داكن */
-        --text: #ffffff; /* نص أبيض */
-        --card: #1e1e1e; /* بطاقات داكنة */
-        --border: #333333; /* حدود داكنة */
-        --hover: rgba(255, 111, 0, 0.1); /* تأثير تمرير برتقالي */
+        --bg: #f5f7fb;
+        --bg-glass: rgba(255, 255, 255, 0.92);
+        --text: #1e293b;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --hover: rgba(0, 0, 0, 0.04);
         --success: #10b981;
         --warning: #f59e0b;
         --error: #ef4444;
         --telegram-blue: #0088cc;
         --telegram-light: #2aabee;
         --telegram-text: #ffffff;
-        --plyr-color-main: #ff6f00; /* لون المشغل البرتقالي */
+        --plyr-color-main: #ff6f00;
     }
 
-    [data-theme="light"] {
-        --bg: #f8f9fa;
-        --bg-glass: rgba(255, 255, 255, 0.92);
-        --text: #212529;
-        --card: #ffffff;
-        --border: #e9ecef;
-        --hover: rgba(255, 111, 0, 0.05);
-        --accent: #ff6f00;
+    [data-theme="dark"] {
+        --bg: #0f172a;
+        --bg-glass: rgba(15, 23, 42, 0.95);
+        --text: #f1f5f9;
+        --card: #1e293b;
+        --border: #334155;
+        --hover: rgba(255, 255, 255, 0.08);
+        --accent: #3ea6ff;
     }
 
     *,
@@ -102,7 +103,7 @@
     .site-title {
         font-size: clamp(1.5rem, 5vw, 2rem);
         font-weight: 700;
-        color: var(--accent);
+        color: var(--primary-1);
         display: flex;
         align-items: center;
         gap: 0.5rem;
@@ -113,7 +114,7 @@
     .site-logo {
         width: 40px;
         height: 40px;
-        background: var(--accent);
+        background: var(--primary-1);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -152,7 +153,7 @@
     .search-container input:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.25);
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
     }
 
     .search-icon {
@@ -160,7 +161,7 @@
         left: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--accent);
+        color: var(--primary-1);
     }
 
     .btn {
@@ -169,7 +170,7 @@
         gap: 0.45rem;
         padding: 0.9rem 1.35rem;
         border-radius: var(--radius);
-        background: var(--accent);
+        background: var(--primary-1);
         color: #fff;
         font-weight: 600;
         transition: all 0.25s;
@@ -177,13 +178,13 @@
     }
 
     .btn:hover {
-        background: var(--accent-2);
+        opacity: 0.9;
     }
 
     .btn-outline {
         background: transparent;
-        border: 2px solid var(--accent);
-        color: var(--accent);
+        border: 2px solid var(--primary-1);
+        color: var(--primary-1);
     }
 
     .btn-icon {
@@ -195,7 +196,7 @@
     }
 
     .btn-accent {
-        background: var(--accent-3);
+        background: var(--accent);
         color: white;
     }
 
@@ -227,12 +228,11 @@
         border: 1px solid var(--border);
         overflow: hidden;
         transition: transform 0.25s;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .category-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(255, 111, 0, 0.2);
     }
 
     .category-image {
@@ -248,12 +248,12 @@
 
     .category-title {
         font-size: 1.4rem;
-        color: var(--accent);
+        color: var(--primary-1);
         margin-bottom: 0.5rem;
     }
 
     .category-description {
-        color: #b0b0b0;
+        color: #666;
         margin-bottom: 1rem;
     }
 
@@ -274,12 +274,11 @@
         position: relative;
         overflow: hidden;
         transition: transform 0.25s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .teacher-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(255, 111, 0, 0.2);
     }
 
     .teacher-img {
@@ -295,11 +294,11 @@
         font-size: 1.2rem;
         font-weight: 700;
         margin: 0.4rem 0 0.15rem;
-        color: var(--accent);
+        color: var(--primary-1);
     }
 
     .teacher-subject {
-        color: #b0b0b0;
+        color: #666;
         font-size: 0.92rem;
         margin-bottom: 0.5rem;
     }
@@ -322,7 +321,7 @@
 
     .back-button {
         margin-bottom: 1.5rem;
-        background: var(--accent);
+        background: var(--primary-2);
     }
 
     .teacher-info {
@@ -335,7 +334,6 @@
         border: 1px solid var(--border);
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .teacher-img-lg {
@@ -356,7 +354,6 @@
         border-radius: var(--radius);
         border: 1px solid var(--border);
         overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .class-header {
@@ -368,7 +365,7 @@
         user-select: none;
         background: var(--bg-glass);
         backdrop-filter: blur(8px);
-        border-right: 4px solid var(--accent);
+        border-right: 4px solid var(--primary-2);
         transition: background 0.25s;
     }
 
@@ -394,8 +391,8 @@
     .lecture-item {
         position: relative;
         padding: 0.9rem 1.1rem 0.9rem 3.5rem;
-        background: rgba(255, 111, 0, 0.05);
-        border-right: 3px solid var(--accent);
+        background: var(--hover);
+        border-right: 3px solid var(--primary-3);
         border-radius: var(--radius);
         cursor: pointer;
         transition: all 0.25s;
@@ -405,7 +402,7 @@
     }
 
     .lecture-item:hover {
-        background: rgba(255, 111, 0, 0.1);
+        background: rgba(0, 0, 0, 0.05);
     }
 
     .lecture-item i {
@@ -413,7 +410,7 @@
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--accent);
+        color: var(--primary-1);
     }
 
     /* حاوية الفيديو المعدلة لتملأ الشاشة على الهاتف */
@@ -434,48 +431,86 @@
         aspect-ratio: 16/9;
     }
 
-    /* تحسينات مشغل الفيديو البرتقالي */
-    .plyr {
+    /* مشغل الفيديو المطابق لمنصة السادس */
+    .plyr--video {
         border-radius: 0;
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-        --plyr-color-main: var(--accent);
-        --plyr-control-icon-size: 22px;
-        --plyr-control-spacing: 12px;
-        --plyr-control-radius: 8px;
-        --plyr-menu-radius: 8px;
-        --plyr-tooltip-radius: 6px;
-        --plyr-range-thumb-height: 14px;
-        --plyr-audio-controls-background: var(--card);
-        --plyr-audio-control-color: var(--text);
+    }
+    
+    .plyr__controls {
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        border-top: 1px solid rgba(255, 111, 0, 0.3);
+    }
+    
+    .plyr__control {
+        color: #fff;
+    }
+    
+    .plyr__control:hover {
+        background: rgba(255, 111, 0, 0.2);
     }
     
     .plyr__control--overlaid {
-        background: var(--accent);
-        box-shadow: 0 0 0 4px rgba(255, 111, 0, 0.25);
+        background: rgba(255, 111, 0, 0.8);
     }
     
-    .plyr--video .plyr__control:hover,
-    .plyr--video .plyr__control[aria-expanded="true"] {
-        background: var(--accent-2);
-    }
-    
-    .plyr--full-ui input[type="range"] {
-        color: var(--accent);
+    .plyr__control--overlaid:hover {
+        background: rgba(255, 111, 0, 1);
     }
     
     .plyr__progress__buffer {
         background: rgba(255, 255, 255, 0.2);
     }
     
-    .plyr__controls {
-        background: rgba(0, 0, 0, 0.7);
-        border-top: 1px solid rgba(255, 111, 0, 0.3);
+    .plyr--full-ui input[type="range"] {
+        color: #ff6f00;
+    }
+    
+    .plyr__volume input[type="range"]::-webkit-slider-runnable-track {
+        background: rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__volume input[type="range"]::-moz-range-track {
+        background: rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__volume input[type="range"]::-ms-fill-upper {
+        background: rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__volume input[type="range"]:active::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__volume input[type="range"]:active::-moz-range-thumb {
+        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__volume input[type="range"]:active::-ms-thumb {
+        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
+    }
+    
+    .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before {
+        background: #ff6f00;
+    }
+    
+    .plyr__tooltip {
+        background: rgba(255, 111, 0, 0.9);
+        color: #fff;
+    }
+    
+    .plyr__tooltip::before {
+        border-top-color: rgba(255, 111, 0, 0.9);
     }
     
     .plyr--fullscreen-active .plyr__controls {
         background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .plyr--video .plyr__controls button.tab-focus:focus, 
+    .plyr--video .plyr__controls button:hover, 
+    .plyr--video .plyr__controls button[aria-expanded="true"] {
+        background: rgba(255, 111, 0, 0.3);
     }
 
     .video-details {
@@ -514,8 +549,8 @@
         gap: 0.5rem;
         margin: 1.5rem 0 1rem;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--accent);
-        color: var(--accent);
+        border-bottom: 2px solid var(--primary-1);
+        color: var(--primary-1);
     }
 
     @media (max-width: 768px) {
