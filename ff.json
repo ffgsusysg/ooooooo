@@ -183,32 +183,102 @@
 		  },
 		  {
 			"id": 3,
-			"name": "محمد ال",
+			"name": "محمد العنزي",
 			"subject": "مدرس مادة الاقتصاد",
 			"image": "https://i.imghippo.comiles/KME9848tKM.png",
 			"classes": [
 			  {
-				"name": "علم الاقتصاد، المشكلة الاقتصادية، ملامح من الفكر الاقتصادي",
+				"name": "The cell",
 				"lectures": [
 					{
-						"title": "علم الاقتصاد وعلاقته بالعلوم الاخرى",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/59d27c9a-80b5-44a2-872b-4557cbef952b/720p/video.m3u8"
-					  },
-					  {
-						"title": "(المشكلة الاقتصادية (الندرة والاختيار",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/a616f3fa-4b6b-446c-877c-0159687775af/720p/video.m3u8"
-					  },
-					  {
-						"title": "التنظيم الاقتصادي في حضارة وادي الرافدين",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/16ed489d-5a7f-4aee-9d6b-70b5d3635489/720p/video.m3u8"
-					  },
-					  {
-						"title": "الفكر الاقتصادي عند الاغريق",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/bd9f9e7b-4ae2-49ec-b536-4ab242af177a/720p/video.m3u8"
+						"title": "The cell",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f0959306-f72b-4673-9ca2-9cb349ddeae9"
+        },
+        {
+          "title": "Prokaryotic cell and eukaryotic cell",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/03c62b7f-b67c-4c19-9573-6e0cc72ec9fe"
+        },
+        {
+          "title": "The components of eukaryotic cell",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/eb011126-6662-4225-937b-4753806d8a25"
+        },
+        {
+          "title": "Endoplasmic reticulum and Golgi apparatus",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b17bdb1a-a30b-4251-ae98-a988ee12fcf7"
+        },
+        {
+          "title": "Mitochondria and Plastids",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/775dc858-e661-4738-b553-74e65ed7760c"
+        },
+        {
+          "title": "Lysosomes and Cytoskeleton",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8544c077-173b-4bc3-9488-10c0c53c2f14"
+        },
+        {
+          "title": "Centrosome, Kinetosome, Vacuoles and Non-living Contents",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8a42fa1b-f93e-4b49-b9ae-a1589467ed1a"
+        },
+        {
+          "title": "Nucleus",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ec4b6b05-14e8-4e00-8e7b-dd6511bfb56a"
+        },
+        {
+          "title": "Cell activities (Diffusion and Permeability)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/7bc8c590-91d3-416c-bba6-45e0758c377b"
+        },
+        {
+          "title": "Lecture 10 (Osmosis)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1f0aeeeb-d87f-4a24-bf81-7195f258f755"
+        },
+        {
+          "title": "Osmosis Drawing",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/9002321e-5f35-4e71-9c0c-f0d228116422"
+        },
+        {
+          "title": "Active transport",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/318dc26d-4182-4d15-a154-36e9ed8b9e53"
+        },
+        {
+          "title": "Cell Metabolism",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/206973ef-8071-4e2b-9832-81b04c4f3089"
+        },
+        {
+          "title": "Aerobic respiration",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/35c60e7e-0b25-4d76-b0b3-59cbcac3e678"
+        },
+        {
+          "title": "Lecture 14 (Cell Division)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ab30492a-0be0-4184-af7b-b40fb0bb8087"
+        },
+        {
+          "title": "Lecture 15 (Cell Division Part Two)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/c2c27a74-e385-41df-946b-735da17f9bdd"
+        },
+        {
+          "title": "Lecture 16 (Cell Division Part 3)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/49f2cc45-5b90-4ee1-a20d-49d4b6624de3"
+        },
+        {
+          "title": "Lecture 17 (Cell Division Part 4)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/40811e97-5df4-4caf-ab8b-ab94e23ff1f5"
 					  }
 				]
 			  }
