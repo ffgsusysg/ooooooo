@@ -100,32 +100,82 @@
 			"image": "https://d157djim0keagl.cloudfront.net/fd0622fa-19d7-4b20-a7e9-577b7f9eba35.png",
 			"classes": [
 			  {
-				"name": "علم الاقتصاد، المشكلة الاقتصادية، ملامح من الفكر الاقتصادي",
+				"name": "Les Fantômes du métro",
 				"lectures": [
 					{
-						"title": "المقدمة",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/d43424a5-f265-4ceb-911b-e0c3bf64fc6a/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الأولى علم الاقتصاد والمشكلة الاقتصادية",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/261faba8-80c1-46cc-94f0-cffee4ce80a6/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الثانية علاقة علم الاقتصاد بالعلوم الاخرى",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/6b62d892-7245-4c9e-ba4f-f39b778c7ed6/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الثالثة (المشكلة الاقتصادية (الندرة والاختيار))",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/6b590749-8176-479e-8a31-6c934f43c867/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الرابعة (التنظيم الاقتصادي في حاضارة وادي الرافدين)",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/d3ffde72-4740-4c93-a15a-266c82533358/720p/video.m3u8"
+						  "title": "الاساسيات",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2e7313e5-50f9-411d-b06e-d0a5d667b726"
+        },
+        {
+          "title": "المضارع",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d1ba5ea0-45cc-4b25-b736-f475bf35449a"
+        },
+        {
+          "title": "المضارع الجزء الثاني",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/23f30743-09e9-4c97-bbed-d8fd78646eca"
+        },
+        {
+          "title": "الماضي المستمر",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/751d2477-5637-42cb-8d4c-e2370f07e806"
+        },
+        {
+          "title": "أحلام المجد 1",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6f952c60-cca6-458b-bb44-c06ba2c8aa18"
+        },
+        {
+          "title": "الماضي المركب",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/af5af9e3-d937-4078-b8a7-0c236182c506"
+        },
+        {
+          "title": "الماضي التام (الأسبق)",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2af46a3b-2570-4a80-982d-129fc3d9cad5"
+        },
+        {
+          "title": "صيغة النصب",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/e600e046-86a8-4c52-9a47-ef05cd346c04"
+        },
+        {
+          "title": "الماضي البسيط",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b4852ab8-d894-4262-9eaf-dd257fce433b"
+        },
+        {
+          "title": "المستقبل الأسبق والمخططات الذهبية",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a0869b00-99c6-44dc-a16b-24ba8649f5da"
+        },
+        {
+          "title": "الشرط الحاضر",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/450ae611-fe96-4b46-b9a3-d447212cce20"
+        },
+        {
+          "title": "الشرط الماضي",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3b757e0c-07c0-4f19-a1e7-0ac4a9f822fc"
+        },
+        {
+          "title": "الأمر، والحال، واسم الفاعل",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/210e00af-c71d-4104-93a4-ca3f6024cf29"
+        },
+        {
+          "title": "أحلام المجد 2",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2a0f5014-efad-4fd4-ae08-84d446bd2984"
+        },
+        {
+          "title": "النفي",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8e0e7d52-dc14-4389-bb85-2ea64c3b352"
 					  }
 				]
 			  }
@@ -133,7 +183,7 @@
 		  },
 		  {
 			"id": 3,
-			"name": "عباس العامري",
+			"name": "محمد ال",
 			"subject": "مدرس مادة الاقتصاد",
 			"image": "https://i.imghippo.comiles/KME9848tKM.png",
 			"classes": [
