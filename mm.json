@@ -188,29 +188,39 @@
 				"name": "علم الاقتصاد، المشكلة الاقتصادية، ملامح من الفكر الاقتصادي",
 				"lectures": [
 					{
-						"title": "المقدمة",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/d43424a5-f265-4ceb-911b-e0c3bf64fc6a/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الأولى علم الاقتصاد والمشكلة الاقتصادية",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/261faba8-80c1-46cc-94f0-cffee4ce80a6/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الثانية علاقة علم الاقتصاد بالعلوم الاخرى",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/6b62d892-7245-4c9e-ba4f-f39b778c7ed6/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الثالثة (المشكلة الاقتصادية (الندرة والاختيار))",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/6b590749-8176-479e-8a31-6c934f43c867/720p/video.m3u8"
-					  },
-					  {
-						"title": "المحاضرة الرابعة (التنظيم الاقتصادي في حاضارة وادي الرافدين)",
-						"description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-						"url": "https://vz-99e5c202-ca5.b-cdn.net/d3ffde72-4740-4c93-a15a-266c82533358/720p/video.m3u8"
+						"title": "المحاضرة الأولى: علم الاقتصاد والمشكلة الاقتصادية",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/261faba8-80c1-46cc-94f0-cffee4ce80a6"
+        },
+        {
+          "title": "المقدمة",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d43424a5-f265-4ceb-911b-e0c3bf64fc6a"
+        },
+        {
+          "title": "المحاضرة الثانية: علاقة علم الاقتصاد بالعلوم الأخرى",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6b62d892-7245-4c9e-ba4f-f39b778c7ed6"
+        },
+        {
+          "title": "المحاضرة الثالثة: المشكلة الاقتصادية (الندرة والاختيار)",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6b590749-8176-479e-8a31-6c934f43c867"
+        },
+        {
+          "title": "المحاضرة الرابعة: التنظيم الاقتصادي في حضارة وادي الرافدين",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d3ffde72-4740-4c93-a15a-266c82533358"
+        },
+        {
+          "title": "المحاضرة الخامسة: الفكر الاقتصادي عند الإغريق",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/593207df-c2d4-4200-bec4-68689646ee21"
+        },
+        {
+          "title": "الفكر الاقتصادي للرأسمالية التجارية",
+          "description": "تم رفع المحاضرة بواسطة حميد",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8511e6c7-b746-4b33-98f6-b116a97462ab"
 					  }
 				]
 			  }
