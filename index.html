@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>منصة اديسون </title>
     
-    <link rel="manifest" href="manifest.json">
+<link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script defer src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+        <script defer src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
     <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
@@ -27,38 +26,31 @@
         --primary-1: #1a56db;
         --primary-2: #0ea5e9;
         --primary-3: #2563eb;
-        --accent: #ff6f00;
-        --accent-2: #ff8f00;
-        --accent-3: #e65100;
+        --accent: #f59e0b;
+        --accent-2: #f97316;
         --radius: 12px;
-        --bg: #0a0a0a;
-        --bg-glass: rgba(30, 30, 30, 0.92);
-        --text: #ffffff;
-        --card: #1e1e1e;
-        --border: #333333;
-        --hover: rgba(255, 111, 0, 0.1);
+        --bg: #f5f7fb;
+        --bg-glass: rgba(255, 255, 255, 0.92);
+        --text: #1e293b;
+        --card: #ffffff;
+        --border: #e2e8f0;
+        --hover: rgba(0, 0, 0, 0.04);
         --success: #10b981;
-        --warning: #ff9800;
-        --error: #f44336;
+        --warning: #f59e0b;
+        --error: #ef4444;
         --telegram-blue: #0088cc;
         --telegram-light: #2aabee;
         --telegram-text: #ffffff;
-        --plyr-color-main: #ff6f00;
-        --gradient-primary: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
-        --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
-        --gradient-bg: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
     }
 
-    [data-theme="light"] {
-        --bg: #f8f9fa;
-        --bg-glass: rgba(255, 255, 255, 0.92);
-        --text: #212529;
-        --card: #ffffff;
-        --border: #e9ecef;
-        --hover: rgba(255, 111, 0, 0.05);
-        --accent: #ff6f00;
-        --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-        --gradient-bg: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+    [data-theme="dark"] {
+        --bg: #0f172a;
+        --bg-glass: rgba(15, 23, 42, 0.95);
+        --text: #f1f5f9;
+        --card: #1e293b;
+        --border: #334155;
+        --hover: rgba(255, 255, 255, 0.08);
+        --accent: #3ea6ff;
     }
 
     *,
@@ -67,11 +59,11 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Cairo', 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
     }
 
     body {
-        background: var(--gradient-bg);
+        font-family: "Cairo", "IBM Plex Sans Arabic", "Tajawal", sans-serif;
+        background: var(--bg);
         color: var(--text);
         line-height: 1.6;
         min-height: 100vh;
@@ -98,29 +90,28 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem 1.6rem;
-        background: var(--gradient-card);
+        background: var(--bg-glass);
         backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--border);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         flex-wrap: wrap;
     }
 
     .site-title {
         font-size: clamp(1.5rem, 5vw, 2rem);
         font-weight: 700;
-        color: var(--accent);
+        color: var(--primary-1);
         display: flex;
         align-items: center;
         gap: 0.5rem;
         flex: 1;
         min-width: 200px;
-        text-shadow: 0 2px 4px rgba(255,111,0,0.3);
     }
 
     .site-logo {
         width: 40px;
         height: 40px;
-        background: var(--accent);
+        background: var(--primary-1);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -152,16 +143,14 @@
         background: var(--card);
         color: var(--text);
         border: 2px solid var(--border);
-        border-radius: 25px;
-        transition: all 0.3s;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        border-radius: var(--radius);
+        transition: border 0.25s, box-shadow 0.25s;
     }
 
     .search-container input:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(255,111,0,0.25);
-        transform: translateY(-2px);
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
     }
 
     .search-icon {
@@ -169,7 +158,7 @@
         left: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--accent);
+        color: var(--primary-1);
     }
 
     .btn {
@@ -178,23 +167,21 @@
         gap: 0.45rem;
         padding: 0.9rem 1.35rem;
         border-radius: var(--radius);
-        background: var(--gradient-primary);
+        background: var(--primary-1);
         color: #fff;
         font-weight: 600;
-        transition: all 0.3s;
+        transition: all 0.25s;
         white-space: nowrap;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
+        opacity: 0.9;
     }
 
     .btn-outline {
         background: transparent;
-        border: 2px solid var(--accent);
-        color: var(--accent);
+        border: 2px solid var(--primary-1);
+        color: var(--primary-1);
     }
 
     .btn-icon {
@@ -206,12 +193,12 @@
     }
 
     .btn-accent {
-        background: var(--accent-2);
+        background: var(--accent);
         color: white;
     }
 
     .btn-accent:hover {
-        background: var(--accent-3);
+        background: var(--accent-2);
     }
 
     .page {
@@ -219,22 +206,10 @@
         padding: 2rem;
         max-width: 1300px;
         margin: 0 auto;
-        animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .page.active {
         display: block;
-    }
-
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
     }
 
     .categories-grid {
@@ -245,33 +220,16 @@
     }
 
     .category-card {
-        background: var(--gradient-card);
+        background: var(--card);
         border-radius: var(--radius);
         border: 1px solid var(--border);
         overflow: hidden;
         transition: transform 0.25s;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .category-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: var(--shadow-hover);
-    }
-
-    .category-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-primary);
-        transform: scaleX(0);
-        transition: transform 0.3s;
-    }
-
-    .category-card:hover::before {
-        transform: scaleX(1);
+        transform: translateY(-5px);
     }
 
     .category-image {
@@ -287,12 +245,12 @@
 
     .category-title {
         font-size: 1.4rem;
-        color: var(--accent);
+        color: var(--primary-1);
         margin-bottom: 0.5rem;
     }
 
     .category-description {
-        color: #b0b0b0;
+        color: #666;
         margin-bottom: 1rem;
     }
 
@@ -304,7 +262,7 @@
     }
 
     .teacher-card {
-        background: var(--gradient-card);
+        background: var(--card);
         padding: 1.4rem 1.1rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
@@ -312,29 +270,12 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        transition: transform 0.25s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     .teacher-card:hover {
-        transform: translateY(-10px) scale(1.02);
-        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
-    }
-
-    .teacher-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--gradient-primary);
-        transform: scaleX(0);
-        transition: transform 0.3s;
-    }
-
-    .teacher-card:hover::before {
-        transform: scaleX(1);
+        transform: translateY(-5px);
     }
 
     .teacher-img {
@@ -343,25 +284,18 @@
         border-radius: 50%;
         object-fit: cover;
         margin: 0 auto 1rem;
-        border: 4px solid var(--accent);
-        box-shadow: 0 8px 20px rgba(255,111,0,0.3);
-        transition: all 0.3s;
-    }
-
-    .teacher-card:hover .teacher-img {
-        transform: scale(1.1);
-        border-color: var(--accent-2);
+        border: 3px solid var(--accent);
     }
 
     .teacher-name {
         font-size: 1.2rem;
         font-weight: 700;
         margin: 0.4rem 0 0.15rem;
-        color: var(--text);
+        color: var(--primary-1);
     }
 
     .teacher-subject {
-        color: #b0b0b0;
+        color: #666;
         font-size: 0.92rem;
         margin-bottom: 0.5rem;
     }
@@ -384,36 +318,19 @@
 
     .back-button {
         margin-bottom: 1.5rem;
-        background: var(--gradient-primary);
-        color: white;
-        border: none;
-        padding: 1rem 2rem;
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-weight: 600;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-
-    .back-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
+        background: var(--primary-2);
     }
 
     .teacher-info {
         display: flex;
         align-items: center;
         gap: 1.4rem;
-        background: var(--gradient-card);
+        background: var(--card);
         padding: 1.6rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .teacher-img-lg {
@@ -422,7 +339,6 @@
         border-radius: 50%;
         object-fit: cover;
         border: 4px solid var(--accent);
-        box-shadow: 0 8px 20px rgba(255,111,0,0.3);
     }
 
     .classes-list {
@@ -431,17 +347,10 @@
     }
 
     .class-card {
-        background: var(--gradient-card);
+        background: var(--card);
         border-radius: var(--radius);
         border: 1px solid var(--border);
         overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        transition: all 0.3s;
-    }
-
-    .class-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
     }
 
     .class-header {
@@ -453,7 +362,7 @@
         user-select: none;
         background: var(--bg-glass);
         backdrop-filter: blur(8px);
-        border-right: 4px solid var(--accent);
+        border-right: 4px solid var(--primary-2);
         transition: background 0.25s;
     }
 
@@ -479,20 +388,18 @@
     .lecture-item {
         position: relative;
         padding: 0.9rem 1.1rem 0.9rem 3.5rem;
-        background: var(--bg-secondary);
-        border-right: 3px solid var(--accent);
+        background: var(--hover);
+        border-right: 3px solid var(--primary-3);
         border-radius: var(--radius);
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.25s;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     .lecture-item:hover {
-        background: var(--card-hover);
-        transform: translateX(10px);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        background: rgba(0, 0, 0, 0.05);
     }
 
     .lecture-item i {
@@ -500,117 +407,40 @@
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--accent);
+        color: var(--primary-1);
     }
 
-    /* حاوية الفيديو المعدلة لتملأ الشاشة على الهاتف */
     .video-page {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
 
     .video-container {
         position: relative;
         width: 100%;
-        background: black;
-        border-radius: 15px;
+        background: #000;
+        border-radius: var(--radius);
         overflow: hidden;
-        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
+    aspect-ratio: 16/9; /* إرجاع النسبة الأصلية للطول والعرض */
     }
 
-    /* مشغل الفيديو المطابق لمنصة السادس */
-    .plyr--video {
-        border-radius: 15px;
-    }
-    
-    .plyr__controls {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 10px;
-        border-top: 1px solid rgba(255, 111, 0, 0.3);
-    }
-    
-    .plyr__control {
-        color: #fff;
-    }
-    
-    .plyr__control:hover {
-        background: rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__control--overlaid {
-        background: rgba(255, 111, 0, 0.8);
-    }
-    
-    .plyr__control--overlaid:hover {
-        background: rgba(255, 111, 0, 1);
-    }
-    
-    .plyr__progress__buffer {
-        background: rgba(255, 255, 255, 0.2);
-    }
-    
-    .plyr--full-ui input[type="range"] {
-        color: #ff6f00;
-    }
-    
-    .plyr__volume input[type="range"]::-webkit-slider-runnable-track {
-        background: rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__volume input[type="range"]::-moz-range-track {
-        background: rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__volume input[type="range"]::-ms-fill-upper {
-        background: rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__volume input[type="range"]:active::-webkit-slider-thumb {
-        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__volume input[type="range"]:active::-moz-range-thumb {
-        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__volume input[type="range"]:active::-ms-thumb {
-        box-shadow: 0 0 0 3px rgba(255, 111, 0, 0.2);
-    }
-    
-    .plyr__menu__container .plyr__control[role="menuitemradio"][aria-checked="true"]::before {
-        background: #ff6f00;
-    }
-    
-    .plyr__tooltip {
-        background: rgba(255, 111, 0, 0.9);
-        color: #fff;
-    }
-    
-    .plyr__tooltip::before {
-        border-top-color: rgba(255, 111, 0, 0.9);
-    }
-    
-    .plyr--fullscreen-active .plyr__controls {
-        background: rgba(0, 0, 0, 0.8);
-    }
-    
-    .plyr--video .plyr__controls button.tab-focus:focus, 
-    .plyr--video .plyr__controls button:hover, 
-    .plyr--video .plyr__controls button[aria-expanded="true"] {
-        background: rgba(255, 111, 0, 0.3);
+    .plyr {
+        border-radius: var(--radius);
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
     }
 
     .video-details {
-        background: var(--gradient-card);
+        background: var(--card);
         padding: 1.5rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
-        margin: 0 2rem 2rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        text-align: center;
     }
 
     .video-info {
@@ -640,15 +470,8 @@
         gap: 0.5rem;
         margin: 1.5rem 0 1rem;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--accent);
-        color: var(--accent);
-        font-size: 2rem;
-        font-weight: 700;
-        text-align: center;
-        background: var(--gradient-primary);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        border-bottom: 2px solid var(--primary-1);
+        color: var(--primary-1);
     }
 
     @media (max-width: 768px) {
@@ -674,13 +497,11 @@
 
         .video-details {
             padding: 1.2rem;
-            margin: 0 1rem 1rem;
         }
 
         .video-container {
-            margin: 0;
-            width: 100%;
-            border-radius: 0;
+            margin: 0 -1rem;
+            width: calc(100% + 2rem);
         }
 
         .lecture-item {
@@ -695,14 +516,6 @@
 
         .btn {
             padding: 0.8rem 1rem;
-        }
-        
-        .plyr__controls {
-            padding: 8px;
-        }
-        
-        .plyr__control {
-            padding: 6px 8px;
         }
     }
 
@@ -723,28 +536,6 @@
 
         .site-title {
             font-size: 1.5rem;
-        }
-        
-        .plyr__controls {
-            padding: 4px;
-        }
-        
-        .plyr__control {
-            padding: 4px 6px;
-            min-width: 30px;
-        }
-        
-        .plyr__control svg {
-            width: 16px;
-            height: 16px;
-        }
-        
-        .plyr__progress {
-            height: 5px;
-        }
-        
-        .plyr__time {
-            font-size: 12px;
         }
     }
 </style>
@@ -792,7 +583,7 @@
             </div>
             
             <div class="category-card" onclick="loadCategory('year-2025')">
-                <div class="category-image" style="background: linear-gradient(135deg, #ff6f00, #ff8f00);"></div>
+                <div class="category-image" style="background: linear-gradient(135deg, #f59e0b, #f97316);"></div>
                 <div class="category-content">
                     <h3 class="category-title"> مدرسين سنة 2025 </h3>
                     <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
@@ -917,12 +708,21 @@
 
         // Set up player
         let player = null;
-        
+
+        // DOM references
+        const teacherImage = document.getElementById("teacherImage");
+        const teacherName = document.getElementById("teacherName");
+        const teacherSubject = document.getElementById("teacherSubject");
+        const teacherRating = document.getElementById("teacherRating");
+        const videoTitle = document.getElementById("videoTitle");
+        const videoDescription = document.getElementById("videoDescription");
+        const categoryTitle = document.getElementById("categoryTitle");
+        const classesList = document.getElementById("classesList");
+        const teachersGrid = document.getElementById("teachersGrid");
+
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let videoProgress = JSON.parse(localStorage.getItem("videoProgress")) || {};
-        let completedLectures = JSON.parse(localStorage.getItem('completedLectures') || '{}');
 
         // Navigation
         const pages = {
@@ -938,7 +738,6 @@
             // Clean up when leaving video page
             if (page !== "video") {
                 if (player) {
-                    player.pause();
                     player.destroy();
                     player = null;
                 }
@@ -953,7 +752,7 @@
                     window.progressInterval = null;
                 }
 
-                document.getElementById("playerContainer").innerHTML = "";
+                playerContainer.innerHTML = "";
             }
 
             Object.values(pages).forEach((p) => p.classList.remove("active"));
@@ -1055,16 +854,11 @@
                     const lectures = cls.lectures
                         .map((lec, li) => {
                             const progress = lectureProgress[lec.url] || 0;
-                            const isCompleted = completedLectures[lec.url];
                             return `
                                 <div class="lecture-item" 
                                     onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
-                                    <div class="lecture-checkbox ${isCompleted ? 'completed' : ''}" 
-                                         onclick="toggleLectureCompletion('${lec.url.replace(/'/g,"\\'")}', event)">
-                                      ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
-                                    </div>
                                 </div>
                             `;
                         })
@@ -1073,8 +867,8 @@
                     return `
                         <div class="class-card">
                             <div class="class-header" onclick="toggleLectures(this)">
-                                <h3><i class="fas fa-folder"></i> ${cls.name}</h3>
-                                <span><i class="fas fa-chevron-down"></i></span>
+                                <h3>${cls.name}</h3>
+                                <span data-lucide="chevron-down"></span>
                             </div>
                             <div class="lectures-list">${lectures}</div>
                         </div>
@@ -1087,40 +881,18 @@
 
         window.toggleLectures = (header) => {
             const list = header.parentElement.querySelector(".lectures-list");
-            const icon = header.querySelector("span i");
+            const icon = header.querySelector("[data-lucide]");
             const open = list.style.display !== "flex";
 
             list.style.display = open ? "flex" : "none";
             header.classList.toggle("open", open);
-            icon.className = open ? "fas fa-chevron-up" : "fas fa-chevron-down";
-        };
-
-        // حفظ تقدم الفيديو
-        function saveVideoProgress(url, currentTime) {
-            videoProgress[url] = currentTime;
-            localStorage.setItem("videoProgress", JSON.stringify(videoProgress));
-        }
-        
-        function getVideoProgress(url) {
-            return videoProgress[url] || 0;
-        }
-        
-        function markLectureCompleted(url, completed = true) {
-            completedLectures[url] = completed;
-            localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
-            if (currentTeacher) renderClasses(currentTeacher.classes);
-        }
-
-        window.toggleLectureCompletion = (url, event) => {
-            event.stopPropagation();
-            const isCompleted = completedLectures[url];
-            markLectureCompleted(url, !isCompleted);
+            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
+            lucide.createIcons();
         };
 
         window.playLecture = (ci, li, url, title, desc) => {
             // تنظيف أي مشغل سابق
             if (player) {
-                player.pause();
                 player.destroy();
                 player = null;
             }
@@ -1150,13 +922,13 @@
                 const encodedUrl = btoa(url);
                 const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
 
-                document.getElementById("playerContainer").innerHTML = `
+                playerContainer.innerHTML = `
                     <div style="position: relative; width: 100%; padding-top: 56.25%;">
                         <iframe 
                             src="${iframeUrl}" 
                             allowfullscreen 
                             loading="eager"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
                             referrerpolicy="no-referrer-when-downgrade"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen">
                         </iframe>
@@ -1167,8 +939,9 @@
                 return;
             }
 
+          
             // ✅ دعم فيديوهات .m3u8 عبر proxy.eduiraq.my
-            document.getElementById("playerContainer").innerHTML = `
+            playerContainer.innerHTML = `
                 <video id="player" playsinline controls></video>
             `;
             lucide.createIcons();
@@ -1177,26 +950,41 @@
             const isHLS = url.endsWith(".m3u8");
             const referer = "https://abwaab.com";
             const proxyUrl = isHLS
-                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(
-                    url
-                )}&referer=${encodeURIComponent(referer)}`
-                : url;
+    ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(
+        url
+    )}&referer=${encodeURIComponent(referer)}`
+    : url;
 
-            // إنشاء مشغل Plyr جديد مع الإعدادات المطلوبة
-            player = new Plyr('#player', {
-                controls: ['play-large', 'rewind', 'play', 'fast-forward', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'airplay', 'fullscreen'],
-                settings: ['speed', 'quality'],
-                speed: { selected: 1, options: [0.5, 1, 1.25, 1.5, 2] },
-                seekTime: 10
+            const savedTime = lectureProgress[url]
+                ? (lectureProgress[url] / 100) * (player?.duration || 0)
+                : 0;
+
+            // إنشاء مشغل جديد
+            player = new Plyr("#player", {
+                controls: [
+                    "play-large",
+                    "play",
+                    "progress",
+                    "current-time",
+                    "fullscreen",
+                    "settings",
+                ],
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            // استعادة موضع الفيديو المحفوظ
-            const savedTime = getVideoProgress(url);
-            
             // تتبع التقدم
             window.progressInterval = setInterval(() => {
-                if (player && player.currentTime > 0) {
-                    saveVideoProgress(url, player.currentTime);
+                if (player && player.duration > 0) {
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem(
+                        "lectureProgress",
+                        JSON.stringify(lectureProgress)
+                    );
                 }
             }, 5000);
 
@@ -1254,24 +1042,6 @@
 
             tryPlay();
             navigate("video");
-            
-            // الانتقال التلقائي للمحاضرة التالية عند الانتهاء
-            player.on('ended', () => {
-                markLectureCompleted(currentLectureLink);
-                const classes = currentTeacher.classes;
-                let ci = currentClassIndex;
-                let li = currentLectureIndex;
-                
-                if (li < classes[ci].lectures.length - 1) {
-                    li++;
-                } else if (ci < classes.length - 1) {
-                    ci++;
-                    li = 0;
-                } else return;
-                
-                const nextLecture = classes[ci].lectures[li];
-                playLecture(ci, li, nextLecture.url, nextLecture.title, nextLecture.description);
-            });
         };
 
         /* ========= البحث ========= */
@@ -1300,8 +1070,20 @@
                 '<p style="color:red">حدث خطأ في تحميل البيانات.</p><button class="btn" onclick="location.reload()">إعادة المحاولة</button>';
 
             teachersGrid.innerHTML = `
-                <div class="loading">
-                    <div class="spinner"></div>
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+                <div class="loading-card">
+                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
                 </div>
             `;
 
