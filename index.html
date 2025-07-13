@@ -31,29 +31,34 @@
         --accent-2: #ff8f00;
         --accent-3: #e65100;
         --radius: 12px;
-        --bg: #f5f7fb;
-        --bg-glass: rgba(255, 255, 255, 0.92);
-        --text: #1e293b;
-        --card: #ffffff;
-        --border: #e2e8f0;
-        --hover: rgba(0, 0, 0, 0.04);
+        --bg: #0a0a0a;
+        --bg-glass: rgba(30, 30, 30, 0.92);
+        --text: #ffffff;
+        --card: #1e1e1e;
+        --border: #333333;
+        --hover: rgba(255, 111, 0, 0.1);
         --success: #10b981;
-        --warning: #f59e0b;
-        --error: #ef4444;
+        --warning: #ff9800;
+        --error: #f44336;
         --telegram-blue: #0088cc;
         --telegram-light: #2aabee;
         --telegram-text: #ffffff;
         --plyr-color-main: #ff6f00;
+        --gradient-primary: linear-gradient(135deg, #ff6f00 0%, #ff8f00 100%);
+        --gradient-card: linear-gradient(145deg, #1e1e1e 0%, #2a2a2a 100%);
+        --gradient-bg: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
     }
 
-    [data-theme="dark"] {
-        --bg: #0f172a;
-        --bg-glass: rgba(15, 23, 42, 0.95);
-        --text: #f1f5f9;
-        --card: #1e293b;
-        --border: #334155;
-        --hover: rgba(255, 255, 255, 0.08);
-        --accent: #3ea6ff;
+    [data-theme="light"] {
+        --bg: #f8f9fa;
+        --bg-glass: rgba(255, 255, 255, 0.92);
+        --text: #212529;
+        --card: #ffffff;
+        --border: #e9ecef;
+        --hover: rgba(255, 111, 0, 0.05);
+        --accent: #ff6f00;
+        --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+        --gradient-bg: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
     }
 
     *,
@@ -62,11 +67,11 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Cairo', 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
     }
 
     body {
-        font-family: "Cairo", "IBM Plex Sans Arabic", "Tajawal", sans-serif;
-        background: var(--bg);
+        background: var(--gradient-bg);
         color: var(--text);
         line-height: 1.6;
         min-height: 100vh;
@@ -93,28 +98,29 @@
         align-items: center;
         gap: 1rem;
         padding: 1rem 1.6rem;
-        background: var(--bg-glass);
+        background: var(--gradient-card);
         backdrop-filter: blur(14px);
         border-bottom: 1px solid var(--border);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         flex-wrap: wrap;
     }
 
     .site-title {
         font-size: clamp(1.5rem, 5vw, 2rem);
         font-weight: 700;
-        color: var(--primary-1);
+        color: var(--accent);
         display: flex;
         align-items: center;
         gap: 0.5rem;
         flex: 1;
         min-width: 200px;
+        text-shadow: 0 2px 4px rgba(255,111,0,0.3);
     }
 
     .site-logo {
         width: 40px;
         height: 40px;
-        background: var(--primary-1);
+        background: var(--accent);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -146,14 +152,16 @@
         background: var(--card);
         color: var(--text);
         border: 2px solid var(--border);
-        border-radius: var(--radius);
-        transition: border 0.25s, box-shadow 0.25s;
+        border-radius: 25px;
+        transition: all 0.3s;
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
 
     .search-container input:focus {
         outline: none;
         border-color: var(--accent);
-        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
+        box-shadow: 0 0 0 3px rgba(255,111,0,0.25);
+        transform: translateY(-2px);
     }
 
     .search-icon {
@@ -161,7 +169,7 @@
         left: 1rem;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--primary-1);
+        color: var(--accent);
     }
 
     .btn {
@@ -170,21 +178,23 @@
         gap: 0.45rem;
         padding: 0.9rem 1.35rem;
         border-radius: var(--radius);
-        background: var(--primary-1);
+        background: var(--gradient-primary);
         color: #fff;
         font-weight: 600;
-        transition: all 0.25s;
+        transition: all 0.3s;
         white-space: nowrap;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .btn:hover {
-        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
     }
 
     .btn-outline {
         background: transparent;
-        border: 2px solid var(--primary-1);
-        color: var(--primary-1);
+        border: 2px solid var(--accent);
+        color: var(--accent);
     }
 
     .btn-icon {
@@ -196,12 +206,12 @@
     }
 
     .btn-accent {
-        background: var(--accent);
+        background: var(--accent-2);
         color: white;
     }
 
     .btn-accent:hover {
-        background: var(--accent-2);
+        background: var(--accent-3);
     }
 
     .page {
@@ -209,10 +219,22 @@
         padding: 2rem;
         max-width: 1300px;
         margin: 0 auto;
+        animation: fadeInUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .page.active {
         display: block;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 
     .categories-grid {
@@ -223,16 +245,33 @@
     }
 
     .category-card {
-        background: var(--card);
+        background: var(--gradient-card);
         border-radius: var(--radius);
         border: 1px solid var(--border);
         overflow: hidden;
         transition: transform 0.25s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .category-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--shadow-hover);
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.3s;
+    }
+
+    .category-card:hover::before {
+        transform: scaleX(1);
     }
 
     .category-image {
@@ -248,12 +287,12 @@
 
     .category-title {
         font-size: 1.4rem;
-        color: var(--primary-1);
+        color: var(--accent);
         margin-bottom: 0.5rem;
     }
 
     .category-description {
-        color: #666;
+        color: #b0b0b0;
         margin-bottom: 1rem;
     }
 
@@ -265,7 +304,7 @@
     }
 
     .teacher-card {
-        background: var(--card);
+        background: var(--gradient-card);
         padding: 1.4rem 1.1rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
@@ -273,12 +312,29 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        transition: transform 0.25s;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .teacher-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
+    }
+
+    .teacher-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.3s;
+    }
+
+    .teacher-card:hover::before {
+        transform: scaleX(1);
     }
 
     .teacher-img {
@@ -287,18 +343,25 @@
         border-radius: 50%;
         object-fit: cover;
         margin: 0 auto 1rem;
-        border: 3px solid var(--accent);
+        border: 4px solid var(--accent);
+        box-shadow: 0 8px 20px rgba(255,111,0,0.3);
+        transition: all 0.3s;
+    }
+
+    .teacher-card:hover .teacher-img {
+        transform: scale(1.1);
+        border-color: var(--accent-2);
     }
 
     .teacher-name {
         font-size: 1.2rem;
         font-weight: 700;
         margin: 0.4rem 0 0.15rem;
-        color: var(--primary-1);
+        color: var(--text);
     }
 
     .teacher-subject {
-        color: #666;
+        color: #b0b0b0;
         font-size: 0.92rem;
         margin-bottom: 0.5rem;
     }
@@ -321,19 +384,36 @@
 
     .back-button {
         margin-bottom: 1.5rem;
-        background: var(--primary-2);
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
     }
 
     .teacher-info {
         display: flex;
         align-items: center;
         gap: 1.4rem;
-        background: var(--card);
+        background: var(--gradient-card);
         padding: 1.6rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .teacher-img-lg {
@@ -342,6 +422,7 @@
         border-radius: 50%;
         object-fit: cover;
         border: 4px solid var(--accent);
+        box-shadow: 0 8px 20px rgba(255,111,0,0.3);
     }
 
     .classes-list {
@@ -350,10 +431,17 @@
     }
 
     .class-card {
-        background: var(--card);
+        background: var(--gradient-card);
         border-radius: var(--radius);
         border: 1px solid var(--border);
         overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        transition: all 0.3s;
+    }
+
+    .class-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
     }
 
     .class-header {
@@ -365,7 +453,7 @@
         user-select: none;
         background: var(--bg-glass);
         backdrop-filter: blur(8px);
-        border-right: 4px solid var(--primary-2);
+        border-right: 4px solid var(--accent);
         transition: background 0.25s;
     }
 
@@ -391,18 +479,20 @@
     .lecture-item {
         position: relative;
         padding: 0.9rem 1.1rem 0.9rem 3.5rem;
-        background: var(--hover);
-        border-right: 3px solid var(--primary-3);
+        background: var(--bg-secondary);
+        border-right: 3px solid var(--accent);
         border-radius: var(--radius);
         cursor: pointer;
-        transition: all 0.25s;
+        transition: all 0.3s;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
     .lecture-item:hover {
-        background: rgba(0, 0, 0, 0.05);
+        background: var(--card-hover);
+        transform: translateX(10px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .lecture-item i {
@@ -410,7 +500,7 @@
         left: 12px;
         top: 50%;
         transform: translateY(-50%);
-        color: var(--primary-1);
+        color: var(--accent);
     }
 
     /* حاوية الفيديو المعدلة لتملأ الشاشة على الهاتف */
@@ -426,14 +516,15 @@
     .video-container {
         position: relative;
         width: 100%;
-        background: #000;
+        background: black;
+        border-radius: 15px;
         overflow: hidden;
-        aspect-ratio: 16/9;
+        box-shadow: 0 8px 30px rgba(255,111,0,0.2);
     }
 
     /* مشغل الفيديو المطابق لمنصة السادس */
     .plyr--video {
-        border-radius: 0;
+        border-radius: 15px;
     }
     
     .plyr__controls {
@@ -514,12 +605,12 @@
     }
 
     .video-details {
-        background: var(--card);
+        background: var(--gradient-card);
         padding: 1.5rem;
         border-radius: var(--radius);
         border: 1px solid var(--border);
         margin: 0 2rem 2rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .video-info {
@@ -549,8 +640,15 @@
         gap: 0.5rem;
         margin: 1.5rem 0 1rem;
         padding-bottom: 0.5rem;
-        border-bottom: 2px solid var(--primary-1);
-        color: var(--primary-1);
+        border-bottom: 2px solid var(--accent);
+        color: var(--accent);
+        font-size: 2rem;
+        font-weight: 700;
+        text-align: center;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     @media (max-width: 768px) {
@@ -582,6 +680,7 @@
         .video-container {
             margin: 0;
             width: 100%;
+            border-radius: 0;
         }
 
         .lecture-item {
@@ -823,6 +922,7 @@
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
         let videoProgress = JSON.parse(localStorage.getItem("videoProgress")) || {};
+        let completedLectures = JSON.parse(localStorage.getItem('completedLectures') || '{}');
 
         // Navigation
         const pages = {
@@ -955,11 +1055,16 @@
                     const lectures = cls.lectures
                         .map((lec, li) => {
                             const progress = lectureProgress[lec.url] || 0;
+                            const isCompleted = completedLectures[lec.url];
                             return `
                                 <div class="lecture-item" 
                                     onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
+                                    <div class="lecture-checkbox ${isCompleted ? 'completed' : ''}" 
+                                         onclick="toggleLectureCompletion('${lec.url.replace(/'/g,"\\'")}', event)">
+                                      ${isCompleted ? '<i class="fas fa-check"></i>' : ''}
+                                    </div>
                                 </div>
                             `;
                         })
@@ -968,8 +1073,8 @@
                     return `
                         <div class="class-card">
                             <div class="class-header" onclick="toggleLectures(this)">
-                                <h3>${cls.name}</h3>
-                                <span data-lucide="chevron-down"></span>
+                                <h3><i class="fas fa-folder"></i> ${cls.name}</h3>
+                                <span><i class="fas fa-chevron-down"></i></span>
                             </div>
                             <div class="lectures-list">${lectures}</div>
                         </div>
@@ -982,13 +1087,12 @@
 
         window.toggleLectures = (header) => {
             const list = header.parentElement.querySelector(".lectures-list");
-            const icon = header.querySelector("[data-lucide]");
+            const icon = header.querySelector("span i");
             const open = list.style.display !== "flex";
 
             list.style.display = open ? "flex" : "none";
             header.classList.toggle("open", open);
-            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
-            lucide.createIcons();
+            icon.className = open ? "fas fa-chevron-up" : "fas fa-chevron-down";
         };
 
         // حفظ تقدم الفيديو
@@ -1000,6 +1104,18 @@
         function getVideoProgress(url) {
             return videoProgress[url] || 0;
         }
+        
+        function markLectureCompleted(url, completed = true) {
+            completedLectures[url] = completed;
+            localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
+            if (currentTeacher) renderClasses(currentTeacher.classes);
+        }
+
+        window.toggleLectureCompletion = (url, event) => {
+            event.stopPropagation();
+            const isCompleted = completedLectures[url];
+            markLectureCompleted(url, !isCompleted);
+        };
 
         window.playLecture = (ci, li, url, title, desc) => {
             // تنظيف أي مشغل سابق
@@ -1141,6 +1257,7 @@
             
             // الانتقال التلقائي للمحاضرة التالية عند الانتهاء
             player.on('ended', () => {
+                markLectureCompleted(currentLectureLink);
                 const classes = currentTeacher.classes;
                 let ci = currentClassIndex;
                 let li = currentLectureIndex;
@@ -1183,20 +1300,8 @@
                 '<p style="color:red">حدث خطأ في تحميل البيانات.</p><button class="btn" onclick="location.reload()">إعادة المحاولة</button>';
 
             teachersGrid.innerHTML = `
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card">
-                    <div style="width: 140px; height: 140px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1.5rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                <div class="loading">
+                    <div class="spinner"></div>
                 </div>
             `;
 
