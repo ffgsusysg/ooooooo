@@ -6369,113 +6369,91 @@
           "lectures": [
             {
               "title": "محاضرة اساسيات الكيمياء",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/b146dce7-dce7-407a-9d25-78c2dd4eb917/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة اساسيات الرياضيات",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c0b59e5b-29c9-44cc-b226-87f5654d1a93/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/403697f3-713e-4ad9-b606-5775c07f42e1/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3c5b4e14-2285-41b6-a202-8ad0e5feabe7/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/b6ccec87-f4e2-4dcd-b728-923e6237ac1b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f68c9bdc-7334-4af4-badb-766d936b220f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/b149405d-4fb2-4515-9f39-e09de83601f9/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/bd74e521-4c9b-425c-a31f-6db6338baf99/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d471bd60-cc72-4b1d-a27f-38ecb321e2b4/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/65c062c8-ee28-424e-8e33-6d3569af3139/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/faeac9fc-bf9f-492b-abb0-cf74147cc4c2/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4bf6d32b-204a-4542-896d-c26594528c60/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/7fbdfc06-2104-443e-a74c-4be31f31f351/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8b794a49-6923-4743-98d0-6a6f97ae866a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 13",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4e667c3b-8793-47f1-a8f9-1a20cbf2a31d/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 14",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3a9342a7-95b4-478c-99ea-f907f2b1e97d/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 15",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0af2dcc1-55b1-428b-9a61-bfd959adc527/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 16",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5dbd497b-5849-47f0-be75-8fa9f66a6f35/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 17",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8e2896aa-a540-4f9e-9d40-2163e9b8e16f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 18",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/8f844c89-8b32-49bc-87ff-3c1974f8ca9a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 19",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/caadafa0-b5f2-4ee6-b7b5-a8cece740c0b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 20",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/12963918-4788-4e2e-89d5-b947b8372d3d/1080p/video.m3u8"
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/b146dce7-dce7-407a-9d25-78c2dd4eb917/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة اساسيات الرياضيات",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/c0b59e5b-29c9-44cc-b226-87f5654d1a93/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 1",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/403697f3-713e-4ad9-b606-5775c07f42e1/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 2",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/3c5b4e14-2285-41b6-a202-8ad0e5feabe7/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 3",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/b6ccec87-f4e2-4dcd-b728-923e6237ac1b/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 4",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/f68c9bdc-7334-4af4-badb-766d936b220f/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 5",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/b149405d-4fb2-4515-9f39-e09de83601f9/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 6",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/bd74e521-4c9b-425c-a31f-6db6338baf99/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 7",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/d471bd60-cc72-4b1d-a27f-38ecb321e2b4/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 8",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/65c062c8-ee28-424e-8e33-6d3569af3139/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 9",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/faeac9fc-bf9f-492b-abb0-cf74147cc4c2/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 10",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/4bf6d32b-204a-4542-896d-c26594528c60/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 11",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/7fbdfc06-2104-443e-a74c-4be31f31f351/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 12",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/8b794a49-6923-4743-98d0-6a6f97ae866a/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 13",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/4e667c3b-8793-47f1-a8f9-1a20cbf2a31d/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 14",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/3a9342a7-95b4-478c-99ea-f907f2b1e97d/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 15",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/0af2dcc1-55b1-428b-9a61-bfd959adc527/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 16",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/5dbd497b-5849-47f0-be75-8fa9f66a6f35/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 17",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/8e2896aa-a540-4f9e-9d40-2163e9b8e16f/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 18",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/8f844c89-8b32-49bc-87ff-3c1974f8ca9a/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 19",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/caadafa0-b5f2-4ee6-b7b5-a8cece740c0b/1080p/video.m3u8"
+    },
+    {
+        "title": "محاضرة 20",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/12963918-4788-4e2e-89d5-b947b8372d3d/1080p/video.m3u8"
             }
           ]
         },
