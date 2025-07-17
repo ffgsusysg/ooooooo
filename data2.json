@@ -328,126 +328,127 @@
     },
     {
       "id": 1746651370580,
-      "name": "سجاد العبيدي 2026",
-      "subject": "مدرس مادة اللغة الانكليزية",
-      "image": "https://i.imghippo.com/files/xH1865lU.jpg",
-      "classes": [
+  "name": "سجاد العبيدي 2026",
+  "subject": "مدرس مادة اللغة الانكليزية",
+  "image": "https://i.imghippo.com/files/xH1865lU.jpg",
+  "classes": [
+    {
+      "name": "الاساسيات",
+      "lectures": [
         {
-          "name": "الاساسيات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/fae0d70a-e4c7-46e0-a046-e8b52436e9fa/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1138f878-d8fa-4ed2-8228-f4c237b53d16/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5cb01382-c193-420f-a418-e6b10e0959d2/1080p/video.m3u8"
-            }
-          ]
+          "title": "محاضرة 1",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/fae0d70a-e4c7-46e0-a046-e8b52436e9fa/1080p/video.m3u8"
         },
         {
-          "name": "اليونت الاول",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/cce812a8-9008-44cf-a16e-00d7d82235a2/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3954a176-e22e-477a-be35-f5c65c0d1d16/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4473a98c-71c0-4586-aa98-ed529584f9b3/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/551c769b-a25b-4706-a689-82a1b77bd06e/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/603fabc7-aa58-478e-8759-99937ba45b13/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/03d0562c-15b7-4946-b7aa-bae0042cc94e/480p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/53035cc9-b698-401f-b442-be0a1a2102e8/480p/video.m3u8"
-            },
-            {
-              "title": "اسقاطات الوحدة الاولى",
-              "description": "وصف",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9aa6fca5-83e2-4925-bce2-b654f26bcc27/480p/video.m3u8"
-            },
-            {
-              "title": "الافعال المركبة ",
-              "description": "وصف",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/032cc79d-fc78-46f2-b1f6-f3a5adb5a0dc/480p/video.m3u8"
-            },
-            {
-              "title": "الاضافات ",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/75364eca-106c-4ab6-9e93-6cf3816fb5ab"
-            },
-            {
-              "title": "النصائح الامرية",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/11690a72-fe77-44c5-ad97-9c086194dbdf"
-            },
-            {
-              "title": "المعدود وغير معدود",
-              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
-              "url": "https://iframe.mediadelivery.net/embed/215061/41384cdd-cf86-45ac-8e4a-f68433d5ef97"
-            },
-            {
-             "title": "Used to",
-          "url": "https://iframe.mediadelivery.net/embed/215061/bd777b07-9563-4dbc-b8a0-f5d596509378",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "title": "محاضرة 2",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/1138f878-d8fa-4ed2-8228-f4c237b53d16/1080p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 3",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/5cb01382-c193-420f-a418-e6b10e0959d2/1080p/video.m3u8"
+        }
+      ]
+    },
+    {
+      "name": "اليونت الاول",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/cce812a8-9008-44cf-a16e-00d7d82235a2/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 2",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/3954a176-e22e-477a-be35-f5c65c0d1d16/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 3",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/4473a98c-71c0-4586-aa98-ed529584f9b3/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 4",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/551c769b-a25b-4706-a689-82a1b77bd06e/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 5",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/603fabc7-aa58-478e-8759-99937ba45b13/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 6",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/03d0562c-15b7-4946-b7aa-bae0042cc94e/480p/video.m3u8"
+        },
+        {
+          "title": "محاضرة 7",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/53035cc9-b698-401f-b442-be0a1a2102e8/480p/video.m3u8"
+        },
+        {
+          "title": "اسقاطات الوحدة الاولى",
+          "description": "وصف",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/9aa6fca5-83e2-4925-bce2-b654f26bcc27/480p/video.m3u8"
+        },
+        {
+          "title": "الافعال المركبة",
+          "description": "وصف",
+          "url": "https://vz-99e5c202-ca5.b-cdn.net/032cc79d-fc78-46f2-b1f6-f3a5adb5a0dc/480p/video.m3u8"
+        },
+        {
+          "title": "الاضافات",
+          "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+          "url": "https://iframe.mediadelivery.net/embed/215061/75364eca-106c-4ab6-9e93-6cf3816fb5ab"
+        },
+        {
+          "title": "النصائح الامرية",
+          "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+          "url": "https://iframe.mediadelivery.net/embed/215061/11690a72-fe77-44c5-ad97-9c086194dbdf"
+        },
+        {
+          "title": "المعدود وغير معدود",
+          "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+          "url": "https://iframe.mediadelivery.net/embed/215061/41384cdd-cf86-45ac-8e4a-f68433d5ef97"
+        },
+        {
+          "title": "Used to",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/bd777b07-9563-4dbc-b8a0-f5d596509378"
         },
         {
           "title": "زيد طارق.",
-          "url": "https://iframe.mediadelivery.net/embed/215061/a07839f1-02a6-41e0-bc25-0506515722dd",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a07839f1-02a6-41e0-bc25-0506515722dd"
         },
         {
           "title": "زيد طارق (الجزء الثاني)",
-          "url": "https://iframe.mediadelivery.net/embed/215061/0df6c12e-234e-4106-8bbc-44be66141e75",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0df6c12e-234e-4106-8bbc-44be66141e75"
         },
         {
           "title": "زيد طارق (الجزء الثالث)",
-          "url": "https://iframe.mediadelivery.net/embed/215061/eed38621-084d-44f2-9547-9f63385806f0",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/eed38621-084d-44f2-9547-9f63385806f0"
         },
         {
           "title": "مراجعة عامة",
-          "url": "https://iframe.mediadelivery.net/embed/215061/fbf45ab3-3b1c-4818-b44b-c87afa181db5",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/fbf45ab3-3b1c-4818-b44b-c87afa181db5"
         },
         {
           "title": "سأكون دائماً فخورة به.",
-          "url": "https://iframe.mediadelivery.net/embed/215061/a6c96ef7-5c69-46d7-aa70-4dbf7bea6f49",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a6c96ef7-5c69-46d7-aa70-4dbf7bea6f49"
         },
         {
           "title": "سأكون دائماً فخورة به (الجزء الثاني)",
-          "url": "https://iframe.mediadelivery.net/embed/215061/78080c9f-a220-4d86-9b75-71957d5be5ee",
+          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
+          "url": "https://iframe.mediadelivery.net/embed/215061/78080c9f-a220-4d86-9b75-71957d5be5ee"
           "description": "{وأن ليس للإنسان إلا ما سعى} ✨"
         }
       ]
