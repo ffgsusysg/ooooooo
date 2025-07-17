@@ -336,7 +336,16 @@
       "name": "الاساسيات",
       "lectures": [
         {
-    "title": "محاضرة 1",
+ "id": 1746651370580,
+  "name": "سجاد العبيدي 2026",
+  "subject": "مدرس مادة اللغة الانكليزية",
+  "image": "https://i.imghippo.com/files/xH1865lU.jpg",
+  "classes": [
+    {
+      "name": "الاساسيات",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
           "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
           "url": "https://iframe.mediadelivery.net/embed/215061/fae0d70a-e4c7-46e0-a046-e8b52436e9fa"
         },
