@@ -328,10 +328,20 @@
           "name": "االفصل السادس",
           "lectures": [
             {
-              "title": "ا1",
+              "title": "امقدمة",
               "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
               "url": "https://iframe.mediadelivery.net/embed/215061/53111628-ec68-49e9-b67b-ee5ff8a3019e"
-  }
+  },
+  {
+    "title": "االمبرهنات 1) المحاضرة 2",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/30a1d0ce-82a7-42b3-873c-b45ebd4f498e"
+ },
+  {
+    "title": "ا المحاضرة 3 (المبرهنات 2)",
+    "description": "تم رفع المحاضرة بواسطة حميد",
+    "url": "https://iframe.mediadelivery.net/embed/215061/cfcee43e-d475-49e7-9c7d-b1cfd1938f23"
+ }
           ]
         }
       ]
