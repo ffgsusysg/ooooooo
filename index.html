@@ -64,6 +64,8 @@
             --continue-button-hover: #00a87a; /* Darker green for hover */
             --continue-outline-button-border: #00c896; /* Green border */
             --continue-outline-button-text: #00c896; /* Green text */
+            --highlight-color: #ffeb3b; /* Bright yellow for highlight */
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
         }
 
         /* Dark theme adjustments */
@@ -98,6 +100,8 @@
             --continue-button-hover: #005a41; /* Even darker green */
             --continue-outline-button-border: #007a5e;
             --continue-outline-button-text: #007a5e;
+            --highlight-color: #ffeb3b; /* Keep bright yellow for highlight */
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
         }
 
         /* General styles */
@@ -726,9 +730,11 @@
         }
         
         /* Specific style for the bold text within the paragraph */
-        #continueWatchingModal .modal-body p span {
-            color: var(--continue-modal-text); /* Keep the text color consistent with the modal theme */
+        #continueWatchingModal .modal-body p .highlight-text { /* Changed to use .highlight-text class */
+            color: var(--highlight-color); /* Use the new highlight color */
             font-weight: bold;
+            text-shadow: var(--highlight-shadow); /* Add subtle shadow for pop */
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
         .btn-continue-now { /* New class for the "أكمل الآن" button */
@@ -899,16 +905,16 @@
             <div class="modal-header">
                 <h3 class="modal-title">
                     <i data-lucide="graduation-cap"></i>
-                    اهلا بك مرة اخرى
+                    عزيزي الطالب الشاطر!
                 </h3>
             </div>
             <div class="modal-body">
-                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName"></span></p>
-                <p>اسم او رقم المحاضرة : <span id="lastWatchedLectureTitle"></span></p>
-                <p>لاتنسى تكمل محاضراتك وبس حبيت اذكرك ياعزيزي</p>
+                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
+                <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
+                <p>لا تنس تكمل مسيرتك العلمية وتجعل أمك فخورة بك وفي مستقبلك.</p>
                 <button id="continueNowBtn" class="btn btn-continue-now">
                     <i data-lucide="play"></i>
-                    متابعة 
+                    أكمل الآن
                 </button>
             </div>
         </div>
