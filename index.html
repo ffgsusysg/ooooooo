@@ -56,14 +56,14 @@
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
 
-            /* New colors for continue watching modal */
-            --continue-modal-bg-start: #ff7e5f; /* Sunset orange */
-            --continue-modal-bg-end: #feb47b; /* Peach */
-            --continue-modal-text: #ffffff;
-            --continue-button-bg: #4ade80; /* Green */
-            --continue-button-hover: #22c55e;
-            --continue-outline-button-border: #ffffff;
-            --continue-outline-button-text: #ffffff;
+            /* New colors for continue watching modal (Cute Pink) */
+            --continue-modal-bg-start: #fbcfe8; /* Light pink */
+            --continue-modal-bg-end: #f472b6; /* Deeper pink */
+            --continue-modal-text: #831843; /* Darker pink/maroon for text */
+            --continue-button-bg: #db2777; /* Raspberry pink */
+            --continue-button-hover: #be185d; /* Darker raspberry */
+            --continue-outline-button-border: #db2777; /* Raspberry pink border */
+            --continue-outline-button-text: #db2777; /* Raspberry pink text */
         }
 
         /* Dark theme adjustments */
@@ -91,13 +91,13 @@
             --modal-outline-button-text: #9ec5ff;
 
             /* Dark theme continue watching modal colors */
-            --continue-modal-bg-start: #a72200; /* Darker red-orange */
-            --continue-modal-bg-end: #7a1f00; /* Even darker red-orange */
-            --continue-modal-text: #f0f0f0;
-            --continue-button-bg: #16a34a; /* Darker green */
-            --continue-button-hover: #0a7a33;
-            --continue-outline-button-border: #c0d8ff;
-            --continue-outline-button-text: #c0d8ff;
+            --continue-modal-bg-start: #4a0e2a; /* Darker pink */
+            --continue-modal-bg-end: #2d081a; /* Even darker pink */
+            --continue-modal-text: #fbcfe8; /* Light pink for text */
+            --continue-button-bg: #831843; /* Darker raspberry pink */
+            --continue-button-hover: #6a0d2f; /* Even darker raspberry */
+            --continue-outline-button-border: #831843;
+            --continue-outline-button-text: #831843;
         }
 
         /* General styles */
@@ -706,6 +706,8 @@
         /* Continue Watching Modal Styles */
         #continueWatchingModal .modal-content {
             background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
+            max-width: 450px; /* Adjusted for a more compact width */
+            padding: 2rem; /* Slightly reduced padding */
         }
 
         #continueWatchingModal .modal-title,
@@ -715,10 +717,10 @@
 
         .btn-continue {
             background: var(--continue-button-bg);
-            color: var(--modal-button-text); /* Re-using modal-button-text for consistency */
-            padding: 1.2rem 2.5rem;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
+            color: white; /* Ensure text is white for contrast */
+            padding: 1rem 2rem; /* Slightly reduced padding */
+            font-size: 1.1rem; /* Slightly smaller font */
+            margin-bottom: 1rem; /* Reduced margin */
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
@@ -729,17 +731,17 @@
 
         .btn-continue:hover {
             background: var(--continue-button-hover);
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
+            transform: translateY(-3px) scale(1.01); /* Subtle lift and scale */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.05); /* Slightly brighter on hover */
         }
 
         .btn-start-fresh {
             background: transparent;
             border: 2px solid var(--continue-outline-button-border);
             color: var(--continue-outline-button-text);
-            padding: 0.9rem 1.8rem;
-            font-size: 1rem;
+            padding: 0.8rem 1.5rem; /* Slightly reduced padding */
+            font-size: 0.95rem; /* Slightly smaller font */
             transition: all 0.25s ease;
             width: fit-content;
             margin-left: auto;
@@ -1597,7 +1599,7 @@
             setTimeout(showTelegramModal, 1000); // Show after 1 second
         });
 
-        // Initialize Lucide icons on page load
+        // Initialize
         lucide.createIcons();
     </script>
 </body>
