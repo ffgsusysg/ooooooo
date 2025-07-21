@@ -45,6 +45,16 @@
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            /* New vibrant colors for modal */
+            --modal-bg-start: #6a11cb; /* Purple-blue gradient start */
+            --modal-bg-end: #2575fc; /* Blue-purple gradient end */
+            --modal-text-color: #ffffff; /* White text for contrast */
+            --modal-button-gradient-start: #00c6ff; /* Light blue */
+            --modal-button-gradient-end: #0072ff; /* Deeper blue */
+            --modal-button-text: #ffffff;
+            --modal-outline-button-border: #ffffff;
+            --modal-outline-button-text: #ffffff;
         }
 
         /* Dark theme adjustments */
@@ -60,6 +70,16 @@
             --primary-3: #2563eb;
             --accent: #fcd34d; /* Lighter accent for dark theme */
             --accent-2: #fbbf24;
+
+            /* Dark theme modal colors */
+            --modal-bg-start: #1a2a6c; /* Darker blue gradient start */
+            --modal-bg-end: #004d99; /* Darker blue gradient end */
+            --modal-text-color: #e0e7ff; /* Lighter text for dark contrast */
+            --modal-button-gradient-start: #007bff;
+            --modal-button-gradient-end: #0056b3;
+            --modal-button-text: #ffffff;
+            --modal-outline-button-border: #9ec5ff;
+            --modal-outline-button-text: #9ec5ff;
         }
 
         /* General styles */
@@ -584,16 +604,16 @@
         }
 
         .modal-content {
-            background: var(--card);
+            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end)); /* Attractive gradient background */
             border-radius: var(--radius);
             padding: 2.5rem; /* Increased padding */
             box-shadow: var(--shadow-lg); /* More prominent shadow */
-            max-width: 500px;
+            max-width: 550px; /* Slightly wider modal */
             width: 90%;
             text-align: center;
             transform: translateY(-20px);
-            transition: transform 0.3s ease;
-            border: 1px solid var(--border);
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
         }
 
         .modal.show .modal-content {
@@ -602,58 +622,65 @@
 
         .modal-header {
             margin-bottom: 1.5rem; /* More space */
-            border-bottom: 2px solid var(--primary-1); /* Accent line */
+            border-bottom: 2px solid var(--accent); /* Accent line, changed to accent color */
             padding-bottom: 1rem;
         }
 
         .modal-title {
-            font-size: 1.8rem; /* Larger title */
-            color: var(--primary-1);
+            font-size: 2rem; /* Larger title */
+            color: var(--modal-text-color); /* White text for contrast */
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
+            font-weight: 700;
         }
 
         .modal-body p {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 2rem; /* More space below description */
+            font-size: 1.2rem; /* Larger font size for message */
+            color: var(--modal-text-color); /* White text for contrast */
+            margin-bottom: 2.5rem; /* More space below description */
             line-height: 1.8;
+            font-weight: 500;
         }
 
         .btn-telegram {
-            background: var(--telegram-blue);
-            color: var(--telegram-text);
-            padding: 1rem 2rem; /* Larger button */
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end)); /* Vibrant gradient button */
+            color: var(--modal-button-text);
+            padding: 1.2rem 2.5rem; /* Larger button */
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem; /* More space below button */
             width: fit-content; /* Adjust width to content */
             margin-left: auto;
             margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            transition: all 0.3s ease;
         }
 
         .btn-telegram:hover {
-            background: var(--telegram-light);
-            transform: translateY(-3px); /* More pronounced lift */
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1); /* Slightly brighter on hover */
         }
 
         .btn-outline-telegram {
             background: transparent;
-            border: 2px solid var(--telegram-blue);
-            color: var(--telegram-blue);
-            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--modal-outline-button-border); /* White border for outline */
+            color: var(--modal-outline-button-text); /* White text for outline */
+            padding: 0.9rem 1.8rem;
             font-size: 1rem;
             transition: all 0.25s ease;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: none;
         }
 
         .btn-outline-telegram:hover {
-            background: var(--telegram-blue);
-            color: var(--telegram-text);
+            background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+            color: var(--modal-outline-button-text);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
@@ -769,23 +796,29 @@
         </div>
     </header>
 
+    <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">🌟 انضم إلى مجتمع منصة إديسون! 🌟</h3>
+                <h3 class="modal-title">
+                    <i data-lucide="bell"></i>
+                    مرحبًا في منصة إديسون!
+                </h3>
             </div>
             <div class="modal-body">
-                <p>لا تفوت أحدث المحاضرات، التحديثات، والإعلانات الهامة. انضم إلى قناتنا على التيلجرام الآن!</p>
+                <p>لا تنسى تشترك في قناتنا على تيلجرام حتى توصلك أحدث التحديثات والأخبار الجديدة.</p>
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
                     <i data-lucide="send"></i>
-                    <span>الاشتراك في قناة التيلجرام</span>
+                    <span>اشترك الآن</span>
                 </a>
-                <button id="alreadySubscribedBtn" class="btn btn-outline-telegram">
-                    لقد اشتركت سابقًا
+                <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
+                    اشتركت سابقا المتابعة
                 </button>
             </div>
         </div>
     </div>
+    <!-- End Telegram Modal -->
+
     <div id="homePage" class="page active">
         <div class="section-title">
             <i data-lucide="layout-grid"></i>
@@ -842,7 +875,8 @@
         </div>
         
         <div id="teachersGrid" class="teachers-grid">
-            </div>
+            <!-- Teachers will be loaded here -->
+        </div>
     </div>
 
     <div id="classesPage" class="page">
@@ -871,6 +905,7 @@
         <div class="video-page">
             <div id="videoContainer" class="video-container">
                 <div id="playerContainer"></div>
+                <!-- Loader for iframe videos -->
                 <div id="videoLoader" class="video-loader" style="display: none;">
                     <div class="loader-spinner"></div>
                 </div>
@@ -1344,7 +1379,7 @@
 
         // Telegram Modal Logic
         const telegramModal = document.getElementById("telegramModal");
-        const alreadySubscribedBtn = document.getElementById("alreadySubscribedBtn");
+        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn"); // Changed ID
 
         function showTelegramModal() {
             const hasSubscribed = localStorage.getItem("telegramSubscribed");
@@ -1358,8 +1393,8 @@
             telegramModal.classList.remove("show");
         }
 
-        // Event listener for "Already Subscribed" button
-        alreadySubscribedBtn.addEventListener("click", () => {
+        // Event listener for "Choose now to continue" button
+        continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
         });
@@ -1367,6 +1402,7 @@
         // Event listener for the Telegram button itself (to also hide the modal if clicked)
         document.querySelector(".btn-telegram").addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true"); // Assume they will subscribe
+            // The link itself will handle navigation to Telegram
             hideTelegramModal();
         });
 
