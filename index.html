@@ -57,13 +57,13 @@
             --modal-outline-button-text: #ffffff;
 
             /* New colors for continue watching modal (Cute Pink) */
-            --continue-modal-bg-start: #fbcfe8; /* Light pink */
-            --continue-modal-bg-end: #f472b6; /* Deeper pink */
-            --continue-modal-text: #831843; /* Darker pink/maroon for text */
-            --continue-button-bg: #db2777; /* Raspberry pink */
-            --continue-button-hover: #be185d; /* Darker raspberry */
-            --continue-outline-button-border: #db2777; /* Raspberry pink border */
-            --continue-outline-button-text: #db2777; /* Raspberry pink text */
+            --continue-modal-bg-start: #4facfe; /* Gradient start */
+            --continue-modal-bg-end: #00f2fe; /* Gradient end */
+            --continue-modal-text: #ffffff; /* White text */
+            --continue-button-bg: #00c896; /* Green button */
+            --continue-button-hover: #00a87a; /* Darker green for hover */
+            --continue-outline-button-border: #00c896; /* Green border */
+            --continue-outline-button-text: #00c896; /* Green text */
         }
 
         /* Dark theme adjustments */
@@ -91,13 +91,13 @@
             --modal-outline-button-text: #9ec5ff;
 
             /* Dark theme continue watching modal colors */
-            --continue-modal-bg-start: #4a0e2a; /* Darker pink */
-            --continue-modal-bg-end: #2d081a; /* Even darker pink */
-            --continue-modal-text: #fbcfe8; /* Light pink for text */
-            --continue-button-bg: #831843; /* Darker raspberry pink */
-            --continue-button-hover: #6a0d2f; /* Even darker raspberry */
-            --continue-outline-button-border: #831843;
-            --continue-outline-button-text: #831843;
+            --continue-modal-bg-start: #004d99; /* Darker blue */
+            --continue-modal-bg-end: #1a2a6c; /* Even darker blue */
+            --continue-modal-text: #e0e7ff; /* Light text */
+            --continue-button-bg: #007a5e; /* Darker green */
+            --continue-button-hover: #005a41; /* Even darker green */
+            --continue-outline-button-border: #007a5e;
+            --continue-outline-button-text: #007a5e;
         }
 
         /* General styles */
@@ -706,8 +706,9 @@
         /* Continue Watching Modal Styles */
         #continueWatchingModal .modal-content {
             background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
-            max-width: 400px; /* Adjusted for a more compact width */
-            padding: 1.5rem; /* Reduced padding */
+            max-width: 450px; /* Adjusted for a more compact width */
+            padding: 2rem; /* Slightly reduced padding */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Applied new shadow */
         }
 
         #continueWatchingModal .modal-title {
@@ -719,8 +720,8 @@
         #continueWatchingModal .modal-body p {
             font-size: 1rem; /* Smaller font size for message */
             color: var(--continue-modal-text);
-            margin-bottom: 0.8rem; /* Reduced margin */
-            line-height: 1.5; /* Reduced line height */
+            margin-bottom: 0.5rem; /* Reduced margin between paragraphs */
+            line-height: 1.4; /* Reduced line height */
             font-weight: 500;
         }
         
@@ -730,26 +731,27 @@
             font-weight: bold;
         }
 
-        .btn-thank-you {
-            background: transparent;
-            border: 2px solid var(--continue-outline-button-border); /* Use pink border */
-            color: var(--continue-outline-button-text); /* Use pink text */
-            padding: 0.8rem 1.5rem; /* Adjusted padding */
-            font-size: 0.95rem; /* Adjusted font size */
-            transition: all 0.25s ease;
-            width: fit-content;
+        .btn-continue-now { /* New class for the "أكمل الآن" button */
+            background-color: var(--continue-button-bg); /* Use new green color */
+            color: var(--continue-modal-text); /* White text */
+            padding: 1rem 2rem; /* Adjusted padding */
+            font-size: 1.1rem; /* Adjusted font size */
             margin-top: 1.5rem; /* Add some space above the button */
             margin-left: auto;
             margin-right: auto;
             border-radius: var(--radius);
-            box-shadow: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            transition: all 0.3s ease;
+            display: inline-flex; /* Ensure it behaves like a button with icon */
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .btn-thank-you:hover {
-            background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
-            color: var(--continue-outline-button-text);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+        .btn-continue-now:hover {
+            background-color: var(--continue-button-hover); /* Darker green on hover */
+            transform: translateY(-3px) scale(1.01); /* Subtle lift and scale */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.05); /* Slightly brighter on hover */
         }
 
 
@@ -835,9 +837,9 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
-            .btn-thank-you { /* Apply responsive styles to the new button */
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
+            .btn-continue-now { /* Apply responsive styles to the new button */
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -904,8 +906,9 @@
                 <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName"></span></p>
                 <p>في المحاضرة: <span id="lastWatchedLectureTitle"></span></p>
                 <p>لا تنس تكمل مسيرتك العلمية وتجعل أمك فخورة بك وفي مستقبلك.</p>
-                <button id="thankYouBtn" class="btn btn-thank-you">
-                    شكرا للتنبيه
+                <button id="continueNowBtn" class="btn btn-continue-now">
+                    <i data-lucide="play"></i>
+                    أكمل الآن
                 </button>
             </div>
         </div>
@@ -1521,7 +1524,7 @@
         const continueWatchingModal = document.getElementById("continueWatchingModal");
         const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
         const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const thankYouBtn = document.getElementById("thankYouBtn"); // New button reference
+        const continueNowBtn = document.getElementById("continueNowBtn"); // Reference for the new button
 
         function showContinueWatchingModal() {
             if (lastWatched) {
@@ -1536,11 +1539,45 @@
             continueWatchingModal.classList.remove("show");
         }
 
-        // Event listener for the new "Thank you" button
-        thankYouBtn.addEventListener("click", () => {
+        // Event listener for the new "أكمل الآن" button
+        continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            // Optionally, you could navigate to home or do nothing, as the user just acknowledged.
-            // For now, it just closes the modal and stays on the current page (home if not navigated).
+            // Load the teacher data first to ensure currentTeacher is set
+            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
+            const categoryKeys = Object.keys(categories);
+            let foundTeacher = false;
+
+            // Iterate through categories to find the teacher
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, {
+                    headers: {
+                        Referer: "https://careful-burnt-honesty.glitch.me/",
+                        "Cache-Control": "no-cache",
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                    if (teacher) {
+                        currentTeacher = teacher; // Set currentTeacher
+                        // Now play the lecture
+                        playLecture(
+                            lastWatched.classIndex,
+                            lastWatched.lectureIndex,
+                            lastWatched.lectureUrl,
+                            lastWatched.lectureTitle,
+                            lastWatched.lectureDescription,
+                            lastWatched.teacherName,
+                            lastWatched.teacherId
+                        );
+                        foundTeacher = true;
+                    }
+                })
+                .catch(error => console.error("Error loading teacher data:", error));
+
+                if (foundTeacher) break; // Stop searching once teacher is found
+            }
         });
 
         // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
