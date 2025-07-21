@@ -55,6 +55,15 @@
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
+
+            /* New colors for continue watching modal */
+            --continue-modal-bg-start: #ff7e5f; /* Sunset orange */
+            --continue-modal-bg-end: #feb47b; /* Peach */
+            --continue-modal-text: #ffffff;
+            --continue-button-bg: #4ade80; /* Green */
+            --continue-button-hover: #22c55e;
+            --continue-outline-button-border: #ffffff;
+            --continue-outline-button-text: #ffffff;
         }
 
         /* Dark theme adjustments */
@@ -80,6 +89,15 @@
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #9ec5ff;
             --modal-outline-button-text: #9ec5ff;
+
+            /* Dark theme continue watching modal colors */
+            --continue-modal-bg-start: #a72200; /* Darker red-orange */
+            --continue-modal-bg-end: #7a1f00; /* Even darker red-orange */
+            --continue-modal-text: #f0f0f0;
+            --continue-button-bg: #16a34a; /* Darker green */
+            --continue-button-hover: #0a7a33;
+            --continue-outline-button-border: #c0d8ff;
+            --continue-outline-button-text: #c0d8ff;
         }
 
         /* General styles */
@@ -685,6 +703,59 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* Continue Watching Modal Styles */
+        #continueWatchingModal .modal-content {
+            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
+        }
+
+        #continueWatchingModal .modal-title,
+        #continueWatchingModal .modal-body p {
+            color: var(--continue-modal-text);
+        }
+
+        .btn-continue {
+            background: var(--continue-button-bg);
+            color: var(--modal-button-text); /* Re-using modal-button-text for consistency */
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-continue:hover {
+            background: var(--continue-button-hover);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-start-fresh {
+            background: transparent;
+            border: 2px solid var(--continue-outline-button-border);
+            color: var(--continue-outline-button-text);
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: none;
+        }
+
+        .btn-start-fresh:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--continue-outline-button-text);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -767,6 +838,10 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
+            .btn-continue, .btn-start-fresh {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
         }
     </style>
 
@@ -818,6 +893,32 @@
         </div>
     </div>
     <!-- End Telegram Modal -->
+
+    <!-- Continue Watching Modal -->
+    <div id="continueWatchingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i data-lucide="graduation-cap"></i>
+                    عزيزي الطالب الشاطر!
+                </h3>
+            </div>
+            <div class="modal-body">
+                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" style="font-weight: bold; color: var(--accent);"></span></p>
+                <p>في المحاضرة: <span id="lastWatchedLectureTitle" style="font-weight: bold; color: var(--accent);"></span></p>
+                <p>لا تنس تكمل مسيرتك العلمية وتجعل أمك فخورة بك وفي مستقبلك.</p>
+                <button id="continueLectureBtn" class="btn btn-continue">
+                    <i data-lucide="play"></i>
+                    <span>متابعة المحاضرة</span>
+                </button>
+                <button id="startFreshBtn" class="btn btn-start-fresh">
+                    <i data-lucide="rotate-ccw"></i>
+                    <span>البدء من جديد</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End Continue Watching Modal -->
 
     <div id="homePage" class="page active">
         <div class="section-title">
@@ -982,6 +1083,7 @@
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null; // New: Store last watched lecture details
 
         // Navigation
         const pages = {
@@ -1120,7 +1222,7 @@
                             // const progress = lectureProgress[lec.url] || 0; // Not currently used for display
                             return `
                                 <div class="lecture-item" 
-                                    onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}')">
+                                    onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
@@ -1154,7 +1256,7 @@
             lucide.createIcons();
         };
 
-        window.playLecture = (ci, li, url, title, desc) => {
+        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
             // Clean up any previous player instances
             if (player) {
                 player.destroy();
@@ -1184,6 +1286,18 @@
             videoDescription.textContent = desc;
 
             document.getElementById("videoDate").textContent = "15/10/2026"; // Static date as per original code
+
+            // Save last watched lecture details
+            lastWatched = {
+                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
+                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
+                classIndex: ci,
+                lectureIndex: li,
+                lectureTitle: title,
+                lectureUrl: url,
+                lectureDescription: desc
+            };
+            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
             // Support for iframe videos via proxy
             if (url.includes("iframe.mediadelivery.net/embed/")) {
@@ -1386,6 +1500,9 @@
             if (!hasSubscribed) {
                 telegramModal.classList.add("show");
                 lucide.createIcons(); // Re-render Lucide icons for new elements
+            } else {
+                // If Telegram modal is not shown, try to show continue watching modal
+                showContinueWatchingModal();
             }
         }
 
@@ -1397,6 +1514,7 @@
         continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
+            showContinueWatchingModal(); // Show continue watching modal after dismissing Telegram modal
         });
 
         // Event listener for the Telegram button itself (to also hide the modal if clicked)
@@ -1404,14 +1522,82 @@
             localStorage.setItem("telegramSubscribed", "true"); // Assume they will subscribe
             // The link itself will handle navigation to Telegram
             hideTelegramModal();
+            showContinueWatchingModal(); // Show continue watching modal after clicking Telegram link
         });
 
-        // Show the modal after a short delay to ensure page is loaded
+        // Continue Watching Modal Logic
+        const continueWatchingModal = document.getElementById("continueWatchingModal");
+        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
+        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
+        const continueLectureBtn = document.getElementById("continueLectureBtn");
+        const startFreshBtn = document.getElementById("startFreshBtn");
+
+        function showContinueWatchingModal() {
+            if (lastWatched) {
+                lastWatchedTeacherName.textContent = lastWatched.teacherName;
+                lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
+                continueWatchingModal.classList.add("show");
+                lucide.createIcons();
+            }
+        }
+
+        function hideContinueWatchingModal() {
+            continueWatchingModal.classList.remove("show");
+        }
+
+        continueLectureBtn.addEventListener("click", () => {
+            hideContinueWatchingModal();
+            // Load the teacher data first to ensure currentTeacher is set
+            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
+            const categoryKeys = Object.keys(categories);
+            let foundTeacher = false;
+
+            // Iterate through categories to find the teacher
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, {
+                    headers: {
+                        Referer: "https://careful-burnt-honesty.glitch.me/",
+                        "Cache-Control": "no-cache",
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                    if (teacher) {
+                        currentTeacher = teacher; // Set currentTeacher
+                        // Now play the lecture
+                        playLecture(
+                            lastWatched.classIndex,
+                            lastWatched.lectureIndex,
+                            lastWatched.lectureUrl,
+                            lastWatched.lectureTitle,
+                            lastWatched.lectureDescription,
+                            lastWatched.teacherName,
+                            lastWatched.teacherId
+                        );
+                        foundTeacher = true;
+                    }
+                })
+                .catch(error => console.error("Error loading teacher data:", error));
+
+                if (foundTeacher) break; // Stop searching once teacher is found
+            }
+        });
+
+        startFreshBtn.addEventListener("click", () => {
+            localStorage.removeItem("lastWatched");
+            lastWatched = null;
+            hideContinueWatchingModal();
+            navigate('home'); // Go to home page
+        });
+
+        // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000); // Show after 1 second
         });
 
-        // Initialize
+        // Initialize Lucide icons on page load
         lucide.createIcons();
     </script>
 </body>
