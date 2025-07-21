@@ -1300,6 +1300,20 @@
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
+            // Check if the URL should be played directly without a proxy
+            const directPlayDomains = [
+                "https://9bf9f797be0a46677a8-akamai-cdn.com", // Corrected typo in original request
+                "https://vidcdn.akamai-cdn-delivery.com"
+            ];
+            
+            let useProxy = true;
+            for (const domain of directPlayDomains) {
+                if (url.startsWith(domain)) {
+                    useProxy = false;
+                    break;
+                }
+            }
+
             // Support for iframe videos via proxy
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 videoLoader.style.display = 'flex'; // Show loader
@@ -1326,7 +1340,7 @@
                 return;
             }
             
-            // Support for .m3u8 videos via proxy.eduiraq.my
+            // Support for .m3u8 videos via proxy or direct based on domain
             playerContainer.innerHTML = `
                 <video id="player" playsinline controls></video>
             `;
@@ -1334,11 +1348,11 @@
             
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
-            const proxyUrl = isHLS
-                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(
-                      url
-                  )}&referer=${encodeURIComponent(referer)}`
+            const referer = "https://abwaab.com"; // Keep referer for proxy if needed
+
+            // Determine the final URL for the player
+            const finalVideoUrl = useProxy && isHLS
+                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
                 : url;
 
             const savedTime = lectureProgress[url]
@@ -1379,7 +1393,7 @@
                     const hls = new Hls();
                     window.hlsInstance = hls;
                     hls.attachMedia(videoElement);
-                    hls.loadSource(proxyUrl);
+                    hls.loadSource(finalVideoUrl); // Use finalVideoUrl here
 
                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
                         player
@@ -1409,7 +1423,7 @@
                         type: "video",
                         sources: [
                             {
-                                src: proxyUrl,
+                                src: finalVideoUrl, // Use finalVideoUrl here
                                 type: isHLS ? "application/x-mpegURL" : "video/mp4",
                             },
                         ],
