@@ -706,52 +706,47 @@
         /* Continue Watching Modal Styles */
         #continueWatchingModal .modal-content {
             background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
-            max-width: 450px; /* Adjusted for a more compact width */
-            padding: 2rem; /* Slightly reduced padding */
+            max-width: 400px; /* Adjusted for a more compact width */
+            padding: 1.5rem; /* Reduced padding */
         }
 
-        #continueWatchingModal .modal-title,
-        #continueWatchingModal .modal-body p {
+        #continueWatchingModal .modal-title {
+            font-size: 1.6rem; /* Slightly smaller title for smaller modal */
+            margin-bottom: 1rem; /* Reduced margin */
             color: var(--continue-modal-text);
         }
 
-        .btn-continue {
-            background: var(--continue-button-bg);
-            color: white; /* Ensure text is white for contrast */
-            padding: 1rem 2rem; /* Slightly reduced padding */
-            font-size: 1.1rem; /* Slightly smaller font */
-            margin-bottom: 1rem; /* Reduced margin */
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+        #continueWatchingModal .modal-body p {
+            font-size: 1rem; /* Smaller font size for message */
+            color: var(--continue-modal-text);
+            margin-bottom: 0.8rem; /* Reduced margin */
+            line-height: 1.5; /* Reduced line height */
+            font-weight: 500;
+        }
+        
+        /* Specific style for the bold text within the paragraph */
+        #continueWatchingModal .modal-body p span {
+            color: var(--continue-modal-text); /* Keep the text color consistent with the modal theme */
+            font-weight: bold;
         }
 
-        .btn-continue:hover {
-            background: var(--continue-button-hover);
-            transform: translateY(-3px) scale(1.01); /* Subtle lift and scale */
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05); /* Slightly brighter on hover */
-        }
-
-        .btn-start-fresh {
+        .btn-thank-you {
             background: transparent;
-            border: 2px solid var(--continue-outline-button-border);
-            color: var(--continue-outline-button-text);
-            padding: 0.8rem 1.5rem; /* Slightly reduced padding */
-            font-size: 0.95rem; /* Slightly smaller font */
+            border: 2px solid var(--continue-outline-button-border); /* Use pink border */
+            color: var(--continue-outline-button-text); /* Use pink text */
+            padding: 0.8rem 1.5rem; /* Adjusted padding */
+            font-size: 0.95rem; /* Adjusted font size */
             transition: all 0.25s ease;
             width: fit-content;
+            margin-top: 1.5rem; /* Add some space above the button */
             margin-left: auto;
             margin-right: auto;
             border-radius: var(--radius);
             box-shadow: none;
         }
 
-        .btn-start-fresh:hover {
-            background: rgba(255, 255, 255, 0.1);
+        .btn-thank-you:hover {
+            background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
             color: var(--continue-outline-button-text);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
@@ -840,9 +835,9 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
-            .btn-continue, .btn-start-fresh {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
+            .btn-thank-you { /* Apply responsive styles to the new button */
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -906,16 +901,11 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" style="font-weight: bold; color: var(--accent);"></span></p>
-                <p>في المحاضرة: <span id="lastWatchedLectureTitle" style="font-weight: bold; color: var(--accent);"></span></p>
+                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName"></span></p>
+                <p>في المحاضرة: <span id="lastWatchedLectureTitle"></span></p>
                 <p>لا تنس تكمل مسيرتك العلمية وتجعل أمك فخورة بك وفي مستقبلك.</p>
-                <button id="continueLectureBtn" class="btn btn-continue">
-                    <i data-lucide="play"></i>
-                    <span>متابعة المحاضرة</span>
-                </button>
-                <button id="startFreshBtn" class="btn btn-start-fresh">
-                    <i data-lucide="rotate-ccw"></i>
-                    <span>البدء من جديد</span>
+                <button id="thankYouBtn" class="btn btn-thank-you">
+                    شكرا للتنبيه
                 </button>
             </div>
         </div>
@@ -1531,8 +1521,7 @@
         const continueWatchingModal = document.getElementById("continueWatchingModal");
         const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
         const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueLectureBtn = document.getElementById("continueLectureBtn");
-        const startFreshBtn = document.getElementById("startFreshBtn");
+        const thankYouBtn = document.getElementById("thankYouBtn"); // New button reference
 
         function showContinueWatchingModal() {
             if (lastWatched) {
@@ -1547,51 +1536,11 @@
             continueWatchingModal.classList.remove("show");
         }
 
-        continueLectureBtn.addEventListener("click", () => {
+        // Event listener for the new "Thank you" button
+        thankYouBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            // Load the teacher data first to ensure currentTeacher is set
-            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
-            const categoryKeys = Object.keys(categories);
-            let foundTeacher = false;
-
-            // Iterate through categories to find the teacher
-            for (const categoryId of categoryKeys) {
-                const category = categories[categoryId];
-                fetch(category.endpoint, {
-                    headers: {
-                        Referer: "https://careful-burnt-honesty.glitch.me/",
-                        "Cache-Control": "no-cache",
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                    if (teacher) {
-                        currentTeacher = teacher; // Set currentTeacher
-                        // Now play the lecture
-                        playLecture(
-                            lastWatched.classIndex,
-                            lastWatched.lectureIndex,
-                            lastWatched.lectureUrl,
-                            lastWatched.lectureTitle,
-                            lastWatched.lectureDescription,
-                            lastWatched.teacherName,
-                            lastWatched.teacherId
-                        );
-                        foundTeacher = true;
-                    }
-                })
-                .catch(error => console.error("Error loading teacher data:", error));
-
-                if (foundTeacher) break; // Stop searching once teacher is found
-            }
-        });
-
-        startFreshBtn.addEventListener("click", () => {
-            localStorage.removeItem("lastWatched");
-            lastWatched = null;
-            hideContinueWatchingModal();
-            navigate('home'); // Go to home page
+            // Optionally, you could navigate to home or do nothing, as the user just acknowledged.
+            // For now, it just closes the modal and stays on the current page (home if not navigated).
         });
 
         // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
