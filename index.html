@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
-    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
+    <!-- Removed older HLS.js and Plyr polyfilled as newer ones are imported below -->
     <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <!-- Keep these for the latest versions -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -321,6 +323,7 @@
 
         .category-title {
             font-size: 1.4rem;
+            font-weight: 700; /* Added font-weight */
             color: var(--primary-1);
             margin-bottom: 0.5rem;
             transition: color 0.3s ease;
@@ -504,13 +507,36 @@
             transition: color 0.3s ease;
         }
 
-        .video-page {
+        /* Styles for the video page header (from Academy Plus concept) */
+        .video-header {
+            background: var(--bg-glass); /* Use existing glass effect */
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.6rem;
+            border-bottom: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            text-align: center; /* Center the title */
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-header .video-title {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            font-weight: 700;
+            color: var(--primary-1);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 100%; /* Ensure it spans full width */
+        }
+
+        .video-wrapper {
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 1000px; /* Limits content width */
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 1rem 2rem; /* Add padding at bottom */
         }
 
         .video-container {
@@ -760,6 +786,24 @@
             filter: brightness(1.05); /* Slightly brighter on hover */
         }
 
+        /* Adjustments for the back button in video details */
+        .video-details .back-button {
+            margin-top: 1.5rem; /* Space above the button */
+            display: inline-flex; /* To allow icon and text */
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-2);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--radius);
+            transition: all 0.25s ease;
+        }
+
+        .video-details .back-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -1003,8 +1047,12 @@
         <div id="classesList" class="classes-list"></div>
     </div>
 
+    <!-- Video Page with Academy Plus Player Structure -->
     <div id="videoPage" class="page">
-        <div class="video-page">
+        <header class="video-header">
+            <h1 class="video-title" onclick="backToHomeFromVideo()" style="cursor: pointer;">منصة إديسون</h1>
+        </header>
+        <main class="video-wrapper">
             <div id="videoContainer" class="video-container">
                 <div id="playerContainer"></div>
                 <!-- Loader for iframe videos -->
@@ -1012,7 +1060,6 @@
                     <div class="loader-spinner"></div>
                 </div>
             </div>
-            
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
@@ -1026,15 +1073,12 @@
                     </div>
                 </div>
                 
-                <button class="btn back-button" onclick="navigate('classes')">
+                <button class="btn back-button" onclick="backToClassesFromVideo()">
                     <i data-lucide="arrow-right"></i>العودة للفصول
                 </button>
             </div>
-        </div>
+        </main>
     </div>
-
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <script type="text/babel">
         // Initialize theme
@@ -1067,6 +1111,9 @@
 
         // Set up player
         let player = null;
+        // Global HLS instance and interval for cleanup
+        window.currentHls = null;
+        window.currentSaveInterval = null;
 
         // DOM references
         const teacherImage = document.getElementById("teacherImage");
@@ -1078,13 +1125,13 @@
         const categoryTitle = document.getElementById("categoryTitle");
         const classesList = document.getElementById("classesList");
         const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer"); // Get the player container
-        const videoLoader = document.getElementById("videoLoader"); // Get the video loader
+        const playerContainer = document.getElementById("playerContainer");
+        const videoLoader = document.getElementById("videoLoader");
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null; // New: Store last watched lecture details
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
 
         // Navigation
         const pages = {
@@ -1104,17 +1151,17 @@
                     player = null;
                 }
 
-                if (window.hlsInstance) {
-                    window.hlsInstance.destroy();
-                    window.hlsInstance = null;
+                if (window.currentHls) {
+                    window.currentHls.destroy();
+                    window.currentHls = null;
                 }
 
-                if (window.progressInterval) {
-                    clearInterval(window.progressInterval);
-                    window.progressInterval = null;
+                if (window.currentSaveInterval) {
+                    clearInterval(window.currentSaveInterval);
+                    window.currentSaveInterval = null;
                 }
 
-                playerContainer.innerHTML = "";
+                playerContainer.innerHTML = ""; // Clear player container
                 videoLoader.style.display = 'none'; // Ensure loader is hidden
             }
 
@@ -1127,9 +1174,9 @@
         const searchBtn = document.getElementById("searchButton");
         let teachers = [];
         let currentTeacher = null;
-        let currentClassIndex = 0;
-        let currentLectureIndex = 0;
-        let currentLectureLink = "";
+        let currentClassIndex = 0; // Keep track of current class index
+        let currentLectureIndex = 0; // Keep track of current lecture index
+        let currentLectureLink = ""; // Keep track of current lecture URL
 
         // Categories data
         const categories = {
@@ -1220,12 +1267,22 @@
                 .map((cls, ci) => {
                     const lectures = cls.lectures
                         .map((lec, li) => {
-                            // The progress is not visually displayed here, but tracked for playback
+                            // Determine if lecture is completed or in progress for visual feedback
+                            const progressPercent = lectureProgress[lec.url] || 0;
+                            let progressClass = '';
+                            if (progressPercent >= 95) { // Consider 95% or more as completed
+                                progressClass = 'completed';
+                            } else if (progressPercent > 0) {
+                                progressClass = 'in-progress';
+                            }
+
                             return `
-                                <div class="lecture-item" 
+                                <div class="lecture-item ${progressClass}" 
                                     onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
+                                    ${progressPercent > 0 && progressPercent < 95 ? `<div class="lecture-progress-bar" style="width: ${progressPercent}%;"></div>` : ''}
+                                    ${progressPercent >= 95 ? '<span style="margin-right: auto; color: var(--success); font-size: 0.9em; margin-left: 10px;">✅ مكتمل</span>' : ''}
                                 </div>
                             `;
                         })
@@ -1257,21 +1314,29 @@
             lucide.createIcons();
         };
 
-        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
+        // Helper function for unique key generation (from Academy Plus)
+        function generateUniqueKey(input) {
+            return 'lecture-' + Array.from(input).reduce((acc, char) => {
+                return ((acc << 5) - acc) + char.charCodeAt(0);
+            }, 0);
+        }
+
+        // The integrated playLecture function (from Academy Plus's playVideo)
+        window.playLecture = (ci, li, url, title, description, teacherNameParam, teacherIdParam) => {
             // Clean up any previous player instances
             if (player) {
                 player.destroy();
                 player = null;
             }
 
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
+            if (window.currentHls) {
+                window.currentHls.destroy();
+                window.currentHls = null;
             }
 
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
+            if (window.currentSaveInterval) {
+                clearInterval(window.currentSaveInterval);
+                window.currentSaveInterval = null;
             }
 
             // Clear player container and hide loader initially
@@ -1279,9 +1344,11 @@
             videoLoader.style.display = 'none';
 
             // Set current lecture details for navigation and display
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
+            currentClassIndex = ci;
+            currentLectureIndex = li;
+            currentLectureLink = url;
             videoTitle.textContent = title;
-            videoDescription.textContent = desc;
+            videoDescription.textContent = description;
             document.getElementById("videoDate").textContent = "15/10/2026"; // Static date as per original code
 
             // Save last watched lecture details
@@ -1292,11 +1359,11 @@
                 lectureIndex: li,
                 lectureTitle: title,
                 lectureUrl: url,
-                lectureDescription: desc
+                lectureDescription: description
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
-            // Support for iframe videos via proxy
+            // Support for iframe videos via proxy (from Edison's original code)
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 videoLoader.style.display = 'flex'; // Show loader
 
@@ -1329,10 +1396,10 @@
 
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            const uniqueKey = url; // Using URL directly as unique key for progress tracking
+            const uniqueKey = generateUniqueKey(url); // Use uniqueKey for progress
             const durationKey = `${uniqueKey}-duration`;
 
-            // Plyr initialization with desired controls and settings from the second code
+            // Plyr initialization with desired controls and settings
             player = new Plyr("#player", {
                 controls: [
                     "play-large",
@@ -1349,47 +1416,52 @@
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            // Variables for retry logic (from first code)
+            // Variables for retry logic (from Academy Plus)
             const tryReferers = [null, "https://eduiraq.my", "https://abwaab.com/"];
             let tried = 0;
             let success = false;
 
-            // Function to set up metadata and progress saving (adapted from first code)
+            // Function to set up metadata and progress saving (adapted from Academy Plus to Edison's progress format)
             function setupMetadata() {
-                player.on("loadedmetadata", () => { // Use Plyr event
+                player.on("loadedmetadata", () => {
                     const duration = player.duration;
                     if (!isNaN(duration) && duration > 0) {
-                        localStorage.setItem(durationKey, duration.toFixed(1));
+                        localStorage.setItem(durationKey, duration.toFixed(1)); // Store total duration
                     }
 
-                    // Load saved progress
-                    const savedProgressPercent = lectureProgress[url];
-                    if (savedProgressPercent !== undefined && !isNaN(savedProgressPercent) && savedProgressPercent > 0) {
-                        const savedDuration = parseFloat(localStorage.getItem(durationKey));
-                        if (!isNaN(savedDuration) && savedDuration > 0) {
-                            player.currentTime = (savedProgressPercent / 100) * savedDuration;
-                        }
+                    // Load saved progress (percentage) and set currentTime
+                    const savedProgressPercent = lectureProgress[url]; // This is a percentage (0-100)
+                    const savedDuration = parseFloat(localStorage.getItem(durationKey));
+
+                    if (savedProgressPercent !== undefined && !isNaN(savedProgressPercent) && savedDuration > 0) {
+                        player.currentTime = (savedProgressPercent / 100) * savedDuration;
+                    } else {
+                        player.currentTime = 0; // Start from beginning if no progress or invalid
                     }
                 });
 
-                // Save progress every 2 seconds (from first code, adapted to Plyr)
-                window.progressInterval = setInterval(() => {
+                // Save progress every 2 seconds (adapted for Plyr and Edison's progress format)
+                window.currentSaveInterval = setInterval(() => {
                     if (!player.paused && !player.ended && player.duration > 0) {
                         const progress = (player.currentTime / player.duration) * 100;
-                        lectureProgress[url] = progress;
+                        lectureProgress[url] = progress; // Store as percentage
                         localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
                     }
                 }, 2000);
 
-                // Mark as completed on end (from first code)
-                player.on("ended", () => { // Use Plyr event
-                    clearInterval(window.progressInterval);
+                // Mark as completed on end (adapted for Plyr and Edison's progress format)
+                player.on("ended", () => {
+                    clearInterval(window.currentSaveInterval);
                     lectureProgress[url] = 100; // Mark as 100% completed
                     localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                    // Re-render classes to show updated progress, if needed
+                    if (currentTeacher) { // Ensure currentTeacher is available
+                        renderClasses(currentTeacher.classes);
+                    }
                 });
             }
 
-            // Retry functions (from first code, adapted to use Plyr)
+            // Retry functions (from Academy Plus, adapted to use Plyr)
             function tryPlayHLS() {
                 if (success || tried >= tryReferers.length) {
                     console.error("HLS playback failed after all retries.");
@@ -1403,7 +1475,7 @@
                     : url;
 
                 const hls = new Hls();
-                window.hlsInstance = hls; // Store HLS instance globally for cleanup
+                window.currentHls = hls; // Store HLS instance globally for cleanup
                 hls.loadSource(proxiedUrl);
                 hls.attachMedia(videoElement);
 
@@ -1454,7 +1526,7 @@
                     sources: [
                         {
                             src: proxiedUrl,
-                            type: "video/mp4",
+                            type: isHLS ? "application/x-mpegURL" : "video/mp4", // Ensure correct type for HLS fallback
                         },
                     ],
                 };
@@ -1481,9 +1553,7 @@
                     tryPlayHLS();
                 } else {
                     // Fallback for HLS if Hls.js is not supported (e.g., Safari native HLS)
-                    // In this case, Plyr will try to play it directly.
-                    // We'll treat it like an MP4 for the retry logic.
-                    tryPlayMP4();
+                    tryPlayMP4(); // Use MP4 logic for direct playback/proxy fallback
                 }
             } else {
                 tryPlayMP4();
@@ -1491,6 +1561,50 @@
 
             navigate("video");
         };
+
+        // Functions for video page navigation (from Academy Plus concept)
+        function backToClassesFromVideo() {
+            // Clean up player and HLS instance
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+            if (window.currentHls) {
+                window.currentHls.destroy();
+                window.currentHls = null;
+            }
+            if (window.currentSaveInterval) {
+                clearInterval(window.currentSaveInterval);
+                window.currentSaveInterval = null;
+            }
+            playerContainer.innerHTML = ""; // Clear player container
+            videoLoader.style.display = 'none'; // Hide loader
+
+            navigate('classes'); // Go back to classes page
+            if (currentTeacher) { // Re-render classes to show updated progress
+                renderClasses(currentTeacher.classes);
+            }
+        }
+
+        function backToHomeFromVideo() {
+            // Clean up player and HLS instance
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+            if (window.currentHls) {
+                window.currentHls.destroy();
+                window.currentHls = null;
+            }
+            if (window.currentSaveInterval) {
+                clearInterval(window.currentSaveInterval);
+                window.currentSaveInterval = null;
+            }
+            playerContainer.innerHTML = ""; // Clear player container
+            videoLoader.style.display = 'none'; // Hide loader
+
+            navigate('home'); // Go back to home page
+        }
 
         /* ========= البحث ========= */
         function handleSearch() {
@@ -1556,15 +1670,14 @@
 
         // Telegram Modal Logic
         const telegramModal = document.getElementById("telegramModal");
-        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn"); // Changed ID
+        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
 
         function showTelegramModal() {
             const hasSubscribed = localStorage.getItem("telegramSubscribed");
             if (!hasSubscribed) {
                 telegramModal.classList.add("show");
-                lucide.createIcons(); // Re-render Lucide icons for new elements
+                lucide.createIcons();
             } else {
-                // If Telegram modal is not shown, try to show continue watching modal
                 showContinueWatchingModal();
             }
         }
@@ -1573,26 +1686,23 @@
             telegramModal.classList.remove("show");
         }
 
-        // Event listener for "Choose now to continue" button
         continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal(); // Show continue watching modal after dismissing Telegram modal
+            showContinueWatchingModal();
         });
 
-        // Event listener for the Telegram button itself (to also hide the modal if clicked)
         document.querySelector(".btn-telegram").addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true"); // Assume they will subscribe
-            // The link itself will handle navigation to Telegram
+            localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal(); // Show continue watching modal after clicking Telegram link
+            showContinueWatchingModal();
         });
 
         // Continue Watching Modal Logic
         const continueWatchingModal = document.getElementById("continueWatchingModal");
         const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
         const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueNowBtn = document.getElementById("continueNowBtn"); // Reference for the new button
+        const continueNowBtn = document.getElementById("continueNowBtn");
 
         function showContinueWatchingModal() {
             if (lastWatched) {
@@ -1607,15 +1717,11 @@
             continueWatchingModal.classList.remove("show");
         }
 
-        // Event listener for the new "أكمل الآن" button
         continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            // Load the teacher data first to ensure currentTeacher is set
-            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
             const categoryKeys = Object.keys(categories);
             let foundTeacher = false;
 
-            // Iterate through categories to find the teacher
             for (const categoryId of categoryKeys) {
                 const category = categories[categoryId];
                 fetch(category.endpoint, {
@@ -1628,8 +1734,7 @@
                 .then(data => {
                     const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
                     if (teacher) {
-                        currentTeacher = teacher; // Set currentTeacher
-                        // Now play the lecture
+                        currentTeacher = teacher;
                         playLecture(
                             lastWatched.classIndex,
                             lastWatched.lectureIndex,
@@ -1644,16 +1749,15 @@
                 })
                 .catch(error => console.error("Error loading teacher data:", error));
 
-                if (foundTeacher) break; // Stop searching once teacher is found
+                if (foundTeacher) break;
             }
         });
 
-        // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
         window.addEventListener("load", () => {
-            setTimeout(showTelegramModal, 1000); // Show after 1 second
+            setTimeout(showTelegramModal, 1000);
         });
 
-        // Initialize
+        // Initialize Lucide icons
         lucide.createIcons();
     </script>
 </body>
