@@ -1220,7 +1220,7 @@
                 .map((cls, ci) => {
                     const lectures = cls.lectures
                         .map((lec, li) => {
-                            // const progress = lectureProgress[lec.url] || 0; // Not currently used for display
+                            // The progress is not visually displayed here, but tracked for playback
                             return `
                                 <div class="lecture-item" 
                                     onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
@@ -1278,14 +1278,10 @@
             playerContainer.innerHTML = "";
             videoLoader.style.display = 'none';
 
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [
-                ci,
-                li,
-                url,
-            ];
+            // Set current lecture details for navigation and display
+            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
-
             document.getElementById("videoDate").textContent = "15/10/2026"; // Static date as per original code
 
             // Save last watched lecture details
@@ -1299,20 +1295,6 @@
                 lectureDescription: desc
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
-
-            // Check if the URL should be played directly without a proxy
-            const directPlayDomains = [
-                "https://9bf9f797be0a4677a8-akamai-cdn.com",
-                "https://vidcdn.akamai-cdn-delivery.com"
-            ];
-            
-            let useProxy = true;
-            for (const domain of directPlayDomains) {
-                if (url.startsWith(domain)) {
-                    useProxy = false;
-                    break;
-                }
-            }
 
             // Support for iframe videos via proxy
             if (url.includes("iframe.mediadelivery.net/embed/")) {
@@ -1335,31 +1317,22 @@
                     </div>
                 `;
                 playerContainer.innerHTML = iframeHtml;
-
                 navigate("video");
                 return;
             }
-            
-            // Support for .m3u8 videos via proxy or direct based on domain
+
+            // For HLS/MP4 videos, set up the video element and Plyr
             playerContainer.innerHTML = `
                 <video id="player" playsinline controls></video>
             `;
-            lucide.createIcons();
-            
+            lucide.createIcons(); // Re-create icons if they were part of the player controls
+
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com"; // Keep referer for proxy if needed
+            const uniqueKey = url; // Using URL directly as unique key for progress tracking
+            const durationKey = `${uniqueKey}-duration`;
 
-            // Determine the final URL for the player
-            const finalVideoUrl = useProxy && isHLS
-                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
-                : url;
-
-            const savedTime = lectureProgress[url]
-                ? (lectureProgress[url] / 100) * (player?.duration || 0)
-                : 0;
-
-            // Create new Plyr instance
+            // Plyr initialization with desired controls and settings from the second code
             player = new Plyr("#player", {
                 controls: [
                     "play-large",
@@ -1376,71 +1349,146 @@
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            // Track progress
-            window.progressInterval = setInterval(() => {
-                if (player && player.duration > 0) {
-                    const progress = (player.currentTime / player.duration) * 100;
-                    lectureProgress[url] = progress;
-                    localStorage.setItem(
-                        "lectureProgress",
-                        JSON.stringify(lectureProgress)
-                    );
-                }
-            }, 5000);
+            // Variables for retry logic (from first code)
+            const tryReferers = [null, "https://eduiraq.my", "https://abwaab.com/"];
+            let tried = 0;
+            let success = false;
 
-            function tryPlay() {
-                if (isHLS && Hls.isSupported()) {
-                    const hls = new Hls();
-                    window.hlsInstance = hls;
-                    hls.attachMedia(videoElement);
-                    hls.loadSource(finalVideoUrl); // Use finalVideoUrl here
+            // Function to set up metadata and progress saving (adapted from first code)
+            function setupMetadata() {
+                player.on("loadedmetadata", () => { // Use Plyr event
+                    const duration = player.duration;
+                    if (!isNaN(duration) && duration > 0) {
+                        localStorage.setItem(durationKey, duration.toFixed(1));
+                    }
 
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player
-                            .play()
-                            .then(() => {
-                                if (savedTime > 0) player.currentTime = savedTime;
-                            })
-                            .catch(console.error);
-                    });
-
-                    hls.on(Hls.Events.ERROR, (_, data) => {
-                        if (data.fatal) {
-                            switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR:
-                                    hls.startLoad();
-                                    break;
-                                case Hls.ErrorTypes.MEDIA_ERROR:
-                                    hls.recoverMediaError();
-                                    break;
-                                default:
-                                    break;
-                            }
+                    // Load saved progress
+                    const savedProgressPercent = lectureProgress[url];
+                    if (savedProgressPercent !== undefined && !isNaN(savedProgressPercent) && savedProgressPercent > 0) {
+                        const savedDuration = parseFloat(localStorage.getItem(durationKey));
+                        if (!isNaN(savedDuration) && savedDuration > 0) {
+                            player.currentTime = (savedProgressPercent / 100) * savedDuration;
                         }
-                    });
-                } else {
-                    player.source = {
-                        type: "video",
-                        sources: [
-                            {
-                                src: finalVideoUrl, // Use finalVideoUrl here
-                                type: isHLS ? "application/x-mpegURL" : "video/mp4",
-                            },
-                        ],
-                    };
+                    }
+                });
 
-                    player
-                        .play()
-                        .then(() => {
-                            if (savedTime > 0) player.currentTime = savedTime;
-                        })
-                        .catch(() => {
-                            console.log("تعذر تشغيل الفيديو");
-                        });
-                }
+                // Save progress every 2 seconds (from first code, adapted to Plyr)
+                window.progressInterval = setInterval(() => {
+                    if (!player.paused && !player.ended && player.duration > 0) {
+                        const progress = (player.currentTime / player.duration) * 100;
+                        lectureProgress[url] = progress;
+                        localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                    }
+                }, 2000);
+
+                // Mark as completed on end (from first code)
+                player.on("ended", () => { // Use Plyr event
+                    clearInterval(window.progressInterval);
+                    lectureProgress[url] = 100; // Mark as 100% completed
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                });
             }
 
-            tryPlay();
+            // Retry functions (from first code, adapted to use Plyr)
+            function tryPlayHLS() {
+                if (success || tried >= tryReferers.length) {
+                    console.error("HLS playback failed after all retries.");
+                    // Optionally, display a user-friendly error message
+                    return;
+                }
+
+                const referer = tryReferers[tried];
+                const proxiedUrl = referer
+                    ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
+                    : url;
+
+                const hls = new Hls();
+                window.hlsInstance = hls; // Store HLS instance globally for cleanup
+                hls.loadSource(proxiedUrl);
+                hls.attachMedia(videoElement);
+
+                let failedAttempt = false; // Flag to prevent multiple error triggers for one attempt
+
+                hls.on(Hls.Events.ERROR, function (event, data) {
+                    if (!failedAttempt && data.fatal) {
+                        failedAttempt = true;
+                        console.warn(`HLS fatal error (attempt ${tried + 1}):`, data);
+                        hls.destroy();
+                        tried++;
+                        tryPlayHLS(); // Retry with next referer
+                    }
+                });
+
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    if (!failedAttempt) {
+                        success = true;
+                        setupMetadata(); // Setup metadata and progress tracking once manifest is parsed
+                        player.play().catch((e) => {
+                            console.error(`Plyr play failed after HLS manifest parsed (attempt ${tried + 1}):`, e);
+                            if (!success) { // Only retry if not already successful
+                                failedAttempt = true;
+                                tried++;
+                                hls.destroy();
+                                tryPlayHLS();
+                            }
+                        });
+                    }
+                });
+            }
+
+            function tryPlayMP4() {
+                if (success || tried >= tryReferers.length) {
+                    console.error("MP4 playback failed after all retries.");
+                    // Optionally, display a user-friendly error message
+                    return;
+                }
+
+                const referer = tryReferers[tried];
+                const proxiedUrl = referer
+                    ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
+                    : url;
+
+                // Set Plyr source
+                player.source = {
+                    type: "video",
+                    sources: [
+                        {
+                            src: proxiedUrl,
+                            type: "video/mp4",
+                        },
+                    ],
+                };
+
+                player.play().then(() => {
+                    success = true;
+                    setupMetadata(); // Setup metadata and progress tracking
+                }).catch((e) => {
+                    console.error(`Plyr play failed for MP4 (attempt ${tried + 1}):`, e);
+                    if (!success) { // Only retry if not already successful
+                        tried++;
+                        tryPlayMP4(); // Retry with next referer
+                    }
+                });
+            }
+
+            // Reset retry state
+            tried = 0;
+            success = false;
+
+            // Start playback based on video type
+            if (isHLS) {
+                if (Hls.isSupported()) {
+                    tryPlayHLS();
+                } else {
+                    // Fallback for HLS if Hls.js is not supported (e.g., Safari native HLS)
+                    // In this case, Plyr will try to play it directly.
+                    // We'll treat it like an MP4 for the retry logic.
+                    tryPlayMP4();
+                }
+            } else {
+                tryPlayMP4();
+            }
+
             navigate("video");
         };
 
