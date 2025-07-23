@@ -2058,112 +2058,112 @@
     },
     {
       "id": 1740855481322,
-      "name": "مؤيد سليم 2025",
-      "subject": "مدرس مادة الفيزياء",
-      "image": "https://i.imghippo.com/files/pQGl8570MXA.png",
-      "classes": [
+  "name": "مؤيد سليم 2025",
+  "subject": "مدرس مادة الفيزياء",
+  "image": "https://i.imghippo.com/files/pQGl8570MXA.png",
+  "classes": [
+    {
+      "name": "الفصل الاول: المتسعات",
+      "lectures": [
         {
-          "name": "الفصل الاول: المتسعات",
-          "lectures": [
-            {
-              "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9301b680-620f-4a5d-b175-6956b000842a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/68beab01-6bc6-4ee2-b883-cbddcf6ace9b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0a65ca56-d520-4196-a8c7-dfa5a6e258e8/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ff9f9a9c-46cb-4597-a164-c515adca510d/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/cce7d313-9b6b-4581-bc4c-00ca42fc7de8/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d3892586-3a70-4c31-800c-63d36b91a4d6/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/920b0140-bd0d-4f17-b4b3-a23054aa0503/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4f1488d1-e81e-4a52-97aa-5f243c769941/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f4ab5581-68b2-4561-a9a7-c548e9416706/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c2320ae5-265e-4c53-963d-cb7fbfa95980/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/e4d20c99-d8fa-4c07-acad-66c0e3003269/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/75366068-d94c-44cb-b0a8-3021f63fd080/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 13",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/1d627481-d3de-4c8b-93fe-a5e371e4b70b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 14",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/dfca6090-95ea-4fe0-acae-b10a1461e03e/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 15",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/47bf7c42-c438-4745-a52b-6bf38b7ffbb5/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 16",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/cd7eef84-398f-4aa7-9639-74d50008fdf1/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 17",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5c487980-ce3e-4f7b-80a4-fcd4042e5c4b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 18",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/c11ad341-ca22-42a9-8ac8-b36fd31271e2/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 19",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/214ff823-9a4d-4bf6-811f-bd3ed9bacbb3/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 20",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/6fb61b90-56d8-4ba0-8dbf-ea027ad96a7e/1080p/video.m3u8"
+          "title": "محاضرة 1",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/9301b680-620f-4a5d-b175-6956b000842a"
+        },
+        {
+          "title": "محاضرة 2",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/68beab01-6bc6-4ee2-b883-cbddcf6ace9b"
+        },
+        {
+          "title": "محاضرة 3",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0a65ca56-d520-4196-a8c7-dfa5a6e258e8"
+        },
+        {
+          "title": "محاضرة 4",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ff9f9a9c-46cb-4597-a164-c515adca510d"
+        },
+        {
+          "title": "محاضرة 5",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/cce7d313-9b6b-4581-bc4c-00ca42fc7de8"
+        },
+        {
+          "title": "محاضرة 6",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d3892586-3a70-4c31-800c-63d36b91a4d6"
+        },
+        {
+          "title": "محاضرة 7",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/920b0140-bd0d-4f17-b4b3-a23054aa0503"
+        },
+        {
+          "title": "محاضرة 8",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4f1488d1-e81e-4a52-97aa-5f243c769941"
+        },
+        {
+          "title": "محاضرة 9",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f4ab5581-68b2-4561-a9a7-c548e9416706"
+        },
+        {
+          "title": "محاضرة 10",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/c2320ae5-265e-4c53-963d-cb7fbfa95980"
+        },
+        {
+          "title": "محاضرة 11",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/e4d20c99-d8fa-4c07-acad-66c0e3003269"
+        },
+        {
+          "title": "محاضرة 12",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/75366068-d94c-44cb-b0a8-3021f63fd080"
+        },
+        {
+          "title": "محاضرة 13",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1d627481-d3de-4c8b-93fe-a5e371e4b70b"
+        },
+        {
+          "title": "محاضرة 14",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/dfca6090-95ea-4fe0-acae-b10a1461e03e"
+        },
+        {
+          "title": "محاضرة 15",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/47bf7c42-c438-4745-a52b-6bf38b7ffbb5"
+        },
+        {
+          "title": "محاضرة 16",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/cd7eef84-398f-4aa7-9639-74d50008fdf1"
+        },
+        {
+          "title": "محاضرة 17",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5c487980-ce3e-4f7b-80a4-fcd4042e5c4b"
+        },
+        {
+          "title": "محاضرة 18",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/c11ad341-ca22-42a9-8ac8-b36fd31271e2"
+        },
+        {
+          "title": "محاضرة 19",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/214ff823-9a4d-4bf6-811f-bd3ed9bacbb3"
+        },
+        {
+          "title": "محاضرة 20",
+          "description": "وصف المحاضرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6fb61b90-56d8-4ba0-8dbf-ea027ad96a7e"
             },
             {
               "title": "محاضرة 21",
