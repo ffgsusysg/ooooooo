@@ -151,7 +151,7 @@
             border-bottom: 1px solid var(--border);
             box-shadow: var(--shadow-md);
             flex-wrap: wrap;
-            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, display 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .site-title {
@@ -506,22 +506,40 @@
             transition: color 0.3s ease;
         }
 
+        /* MODIFIED: Centered Video Page Layout */
+        #videoPage.page.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Aligns content vertically */
+            align-items: center;     /* Aligns content horizontally */
+            min-height: calc(100vh - 85px); /* Fill viewport below header. Adjust 85px if header height changes. */
+            padding: 2rem;
+            padding-bottom: 10vh; /* Pushes the content up from perfect center for "a little bit up" effect */
+        }
+
         .video-page {
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            max-width: 1000px;
+            width: 100%; /* Make it responsive */
+            margin: 0; /* Centering is handled by parent */
+            padding: 0;
         }
 
         .video-container {
             position: relative;
             width: 100%;
             background: #000;
+            border-radius: var(--radius);
             overflow: hidden;
             aspect-ratio: 16/9;
             box-shadow: var(--shadow-lg);
         }
 
         .plyr {
+            border-radius: var(--radius);
+            overflow: hidden;
             width: 100%;
             height: 100%;
         }
@@ -755,35 +773,6 @@
             filter: brightness(1.05);
         }
 
-        /* Full Screen Video Mode (Restored) */
-        body.video-mode-active header {
-            display: none;
-        }
-
-        body.video-mode-active #videoPage.page.active {
-            padding: 0;
-            max-width: none;
-        }
-
-        body.video-mode-active .video-page {
-            padding: 0;
-            gap: 0;
-            max-width: none;
-        }
-
-        body.video-mode-active .video-container {
-            border-radius: 0;
-            width: 100%;
-            margin: 0;
-            box-shadow: none;
-        }
-
-        body.video-mode-active .video-details {
-            margin: 2rem auto;
-            max-width: 1000px; /* Centered container for details */
-            width: calc(100% - 4rem); /* With some padding on small screens */
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -804,6 +793,10 @@
             .teacher-img {
                 width: 100px;
                 height: 100px;
+            }
+
+            .video-details {
+                padding: 1.2rem;
             }
             
             .lecture-item {
@@ -1111,13 +1104,6 @@
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            // Add/remove class for full-width video mode
-            if (page === "video") {
-                document.body.classList.add("video-mode-active");
-            } else {
-                document.body.classList.remove("video-mode-active");
-            }
-            
             // Clean up when leaving video page
             if (page !== "video") {
                 if (player) {
@@ -1333,7 +1319,7 @@
                             src="${iframeUrl}" 
                             allowfullscreen 
                             loading="eager"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
                             referrerpolicy="no-referrer-when-downgrade"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                             onload="document.getElementById('videoLoader').style.display='none';"
