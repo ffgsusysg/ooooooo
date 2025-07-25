@@ -352,14 +352,12 @@
         }
         
         .card-main-content {
-            transform: translateY(calc(100% - 120px)); /* Start with only top part visible */
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
         }
         
-        .category-card:hover .card-main-content {
-            transform: translateY(0);
-        }
-
         .category-card .card-icon {
             width: 50px;
             height: 50px;
@@ -393,6 +391,13 @@
             text-decoration: none;
             align-self: flex-start; /* Align button to the start (right in RTL) */
             transition: all 0.3s ease;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Initially moved down */
+        }
+        
+        .category-card:hover .card-button {
+            opacity: 1; /* Show on hover */
+            transform: translateY(0); /* Animate to original position */
         }
 
         .category-card .card-button:hover {
@@ -420,7 +425,7 @@
         }
         /* --- END: NEW CATEGORY CARD DESIGN V3 --- */
         
-        /* --- START: ENHANCED TEACHER CARDS --- */
+        /* --- START: REVERTED PROFESSIONAL TEACHER CARDS --- */
         .teachers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -541,7 +546,7 @@
             color: var(--accent-2);
             letter-spacing: 0.5px;
         }
-        /* --- END: ENHANCED TEACHER CARDS --- */
+        /* --- END: REVERTED PROFESSIONAL TEACHER CARDS --- */
 
         .back-button {
             margin-bottom: 1.5rem;
@@ -683,7 +688,7 @@
 
         .video-info {
             text-align: right;
-            padding: 1rem 0;a
+            padding: 1rem 0;
         }
 
         .video-meta {
