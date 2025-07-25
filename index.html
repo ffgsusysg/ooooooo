@@ -656,32 +656,30 @@
             transition: color 0.3s ease;
         }
 
-        .video-page {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 1rem;
+        /* === VIDEO PAGE: FULL-WIDTH VIDEO STYLES === */
+        #videoPage.page.active {
+            padding: 0; /* Remove padding for full-width video */
+            max-width: none; /* Override max-width for this page */
         }
 
-        .video-container {
+        .video-container-fullwidth {
             position: relative;
             width: 100%;
             background: #000;
-            border-radius: var(--radius);
             overflow: hidden;
-            aspect-ratio: 16/9;
-            box-shadow: var(--shadow-lg); /* Prominent shadow for video */
+            aspect-ratio: 16/9; /* Maintain aspect ratio */
+        }
+        
+        .video-container-fullwidth .plyr {
+             border-radius: 0;
         }
 
-        .plyr {
-            border-radius: var(--radius);
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
+        .video-details-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-
+        
         .video-details {
             background: var(--card);
             padding: 1.5rem;
@@ -737,7 +735,6 @@
             justify-content: center;
             align-items: center;
             z-index: 10;
-            border-radius: var(--radius);
             transition: opacity 0.3s ease;
         }
 
@@ -945,15 +942,11 @@
                 width: 100px;
                 height: 100px;
             }
+            .video-details-wrapper {
+                padding: 1.5rem 1rem;
+            }
             .video-details {
                 padding: 1.2rem;
-            }
-            .video-container {
-                margin: 0 -1rem;
-                width: calc(100% + 2rem);
-            }
-            .lecture-item {
-                padding-left: 2.5rem;
             }
             .video-meta {
                 flex-direction: column;
@@ -1001,6 +994,9 @@
             .btn-continue-now { /* Apply responsive styles to the new button */
                 padding: 0.9rem 1.5rem;
                 font-size: 1rem;
+            }
+            .video-details-wrapper {
+                padding: 1rem;
             }
         }
     </style>
@@ -1186,16 +1182,17 @@
         <div id="classesList" class="classes-list"></div>
     </div>
 
+    <!-- === UPDATED VIDEO PAGE STRUCTURE === -->
     <div id="videoPage" class="page">
-        <div class="video-page">
-            <div id="videoContainer" class="video-container">
-                <div id="playerContainer"></div>
-                <!-- Loader for iframe videos -->
-                <div id="videoLoader" class="video-loader" style="display: none;">
-                    <div class="loader-spinner"></div>
-                </div>
+        <div id="videoContainer" class="video-container-fullwidth">
+            <div id="playerContainer"></div>
+            <!-- Loader for iframe videos -->
+            <div id="videoLoader" class="video-loader" style="display: none;">
+                <div class="loader-spinner"></div>
             </div>
-            
+        </div>
+        
+        <div class="video-details-wrapper">
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
@@ -1215,6 +1212,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -1505,12 +1503,12 @@
                 const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
 
                 const iframeHtml = `
-                    <div style="position: relative; width: 100%; padding-top: 56.25%;">
+                    <div style="position: relative; width: 100%; height: 100%;">
                         <iframe 
                             src="${iframeUrl}" 
                             allowfullscreen 
                             loading="eager"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
                             referrerpolicy="no-referrer-when-downgrade"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                             onload="document.getElementById('videoLoader').style.display='none';"
