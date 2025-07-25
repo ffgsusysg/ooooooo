@@ -29,459 +29,824 @@
             --primary-3: #1d4ed8;
             --accent: #facc15; /* A more golden yellow */
             --accent-2: #eab308;
-            --radius: 16px; /* Slightly larger border radius */
+            --radius: 14px; /* Slightly larger border radius */
             --bg: #f8fafc; /* Lighter background */
-            --bg-glass: rgba(255, 255, 255, 0.95);
-            --text: #1f2937;
+            --bg-glass: rgba(255, 255, 255, 0.95); /* More opaque glass effect */
+            --text: #1f2937; /* Darker text for better contrast */
             --card: #ffffff;
             --border: #e2e8f0;
-            --hover: rgba(0, 0, 0, 0.06);
+            --hover: rgba(0, 0, 0, 0.06); /* Slightly more visible hover */
             --success: #22c55e;
             --warning: #facc15;
             --error: #ef4444;
+            --telegram-blue: #0088cc;
+            --telegram-light: #2aabee;
+            --telegram-text: #ffffff;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-            /* Category Card Colors */
-            --cat-2026-bg-start: #1e3a8a;
-            --cat-2026-bg-end: #3b82f6;
-            --cat-2026-icon: #bfdbfe;
-            --cat-2025-bg-start: #f59e0b;
-            --cat-2025-bg-end: #d97706;
-            --cat-2025-icon: #fef3c7;
-            --cat-dist-bg-start: #065f46;
-            --cat-dist-bg-end: #10b981;
-            --cat-dist-icon: #a7f3d0;
-            --cat-lit-bg-start: #6d28d9;
-            --cat-lit-bg-end: #8b5cf6;
-            --cat-lit-icon: #ddd6fe;
-
-            /* Modal colors */
-            --modal-bg-start: #6a11cb;
-            --modal-bg-end: #2575fc;
-            --modal-text-color: #ffffff;
-            --modal-button-gradient-start: #00c6ff;
-            --modal-button-gradient-end: #0072ff;
+            /* New vibrant colors for modal */
+            --modal-bg-start: #6a11cb; /* Purple-blue gradient start */
+            --modal-bg-end: #2575fc; /* Blue-purple gradient end */
+            --modal-text-color: #ffffff; /* White text for contrast */
+            --modal-button-gradient-start: #00c6ff; /* Light blue */
+            --modal-button-gradient-end: #0072ff; /* Deeper blue */
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
 
-            /* Continue watching modal colors */
-            --continue-modal-bg-start: #4facfe;
-            --continue-modal-bg-end: #00f2fe;
-            --continue-modal-text: #ffffff;
-            --continue-button-bg: #00c896;
-            --continue-button-hover: #00a87a;
-            --continue-outline-button-border: #00c896;
-            --continue-outline-button-text: #00c896;
-            --highlight-color: #ffeb3b;
-            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
+            /* New colors for continue watching modal (Cute Pink) */
+            --continue-modal-bg-start: #4facfe; /* Gradient start */
+            --continue-modal-bg-end: #00f2fe; /* Gradient end */
+            --continue-modal-text: #ffffff; /* White text */
+            --continue-button-bg: #00c896; /* Green button */
+            --continue-button-hover: #00a87a; /* Darker green for hover */
+            --continue-outline-button-border: #00c896; /* Green border */
+            --continue-outline-button-text: #00c896; /* Green text */
+            --highlight-color: #ffeb3b; /* Bright yellow for highlight */
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
         }
 
         /* Dark theme adjustments */
         [data-theme="dark"] {
-            --bg: #1e293b;
+            --bg: #1e293b; /* Darker background */
             --bg-glass: rgba(30, 41, 59, 0.95);
             --text: #f1f5f9;
-            --card: #334155;
+            --card: #334155; /* Darker card background */
             --border: #475569;
             --hover: rgba(255, 255, 255, 0.1);
-            --primary-1: #60a5fa;
+            --primary-1: #60a5fa; /* Lighter primary for dark theme */
             --primary-2: #3b82f6;
             --primary-3: #2563eb;
-            --accent: #fcd34d;
+            --accent: #fcd34d; /* Lighter accent for dark theme */
             --accent-2: #fbbf24;
 
-            /* Dark Theme Category Card Overrides */
-            --cat-2026-bg-start: #3b82f6;
-            --cat-2026-bg-end: #60a5fa;
-            --cat-2025-bg-start: #f59e0b;
-            --cat-2025-bg-end: #fbbf24;
-            --cat-dist-bg-start: #10b981;
-            --cat-dist-bg-end: #34d399;
-            --cat-lit-bg-start: #8b5cf6;
-            --cat-lit-bg-end: #a78bfa;
-
             /* Dark theme modal colors */
-            --modal-bg-start: #1a2a6c;
-            --modal-bg-end: #004d99;
-            --modal-text-color: #e0e7ff;
+            --modal-bg-start: #1a2a6c; /* Darker blue gradient start */
+            --modal-bg-end: #004d99; /* Darker blue gradient end */
+            --modal-text-color: #e0e7ff; /* Lighter text for dark contrast */
             --modal-button-gradient-start: #007bff;
             --modal-button-gradient-end: #0056b3;
+            --modal-button-text: #ffffff;
             --modal-outline-button-border: #9ec5ff;
             --modal-outline-button-text: #9ec5ff;
 
             /* Dark theme continue watching modal colors */
-            --continue-modal-bg-start: #004d99;
-            --continue-modal-bg-end: #1a2a6c;
-            --continue-modal-text: #e0e7ff;
-            --continue-button-bg: #007a5e;
-            --continue-button-hover: #005a41;
+            --continue-modal-bg-start: #004d99; /* Darker blue */
+            --continue-modal-bg-end: #1a2a6c; /* Even darker blue */
+            --continue-modal-text: #e0e7ff; /* Light text */
+            --continue-button-bg: #007a5e; /* Darker green */
+            --continue-button-hover: #005a41; /* Even darker green */
             --continue-outline-button-border: #007a5e;
             --continue-outline-button-text: #007a5e;
+            --highlight-color: #ffeb3b; /* Keep bright yellow for highlight */
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
         }
 
         /* General styles */
-        *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: "Cairo", "IBM Plex Sans Arabic", "Tajawal", sans-serif;
-            background: var(--bg); color: var(--text); line-height: 1.6;
-            min-height: 100vh; overflow-y: auto;
-            transition: background 0.3s ease, color 0.3s ease;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-y: auto;
+            transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
         }
-        img { max-width: 100%; display: block; }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
 
         /* Header styles */
         header {
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1rem 1.6rem; background: var(--bg-glass);
-            backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.6rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow-md); flex-wrap: wrap;
+            box-shadow: var(--shadow-md); /* Enhanced shadow */
+            flex-wrap: wrap;
             transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
         .site-title {
-            font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700;
-            color: var(--primary-1); display: flex; align-items: center;
-            gap: 0.5rem; flex: 1; min-width: 200px;
-            cursor: pointer; transition: color 0.3s ease;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 200px;
+            cursor: pointer; /* Indicate clickable */
+            transition: color 0.3s ease;
         }
+
         .site-logo {
-            width: 40px; height: 40px; background: var(--primary-1);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; color: white; font-weight: bold;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
             box-shadow: var(--shadow-sm);
         }
-        .header-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-        .search-container {
-            flex: 1; max-width: 650px; display: flex;
-            gap: 0.5rem; position: relative; min-width: 250px; margin-top: 0.5rem;
+
+        .header-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
+
+        .search-container {
+            flex: 1;
+            max-width: 650px;
+            display: flex;
+            gap: 0.5rem;
+            position: relative;
+            min-width: 250px;
+            margin-top: 0.5rem;
+        }
+
         .search-container input {
-            flex: 1; padding: 0.95rem 1rem 0.95rem 3rem; font-size: 1rem;
-            background: var(--card); color: var(--text);
-            border: 2px solid var(--border); border-radius: var(--radius);
+            flex: 1;
+            padding: 0.95rem 1rem 0.95rem 3rem;
+            font-size: 1rem;
+            background: var(--card);
+            color: var(--text);
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
             transition: border 0.25s, box-shadow 0.25s, background 0.3s ease, color 0.3s ease;
         }
+
         .search-container input:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3); /* Accent-based shadow */
         }
+
         .search-icon {
-            position: absolute; left: 1rem; top: 50%;
-            transform: translateY(-50%); color: var(--primary-1);
-            transition: color 0.3s ease; pointer-events: none;
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-1);
+            transition: color 0.3s ease;
         }
 
         /* Button styles */
         .btn {
-            display: inline-flex; align-items: center; gap: 0.45rem;
-            padding: 0.9rem 1.35rem; border-radius: var(--radius);
-            background: var(--primary-1); color: #fff; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.9rem 1.35rem;
+            border-radius: var(--radius);
+            background: var(--primary-1);
+            color: #fff;
+            font-weight: 600;
             transition: all 0.25s ease, background 0.3s ease, color 0.3s ease;
-            white-space: nowrap; box-shadow: var(--shadow-sm);
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
         }
+
         .btn:hover {
-            opacity: 0.9; transform: translateY(-2px);
+            opacity: 0.9;
+            transform: translateY(-2px); /* Subtle lift on hover */
             box-shadow: var(--shadow-md);
         }
+
         .btn-outline {
-            background: transparent; border: 2px solid var(--primary-1);
-            color: var(--primary-1); box-shadow: none;
+            background: transparent;
+            border: 2px solid var(--primary-1);
+            color: var(--primary-1);
+            box-shadow: none; /* No shadow for outline */
         }
+
         .btn-outline:hover {
-            background: var(--primary-1); color: #fff;
-            transform: translateY(-2px); box-shadow: var(--shadow-md);
+            background: var(--primary-1);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
+
         .btn-icon {
-            padding: 0.8rem; border-radius: 50%;
-            width: 42px; height: 42px; justify-content: center;
+            padding: 0.8rem;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            justify-content: center;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-2);
         }
 
         /* Page layout */
-        .page { display: none; padding: 2rem; max-width: 1300px; margin: 0 auto; }
-        .page.active { display: block; }
+        .page {
+            display: none;
+            padding: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
 
-        /* === NEW CATEGORY GRID STYLES === */
+        .page.active {
+            display: block;
+        }
+
+        /* Category grid */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem; margin-top: 1.5rem;
+            gap: 1.8rem;
+            margin-top: 1.5rem;
         }
+
         .category-card {
-            background: var(--card); border-radius: var(--radius);
-            border: 1px solid var(--border); overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: var(--shadow-md); cursor: pointer;
-            display: flex; flex-direction: column; text-align: center;
-            position: relative;
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
         }
-        .category-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); }
-        .category-icon-wrapper {
-            padding: 2.5rem 1.5rem; display: flex;
-            align-items: center; justify-content: center;
-            min-height: 160px; transition: background .3s ease;
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg); /* More prominent shadow on hover */
         }
-        .category-icon { width: 64px; height: 64px; stroke-width: 1.5; transition: transform 0.3s ease; }
-        .category-card:hover .category-icon { transform: scale(1.1) rotate(-5deg); }
-        
-        .category-card[data-category="year-2026"] .category-icon-wrapper { background: linear-gradient(145deg, var(--cat-2026-bg-start), var(--cat-2026-bg-end)); }
-        .category-card[data-category="year-2026"] .category-icon { color: var(--cat-2026-icon); }
-        
-        .category-card[data-category="year-2025"] .category-icon-wrapper { background: linear-gradient(145deg, var(--cat-2025-bg-start), var(--cat-2025-bg-end)); }
-        .category-card[data-category="year-2025"] .category-icon { color: var(--cat-2025-icon); }
 
-        .category-card[data-category="distinguished"] .category-icon-wrapper { background: linear-gradient(145deg, var(--cat-dist-bg-start), var(--cat-dist-bg-end)); }
-        .category-card[data-category="distinguished"] .category-icon { color: var(--cat-dist-icon); }
+        .category-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--border); /* Subtle separator */
+        }
 
-        .category-card[data-category="literary"] .category-icon-wrapper { background: linear-gradient(145deg, var(--cat-lit-bg-start), var(--cat-lit-bg-end)); }
-        .category-card[data-category="literary"] .category-icon { color: var(--cat-lit-icon); }
-        
         .category-content {
-            padding: 1.5rem; flex-grow: 1; display: flex;
-            flex-direction: column; justify-content: space-between;
+            padding: 1.5rem;
+            text-align: center;
         }
+
         .category-title {
-            font-size: 1.5rem; color: var(--text);
-            margin-bottom: 0.5rem; font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-1);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
         }
+
         .category-description {
-            color: var(--text); margin-bottom: 1.5rem;
-            opacity: 0.7; font-size: 0.95rem; line-height: 1.5;
+            color: var(--text); /* Use text color variable */
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            transition: color 0.3s ease;
         }
-        .category-card .btn {
-            margin-top: auto; background-color: transparent;
-            border: 2px solid var(--primary-1); color: var(--primary-1);
-        }
-        .category-card:hover .btn { background-color: var(--primary-1); color: #fff; }
 
         /* Teachers grid */
         .teachers-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.8rem; margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
         }
+
         .teacher-card {
-            background: var(--card); padding: 1.4rem 1.1rem;
-            border-radius: var(--radius); border: 1px solid var(--border);
-            text-align: center; cursor: pointer; position: relative;
+            background: var(--card);
+            padding: 1.4rem 1.1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            position: relative;
             overflow: hidden;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             box-shadow: var(--shadow-sm);
         }
-        .teacher-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .teacher-img {
-            width: 120px; height: 120px; border-radius: 50%;
-            object-fit: cover; margin: 0 auto 1rem;
-            border: 3px solid var(--accent); box-shadow: var(--shadow-sm);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-sm); /* Image shadow */
             transition: border-color 0.3s ease;
         }
-        .teacher-name {
-            font-size: 1.2rem; font-weight: 700;
-            margin: 0.4rem 0 0.15rem; color: var(--primary-1);
-            transition: color 0.3s ease;
-        }
-        .teacher-subject {
-            color: var(--text); font-size: 0.92rem;
-            margin-bottom: 0.5rem; opacity: 0.7;
-            transition: color 0.3s ease;
-        }
-        .teacher-rating { display: flex; justify-content: center; gap: 0.2rem; margin: 0.5rem 0; }
-        .teacher-rating .star { color: #ddd; font-size: 1.1rem; }
-        .teacher-rating .star.filled { color: var(--warning); }
 
-        /* Teacher/Video page styles */
-        .back-button { margin-bottom: 1.5rem; background: var(--primary-2); box-shadow: var(--shadow-sm); }
+        .teacher-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0.4rem 0 0.15rem;
+            color: var(--primary-1);
+            transition: color 0.3s ease;
+        }
+
+        .teacher-subject {
+            color: var(--text);
+            font-size: 0.92rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+            transition: color 0.3s ease;
+        }
+
+        .teacher-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .teacher-rating .star {
+            color: #ddd;
+            font-size: 1.1rem;
+        }
+
+        .teacher-rating .star.filled {
+            color: var(--warning);
+        }
+
+        .back-button {
+            margin-bottom: 1.5rem;
+            background: var(--primary-2);
+            box-shadow: var(--shadow-sm);
+        }
+
         .teacher-info {
-            display: flex; align-items: center; gap: 1.4rem;
-            background: var(--card); padding: 1.6rem;
-            border-radius: var(--radius); border: 1px solid var(--border);
-            flex-wrap: wrap; margin-bottom: 1.5rem; box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            background: var(--card);
+            padding: 1.6rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
+
         .teacher-img-lg {
-            width: 120px; height: 120px; border-radius: 50%;
-            object-fit: cover; border: 4px solid var(--accent);
-            box-shadow: var(--shadow-md); transition: border-color 0.3s ease;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: var(--shadow-md);
+            transition: border-color 0.3s ease;
         }
-        .classes-list { display: grid; gap: 1.4rem; }
+
+        .classes-list {
+            display: grid;
+            gap: 1.4rem;
+        }
+
         .class-card {
-            background: var(--card); border-radius: var(--radius);
-            border: 1px solid var(--border); overflow: hidden;
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
+
         .class-header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.1rem 1.3rem; cursor: pointer; user-select: none;
-            background: var(--bg-glass); border-right: 4px solid var(--primary-2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.3rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--bg-glass);
+            backdrop-filter: blur(8px);
+            border-right: 4px solid var(--primary-2);
             transition: background 0.25s ease, border-color 0.3s ease;
         }
-        .class-header:hover { background: var(--hover); }
-        .class-header span { transition: transform 0.25s ease; }
-        .class-header.open span { transform: rotate(180deg); }
-        .lectures-list { display: none; flex-direction: column; gap: 0.7rem; padding: 1.1rem 1.5rem 0.9rem 0; }
-        .lecture-item {
-            position: relative; padding: 0.9rem 1.1rem 0.9rem 3.5rem;
-            background: var(--hover); border-right: 3px solid var(--primary-3);
-            border-radius: var(--radius); cursor: pointer;
-            transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
-            display: flex; justify-content: space-between; align-items: center;
+
+        .class-header:hover {
+            background: var(--hover);
         }
-        .lecture-item:hover { background: rgba(0, 0, 0, 0.08); }
+
+        .class-header span {
+            transition: transform 0.25s ease;
+        }
+
+        .class-header.open span {
+            transform: rotate(180deg);
+        }
+
+        .lectures-list {
+            display: none;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 1.1rem 1.5rem 0.9rem 0;
+        }
+
+        .lecture-item {
+            position: relative;
+            padding: 0.9rem 1.1rem 0.9rem 3.5rem;
+            background: var(--hover);
+            border-right: 3px solid var(--primary-3);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lecture-item:hover {
+            background: rgba(0, 0, 0, 0.08); /* Slightly darker hover */
+        }
+
         .lecture-item i {
-            position: absolute; left: 12px; top: 50%;
-            transform: translateY(-50%); color: var(--primary-1);
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-1);
             transition: color 0.3s ease;
         }
 
-        /* === UPDATED VIDEO PAGE STYLES === */
         .video-page {
-            display: flex; flex-direction: column; gap: 2rem;
-            max-width: 1200px; /* Increased for wider view */
-            margin: 0 auto; padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
         }
+
         .video-container {
-            position: relative; width: 100%; background: #000;
-            border-radius: var(--radius); overflow: hidden;
-            aspect-ratio: 16 / 9; box-shadow: var(--shadow-lg);
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: var(--radius);
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: var(--shadow-lg); /* Prominent shadow for video */
         }
-        .plyr { border-radius: var(--radius); overflow: hidden; width: 100%; height: 100%; }
+
+        .plyr {
+            border-radius: var(--radius);
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
         .video-details {
-            background: var(--card); padding: 1.5rem;
-            border-radius: var(--radius); border: 1px solid var(--border);
-            text-align: center; box-shadow: var(--shadow-md);
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
-        .video-info { text-align: right; padding: 1rem 0; }
-        .video-meta {
-            display: flex; justify-content: center; gap: 1.5rem;
-            margin-top: 1rem; opacity: 0.8; font-size: 0.9rem;
-            flex-wrap: wrap; color: var(--text);
+
+        .video-info {
+            text-align: right;
+            padding: 1rem 0;
         }
-        .video-meta span { display: flex; align-items: center; gap: 0.3rem; }
+
+        .video-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            color: var(--text);
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
 
         .section-title {
-            display: flex; align-items: center; gap: 0.5rem;
-            margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0 1rem;
+            padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--primary-1);
             color: var(--primary-1);
             transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        /* Video Loader */
+        /* Smart Loader for iframe videos */
         .video-loader {
-            position: absolute; top: 0; left: 0;
-            width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10; border-radius: var(--radius); transition: opacity 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: var(--radius);
+            transition: opacity 0.3s ease;
         }
+
         .loader-spinner {
-            border: 6px solid #f3f3f3; border-top: 6px solid var(--primary-1);
-            border-radius: 50%; width: 60px; height: 60px;
+            border: 6px solid #f3f3f3; /* Light grey */
+            border-top: 6px solid var(--primary-1); /* Blue */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Modal Styles */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Telegram Modal Styles */
         .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); display: flex;
-            justify-content: center; align-items: center; z-index: 2000;
-            opacity: 0; visibility: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000; /* Ensure it's on top of everything */
+            opacity: 0;
+            visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        .modal.show { opacity: 1; visibility: visible; }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .modal-content {
-            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end));
-            border-radius: var(--radius); padding: 2.5rem;
-            box-shadow: var(--shadow-lg); max-width: 550px;
-            width: 90%; text-align: center;
+            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end)); /* Attractive gradient background */
+            border-radius: var(--radius);
+            padding: 2.5rem; /* Increased padding */
+            box-shadow: var(--shadow-lg); /* More prominent shadow */
+            max-width: 550px; /* Slightly wider modal */
+            width: 90%;
+            text-align: center;
             transform: translateY(-20px);
             transition: transform 0.3s ease, background 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
         }
-        .modal.show .modal-content { transform: translateY(0); }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
         .modal-header {
-            margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent);
+            margin-bottom: 1.5rem; /* More space */
+            border-bottom: 2px solid var(--accent); /* Accent line, changed to accent color */
             padding-bottom: 1rem;
         }
+
         .modal-title {
-            font-size: 2rem; color: var(--modal-text-color);
-            display: flex; align-items: center; justify-content: center;
-            gap: 0.75rem; font-weight: 700;
+            font-size: 2rem; /* Larger title */
+            color: var(--modal-text-color); /* White text for contrast */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 700;
         }
+
         .modal-body p {
-            font-size: 1.2rem; color: var(--modal-text-color);
-            margin-bottom: 2.5rem; line-height: 1.8; font-weight: 500;
+            font-size: 1.2rem; /* Larger font size for message */
+            color: var(--modal-text-color); /* White text for contrast */
+            margin-bottom: 2.5rem; /* More space below description */
+            line-height: 1.8;
+            font-weight: 500;
         }
+
         .btn-telegram {
-            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end));
-            color: var(--modal-button-text); padding: 1.2rem 2.5rem;
-            font-size: 1.2rem; margin-bottom: 1.2rem; width: fit-content;
-            margin-left: auto; margin-right: auto; border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;
+            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end)); /* Vibrant gradient button */
+            color: var(--modal-button-text);
+            padding: 1.2rem 2.5rem; /* Larger button */
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem; /* More space below button */
+            width: fit-content; /* Adjust width to content */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            transition: all 0.3s ease;
         }
+
         .btn-telegram:hover {
-            transform: translateY(-5px) scale(1.02);
+            transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
+            filter: brightness(1.1); /* Slightly brighter on hover */
         }
+
         .btn-outline-telegram {
-            background: transparent; border: 2px solid var(--modal-outline-button-border);
-            color: var(--modal-outline-button-text); padding: 0.9rem 1.8rem;
-            font-size: 1rem; transition: all 0.25s ease; width: fit-content;
-            margin-left: auto; margin-right: auto; border-radius: var(--radius);
+            background: transparent;
+            border: 2px solid var(--modal-outline-button-border); /* White border for outline */
+            color: var(--modal-outline-button-text); /* White text for outline */
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: none;
         }
+
         .btn-outline-telegram:hover {
-            background: rgba(255, 255, 255, 0.1); transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+            color: var(--modal-outline-button-text);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
         /* Continue Watching Modal Styles */
-        #continueWatchingModal .modal-content { background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end)); max-width: 450px; padding: 2rem; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); }
-        #continueWatchingModal .modal-title { font-size: 1.6rem; margin-bottom: 1rem; color: var(--continue-modal-text); }
-        #continueWatchingModal .modal-body p { font-size: 1rem; color: var(--continue-modal-text); margin-bottom: 0.5rem; line-height: 1.4; font-weight: 500; }
-        #continueWatchingModal .modal-body p .highlight-text { color: var(--highlight-color); font-weight: bold; text-shadow: var(--highlight-shadow); transition: color 0.3s ease, text-shadow 0.3s ease; }
-        .btn-continue-now {
-            background-color: var(--continue-button-bg); color: var(--continue-modal-text);
-            padding: 1rem 2rem; font-size: 1.1rem; margin-top: 1.5rem;
-            margin-left: auto; margin-right: auto; border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;
-            display: inline-flex; align-items: center; gap: 0.5rem;
+        #continueWatchingModal .modal-content {
+            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
+            max-width: 450px; /* Adjusted for a more compact width */
+            padding: 2rem; /* Slightly reduced padding */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Applied new shadow */
         }
+
+        #continueWatchingModal .modal-title {
+            font-size: 1.6rem; /* Slightly smaller title for smaller modal */
+            margin-bottom: 1rem; /* Reduced margin */
+            color: var(--continue-modal-text);
+        }
+
+        #continueWatchingModal .modal-body p {
+            font-size: 1rem; /* Smaller font size for message */
+            color: var(--continue-modal-text);
+            margin-bottom: 0.5rem; /* Reduced margin between paragraphs */
+            line-height: 1.4; /* Reduced line height */
+            font-weight: 500;
+        }
+        
+        /* Specific style for the bold text within the paragraph */
+        #continueWatchingModal .modal-body p .highlight-text { /* Changed to use .highlight-text class */
+            color: var(--highlight-color); /* Use the new highlight color */
+            font-weight: bold;
+            text-shadow: var(--highlight-shadow); /* Add subtle shadow for pop */
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .btn-continue-now { /* New class for the "أكمل الآن" button */
+            background-color: var(--continue-button-bg); /* Use new green color */
+            color: var(--continue-modal-text); /* White text */
+            padding: 1rem 2rem; /* Adjusted padding */
+            font-size: 1.1rem; /* Adjusted font size */
+            margin-top: 1.5rem; /* Add some space above the button */
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            transition: all 0.3s ease;
+            display: inline-flex; /* Ensure it behaves like a button with icon */
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .btn-continue-now:hover {
-            background-color: var(--continue-button-hover);
-            transform: translateY(-3px) scale(1.01);
+            background-color: var(--continue-button-hover); /* Darker green on hover */
+            transform: translateY(-3px) scale(1.01); /* Subtle lift and scale */
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05);
+            filter: brightness(1.05); /* Slightly brighter on hover */
         }
+
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            header { flex-wrap: wrap; padding: 0.9rem 1rem; gap: 0.8rem; }
-            .search-container { order: 3; width: 100%; }
-            .btn span { display: none; }
-            .teacher-img { width: 100px; height: 100px; }
-            .video-details { padding: 1.2rem; }
-            .video-container { margin: 0 -1rem; width: calc(100% + 2rem); }
-            .lecture-item { padding-left: 2.5rem; }
-            .video-meta { flex-direction: column; gap: 0.5rem; align-items: center; }
-            .btn { padding: 0.8rem 1rem; }
+            header {
+                flex-wrap: wrap;
+                padding: 0.9rem 1rem;
+                gap: 0.8rem;
+            }
+
+            .search-container {
+                order: 3;
+                width: 100%;
+            }
+
+            .btn span {
+                display: none;
+            }
+
+            .teacher-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .video-details {
+                padding: 1.2rem;
+            }
+
+            .video-container {
+                margin: 0 -1rem;
+                width: calc(100% + 2rem);
+            }
+
+            .lecture-item {
+                padding-left: 2.5rem;
+            }
+
+            .video-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 0.8rem 1rem;
+            }
         }
+
         @media (max-width: 480px) {
-            .page { padding: 1rem; }
-            .teacher-info { padding: 1rem; flex-direction: column; text-align: center; }
-            .teacher-img-lg { margin-bottom: 1rem; }
-            .site-title { font-size: 1.5rem; }
-            .modal-content { padding: 1.5rem; }
-            .modal-title { font-size: 1.4rem; }
-            .modal-body p { font-size: 1rem; }
-            .btn-telegram { padding: 0.9rem 1.5rem; font-size: 1rem; }
-            .btn-outline-telegram { padding: 0.7rem 1.2rem; font-size: 0.9rem; }
-            .btn-continue-now { padding: 0.9rem 1.5rem; font-size: 1rem; }
+            .page {
+                padding: 1rem;
+            }
+
+            .teacher-info {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .teacher-img-lg {
+                margin-bottom: 1rem;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+            /* Responsive adjustments for modal */
+            .modal-content {
+                padding: 1.5rem;
+            }
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            .modal-body p {
+                font-size: 1rem;
+            }
+            .btn-telegram {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+            .btn-outline-telegram {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .btn-continue-now { /* Apply responsive styles to the new button */
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
         }
     </style>
 
@@ -492,6 +857,7 @@
             <div class="site-logo">إ</div>
             منصة إديسون
         </h1>
+
         <div class="header-actions">
             <button id="themeToggle" class="btn">
                 <i data-lucide="sun"></i><span>المظهر</span>
@@ -500,6 +866,7 @@
                 <i data-lucide="file-text"></i><span>امتحانات الأساتذة</span>
             </button>
         </div>
+
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
             <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
@@ -509,15 +876,20 @@
         </div>
     </header>
 
+    <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="bell"></i>مرحبًا في منصة إديسون!</h3>
+                <h3 class="modal-title">
+                    <i data-lucide="bell"></i>
+                    مرحبًا في منصة إديسون!
+                </h3>
             </div>
             <div class="modal-body">
                 <p>لا تنسى تشترك في قناتنا على تيلجرام حتى توصلك أحدث التحديثات والأخبار الجديدة.</p>
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
-                    <i data-lucide="send"></i><span>اشترك الآن</span>
+                    <i data-lucide="send"></i>
+                    <span>اشترك الآن</span>
                 </a>
                 <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
                     اشتركت سابقا المتابعة
@@ -525,140 +897,141 @@
             </div>
         </div>
     </div>
+    <!-- End Telegram Modal -->
+
+    <!-- Continue Watching Modal -->
     <div id="continueWatchingModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title"><i data-lucide="graduation-cap"></i>عزيزي الطالب</h3>
+                <h3 class="modal-title">
+                    <i data-lucide="graduation-cap"></i>
+                    عزيزي الطالب 
+                </h3>
             </div>
             <div class="modal-body">
                 <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
                 <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
                 <p>لاتنسى تكمل محاضراتك وبس حبيت اذكرك ❤️</p>
                 <button id="continueNowBtn" class="btn btn-continue-now">
-                    <i data-lucide="play"></i><span>متابعة</span>
+                    <i data-lucide="play"></i>
+                    متابعة 
                 </button>
             </div>
         </div>
     </div>
-    <main>
-        <div id="homePage" class="page active">
-            <div class="section-title">
-                <i data-lucide="layout-grid"></i>
-                <h3>اختر القسم المناسب لك</h3>
+    <!-- End Continue Watching Modal -->
+
+    <div id="homePage" class="page active">
+        <div class="section-title">
+            <i data-lucide="layout-grid"></i>
+            <h3>اختر القسم المناسب لك</h3>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card" onclick="loadCategory('year-2026')">
+                <div class="category-image" style="background: linear-gradient(135deg, #0ea5e9, #1a56db);"></div>
+                <div class="category-content">
+                    <h3 class="category-title"> مدرسين سنة 2026</h3>
+                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
             </div>
             
-            <div class="categories-grid">
-                <div class="category-card" onclick="loadCategory('year-2026')" data-category="year-2026">
-                    <div class="category-icon-wrapper">
-                        <i data-lucide="calendar-days" class="category-icon"></i>
-                    </div>
-                    <div class="category-content">
-                        <div>
-                           <h3 class="category-title">مدرسين سنة 2026</h3>
-                           <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2026.</p>
-                        </div>
-                        <button class="btn">عرض المواد</button>
+            <div class="category-card" onclick="loadCategory('year-2025')">
+                <div class="category-image" style="background: linear-gradient(135deg, #f59e0b, #f97316);"></div>
+                <div class="category-content">
+                    <h3 class="category-title"> مدرسين سنة 2025 </h3>
+                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+            
+            <div class="category-card" onclick="loadCategory('distinguished')">
+                <div class="category-image" style="background: linear-gradient(135deg, #10b981, #047857);"></div>
+                <div class="category-content">
+                    <h3 class="category-title">قسم المتميزين</h3>
+                    <p class="category-description">مواد خاصة للطلاب المتميزين</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+            
+            <div class="category-card" onclick="loadCategory('literary')">
+                <div class="category-image" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);"></div>
+                <div class="category-content">
+                    <h3 class="category-title">القسم الأدبي</h3>
+                    <p class="category-description">المواد والمناهج الادبي </p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="categoryPage" class="page">
+        <button class="btn back-button" onclick="navigate('home')">
+            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
+        </button>
+        
+        <div class="section-title">
+            <i data-lucide="users"></i>
+            <h3 id="categoryTitle">المدرسين</h3>
+        </div>
+        
+        <div id="teachersGrid" class="teachers-grid">
+            <!-- Teachers will be loaded here -->
+        </div>
+    </div>
+
+    <div id="classesPage" class="page">
+        <button class="btn back-button" onclick="navigate('category')">
+            <i data-lucide="arrow-right"></i>الرجوع للمدرسين
+        </button>
+        
+        <div class="teacher-info">
+            <img id="teacherImage" class="teacher-img-lg" alt="" />
+            <div>
+                <h2 id="teacherName"></h2>
+                <p id="teacherSubject" class="teacher-subject"></p>
+                <div id="teacherRating" class="teacher-rating"></div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <i data-lucide="book-open"></i>
+            <h3>الفصول الدراسية</h3>
+        </div>
+        
+        <div id="classesList" class="classes-list"></div>
+    </div>
+
+    <div id="videoPage" class="page">
+        <div class="video-page">
+            <div id="videoContainer" class="video-container">
+                <div id="playerContainer"></div>
+                <!-- Loader for iframe videos -->
+                <div id="videoLoader" class="video-loader" style="display: none;">
+                    <div class="loader-spinner"></div>
+                </div>
+            </div>
+            
+            <div class="video-details">
+                <h2 id="videoTitle"></h2>
+                <p id="videoDescription"></p>
+                
+                <div class="video-info">
+                    <div class="video-meta">
+                        <span>
+                            <i data-lucide="calendar"></i> تاريخ النشر:
+                            <span id="videoDate">--/--/----</span>
+                        </span>
                     </div>
                 </div>
                 
-                <div class="category-card" onclick="loadCategory('year-2025')" data-category="year-2025">
-                    <div class="category-icon-wrapper">
-                        <i data-lucide="calendar-check-2" class="category-icon"></i>
-                    </div>
-                    <div class="category-content">
-                        <div>
-                            <h3 class="category-title">مدرسين سنة 2025</h3>
-                            <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025.</p>
-                        </div>
-                        <button class="btn">عرض المواد</button>
-                    </div>
-                </div>
-                
-                <div class="category-card" onclick="loadCategory('distinguished')" data-category="distinguished">
-                    <div class="category-icon-wrapper">
-                        <i data-lucide="award" class="category-icon"></i>
-                    </div>
-                    <div class="category-content">
-                        <div>
-                            <h3 class="category-title">قسم المتميزين</h3>
-                            <p class="category-description">مواد ومناهج إثرائية للطلاب المتفوقين.</p>
-                        </div>
-                        <button class="btn">عرض المواد</button>
-                    </div>
-                </div>
-                
-                <div class="category-card" onclick="loadCategory('literary')" data-category="literary">
-                    <div class="category-icon-wrapper">
-                       <i data-lucide="book-marked" class="category-icon"></i>
-                    </div>
-                    <div class="category-content">
-                        <div>
-                            <h3 class="category-title">القسم الأدبي</h3>
-                            <p class="category-description">المواد والمناهج المخصصة للقسم الأدبي.</p>
-                        </div>
-                        <button class="btn">عرض المواد</button>
-                    </div>
-                </div>
+                <button class="btn back-button" onclick="navigate('classes')">
+                    <i data-lucide="arrow-right"></i>العودة للفصول
+                </button>
             </div>
         </div>
-
-        <div id="categoryPage" class="page">
-            <button class="btn back-button" onclick="navigate('home')">
-                <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
-            </button>
-            <div class="section-title">
-                <i data-lucide="users"></i>
-                <h3 id="categoryTitle">المدرسين</h3>
-            </div>
-            <div id="teachersGrid" class="teachers-grid">
-                </div>
-        </div>
-
-        <div id="classesPage" class="page">
-            <button class="btn back-button" onclick="navigate('category')">
-                <i data-lucide="arrow-right"></i>الرجوع للمدرسين
-            </button>
-            <div class="teacher-info">
-                <img id="teacherImage" class="teacher-img-lg" alt="" />
-                <div>
-                    <h2 id="teacherName"></h2>
-                    <p id="teacherSubject" class="teacher-subject"></p>
-                    <div id="teacherRating" class="teacher-rating"></div>
-                </div>
-            </div>
-            <div class="section-title">
-                <i data-lucide="book-open"></i>
-                <h3>الفصول الدراسية</h3>
-            </div>
-            <div id="classesList" class="classes-list"></div>
-        </div>
-
-        <div id="videoPage" class="page">
-            <div class="video-page">
-                <div id="videoContainer" class="video-container">
-                    <div id="playerContainer"></div>
-                    <div id="videoLoader" class="video-loader" style="display: none;">
-                        <div class="loader-spinner"></div>
-                    </div>
-                </div>
-                <div class="video-details">
-                    <h2 id="videoTitle"></h2>
-                    <p id="videoDescription"></p>
-                    <div class="video-info">
-                        <div class="video-meta">
-                            <span>
-                                <i data-lucide="calendar"></i> تاريخ النشر:
-                                <span id="videoDate">--/--/----</span>
-                            </span>
-                        </div>
-                    </div>
-                    <button class="btn back-button" onclick="navigate('classes')">
-                        <i data-lucide="arrow-right"></i>العودة للفصول
-                    </button>
-                </div>
-            </div>
-        </div>
-    </main>
+    </div>
 
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -667,14 +1040,18 @@
         // Initialize theme
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
-            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
             const theme = stored || preferred;
             document.documentElement.setAttribute("data-theme", theme);
             updateThemeIcon(theme);
         }
 
         function updateThemeIcon(theme) {
-            document.querySelector("#themeToggle i").setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
+            document
+                .querySelector("#themeToggle i")
+                .setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
             lucide.createIcons();
         }
 
@@ -701,13 +1078,13 @@
         const categoryTitle = document.getElementById("categoryTitle");
         const classesList = document.getElementById("classesList");
         const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer");
-        const videoLoader = document.getElementById("videoLoader");
+        const playerContainer = document.getElementById("playerContainer"); // Get the player container
+        const videoLoader = document.getElementById("videoLoader"); // Get the video loader
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null; // New: Store last watched lecture details
 
         // Navigation
         const pages = {
@@ -720,28 +1097,32 @@
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
+            // Clean up when leaving video page
             if (page !== "video") {
                 if (player) {
                     player.destroy();
                     player = null;
                 }
+
                 if (window.hlsInstance) {
                     window.hlsInstance.destroy();
                     window.hlsInstance = null;
                 }
+
                 if (window.progressInterval) {
                     clearInterval(window.progressInterval);
                     window.progressInterval = null;
                 }
+
                 playerContainer.innerHTML = "";
-                videoLoader.style.display = 'none';
+                videoLoader.style.display = 'none'; // Ensure loader is hidden
             }
 
             Object.values(pages).forEach((p) => p.classList.remove("active"));
             pages[page].classList.add("active");
         }
 
-        /* ========= Teacher & Class Data Logic ========= */
+        /* ========= بيانات المدرسين ========= */
         const searchInput = document.getElementById("searchInput");
         const searchBtn = document.getElementById("searchButton");
         let teachers = [];
@@ -750,16 +1131,30 @@
         let currentLectureIndex = 0;
         let currentLectureLink = "";
 
+        // Categories data
         const categories = {
-            "year-2026": { title: "الصفوف الدراسية 2026", endpoint: "https://adson.netlify.app/data2.json" },
-            "year-2025": { title: "الصفوف الدراسية 2025", endpoint: "https://adson.netlify.app/data.json" },
-            "distinguished": { title: "قسم المتميزين", endpoint: "https://adson.netlify.app/ff.json" },
-            "literary": { title: "القسم الأدبي", endpoint: "https://adson.netlify.app/mm.json" }
+            "year-2026": {
+                title: "الصفوف الدراسية 2026",
+                endpoint: "https://adson.netlify.app/data2.json"
+            },
+            "year-2025": {
+                title: "الصفوف الدراسية 2025",
+                endpoint: "https://adson.netlify.app/data.json"
+            },
+            "distinguished": {
+                title: "قسم المتميزين",
+                endpoint: "https://adson.netlify.app/ff.json"
+            },
+            "literary": {
+                title: "القسم الأدبي",
+                endpoint: "https://adson.netlify.app/mm.json"
+            }
         };
 
         function loadCategory(categoryId) {
             const category = categories[categoryId];
             if (!category) return;
+
             categoryTitle.textContent = category.title;
             loadData(category.endpoint);
             navigate("category");
@@ -770,21 +1165,26 @@
                 teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
                 return;
             }
+
             teachersGrid.innerHTML = "";
-            list.forEach((t) => {
+
+            list.forEach((t, idx) => {
                 const rating = ratings[t.id] || 0;
+
                 const card = document.createElement("div");
                 card.className = "teacher-card";
                 card.innerHTML = `
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
                     <h3 class="teacher-name">${t.name}</h3>
                     <p class="teacher-subject">${t.subject}</p>
-                    <div class="teacher-rating">${renderStars(rating)}</div>
+                    <div class="teacher-rating">
+                        ${renderStars(rating)}
+                    </div>
                 `;
                 card.onclick = () => showTeacher(t.id);
                 teachersGrid.appendChild(card);
+                lucide.createIcons();
             });
-            lucide.createIcons();
         }
 
         function renderStars(rating) {
@@ -800,197 +1200,413 @@
             if (!currentTeacher) return;
 
             teacherImage.src = currentTeacher.image;
-            teacherImage.onerror = function() { this.onerror = null; this.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image'; };
+            teacherImage.onerror = function() {
+                this.onerror = null;
+                this.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';
+            };
             teacherName.textContent = currentTeacher.name;
             teacherSubject.textContent = currentTeacher.subject;
-            teacherRating.innerHTML = renderStars(ratings[currentTeacher.id] || 0);
+
+            // عرض التقييم
+            const rating = ratings[currentTeacher.id] || 0;
+            teacherRating.innerHTML = renderStars(rating);
+
             renderClasses(currentTeacher.classes);
             navigate("classes");
         };
 
         function renderClasses(classesData) {
-            classesList.innerHTML = classesData.map((cls, ci) => `
-                <div class="class-card">
-                    <div class="class-header" onclick="toggleLectures(this)">
-                        <h3>${cls.name}</h3>
-                        <span data-lucide="chevron-down"></span>
-                    </div>
-                    <div class="lectures-list">
-                        ${cls.lectures.map((lec, li) => `
-                            <div class="lecture-item" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                <i data-lucide="play-circle"></i>
-                                <span>${li + 1}. ${lec.title}</span>
+            classesList.innerHTML = classesData
+                .map((cls, ci) => {
+                    const lectures = cls.lectures
+                        .map((lec, li) => {
+                            // const progress = lectureProgress[lec.url] || 0; // Not currently used for display
+                            return `
+                                <div class="lecture-item" 
+                                    onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                    <i data-lucide="play-circle"></i>
+                                    <span>${li + 1}. ${lec.title}</span>
+                                </div>
+                            `;
+                        })
+                        .join("");
+
+                    return `
+                        <div class="class-card">
+                            <div class="class-header" onclick="toggleLectures(this)">
+                                <h3>${cls.name}</h3>
+                                <span data-lucide="chevron-down"></span>
                             </div>
-                        `).join("")}
-                    </div>
-                </div>
-            `).join("");
+                            <div class="lectures-list">${lectures}</div>
+                        </div>
+                    `;
+                })
+                .join("");
+
             lucide.createIcons();
         }
 
         window.toggleLectures = (header) => {
-            const list = header.nextElementSibling;
+            const list = header.parentElement.querySelector(".lectures-list");
             const icon = header.querySelector("[data-lucide]");
-            const isOpen = list.style.display === "flex";
-            list.style.display = isOpen ? "none" : "flex";
-            header.classList.toggle("open", !isOpen);
-            icon.setAttribute("data-lucide", isOpen ? "chevron-down" : "chevron-up");
+            const open = list.style.display !== "flex";
+
+            list.style.display = open ? "flex" : "none";
+            header.classList.toggle("open", open);
+            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
 
         window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            if (player) player.destroy();
-            if (window.hlsInstance) window.hlsInstance.destroy();
-            if (window.progressInterval) clearInterval(window.progressInterval);
+            // Clean up any previous player instances
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+
+            if (window.hlsInstance) {
+                window.hlsInstance.destroy();
+                window.hlsInstance = null;
+            }
+
+            if (window.progressInterval) {
+                clearInterval(window.progressInterval);
+                window.progressInterval = null;
+            }
+
+            // Clear player container and hide loader initially
             playerContainer.innerHTML = "";
             videoLoader.style.display = 'none';
 
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
+            [currentClassIndex, currentLectureIndex, currentLectureLink] = [
+                ci,
+                li,
+                url,
+            ];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
-            document.getElementById("videoDate").textContent = new Date().toLocaleDateString('ar-EG-u-nu-latn');
 
+            document.getElementById("videoDate").textContent = "15/10/2026"; // Static date as per original code
+
+            // Save last watched lecture details
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
                 teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
-                classIndex: ci, lectureIndex: li, lectureTitle: title,
-                lectureUrl: url, lectureDescription: desc
+                classIndex: ci,
+                lectureIndex: li,
+                lectureTitle: title,
+                lectureUrl: url,
+                lectureDescription: desc
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
+            // Check if the URL should be played directly without a proxy
+            const directPlayDomains = [
+                "https://9bf9f797be0a4677a8-akamai-cdn.com",
+                "https://vidcdn.akamai-cdn-delivery.com"
+            ];
+            
+            let useProxy = true;
+            for (const domain of directPlayDomains) {
+                if (url.startsWith(domain)) {
+                    useProxy = false;
+                    break;
+                }
+            }
 
+            // Support for iframe videos via proxy
             if (url.includes("iframe.mediadelivery.net/embed/")) {
-                videoLoader.style.display = 'flex';
+                videoLoader.style.display = 'flex'; // Show loader
+
                 const encodedUrl = btoa(url);
                 const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
-                playerContainer.innerHTML = `
+
+                const iframeHtml = `
                     <div style="position: relative; width: 100%; padding-top: 56.25%;">
-                        <iframe src="${iframeUrl}" allowfullscreen loading="eager"
-                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: var(--radius);"
-                                referrerpolicy="no-referrer-when-downgrade"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                                onload="document.getElementById('videoLoader').style.display='none';"></iframe>
-                    </div>`;
+                        <iframe 
+                            src="${iframeUrl}" 
+                            allowfullscreen 
+                            loading="eager"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                            onload="document.getElementById('videoLoader').style.display='none';"
+                        ></iframe>
+                    </div>
+                `;
+                playerContainer.innerHTML = iframeHtml;
+
                 navigate("video");
                 return;
             }
-
-            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            
+            // Support for .m3u8 videos via proxy or direct based on domain
+            playerContainer.innerHTML = `
+                <video id="player" playsinline controls></video>
+            `;
+            lucide.createIcons();
+            
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            const finalVideoUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent("https://abwaab.com")}` : url;
+            const referer = "https://abwaab.com"; // Keep referer for proxy if needed
 
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
+            // Determine the final URL for the player
+            const finalVideoUrl = useProxy && isHLS
+                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
+                : url;
 
+            const savedTime = lectureProgress[url]
+                ? (lectureProgress[url] / 100) * (player?.duration || 0)
+                : 0;
+
+            // Create new Plyr instance
             player = new Plyr("#player", {
-                controls: ["play-large", "play", "progress", "current-time", "fullscreen", "settings"],
-                keyboard: { focused: true, global: true }, tooltips: { controls: true, seek: true },
-                settings: ["quality", "speed"], speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+                controls: [
+                    "play-large",
+                    "play",
+                    "progress",
+                    "current-time",
+                    "fullscreen",
+                    "settings",
+                ],
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
+            // Track progress
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
-                    lectureProgress[url] = (player.currentTime / player.duration) * 100;
-                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem(
+                        "lectureProgress",
+                        JSON.stringify(lectureProgress)
+                    );
                 }
             }, 5000);
 
-            if (isHLS && Hls.isSupported()) {
-                const hls = new Hls();
-                window.hlsInstance = hls;
-                hls.loadSource(finalVideoUrl);
-                hls.attachMedia(videoElement);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-                });
-            } else {
-                player.source = { type: 'video', sources: [{ src: finalVideoUrl, type: isHLS ? 'application/x-mpegURL' : 'video/mp4' }] };
-                player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(e => console.error("Error playing video:", e));
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(finalVideoUrl); // Use finalVideoUrl here
+
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player
+                            .play()
+                            .then(() => {
+                                if (savedTime > 0) player.currentTime = savedTime;
+                            })
+                            .catch(console.error);
+                    });
+
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    hls.startLoad();
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    hls.recoverMediaError();
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [
+                            {
+                                src: finalVideoUrl, // Use finalVideoUrl here
+                                type: isHLS ? "application/x-mpegURL" : "video/mp4",
+                            },
+                        ],
+                    };
+
+                    player
+                        .play()
+                        .then(() => {
+                            if (savedTime > 0) player.currentTime = savedTime;
+                        })
+                        .catch(() => {
+                            console.log("تعذر تشغيل الفيديو");
+                        });
+                }
             }
+
+            tryPlay();
             navigate("video");
         };
 
-        /* ========= Search & Data Loading ========= */
+        /* ========= البحث ========= */
         function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
-            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+            renderTeachers(
+                teachers.filter(
+                    (t) =>
+                        t.name.toLowerCase().includes(term) ||
+                        t.subject.toLowerCase().includes(term)
+                )
+            );
         }
+
         let searchTimeout;
-        searchInput.addEventListener("input", () => { clearTimeout(searchTimeout); searchTimeout = setTimeout(handleSearch, 300); });
+        searchInput.addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(handleSearch, 250);
+        });
+
         searchBtn.addEventListener("click", handleSearch);
 
+        /* ========= تحميل البيانات ========= */
         function loadData(endpoint) {
-            const err = `<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>`;
-            let skeletons = '';
-            for(let i = 0; i < 4; i++) {
-                skeletons += `
-                <div class="teacher-card" style="animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;">
+            const err =
+                '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+
+            teachersGrid.innerHTML = `
+                <div class="loading-card teacher-card">
                     <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
                     <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
                     <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>`;
-            }
-            teachersGrid.innerHTML = skeletons;
-            
-            fetch(endpoint)
-                .then(r => { if (!r.ok) throw new Error("Network response was not ok"); return r.json(); })
-                .then(data => { teachers = data.teachers; renderTeachers(); })
-                .catch(() => { teachersGrid.innerHTML = err; });
+                </div>
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>
+            `;
+
+            fetch(endpoint, {
+                headers: {
+                    Referer: "https://careful-burnt-honesty.glitch.me/",
+                    "Cache-Control": "no-cache",
+                },
+            })
+                .then((r) => {
+                    if (!r.ok) throw new Error();
+                    return r.json();
+                })
+                .then((data) => {
+                    teachers = data.teachers;
+                    renderTeachers();
+                })
+                .catch(() => {
+                    teachersGrid.innerHTML = err;
+                });
         }
 
-        /* ========= Modal Logic ========= */
+        // Telegram Modal Logic
         const telegramModal = document.getElementById("telegramModal");
-        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
-        const continueWatchingModal = document.getElementById("continueWatchingModal");
-        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
-        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueNowBtn = document.getElementById("continueNowBtn");
+        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn"); // Changed ID
 
         function showTelegramModal() {
-            if (!localStorage.getItem("telegramSubscribed")) {
+            const hasSubscribed = localStorage.getItem("telegramSubscribed");
+            if (!hasSubscribed) {
                 telegramModal.classList.add("show");
+                lucide.createIcons(); // Re-render Lucide icons for new elements
             } else {
+                // If Telegram modal is not shown, try to show continue watching modal
                 showContinueWatchingModal();
             }
         }
-        function hideTelegramModal() { telegramModal.classList.remove("show"); }
+
+        function hideTelegramModal() {
+            telegramModal.classList.remove("show");
+        }
+
+        // Event listener for "Choose now to continue" button
+        continueWithoutSubscribingBtn.addEventListener("click", () => {
+            localStorage.setItem("telegramSubscribed", "true");
+            hideTelegramModal();
+            showContinueWatchingModal(); // Show continue watching modal after dismissing Telegram modal
+        });
+
+        // Event listener for the Telegram button itself (to also hide the modal if clicked)
+        document.querySelector(".btn-telegram").addEventListener("click", () => {
+            localStorage.setItem("telegramSubscribed", "true"); // Assume they will subscribe
+            // The link itself will handle navigation to Telegram
+            hideTelegramModal();
+            showContinueWatchingModal(); // Show continue watching modal after clicking Telegram link
+        });
+
+        // Continue Watching Modal Logic
+        const continueWatchingModal = document.getElementById("continueWatchingModal");
+        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
+        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
+        const continueNowBtn = document.getElementById("continueNowBtn"); // Reference for the new button
+
         function showContinueWatchingModal() {
             if (lastWatched) {
                 lastWatchedTeacherName.textContent = lastWatched.teacherName;
                 lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
                 continueWatchingModal.classList.add("show");
+                lucide.createIcons();
             }
         }
-        function hideContinueWatchingModal() { continueWatchingModal.classList.remove("show"); }
 
-        document.querySelector(".btn-telegram").addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
-            setTimeout(showContinueWatchingModal, 300);
-        });
-        continueWithoutSubscribingBtn.addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
-            setTimeout(showContinueWatchingModal, 300);
-        });
+        function hideContinueWatchingModal() {
+            continueWatchingModal.classList.remove("show");
+        }
+
+        // Event listener for the new "أكمل الآن" button
         continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            if(lastWatched) {
-                // Simplified logic, assumes data might not be loaded yet
-                playLecture(
-                    lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl,
-                    lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId
-                );
+            // Load the teacher data first to ensure currentTeacher is set
+            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
+            const categoryKeys = Object.keys(categories);
+            let foundTeacher = false;
+
+            // Iterate through categories to find the teacher
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, {
+                    headers: {
+                        Referer: "https://careful-burnt-honesty.glitch.me/",
+                        "Cache-Control": "no-cache",
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                    if (teacher) {
+                        currentTeacher = teacher; // Set currentTeacher
+                        // Now play the lecture
+                        playLecture(
+                            lastWatched.classIndex,
+                            lastWatched.lectureIndex,
+                            lastWatched.lectureUrl,
+                            lastWatched.lectureTitle,
+                            lastWatched.lectureDescription,
+                            lastWatched.teacherName,
+                            lastWatched.teacherId
+                        );
+                        foundTeacher = true;
+                    }
+                })
+                .catch(error => console.error("Error loading teacher data:", error));
+
+                if (foundTeacher) break; // Stop searching once teacher is found
             }
         });
 
-        // Initialize App
+        // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
         window.addEventListener("load", () => {
-            lucide.createIcons();
-            setTimeout(showTelegramModal, 1000);
+            setTimeout(showTelegramModal, 1000); // Show after 1 second
         });
+
+        // Initialize
+        lucide.createIcons();
     </script>
 </body>
 </html>
