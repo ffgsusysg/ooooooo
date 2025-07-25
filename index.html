@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />ش
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
@@ -506,25 +506,24 @@
             transition: color 0.3s ease;
         }
 
-        /* MODIFIED: Full-Width Video Page Layout */
+        /* MODIFIED: Default Video Page Layout (Tablets & Desktops) */
         #videoPage.page.active {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: calc(100vh - 85px);
-            padding: 2rem 0; /* Vertical padding, no horizontal */
+            padding: 2rem;
             padding-bottom: 10vh;
         }
 
         .video-page {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center the details card */
             gap: 2rem;
-            max-width: none; /* Allow full width */
+            max-width: 1000px; /* Constrained width for larger screens */
             width: 100%;
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
         }
 
@@ -532,14 +531,14 @@
             position: relative;
             width: 100%;
             background: #000;
-            border-radius: 0; /* No rounded corners for full-width */
+            border-radius: var(--radius); /* Rounded corners for larger screens */
             overflow: hidden;
             aspect-ratio: 16/9;
-            box-shadow: none; /* No shadow for full-width */
+            box-shadow: var(--shadow-lg); /* Shadow for larger screens */
         }
 
         .plyr {
-            border-radius: 0; /* No rounded corners for full-width */
+            border-radius: var(--radius);
             overflow: hidden;
             width: 100%;
             height: 100%;
@@ -553,10 +552,6 @@
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
-            width: 100%;
-            max-width: 1000px; /* Constrain details width */
-            padding-left: 1rem;
-            padding-right: 1rem;
         }
 
         .video-info {
@@ -799,10 +794,6 @@
                 width: 100px;
                 height: 100px;
             }
-
-            .video-details {
-                padding: 1.2rem;
-            }
             
             .lecture-item {
                 padding-left: 2.5rem;
@@ -816,6 +807,24 @@
 
             .btn {
                 padding: 0.8rem 1rem;
+            }
+
+            /* MODIFIED: Full-width video styles ONLY for mobile */
+            #videoPage.page.active {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .video-page {
+                max-width: none;
+                align-items: center;
+            }
+            .video-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .video-details {
+                padding: 1.2rem;
+                width: 100%;
             }
         }
 
@@ -858,6 +867,12 @@
             .btn-continue-now {
                 padding: 0.9rem 1.5rem;
                 font-size: 1rem;
+            }
+            
+            /* Ensure video page padding is correct on smallest screens */
+            #videoPage.page.active {
+                padding-top: 1rem;
+                padding-bottom: 5vh;
             }
         }
     </style>
