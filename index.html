@@ -288,119 +288,138 @@
             display: block;
         }
 
-        /* --- START: ENHANCED CATEGORY SECTION --- */
-        .enhanced-categories-grid {
+        /* --- START: NEW CATEGORY CARD DESIGN V3 --- */
+        .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
-            perspective: 1000px;
         }
 
-        .enhanced-category-card {
-            background: rgba(255, 255, 255, 0.05); /* Glass effect base */
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
+        .category-card {
             position: relative;
             overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                        box-shadow 0.4s ease, 
-                        border-color 0.4s ease;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-        }
-        
-        [data-theme="dark"] .enhanced-category-card {
-             background: rgba(31, 41, 55, 0.5); /* Darker glass */
-             border: 1px solid rgba(255, 255, 255, 0.1);
-             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            aspect-ratio: 4 / 5; /* Taller cards */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
-        .enhanced-category-card::before {
-            content: '';
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card .card-bg {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, var(--glow-color, rgba(59, 130, 246, 0.25)) 0%, transparent 40%);
-            opacity: 0;
-            transition: opacity 0.6s ease, transform 0.6s ease;
-            transform-origin: center center;
-            will-change: transform, opacity;
-            pointer-events: none; /* Important */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
         }
 
-        .enhanced-category-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.2);
-            border-color: rgba(255, 255, 255, 0.2);
+        .category-card:hover .card-bg {
+            transform: scale(1.1);
+        }
+
+        .category-card .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            transition: background 0.4s ease;
+        }
+
+        .category-card:hover .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+        }
+
+        .category-card .card-content {
+            position: relative;
+            z-index: 2;
+            padding: 1.5rem;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
         }
         
-        [data-theme="dark"] .enhanced-category-card:hover {
-            box-shadow: 0 16px 40px 0 rgba(0, 0, 0, 0.3);
+        .card-main-content {
+            transform: translateY(calc(100% - 120px)); /* Start with only top part visible */
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .category-card:hover .card-main-content {
+            transform: translateY(0);
         }
 
-        .enhanced-category-card:hover::before {
-            opacity: 1;
-            transform: scale(0.5);
+        .category-card .card-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            color: var(--icon-color, #fff);
+            opacity: 0.9;
         }
 
-        .card-icon-wrapper {
-            margin: 0 auto 1.5rem auto;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--card);
-            box-shadow: var(--shadow-md);
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .enhanced-category-card .card-icon-wrapper i {
-            width: 40px;
-            height: 40px;
-            color: var(--icon-color, var(--primary-1));
-            transition: color 0.3s ease;
-        }
-
-        .enhanced-category-title {
-            font-size: 1.6rem;
+        .category-card .card-title {
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--text);
+            line-height: 1.2;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
         }
 
-        .enhanced-category-description {
-            color: var(--text);
-            opacity: 0.8;
+        .category-card .card-description {
+            font-size: 1rem;
             margin-bottom: 1.5rem;
-            transition: color 0.3s ease;
+            opacity: 0.9;
         }
 
-        .card-cta {
-            font-weight: 600;
-            color: var(--accent);
-            display: flex;
+        .category-card .card-button {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            background-color: var(--accent);
+            color: #111;
+            font-weight: bold;
+            text-decoration: none;
+            align-self: flex-start; /* Align button to the start (right in RTL) */
+            transition: all 0.3s ease;
         }
 
-        .enhanced-category-card:hover .card-cta {
-            transform: translateX(-5px);
-            color: var(--accent-2);
+        .category-card .card-button:hover {
+            background-color: var(--accent-2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
-        /* --- END: ENHANCED CATEGORY SECTION --- */
 
+        /* Specific card styles */
+        #card-2026 .card-bg { background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=800&auto=format&fit=crop'); }
+        #card-2025 .card-bg { background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=800&auto=format&fit=crop'); }
+        #card-distinguished .card-bg { background-image: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769?q=80&w=800&auto=format&fit=crop'); }
+        #card-literary .card-bg { background-image: url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop'); }
+
+        #card-2026 .card-button { background-color: #3b82f6; color: #fff; }
+        #card-2025 .card-button { background-color: #f97316; color: #fff; }
+        #card-distinguished .card-button { background-color: #10b981; color: #fff; }
+        #card-literary .card-button { background-color: #8b5cf6; color: #fff; }
+
+        /* In dark mode, make the overlay a bit stronger */
+        [data-theme="dark"] .category-card .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, transparent 100%);
+        }
+        [data-theme="dark"] .category-card:hover .card-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 60%, transparent 100%);
+        }
+        /* --- END: NEW CATEGORY CARD DESIGN V3 --- */
+        
         /* --- START: ENHANCED TEACHER CARDS --- */
         .teachers-grid {
             display: grid;
@@ -664,7 +683,7 @@
 
         .video-info {
             text-align: right;
-            padding: 1rem 0;
+            padding: 1rem 0;a
         }
 
         .video-meta {
@@ -1044,61 +1063,77 @@
             <h3>اختر القسم المناسب لك</h3>
         </div>
         
-        <!-- START: NEW ENHANCED CATEGORY SECTION -->
-        <div class="enhanced-categories-grid">
+        <!-- START: NEW CATEGORY CARD DESIGN V3 -->
+        <div class="categories-grid">
             <!-- Card 1: Year 2026 -->
-            <div class="enhanced-category-card" style="--glow-color: rgba(59, 130, 246, 0.4); --icon-color: #3b82f6;" onclick="loadCategory('year-2026')">
-                <div class="card-icon-wrapper">
-                    <i data-lucide="calendar-days"></i>
-                </div>
-                <h3 class="enhanced-category-title">مدرسين سنة 2026</h3>
-                <p class="enhanced-category-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
-                <div class="card-cta">
-                    <span>عرض المواد</span>
-                    <i data-lucide="arrow-left"></i>
+            <div id="card-2026" class="category-card" onclick="loadCategory('year-2026')">
+                <div class="card-bg"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <div class="card-main-content">
+                        <i class="card-icon" data-lucide="calendar-days"></i>
+                        <h3 class="card-title">مدرسين سنة 2026</h3>
+                        <p class="card-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
+                        <div class="card-button">
+                            <span>عرض المواد</span>
+                            <i data-lucide="arrow-left"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Card 2: Year 2025 -->
-            <div class="enhanced-category-card" style="--glow-color: rgba(249, 115, 22, 0.4); --icon-color: #f97316;" onclick="loadCategory('year-2025')">
-                <div class="card-icon-wrapper">
-                    <i data-lucide="calendar-check-2"></i>
-                </div>
-                <h3 class="enhanced-category-title">مدرسين سنة 2025</h3>
-                <p class="enhanced-category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
-                <div class="card-cta">
-                    <span>عرض المواد</span>
-                    <i data-lucide="arrow-left"></i>
+            <div id="card-2025" class="category-card" onclick="loadCategory('year-2025')">
+                <div class="card-bg"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <div class="card-main-content">
+                        <i class="card-icon" data-lucide="calendar-check-2"></i>
+                        <h3 class="card-title">مدرسين سنة 2025</h3>
+                        <p class="card-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
+                        <div class="card-button">
+                            <span>عرض المواد</span>
+                            <i data-lucide="arrow-left"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Card 3: Distinguished -->
-            <div class="enhanced-category-card" style="--glow-color: rgba(16, 185, 129, 0.4); --icon-color: #10b981;" onclick="loadCategory('distinguished')">
-                <div class="card-icon-wrapper">
-                    <i data-lucide="star"></i>
-                </div>
-                <h3 class="enhanced-category-title">قسم المتميزين</h3>
-                <p class="enhanced-category-description">مواد خاصة للطلاب المتميزين</p>
-                <div class="card-cta">
-                    <span>عرض المواد</span>
-                    <i data-lucide="arrow-left"></i>
+            <div id="card-distinguished" class="category-card" onclick="loadCategory('distinguished')">
+                <div class="card-bg"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <div class="card-main-content">
+                        <i class="card-icon" data-lucide="star"></i>
+                        <h3 class="card-title">قسم المتميزين</h3>
+                        <p class="card-description">مواد خاصة للطلاب المتميزين</p>
+                        <div class="card-button">
+                            <span>عرض المواد</span>
+                            <i data-lucide="arrow-left"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
             
             <!-- Card 4: Literary -->
-            <div class="enhanced-category-card" style="--glow-color: rgba(139, 92, 246, 0.4); --icon-color: #8b5cf6;" onclick="loadCategory('literary')">
-                <div class="card-icon-wrapper">
-                    <i data-lucide="book-marked"></i>
-                </div>
-                <h3 class="enhanced-category-title">القسم الأدبي</h3>
-                <p class="enhanced-category-description">المواد والمناهج الادبي</p>
-                <div class="card-cta">
-                    <span>عرض المواد</span>
-                    <i data-lucide="arrow-left"></i>
+            <div id="card-literary" class="category-card" onclick="loadCategory('literary')">
+                <div class="card-bg"></div>
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <div class="card-main-content">
+                        <i class="card-icon" data-lucide="book-marked"></i>
+                        <h3 class="card-title">القسم الأدبي</h3>
+                        <p class="card-description">المواد والمناهج الادبي</p>
+                        <div class="card-button">
+                            <span>عرض المواد</span>
+                            <i data-lucide="arrow-left"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- END: NEW ENHANCED CATEGORY SECTION -->
+        <!-- END: NEW CATEGORY CARD DESIGN V3 -->
     </div>
 
     <div id="categoryPage" class="page">
