@@ -10,15 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
-    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
-    <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+
     <style>
         :root {
             --primary-hue: 210;
@@ -103,6 +97,7 @@
             align-items: center;
             gap: 0.75rem;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .site-logo {
@@ -144,15 +139,9 @@
             transition: all 0.3s ease-in-out;
         }
         
-        .hamburger-menu.active .bar:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
-        }
-        .hamburger-menu.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger-menu.active .bar:nth-child(3) {
-            transform: translateY(-8px) rotate(-45deg);
-        }
+        .hamburger-menu.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .hamburger-menu.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger-menu.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
         .mobile-menu {
             position: fixed;
@@ -170,9 +159,7 @@
             border-top: 1px solid var(--border-color);
         }
         
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
+        .mobile-menu.active { transform: translateX(0); }
 
         .mobile-menu .menu-item {
             display: flex;
@@ -185,19 +172,16 @@
             padding: 1rem;
             border-radius: var(--radius);
             transition: background-color 0.2s;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: right;
         }
         
-        .mobile-menu .menu-item:hover {
-            background-color: color-mix(in srgb, var(--primary-color) 10%, transparent);
-        }
+        .mobile-menu .menu-item:hover { background-color: color-mix(in srgb, var(--primary-color) 10%, transparent); }
 
         /* --- Page Layout --- */
-        .page {
-            display: none;
-            padding: 1.5rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+        .page { display: none; padding: 1.5rem; max-width: 1300px; margin: 0 auto; }
         .page.active { display: block; }
 
         .section-title {
@@ -211,7 +195,7 @@
             border-bottom: 3px solid var(--primary-color);
             color: var(--text-color);
         }
-
+        
         /* --- New Category Cards --- */
         .categories-grid {
             display: grid;
@@ -223,54 +207,65 @@
             position: relative;
             border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-md);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: var(--card-bg);
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
         }
 
         .category-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 10%)),
-                         0 8px 10px -6px hsl(var(--shadow-color) / calc(var(--shadow-strength) + 12%));
+            box-shadow: var(--shadow-lg);
         }
 
-        .card-pattern {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.05;
-            background-size: cover;
-        }
-        
-        [data-theme="dark"] .card-pattern { opacity: 0.03; }
-
-        .card-content {
+        .card-header {
             padding: 2rem;
             position: relative;
-            z-index: 1;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
         }
+
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            opacity: 0.2;
+            transition: opacity 0.4s ease;
+        }
+        
+        [data-theme="dark"] .card-header::before { opacity: 0.1; }
+
+        .category-card:hover .card-header::before { opacity: 0.4; }
+        [data-theme="dark"] .category-card:hover .card-header::before { opacity: 0.2; }
+
 
         .card-icon {
             width: 50px;
             height: 50px;
-            margin-bottom: 1.5rem;
             color: var(--icon-color);
+            margin-bottom: 1rem;
         }
 
         .card-title {
             font-size: 1.75rem;
             font-weight: 900;
             color: var(--text-color);
-            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem 2rem 2rem 2rem;
         }
 
         .card-description {
             color: color-mix(in srgb, var(--text-color) 70%, transparent);
             margin-bottom: 2rem;
             min-height: 50px;
+            line-height: 1.7;
         }
 
         .card-button {
@@ -290,17 +285,10 @@
             box-shadow: 0 4px 15px color-mix(in srgb, var(--icon-color) 40%, transparent);
         }
 
-        /* Card specific styles */
-        #card-2026 { --icon-color: #3b82f6; }
-        #card-2025 { --icon-color: #f97316; }
-        #card-distinguished { --icon-color: #10b981; }
-        #card-literary { --icon-color: #8b5cf6; }
-
-        #card-2026 .card-pattern { background-image: url('https://www.transparenttextures.com/patterns/az-subtle.png'); }
-        #card-2025 .card-pattern { background-image: url('https://www.transparenttextures.com/patterns/checkered-pattern.png'); }
-        #card-distinguished .card-pattern { background-image: url('https://www.transparenttextures.com/patterns/star-wars.png'); }
-        #card-literary .card-pattern { background-image: url('https://www.transparenttextures.com/patterns/subtle-stripes.png'); }
-
+        #card-2026 { --icon-color: #3b82f6; --glow-color: hsl(217, 91%, 60%, 0.5); }
+        #card-2025 { --icon-color: #f97316; --glow-color: hsl(24, 95%, 53%, 0.5); }
+        #card-distinguished { --icon-color: #10b981; --glow-color: hsl(158, 82%, 41%, 0.5); }
+        #card-literary { --icon-color: #8b5cf6; --glow-color: hsl(262, 89%, 67%, 0.5); }
 
         /* --- Professional Teacher Cards --- */
         .teachers-grid {
@@ -341,9 +329,7 @@
             transition: transform 0.4s ease;
         }
         
-        .teacher-card:hover .teacher-card-banner img {
-            transform: scale(1.1);
-        }
+        .teacher-card:hover .teacher-card-banner img { transform: scale(1.1); }
 
         .teacher-card-content {
             padding: 1.5rem;
@@ -376,9 +362,7 @@
             transition: color 0.3s ease;
         }
         
-        .teacher-card:hover .teacher-name {
-            color: var(--primary-color);
-        }
+        .teacher-card:hover .teacher-name { color: var(--primary-color); }
 
         .teacher-subject {
             font-size: 0.95rem;
@@ -417,121 +401,46 @@
             letter-spacing: 0.5px;
         }
         
-        /* Other styles remain the same */
-        .back-button, .class-card, .video-page, .modal, etc.
-        /* ... (previous styles for other components) ... */
-        .back-button {
-            margin-bottom: 1.5rem;
-        }
-        .teacher-info {
-            display: flex; align-items: center; gap: 1.4rem; background: var(--card-bg);
-            padding: 1.6rem; border-radius: var(--radius); border: 1px solid var(--border-color);
-            flex-wrap: wrap; margin-bottom: 1.5rem; box-shadow: var(--shadow-md);
-        }
-        .teacher-img-lg {
-            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--accent-color); box-shadow: var(--shadow-md);
-        }
+        /* Other components */
+        .back-button { margin-bottom: 1.5rem; }
+        .teacher-info { display: flex; align-items: center; gap: 1.4rem; background: var(--card-bg); padding: 1.6rem; border-radius: var(--radius); border: 1px solid var(--border-color); flex-wrap: wrap; margin-bottom: 1.5rem; box-shadow: var(--shadow-md); }
+        .teacher-img-lg { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-color); box-shadow: var(--shadow-md); }
         .classes-list { display: grid; gap: 1.4rem; }
-        .class-card {
-            background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color);
-            overflow: hidden; box-shadow: var(--shadow-sm);
-        }
-        .class-header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.1rem 1.3rem; cursor: pointer; user-select: none;
-            border-right: 4px solid var(--primary-color);
-        }
+        .class-card { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border-color); overflow: hidden; box-shadow: var(--shadow-sm); }
+        .class-header { display: flex; justify-content: space-between; align-items: center; padding: 1.1rem 1.3rem; cursor: pointer; user-select: none; border-right: 4px solid var(--primary-color); }
         .class-header:hover { background: color-mix(in srgb, var(--primary-color) 5%, transparent); }
         .class-header span { transition: transform 0.25s ease; }
         .class-header.open span { transform: rotate(180deg); }
         .lectures-list { display: none; flex-direction: column; gap: 0.7rem; padding: 1.1rem 1.5rem 0.9rem 0; }
-        .lecture-item {
-            position: relative; padding: 0.9rem 1.1rem 0.9rem 3.5rem;
-            background: color-mix(in srgb, var(--primary-color) 5%, transparent);
-            border-right: 3px solid var(--primary-dark); border-radius: var(--radius);
-            cursor: pointer; transition: all 0.25s ease;
-            display: flex; justify-content: space-between; align-items: center;
-        }
+        .lecture-item { position: relative; padding: 0.9rem 1.1rem 0.9rem 3.5rem; background: color-mix(in srgb, var(--primary-color) 5%, transparent); border-right: 3px solid var(--primary-dark); border-radius: var(--radius); cursor: pointer; transition: all 0.25s ease; display: flex; justify-content: space-between; align-items: center; }
         .lecture-item:hover { background: color-mix(in srgb, var(--primary-color) 10%, transparent); }
-        .lecture-item i {
-            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-            color: var(--primary-color);
-        }
+        .lecture-item i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--primary-color); }
         .video-page { display: flex; flex-direction: column; gap: 2rem; }
-        .video-container {
-            position: relative; width: 100%; background: #000; border-radius: var(--radius);
-            overflow: hidden; aspect-ratio: 16/9; box-shadow: var(--shadow-lg);
-        }
+        .video-container { position: relative; width: 100%; background: #000; border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/9; box-shadow: var(--shadow-lg); }
         .plyr { border-radius: var(--radius); overflow: hidden; width: 100%; height: 100%; }
-        .video-details {
-            background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius);
-            border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-md);
-        }
+        .video-details { background: var(--card-bg); padding: 1.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); text-align: center; box-shadow: var(--shadow-md); }
         .video-info { text-align: right; padding: 1rem 0; }
-        .video-meta {
-            display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem;
-            opacity: 0.8; font-size: 0.9rem; flex-wrap: wrap;
-        }
+        .video-meta { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; opacity: 0.8; font-size: 0.9rem; flex-wrap: wrap; }
         .video-meta span { display: flex; align-items: center; gap: 0.3rem; }
-        .video-loader {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center;
-            z-index: 10; border-radius: var(--radius);
-        }
-        .loader-spinner {
-            border: 6px solid #f3f3f3; border-top: 6px solid var(--primary-color);
-            border-radius: 50%; width: 60px; height: 60px;
-            animation: spin 1s linear infinite;
-        }
+        .video-loader { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center; z-index: 10; border-radius: var(--radius); }
+        .loader-spinner { border: 6px solid #f3f3f3; border-top: 6px solid var(--primary-color); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center;
-            z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
         .modal.show { opacity: 1; visibility: visible; }
-        .modal-content {
-            background: linear-gradient(135deg, hsl(265, 82%, 24%), hsl(217, 96%, 57%));
-            border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-lg);
-            max-width: 550px; width: 90%; text-align: center;
-            transform: translateY(-20px); transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
+        .modal-content { background: linear-gradient(135deg, hsl(265, 82%, 24%), hsl(217, 96%, 57%)); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-lg); max-width: 550px; width: 90%; text-align: center; transform: translateY(-20px); transition: transform 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.2); }
         .modal.show .modal-content { transform: translateY(0); }
         .modal-header { margin-bottom: 1.5rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 1rem; }
-        .modal-title {
-            font-size: 2rem; color: #fff; display: flex; align-items: center;
-            justify-content: center; gap: 0.75rem; font-weight: 700;
-        }
+        .modal-title { font-size: 2rem; color: #fff; display: flex; align-items: center; justify-content: center; gap: 0.75rem; font-weight: 700; }
         .modal-body p { font-size: 1.2rem; color: #fff; margin-bottom: 2.5rem; line-height: 1.8; font-weight: 500; }
-        .btn-telegram {
-            background: linear-gradient(45deg, #00c6ff, #0072ff); color: #fff;
-            padding: 1.2rem 2.5rem; font-size: 1.2rem; margin-bottom: 1.2rem;
-            width: fit-content; margin-left: auto; margin-right: auto;
-            border-radius: var(--radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
+        .btn-telegram { background: linear-gradient(45deg, #00c6ff, #0072ff); color: #fff; padding: 1.2rem 2.5rem; font-size: 1.2rem; margin-bottom: 1.2rem; width: fit-content; margin-left: auto; margin-right: auto; border-radius: var(--radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; }
         .btn-telegram:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
-        .btn-outline-telegram {
-            background: transparent; border: 2px solid #fff; color: #fff;
-            padding: 0.9rem 1.8rem; font-size: 1rem; transition: all 0.25s ease;
-            width: fit-content; margin-left: auto; margin-right: auto;
-            border-radius: var(--radius);
-        }
+        .btn-outline-telegram { background: transparent; border: 2px solid #fff; color: #fff; padding: 0.9rem 1.8rem; font-size: 1rem; transition: all 0.25s ease; width: fit-content; margin-left: auto; margin-right: auto; border-radius: var(--radius); }
         .btn-outline-telegram:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
         #continueWatchingModal .modal-content { background: linear-gradient(135deg, #4facfe, #00f2fe); max-width: 450px; padding: 2rem; }
         #continueWatchingModal .modal-title { font-size: 1.6rem; margin-bottom: 1rem; color: #fff; }
         #continueWatchingModal .modal-body p { font-size: 1rem; color: #fff; margin-bottom: 0.5rem; line-height: 1.4; }
-        #continueWatchingModal .modal-body p .highlight-text {
-            color: var(--highlight-color); font-weight: bold; text-shadow: var(--highlight-shadow);
-        }
-        .btn-continue-now {
-            background-color: #00c896; color: #fff; padding: 1rem 2rem;
-            font-size: 1.1rem; margin-top: 1.5rem; margin-left: auto; margin-right: auto;
-            border-radius: var(--radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem;
-        }
+        #continueWatchingModal .modal-body p .highlight-text { color: var(--highlight-color); font-weight: bold; text-shadow: var(--highlight-shadow); }
+        .btn-continue-now { background-color: #00c896; color: #fff; padding: 1rem 2rem; font-size: 1.1rem; margin-top: 1.5rem; margin-left: auto; margin-right: auto; border-radius: var(--radius); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 0.5rem; }
         .btn-continue-now:hover { background-color: #00a87a; transform: translateY(-3px) scale(1.01); }
 
         /* Responsive adjustments */
@@ -546,16 +455,15 @@
             .card-title { font-size: 1.5rem; }
             .teacher-name { font-size: 1.15rem; }
         }
-
     </style>
 </head>
 <body>
     <header>
         <div class="nav-container">
-            <h1 class="site-title" onclick="navigate('home')">
+            <a href="#" class="site-title" id="siteTitleLink">
                 <div class="site-logo">إ</div>
                 <span>منصة إديسون</span>
-            </h1>
+            </a>
             <nav class="header-actions">
                 <div class="desktop-nav">
                     <button id="themeToggleDesktop" class="btn">
@@ -598,11 +506,12 @@
             </div>
             
             <div class="categories-grid">
-                <div id="card-2026" class="category-card" onclick="loadCategory('year-2026')">
-                    <div class="card-pattern"></div>
-                    <div class="card-content">
+                <div id="card-2026" class="category-card" data-category="year-2026">
+                    <div class="card-header">
                         <i class="card-icon" data-lucide="calendar-days"></i>
                         <h3 class="card-title">مدرسين سنة 2026</h3>
+                    </div>
+                    <div class="card-content">
                         <p class="card-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
                         <div class="card-button">
                             <span>عرض المواد</span>
@@ -611,11 +520,12 @@
                     </div>
                 </div>
                 
-                <div id="card-2025" class="category-card" onclick="loadCategory('year-2025')">
-                    <div class="card-pattern"></div>
-                    <div class="card-content">
+                <div id="card-2025" class="category-card" data-category="year-2025">
+                    <div class="card-header">
                         <i class="card-icon" data-lucide="calendar-check-2"></i>
                         <h3 class="card-title">مدرسين سنة 2025</h3>
+                    </div>
+                    <div class="card-content">
                         <p class="card-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
                         <div class="card-button">
                             <span>عرض المواد</span>
@@ -624,11 +534,12 @@
                     </div>
                 </div>
                 
-                <div id="card-distinguished" class="category-card" onclick="loadCategory('distinguished')">
-                    <div class="card-pattern"></div>
-                    <div class="card-content">
-                        <i class="card-icon" data-lucide="star"></i>
+                <div id="card-distinguished" class="category-card" data-category="distinguished">
+                    <div class="card-header">
+                         <i class="card-icon" data-lucide="star"></i>
                         <h3 class="card-title">قسم المتميزين</h3>
+                    </div>
+                    <div class="card-content">
                         <p class="card-description">مواد خاصة للطلاب المتميزين</p>
                         <div class="card-button">
                             <span>عرض المواد</span>
@@ -637,11 +548,12 @@
                     </div>
                 </div>
                 
-                <div id="card-literary" class="category-card" onclick="loadCategory('literary')">
-                    <div class="card-pattern"></div>
-                    <div class="card-content">
+                <div id="card-literary" class="category-card" data-category="literary">
+                    <div class="card-header">
                         <i class="card-icon" data-lucide="book-marked"></i>
                         <h3 class="card-title">القسم الأدبي</h3>
+                    </div>
+                    <div class="card-content">
                         <p class="card-description">المواد والمناهج للفرع الادبي</p>
                         <div class="card-button">
                             <span>عرض المواد</span>
@@ -653,7 +565,7 @@
         </div>
 
         <div id="categoryPage" class="page">
-            <button class="btn back-button" onclick="navigate('home')">
+            <button class="btn back-button" id="backToHomeBtn">
                 <i data-lucide="arrow-right"></i><span>الرجوع للأقسام</span>
             </button>
             <div class="section-title">
@@ -664,7 +576,7 @@
         </div>
 
         <div id="classesPage" class="page">
-            <button class="btn back-button" onclick="navigate('category')">
+            <button class="btn back-button" id="backToCategoryBtn">
                 <i data-lucide="arrow-right"></i><span>الرجوع للمدرسين</span>
             </button>
             <div class="teacher-info">
@@ -698,7 +610,7 @@
                             <span><i data-lucide="calendar"></i> تاريخ النشر: <span id="videoDate">--/--/----</span></span>
                         </div>
                     </div>
-                    <button class="btn back-button" onclick="navigate('classes')">
+                    <button class="btn back-button" id="backToClassesBtn">
                         <i data-lucide="arrow-right"></i><span>العودة للفصول</span>
                     </button>
                 </div>
@@ -733,75 +645,60 @@
         </div>
     </div>
 
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <script type="text/babel">
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // --- Theme Management ---
-            const themeToggleDesktop = document.getElementById('themeToggleDesktop');
-            const themeToggleMobile = document.getElementById('themeToggleMobile');
-            
-            const applyTheme = (theme) => {
-                document.documentElement.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                const icon = theme === 'dark' ? 'sun' : 'moon';
-                document.querySelectorAll('#themeToggleDesktop i, #themeToggleMobile i').forEach(el => el.setAttribute('data-lucide', icon));
-                lucide.createIcons();
+            // --- DOM Elements ---
+            const DOMElements = {
+                themeToggles: document.querySelectorAll('#themeToggleDesktop, #themeToggleMobile'),
+                hamburgerMenu: document.getElementById('hamburgerMenu'),
+                mobileMenu: document.getElementById('mobileMenu'),
+                siteTitleLink: document.getElementById('siteTitleLink'),
+                pages: {
+                    home: document.getElementById('homePage'),
+                    category: document.getElementById('categoryPage'),
+                    classes: document.getElementById('classesPage'),
+                    video: document.getElementById('videoPage')
+                },
+                categoryCards: document.querySelectorAll('.category-card'),
+                backToHomeBtn: document.getElementById('backToHomeBtn'),
+                backToCategoryBtn: document.getElementById('backToCategoryBtn'),
+                backToClassesBtn: document.getElementById('backToClassesBtn'),
+                categoryTitle: document.getElementById('categoryTitle'),
+                teachersGrid: document.getElementById('teachersGrid'),
+                teacherInfo: {
+                    image: document.getElementById('teacherImage'),
+                    name: document.getElementById('teacherName'),
+                    subject: document.getElementById('teacherSubject'),
+                    rating: document.getElementById('teacherRating')
+                },
+                classesList: document.getElementById('classesList'),
+                video: {
+                    title: document.getElementById('videoTitle'),
+                    description: document.getElementById('videoDescription'),
+                    container: document.getElementById('playerContainer')
+                },
+                modals: {
+                    telegram: document.getElementById('telegramModal'),
+                    continueWatching: document.getElementById('continueWatchingModal')
+                },
+                continueWithoutSubscribingBtn: document.getElementById('continueWithoutSubscribingBtn'),
+                continueNowBtn: document.getElementById('continueNowBtn'),
+                lastWatchedTeacherName: document.getElementById('lastWatchedTeacherName'),
+                lastWatchedLectureTitle: document.getElementById('lastWatchedLectureTitle'),
             };
 
-            const toggleTheme = () => {
-                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                applyTheme(newTheme);
+            // --- State Management ---
+            let state = {
+                player: null,
+                hlsInstance: null,
+                progressInterval: null,
+                teachers: [],
+                currentTeacher: null,
+                lectureProgress: JSON.parse(localStorage.getItem("lectureProgress")) || {},
+                ratings: JSON.parse(localStorage.getItem("ratings")) || {},
+                lastWatched: JSON.parse(localStorage.getItem("lastWatched")) || null
             };
 
-            themeToggleDesktop.addEventListener('click', toggleTheme);
-            themeToggleMobile.addEventListener('click', toggleTheme);
-            
-            const storedTheme = localStorage.getItem('theme');
-            const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-            applyTheme(storedTheme || preferredTheme);
-
-            // --- Hamburger Menu ---
-            const hamburgerMenu = document.getElementById('hamburgerMenu');
-            const mobileMenu = document.getElementById('mobileMenu');
-            hamburgerMenu.addEventListener('click', () => {
-                hamburgerMenu.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-            });
-
-            // --- Navigation & Page Handling ---
-            const pages = {
-                home: document.getElementById('homePage'),
-                category: document.getElementById('categoryPage'),
-                classes: document.getElementById('classesPage'),
-                video: document.getElementById('videoPage')
-            };
-            let player = null;
-
-            window.navigate = (page) => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                if (page !== 'video' && player) {
-                    player.destroy();
-                    player = null;
-                    if (window.hlsInstance) {
-                        window.hlsInstance.destroy();
-                        window.hlsInstance = null;
-                    }
-                    if (window.progressInterval) clearInterval(window.progressInterval);
-                    document.getElementById('playerContainer').innerHTML = "";
-                }
-                Object.values(pages).forEach(p => p.classList.remove('active'));
-                pages[page].classList.add('active');
-                
-                // Close mobile menu on navigation
-                hamburgerMenu.classList.remove('active');
-                mobileMenu.classList.remove('active');
-            };
-
-            // --- Data Loading & Rendering ---
-            let teachers = [];
-            let currentTeacher = null;
             const categories = {
                 "year-2026": { title: "الصفوف الدراسية 2026", endpoint: "https://adson.netlify.app/data2.json" },
                 "year-2025": { title: "الصفوف الدراسية 2025", endpoint: "https://adson.netlify.app/data.json" },
@@ -809,77 +706,104 @@
                 "literary": { title: "القسم الأدبي", endpoint: "https://adson.netlify.app/mm.json" }
             };
 
-            window.loadCategory = (categoryId) => {
-                const category = categories[categoryId];
-                if (!category) return;
-                document.getElementById('categoryTitle').textContent = category.title;
-                loadData(category.endpoint);
-                navigate('category');
+            // --- Functions ---
+            const applyTheme = (theme) => {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                const icon = theme === 'dark' ? 'sun' : 'moon';
+                DOMElements.themeToggles.forEach(toggle => {
+                    const i = toggle.querySelector('i');
+                    if (i) i.setAttribute('data-lucide', icon);
+                });
+                lucide.createIcons();
+            };
+
+            const toggleTheme = () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+                applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            };
+
+            const navigate = (page) => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (page !== 'video' && state.player) {
+                    state.player.destroy();
+                    state.player = null;
+                    if (state.hlsInstance) {
+                        state.hlsInstance.destroy();
+                        state.hlsInstance = null;
+                    }
+                    if (state.progressInterval) clearInterval(state.progressInterval);
+                    DOMElements.video.container.innerHTML = "";
+                }
+                Object.values(DOMElements.pages).forEach(p => p.classList.remove('active'));
+                DOMElements.pages[page].classList.add('active');
+                DOMElements.hamburgerMenu.classList.remove('active');
+                DOMElements.mobileMenu.classList.remove('active');
             };
 
             const renderStars = (rating) => Array.from({ length: 5 }, (_, i) => `<span class="star ${i < rating ? 'filled' : ''}">★</span>`).join('');
 
-            const renderTeachers = (list = teachers) => {
-                const teachersGrid = document.getElementById('teachersGrid');
+            const renderTeachers = (list = state.teachers) => {
                 if (!list.length) {
-                    teachersGrid.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
+                    DOMElements.teachersGrid.innerHTML = `<p>لا توجد نتائج مطابقة.</p>`;
                     return;
                 }
-                teachersGrid.innerHTML = list.map(t => `
-                    <div class="teacher-card" onclick="showTeacher('${t.id}')">
-                        <div class="teacher-card-banner">
-                            <img src="${t.image}" alt="" onerror="this.style.display='none';">
-                        </div>
+                DOMElements.teachersGrid.innerHTML = list.map(t => `
+                    <div class="teacher-card" data-teacher-id="${t.id}">
+                        <div class="teacher-card-banner"><img src="${t.image}" alt="" onerror="this.style.display='none';"></div>
                         <div class="teacher-card-content">
                             <img class="teacher-avatar" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/E2E8F0/A0AEC0?text=No+Img';">
                             <div>
                                 <h3 class="teacher-name">${t.name}</h3>
                                 <p class="teacher-subject">${t.subject}</p>
-                                <div class="teacher-rating">${renderStars(ratings[t.id] || 0)}</div>
+                                <div class="teacher-rating">${renderStars(state.ratings[t.id] || 0)}</div>
                             </div>
-                            <div class="teacher-cta">
-                                <span>عرض المحاضرات</span>
-                                <i data-lucide="arrow-left"></i>
-                            </div>
+                            <div class="teacher-cta"><span>عرض المحاضرات</span><i data-lucide="arrow-left"></i></div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
                 lucide.createIcons();
+                DOMElements.teachersGrid.querySelectorAll('.teacher-card').forEach(card => {
+                    card.addEventListener('click', () => showTeacher(card.dataset.teacherId));
+                });
             };
 
-            window.showTeacher = (id) => {
-                currentTeacher = teachers.find(t => t.id == id);
-                if (!currentTeacher) return;
-                document.getElementById('teacherImage').src = currentTeacher.image;
-                document.getElementById('teacherName').textContent = currentTeacher.name;
-                document.getElementById('teacherSubject').textContent = currentTeacher.subject;
-                document.getElementById('teacherRating').innerHTML = renderStars(ratings[currentTeacher.id] || 0);
-                renderClasses(currentTeacher.classes);
+            const showTeacher = (id) => {
+                state.currentTeacher = state.teachers.find(t => t.id == id);
+                if (!state.currentTeacher) return;
+                DOMElements.teacherInfo.image.src = state.currentTeacher.image;
+                DOMElements.teacherInfo.name.textContent = state.currentTeacher.name;
+                DOMElements.teacherInfo.subject.textContent = state.currentTeacher.subject;
+                DOMElements.teacherInfo.rating.innerHTML = renderStars(state.ratings[state.currentTeacher.id] || 0);
+                renderClasses(state.currentTeacher.classes);
                 navigate('classes');
             };
-
+            
             const renderClasses = (classesData) => {
-                const classesList = document.getElementById('classesList');
-                classesList.innerHTML = classesData.map((cls, ci) => `
+                DOMElements.classesList.innerHTML = classesData.map((cls, ci) => `
                     <div class="class-card">
-                        <div class="class-header" onclick="toggleLectures(this)">
-                            <h3>${cls.name}</h3>
-                            <span data-lucide="chevron-down"></span>
+                        <div class="class-header">
+                            <h3>${cls.name}</h3><span data-lucide="chevron-down"></span>
                         </div>
                         <div class="lectures-list">
                             ${cls.lectures.map((lec, li) => `
-                                <div class="lecture-item" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}')">
-                                    <i data-lucide="play-circle"></i>
-                                    <span>${li + 1}. ${lec.title}</span>
-                                </div>
-                            `).join('')}
+                                <div class="lecture-item" data-ci="${ci}" data-li="${li}" data-url="${lec.url}" data-title="${lec.title}" data-desc="${lec.description || ''}">
+                                    <i data-lucide="play-circle"></i><span>${li + 1}. ${lec.title}</span>
+                                </div>`).join('')}
                         </div>
-                    </div>
-                `).join('');
+                    </div>`).join('');
                 lucide.createIcons();
+                DOMElements.classesList.querySelectorAll('.class-header').forEach(header => {
+                    header.addEventListener('click', () => toggleLectures(header));
+                });
+                DOMElements.classesList.querySelectorAll('.lecture-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        const { ci, li, url, title, desc } = item.dataset;
+                        playLecture(parseInt(ci), parseInt(li), url, title, desc);
+                    });
+                });
             };
 
-            window.toggleLectures = (header) => {
+            const toggleLectures = (header) => {
                 const list = header.nextElementSibling;
                 const icon = header.querySelector('[data-lucide]');
                 const isOpen = list.style.display === 'flex';
@@ -887,117 +811,148 @@
                 icon.setAttribute('data-lucide', isOpen ? 'chevron-down' : 'chevron-up');
                 lucide.createIcons();
             };
-            
+
             const loadData = (endpoint) => {
-                const teachersGrid = document.getElementById('teachersGrid');
-                teachersGrid.innerHTML = `<p>جاري تحميل المدرسين...</p>`;
+                DOMElements.teachersGrid.innerHTML = `<p>جاري تحميل المدرسين...</p>`;
                 fetch(endpoint, { headers: { "Cache-Control": "no-cache" } })
-                    .then(r => r.ok ? r.json() : Promise.reject())
+                    .then(r => r.ok ? r.json() : Promise.reject('Failed to fetch'))
                     .then(data => {
-                        teachers = data.teachers;
+                        state.teachers = data.teachers;
                         renderTeachers();
                     })
-                    .catch(() => { teachersGrid.innerHTML = `<p>حدث خطأ في تحميل البيانات.</p>`; });
+                    .catch(() => { DOMElements.teachersGrid.innerHTML = `<p>حدث خطأ في تحميل البيانات.</p>`; });
             };
 
-            // --- Video Player ---
-            let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
-            let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-            let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
-
-            window.playLecture = (ci, li, url, title, desc) => {
-                if (player) player.destroy();
+            const playLecture = (ci, li, url, title, desc) => {
+                if (state.player) state.player.destroy();
+                DOMElements.video.title.textContent = title;
+                DOMElements.video.description.textContent = desc || "لا يوجد وصف لهذه المحاضرة.";
                 
-                document.getElementById('videoTitle').textContent = title;
-                document.getElementById('videoDescription').textContent = desc || "لا يوجد وصف لهذه المحاضرة.";
-                
-                lastWatched = {
-                    teacherId: currentTeacher.id, teacherName: currentTeacher.name,
+                state.lastWatched = {
+                    teacherId: state.currentTeacher.id, teacherName: state.currentTeacher.name,
                     classIndex: ci, lectureIndex: li, lectureTitle: title,
                     lectureUrl: url, lectureDescription: desc
                 };
-                localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+                localStorage.setItem("lastWatched", JSON.stringify(state.lastWatched));
 
-                const playerContainer = document.getElementById('playerContainer');
-                playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+                DOMElements.video.container.innerHTML = `<video id="player" playsinline controls></video>`;
                 const videoElement = document.getElementById('player');
                 
-                player = new Plyr(videoElement, { /* options */ });
+                state.player = new Plyr(videoElement, { controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'] });
 
                 if (url.endsWith('.m3u8')) {
                     if (Hls.isSupported()) {
-                        const hls = new Hls();
-                        window.hlsInstance = hls;
-                        hls.loadSource(url);
-                        hls.attachMedia(videoElement);
+                        state.hlsInstance = new Hls();
+                        state.hlsInstance.loadSource(url);
+                        state.hlsInstance.attachMedia(videoElement);
                     } else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
                         videoElement.src = url;
                     }
                 } else {
-                    player.source = { type: 'video', sources: [{ src: url }] };
+                    state.player.source = { type: 'video', sources: [{ src: url }] };
                 }
 
-                player.on('ready', () => {
-                    const savedTime = (lectureProgress[url] / 100) * player.duration;
-                    if (savedTime) player.currentTime = savedTime;
-                    player.play();
+                state.player.on('ready', () => {
+                    const savedProgress = state.lectureProgress[url];
+                    if (savedProgress && state.player.duration) {
+                        state.player.currentTime = (savedProgress / 100) * state.player.duration;
+                    }
+                    state.player.play();
                 });
                 
-                window.progressInterval = setInterval(() => {
-                    if (player && player.duration > 0) {
-                        lectureProgress[url] = (player.currentTime / player.duration) * 100;
-                        localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                state.progressInterval = setInterval(() => {
+                    if (state.player && state.player.duration > 0) {
+                        state.lectureProgress[url] = (state.player.currentTime / state.player.duration) * 100;
+                        localStorage.setItem("lectureProgress", JSON.stringify(state.lectureProgress));
                     }
                 }, 5000);
 
                 navigate('video');
             };
 
-            // --- Modals ---
-            const telegramModal = document.getElementById('telegramModal');
-            const continueWatchingModal = document.getElementById('continueWatchingModal');
-            
             const showContinueWatchingModal = () => {
-                if (lastWatched) {
-                    document.getElementById('lastWatchedTeacherName').textContent = lastWatched.teacherName;
-                    document.getElementById('lastWatchedLectureTitle').textContent = lastWatched.lectureTitle;
-                    continueWatchingModal.classList.add('show');
+                if (state.lastWatched) {
+                    DOMElements.lastWatchedTeacherName.textContent = state.lastWatched.teacherName;
+                    DOMElements.lastWatchedLectureTitle.textContent = state.lastWatched.lectureTitle;
+                    DOMElements.modals.continueWatching.classList.add('show');
                 }
             };
 
             const showTelegramModal = () => {
                 if (!localStorage.getItem('telegramSubscribed')) {
-                    telegramModal.classList.add('show');
+                    DOMElements.modals.telegram.classList.add('show');
                 } else {
                     showContinueWatchingModal();
                 }
             };
             
-            document.getElementById('continueWithoutSubscribingBtn').addEventListener('click', () => {
-                localStorage.setItem('telegramSubscribed', 'true');
-                telegramModal.classList.remove('show');
-                showContinueWatchingModal();
-            });
-            
-            document.getElementById('continueNowBtn').addEventListener('click', () => {
-                continueWatchingModal.classList.remove('show');
-                // Logic to find and play last watched video
-                const category = Object.values(categories).find(cat => cat.endpoint.includes('data.json') || cat.endpoint.includes('data2.json') || cat.endpoint.includes('ff.json') || cat.endpoint.includes('mm.json'));
-                if(category){
-                     fetch(category.endpoint).then(r => r.json()).then(data => {
-                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                        if(teacher){
-                            currentTeacher = teacher;
-                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription);
-                        }
+            // --- Event Listeners ---
+            const initEventListeners = () => {
+                DOMElements.themeToggles.forEach(toggle => toggle.addEventListener('click', toggleTheme));
+                DOMElements.hamburgerMenu.addEventListener('click', () => {
+                    DOMElements.hamburgerMenu.classList.toggle('active');
+                    DOMElements.mobileMenu.classList.toggle('active');
+                });
+                DOMElements.siteTitleLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navigate('home');
+                });
+                DOMElements.categoryCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        const categoryId = card.dataset.category;
+                        const category = categories[categoryId];
+                        if (!category) return;
+                        DOMElements.categoryTitle.textContent = category.title;
+                        loadData(category.endpoint);
+                        navigate('category');
                     });
-                }
-            });
+                });
+                DOMElements.backToHomeBtn.addEventListener('click', () => navigate('home'));
+                DOMElements.backToCategoryBtn.addEventListener('click', () => navigate('category'));
+                DOMElements.backToClassesBtn.addEventListener('click', () => navigate('classes'));
 
-            setTimeout(showTelegramModal, 1000);
-            
-            // Initial call
-            lucide.createIcons();
+                DOMElements.continueWithoutSubscribingBtn.addEventListener('click', () => {
+                    localStorage.setItem('telegramSubscribed', 'true');
+                    DOMElements.modals.telegram.classList.remove('show');
+                    showContinueWatchingModal();
+                });
+
+                DOMElements.continueNowBtn.addEventListener('click', () => {
+                    DOMElements.modals.continueWatching.classList.remove('show');
+                    if (!state.lastWatched) return;
+                    
+                    const findAndPlay = (endpoint) => {
+                        return fetch(endpoint).then(r => r.json()).then(data => {
+                            const teacher = data.teachers.find(t => t.id === state.lastWatched.teacherId);
+                            if (teacher) {
+                                state.currentTeacher = teacher;
+                                playLecture(state.lastWatched.classIndex, state.lastWatched.lectureIndex, state.lastWatched.lectureUrl, state.lastWatched.lectureTitle, state.lastWatched.lectureDescription);
+                                return true; // Found
+                            }
+                            return false; // Not found
+                        });
+                    };
+
+                    // Chain promises to search through endpoints
+                    findAndPlay(categories['year-2026'].endpoint)
+                        .then(found => !found && findAndPlay(categories['year-2025'].endpoint))
+                        .then(found => !found && findAndPlay(categories['distinguished'].endpoint))
+                        .then(found => !found && findAndPlay(categories['literary'].endpoint))
+                        .catch(err => console.error("Error finding last watched lecture:", err));
+                });
+            };
+
+            // --- Initialisation ---
+            const init = () => {
+                const storedTheme = localStorage.getItem('theme');
+                const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                applyTheme(storedTheme || preferredTheme);
+                initEventListeners();
+                lucide.createIcons();
+                setTimeout(showTelegramModal, 1000);
+            };
+
+            init();
         });
     </script>
 </body>
