@@ -8,7 +8,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     
-    <!-- New Elegant Arabic Font -->
+    <!-- Elegant Arabic Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
@@ -28,18 +28,18 @@
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
-            --primary-1: #3b82f6; /* A slightly brighter blue */
+            --primary-1: #3b82f6;
             --primary-2: #2563eb;
             --primary-3: #1d4ed8;
-            --accent: #facc15; /* A more golden yellow */
+            --accent: #facc15;
             --accent-2: #eab308;
-            --radius: 14px; /* Slightly larger border radius */
-            --bg: #f8fafc; /* Lighter background */
-            --bg-glass: rgba(255, 255, 255, 0.95); /* More opaque glass effect */
-            --text: #1f2937; /* Darker text for better contrast */
+            --radius: 14px;
+            --bg: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.95);
+            --text: #1f2937;
             --card: #ffffff;
             --border: #e2e8f0;
-            --hover: rgba(0, 0, 0, 0.06); /* Slightly more visible hover */
+            --hover: rgba(0, 0, 0, 0.06);
             --success: #22c55e;
             --warning: #facc15;
             --error: #ef4444;
@@ -50,46 +50,46 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-            /* New vibrant colors for modal */
-            --modal-bg-start: #6a11cb; /* Purple-blue gradient start */
-            --modal-bg-end: #2575fc; /* Blue-purple gradient end */
-            --modal-text-color: #ffffff; /* White text for contrast */
-            --modal-button-gradient-start: #00c6ff; /* Light blue */
-            --modal-button-gradient-end: #0072ff; /* Deeper blue */
+            /* Modal colors */
+            --modal-bg-start: #6a11cb;
+            --modal-bg-end: #2575fc;
+            --modal-text-color: #ffffff;
+            --modal-button-gradient-start: #00c6ff;
+            --modal-button-gradient-end: #0072ff;
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
 
-            /* New colors for continue watching modal (Cute Pink) */
-            --continue-modal-bg-start: #4facfe; /* Gradient start */
-            --continue-modal-bg-end: #00f2fe; /* Gradient end */
-            --continue-modal-text: #ffffff; /* White text */
-            --continue-button-bg: #00c896; /* Green button */
-            --continue-button-hover: #00a87a; /* Darker green for hover */
-            --continue-outline-button-border: #00c896; /* Green border */
-            --continue-outline-button-text: #00c896; /* Green text */
-            --highlight-color: #ffeb3b; /* Bright yellow for highlight */
-            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
+            /* Continue watching modal colors */
+            --continue-modal-bg-start: #4facfe;
+            --continue-modal-bg-end: #00f2fe;
+            --continue-modal-text: #ffffff;
+            --continue-button-bg: #00c896;
+            --continue-button-hover: #00a87a;
+            --continue-outline-button-border: #00c896;
+            --continue-outline-button-text: #00c896;
+            --highlight-color: #ffeb3b;
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
         }
 
         /* Dark theme adjustments */
         [data-theme="dark"] {
-            --bg: #1e293b; /* Darker background */
+            --bg: #1e293b;
             --bg-glass: rgba(30, 41, 59, 0.95);
             --text: #f1f5f9;
-            --card: #334155; /* Darker card background */
+            --card: #334155;
             --border: #475569;
             --hover: rgba(255, 255, 255, 0.1);
-            --primary-1: #60a5fa; /* Lighter primary for dark theme */
+            --primary-1: #60a5fa;
             --primary-2: #3b82f6;
             --primary-3: #2563eb;
-            --accent: #fcd34d; /* Lighter accent for dark theme */
+            --accent: #fcd34d;
             --accent-2: #fbbf24;
 
             /* Dark theme modal colors */
-            --modal-bg-start: #1a2a6c; /* Darker blue gradient start */
-            --modal-bg-end: #004d99; /* Darker blue gradient end */
-            --modal-text-color: #e0e7ff; /* Lighter text for dark contrast */
+            --modal-bg-start: #1a2a6c;
+            --modal-bg-end: #004d99;
+            --modal-text-color: #e0e7ff;
             --modal-button-gradient-start: #007bff;
             --modal-button-gradient-end: #0056b3;
             --modal-button-text: #ffffff;
@@ -97,15 +97,13 @@
             --modal-outline-button-text: #9ec5ff;
 
             /* Dark theme continue watching modal colors */
-            --continue-modal-bg-start: #004d99; /* Darker blue */
-            --continue-modal-bg-end: #1a2a6c; /* Even darker blue */
-            --continue-modal-text: #e0e7ff; /* Light text */
-            --continue-button-bg: #007a5e; /* Darker green */
-            --continue-button-hover: #005a41; /* Even darker green */
+            --continue-modal-bg-start: #004d99;
+            --continue-modal-bg-end: #1a2a6c;
+            --continue-modal-text: #e0e7ff;
+            --continue-button-bg: #007a5e;
+            --continue-button-hover: #005a41;
             --continue-outline-button-border: #007a5e;
             --continue-outline-button-text: #007a5e;
-            --highlight-color: #ffeb3b; /* Keep bright yellow for highlight */
-            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6); /* Subtle glow */
         }
 
         /* General styles */
@@ -124,7 +122,7 @@
             line-height: 1.6;
             min-height: 100vh;
             overflow-y: auto;
-            transition: background 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         img {
@@ -151,9 +149,9 @@
             background: var(--bg-glass);
             backdrop-filter: blur(14px);
             border-bottom: 1px solid var(--border);
-            box-shadow: var(--shadow-md); /* Enhanced shadow */
+            box-shadow: var(--shadow-md);
             flex-wrap: wrap;
-            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, display 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .site-title {
@@ -165,7 +163,7 @@
             gap: 0.5rem;
             flex: 1;
             min-width: 200px;
-            cursor: pointer; /* Indicate clickable */
+            cursor: pointer;
             transition: color 0.3s ease;
         }
 
@@ -212,7 +210,7 @@
         .search-container input:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3); /* Accent-based shadow */
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
         }
 
         .search-icon {
@@ -241,7 +239,7 @@
 
         .btn:hover {
             opacity: 0.9;
-            transform: translateY(-2px); /* Subtle lift on hover */
+            transform: translateY(-2px);
             box-shadow: var(--shadow-md);
         }
 
@@ -249,7 +247,7 @@
             background: transparent;
             border: 2px solid var(--primary-1);
             color: var(--primary-1);
-            box-shadow: none; /* No shadow for outline */
+            box-shadow: none;
         }
 
         .btn-outline:hover {
@@ -308,14 +306,14 @@
 
         .category-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg); /* More prominent shadow on hover */
+            box-shadow: var(--shadow-lg);
         }
 
         .category-image {
             height: 180px;
             background-size: cover;
             background-position: center;
-            border-bottom: 1px solid var(--border); /* Subtle separator */
+            border-bottom: 1px solid var(--border);
         }
 
         .category-content {
@@ -331,7 +329,7 @@
         }
 
         .category-description {
-            color: var(--text); /* Use text color variable */
+            color: var(--text);
             margin-bottom: 1rem;
             opacity: 0.8;
             transition: color 0.3s ease;
@@ -370,7 +368,7 @@
             object-fit: cover;
             margin: 0 auto 1rem;
             border: 3px solid var(--accent);
-            box-shadow: var(--shadow-sm); /* Image shadow */
+            box-shadow: var(--shadow-sm);
             transition: border-color 0.3s ease;
         }
 
@@ -496,7 +494,7 @@
         }
 
         .lecture-item:hover {
-            background: rgba(0, 0, 0, 0.08); /* Slightly darker hover */
+            background: rgba(0, 0, 0, 0.08);
         }
 
         .lecture-item i {
@@ -508,13 +506,19 @@
             transition: color 0.3s ease;
         }
 
+        /* REVERTED: Video Page styles returned to original centered layout */
+        #videoPage.page.active {
+            padding: 2rem;
+            max-width: 1300px;
+        }
+
         .video-page {
             display: flex;
             flex-direction: column;
             gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0; /* Padding is now on the parent #videoPage */
         }
 
         .video-container {
@@ -524,7 +528,7 @@
             border-radius: var(--radius);
             overflow: hidden;
             aspect-ratio: 16/9;
-            box-shadow: var(--shadow-lg); /* Prominent shadow for video */
+            box-shadow: var(--shadow-lg);
         }
 
         .plyr {
@@ -594,8 +598,8 @@
         }
 
         .loader-spinner {
-            border: 6px solid #f3f3f3; /* Light grey */
-            border-top: 6px solid var(--primary-1); /* Blue */
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-1);
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -607,18 +611,18 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Telegram Modal Styles */
+        /* Modal Styles */
         .modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+            background: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 2000; /* Ensure it's on top of everything */
+            z-index: 2000;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -630,16 +634,16 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end)); /* Attractive gradient background */
+            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end));
             border-radius: var(--radius);
-            padding: 2.5rem; /* Increased padding */
-            box-shadow: var(--shadow-lg); /* More prominent shadow */
-            max-width: 550px; /* Slightly wider modal */
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 550px;
             width: 90%;
             text-align: center;
             transform: translateY(-20px);
             transition: transform 0.3s ease, background 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .modal.show .modal-content {
@@ -647,14 +651,14 @@
         }
 
         .modal-header {
-            margin-bottom: 1.5rem; /* More space */
-            border-bottom: 2px solid var(--accent); /* Accent line, changed to accent color */
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
             padding-bottom: 1rem;
         }
 
         .modal-title {
-            font-size: 2rem; /* Larger title */
-            color: var(--modal-text-color); /* White text for contrast */
+            font-size: 2rem;
+            color: var(--modal-text-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -663,37 +667,37 @@
         }
 
         .modal-body p {
-            font-size: 1.2rem; /* Larger font size for message */
-            color: var(--modal-text-color); /* White text for contrast */
-            margin-bottom: 2.5rem; /* More space below description */
+            font-size: 1.2rem;
+            color: var(--modal-text-color);
+            margin-bottom: 2.5rem;
             line-height: 1.8;
             font-weight: 500;
         }
 
         .btn-telegram {
-            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end)); /* Vibrant gradient button */
+            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end));
             color: var(--modal-button-text);
-            padding: 1.2rem 2.5rem; /* Larger button */
+            padding: 1.2rem 2.5rem;
             font-size: 1.2rem;
-            margin-bottom: 1.2rem; /* More space below button */
-            width: fit-content; /* Adjust width to content */
+            margin-bottom: 1.2rem;
+            width: fit-content;
             margin-left: auto;
             margin-right: auto;
             border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
 
         .btn-telegram:hover {
-            transform: translateY(-5px) scale(1.02); /* More pronounced lift and slight scale */
+            transform: translateY(-5px) scale(1.02);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1); /* Slightly brighter on hover */
+            filter: brightness(1.1);
         }
 
         .btn-outline-telegram {
             background: transparent;
-            border: 2px solid var(--modal-outline-button-border); /* White border for outline */
-            color: var(--modal-outline-button-text); /* White text for outline */
+            border: 2px solid var(--modal-outline-button-border);
+            color: var(--modal-outline-button-text);
             padding: 0.9rem 1.8rem;
             font-size: 1rem;
             transition: all 0.25s ease;
@@ -705,7 +709,7 @@
         }
 
         .btn-outline-telegram:hover {
-            background: rgba(255, 255, 255, 0.1); /* Subtle background on hover */
+            background: rgba(255, 255, 255, 0.1);
             color: var(--modal-outline-button-text);
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
@@ -714,83 +718,53 @@
         /* Continue Watching Modal Styles */
         #continueWatchingModal .modal-content {
             background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
-            max-width: 450px; /* Adjusted for a more compact width */
-            padding: 2rem; /* Slightly reduced padding */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Applied new shadow */
+            max-width: 450px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
         #continueWatchingModal .modal-title {
-            font-size: 1.6rem; /* Slightly smaller title for smaller modal */
-            margin-bottom: 1rem; /* Reduced margin */
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
             color: var(--continue-modal-text);
         }
 
         #continueWatchingModal .modal-body p {
-            font-size: 1rem; /* Smaller font size for message */
+            font-size: 1rem;
             color: var(--continue-modal-text);
-            margin-bottom: 0.5rem; /* Reduced margin between paragraphs */
-            line-height: 1.4; /* Reduced line height */
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
             font-weight: 500;
         }
         
-        /* Specific style for the bold text within the paragraph */
-        #continueWatchingModal .modal-body p .highlight-text { /* Changed to use .highlight-text class */
-            color: var(--highlight-color); /* Use the new highlight color */
+        #continueWatchingModal .modal-body p .highlight-text {
+            color: var(--highlight-color);
             font-weight: bold;
-            text-shadow: var(--highlight-shadow); /* Add subtle shadow for pop */
+            text-shadow: var(--highlight-shadow);
             transition: color 0.3s ease, text-shadow 0.3s ease;
         }
 
-        .btn-continue-now { /* New class for the "أكمل الآن" button */
-            background-color: var(--continue-button-bg); /* Use new green color */
-            color: var(--continue-modal-text); /* White text */
-            padding: 1rem 2rem; /* Adjusted padding */
-            font-size: 1.1rem; /* Adjusted font size */
-            margin-top: 1.5rem; /* Add some space above the button */
+        .btn-continue-now {
+            background-color: var(--continue-button-bg);
+            color: var(--continue-modal-text);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
             margin-left: auto;
             margin-right: auto;
             border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            display: inline-flex; /* Ensure it behaves like a button with icon */
+            display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .btn-continue-now:hover {
-            background-color: var(--continue-button-hover); /* Darker green on hover */
-            transform: translateY(-3px) scale(1.01); /* Subtle lift and scale */
+            background-color: var(--continue-button-hover);
+            transform: translateY(-3px) scale(1.01);
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05); /* Slightly brighter on hover */
-        }
-
-        /* UPDATED: Full Screen Video Mode for all screen sizes */
-        body.video-mode-active header {
-            display: none;
-        }
-
-        body.video-mode-active #videoPage.page.active {
-            padding: 0;
-            max-width: none;
-        }
-
-        body.video-mode-active .video-page {
-            padding: 0;
-            gap: 0;
-            max-width: none;
-        }
-
-        body.video-mode-active .video-container {
-            border-radius: 0;
-            width: 100%;
-            margin: 0;
-            box-shadow: none;
-        }
-
-        body.video-mode-active .video-details {
-            margin: 2rem auto;
-            max-width: 1000px;
-            width: calc(100% - 2rem);
+            filter: brightness(1.05);
         }
 
         /* Responsive adjustments */
@@ -818,7 +792,7 @@
             .video-details {
                 padding: 1.2rem;
             }
-
+            
             .lecture-item {
                 padding-left: 2.5rem;
             }
@@ -870,7 +844,7 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
-            .btn-continue-now { /* Apply responsive styles to the new button */
+            .btn-continue-now {
                 padding: 0.9rem 1.5rem;
                 font-size: 1rem;
             }
@@ -1105,13 +1079,13 @@
         const categoryTitle = document.getElementById("categoryTitle");
         const classesList = document.getElementById("classesList");
         const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer"); // Get the player container
-        const videoLoader = document.getElementById("videoLoader"); // Get the video loader
+        const playerContainer = document.getElementById("playerContainer");
+        const videoLoader = document.getElementById("videoLoader");
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null; // New: Store last watched lecture details
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
 
         // Navigation
         const pages = {
@@ -1124,13 +1098,8 @@
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            // UPDATED: Add/remove class for fullscreen video mode
-            if (page === "video") {
-                document.body.classList.add("video-mode-active");
-            } else {
-                document.body.classList.remove("video-mode-active");
-            }
-
+            // REVERTED: Removed class toggling for full-screen video
+            
             // Clean up when leaving video page
             if (page !== "video") {
                 if (player) {
@@ -1149,14 +1118,14 @@
                 }
 
                 playerContainer.innerHTML = "";
-                videoLoader.style.display = 'none'; // Ensure loader is hidden
+                videoLoader.style.display = 'none';
             }
 
             Object.values(pages).forEach((p) => p.classList.remove("active"));
             pages[page].classList.add("active");
         }
 
-        /* ========= بيانات المدرسين ========= */
+        /* ========= Teachers Data ========= */
         const searchInput = document.getElementById("searchInput");
         const searchBtn = document.getElementById("searchButton");
         let teachers = [];
@@ -1241,7 +1210,6 @@
             teacherName.textContent = currentTeacher.name;
             teacherSubject.textContent = currentTeacher.subject;
 
-            // عرض التقييم
             const rating = ratings[currentTeacher.id] || 0;
             teacherRating.innerHTML = renderStars(rating);
 
@@ -1254,7 +1222,6 @@
                 .map((cls, ci) => {
                     const lectures = cls.lectures
                         .map((lec, li) => {
-                            // const progress = lectureProgress[lec.url] || 0; // Not currently used for display
                             return `
                                 <div class="lecture-item" 
                                     onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
@@ -1292,37 +1259,28 @@
         };
 
         window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            // Clean up any previous player instances
             if (player) {
                 player.destroy();
                 player = null;
             }
-
             if (window.hlsInstance) {
                 window.hlsInstance.destroy();
                 window.hlsInstance = null;
             }
-
             if (window.progressInterval) {
                 clearInterval(window.progressInterval);
                 window.progressInterval = null;
             }
 
-            // Clear player container and hide loader initially
             playerContainer.innerHTML = "";
             videoLoader.style.display = 'none';
 
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [
-                ci,
-                li,
-                url,
-            ];
+            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
 
-            document.getElementById("videoDate").textContent = "15/10/2026"; // Static date as per original code
+            document.getElementById("videoDate").textContent = "15/10/2026";
 
-            // Save last watched lecture details
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
                 teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
@@ -1334,7 +1292,6 @@
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
-            // Check if the URL should be played directly without a proxy
             const directPlayDomains = [
                 "https://9bf9f797be0a4677a8-akamai-cdn.com",
                 "https://vidcdn.akamai-cdn-delivery.com"
@@ -1348,13 +1305,10 @@
                 }
             }
 
-            // Support for iframe videos via proxy
             if (url.includes("iframe.mediadelivery.net/embed/")) {
-                videoLoader.style.display = 'flex'; // Show loader
-
+                videoLoader.style.display = 'flex';
                 const encodedUrl = btoa(url);
                 const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
-
                 const iframeHtml = `
                     <div style="position: relative; width: 100%; padding-top: 56.25%;">
                         <iframe 
@@ -1369,40 +1323,25 @@
                     </div>
                 `;
                 playerContainer.innerHTML = iframeHtml;
-
                 navigate("video");
                 return;
             }
             
-            // Support for .m3u8 videos via proxy or direct based on domain
-            playerContainer.innerHTML = `
-                <video id="player" playsinline controls></video>
-            `;
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com"; // Keep referer for proxy if needed
+            const referer = "https://abwaab.com";
 
-            // Determine the final URL for the player
             const finalVideoUrl = useProxy && isHLS
                 ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
                 : url;
 
-            const savedTime = lectureProgress[url]
-                ? (lectureProgress[url] / 100) * (player?.duration || 0)
-                : 0;
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
 
-            // Create new Plyr instance
             player = new Plyr("#player", {
-                controls: [
-                    "play-large",
-                    "play",
-                    "progress",
-                    "current-time",
-                    "fullscreen",
-                    "settings",
-                ],
+                controls: ["play-large", "play", "progress", "current-time", "fullscreen", "settings"],
                 keyboard: { focused: true, global: true },
                 tooltips: { controls: true, seek: true },
                 captions: { active: false },
@@ -1410,15 +1349,11 @@
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            // Track progress
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
                     const progress = (player.currentTime / player.duration) * 100;
                     lectureProgress[url] = progress;
-                    localStorage.setItem(
-                        "lectureProgress",
-                        JSON.stringify(lectureProgress)
-                    );
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
                 }
             }, 5000);
 
@@ -1427,50 +1362,31 @@
                     const hls = new Hls();
                     window.hlsInstance = hls;
                     hls.attachMedia(videoElement);
-                    hls.loadSource(finalVideoUrl); // Use finalVideoUrl here
+                    hls.loadSource(finalVideoUrl);
 
                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player
-                            .play()
-                            .then(() => {
-                                if (savedTime > 0) player.currentTime = savedTime;
-                            })
-                            .catch(console.error);
+                        player.play().then(() => {
+                            if (savedTime > 0) player.currentTime = savedTime;
+                        }).catch(console.error);
                     });
 
                     hls.on(Hls.Events.ERROR, (_, data) => {
                         if (data.fatal) {
                             switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR:
-                                    hls.startLoad();
-                                    break;
-                                case Hls.ErrorTypes.MEDIA_ERROR:
-                                    hls.recoverMediaError();
-                                    break;
-                                default:
-                                    break;
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
                             }
                         }
                     });
                 } else {
                     player.source = {
                         type: "video",
-                        sources: [
-                            {
-                                src: finalVideoUrl, // Use finalVideoUrl here
-                                type: isHLS ? "application/x-mpegURL" : "video/mp4",
-                            },
-                        ],
+                        sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
                     };
-
-                    player
-                        .play()
-                        .then(() => {
-                            if (savedTime > 0) player.currentTime = savedTime;
-                        })
-                        .catch(() => {
-                            console.log("تعذر تشغيل الفيديو");
-                        });
+                    player.play().then(() => {
+                        if (savedTime > 0) player.currentTime = savedTime;
+                    }).catch(() => console.log("تعذر تشغيل الفيديو"));
                 }
             }
 
@@ -1478,16 +1394,10 @@
             navigate("video");
         };
 
-        /* ========= البحث ========= */
+        /* ========= Search ========= */
         function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
-            renderTeachers(
-                teachers.filter(
-                    (t) =>
-                        t.name.toLowerCase().includes(term) ||
-                        t.subject.toLowerCase().includes(term)
-                )
-            );
+            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
         }
 
         let searchTimeout;
@@ -1495,62 +1405,38 @@
             clearTimeout(searchTimeout);
             searchTimeout = setTimeout(handleSearch, 250);
         });
-
         searchBtn.addEventListener("click", handleSearch);
 
-        /* ========= تحميل البيانات ========= */
+        /* ========= Load Data ========= */
         function loadData(endpoint) {
-            const err =
-                '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+            teachersGrid.innerHTML = Array(3).fill(`
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>`).join('');
 
-            teachersGrid.innerHTML = `
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>
-            `;
-
-            fetch(endpoint, {
-                headers: {
-                    Referer: "https://careful-burnt-honesty.glitch.me/",
-                    "Cache-Control": "no-cache",
-                },
-            })
-                .then((r) => {
-                    if (!r.ok) throw new Error();
-                    return r.json();
-                })
-                .then((data) => {
-                    teachers = data.teachers;
-                    renderTeachers();
-                })
-                .catch(() => {
-                    teachersGrid.innerHTML = err;
-                });
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+                .then((data) => { teachers = data.teachers; renderTeachers(); })
+                .catch(() => { teachersGrid.innerHTML = err; });
         }
 
-        // Telegram Modal Logic
+        // Modal Logic
         const telegramModal = document.getElementById("telegramModal");
-        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn"); // Changed ID
+        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
+        const continueWatchingModal = document.getElementById("continueWatchingModal");
+        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
+        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
+        const continueNowBtn = document.getElementById("continueNowBtn");
 
         function showTelegramModal() {
             const hasSubscribed = localStorage.getItem("telegramSubscribed");
             if (!hasSubscribed) {
                 telegramModal.classList.add("show");
-                lucide.createIcons(); // Re-render Lucide icons for new elements
+                lucide.createIcons();
             } else {
-                // If Telegram modal is not shown, try to show continue watching modal
                 showContinueWatchingModal();
             }
         }
@@ -1559,26 +1445,17 @@
             telegramModal.classList.remove("show");
         }
 
-        // Event listener for "Choose now to continue" button
         continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal(); // Show continue watching modal after dismissing Telegram modal
+            showContinueWatchingModal();
         });
 
-        // Event listener for the Telegram button itself (to also hide the modal if clicked)
         document.querySelector(".btn-telegram").addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true"); // Assume they will subscribe
-            // The link itself will handle navigation to Telegram
+            localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal(); // Show continue watching modal after clicking Telegram link
+            showContinueWatchingModal();
         });
-
-        // Continue Watching Modal Logic
-        const continueWatchingModal = document.getElementById("continueWatchingModal");
-        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
-        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueNowBtn = document.getElementById("continueNowBtn"); // Reference for the new button
 
         function showContinueWatchingModal() {
             if (lastWatched) {
@@ -1593,50 +1470,29 @@
             continueWatchingModal.classList.remove("show");
         }
 
-        // Event listener for the new "أكمل الآن" button
         continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            // Load the teacher data first to ensure currentTeacher is set
-            // This is a simplified approach. In a real app, you might pre-load data or ensure it's available.
             const categoryKeys = Object.keys(categories);
             let foundTeacher = false;
-
-            // Iterate through categories to find the teacher
             for (const categoryId of categoryKeys) {
                 const category = categories[categoryId];
-                fetch(category.endpoint, {
-                    headers: {
-                        Referer: "https://careful-burnt-honesty.glitch.me/",
-                        "Cache-Control": "no-cache",
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                    if (teacher) {
-                        currentTeacher = teacher; // Set currentTeacher
-                        // Now play the lecture
-                        playLecture(
-                            lastWatched.classIndex,
-                            lastWatched.lectureIndex,
-                            lastWatched.lectureUrl,
-                            lastWatched.lectureTitle,
-                            lastWatched.lectureDescription,
-                            lastWatched.teacherName,
-                            lastWatched.teacherId
-                        );
-                        foundTeacher = true;
-                    }
-                })
-                .catch(error => console.error("Error loading teacher data:", error));
-
-                if (foundTeacher) break; // Stop searching once teacher is found
+                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                    .then(response => response.json())
+                    .then(data => {
+                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                        if (teacher) {
+                            currentTeacher = teacher;
+                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                            foundTeacher = true;
+                        }
+                    })
+                    .catch(error => console.error("Error loading teacher data:", error));
+                if (foundTeacher) break;
             }
         });
 
-        // Show the Telegram modal on load. It will then chain to the continue watching modal if applicable.
         window.addEventListener("load", () => {
-            setTimeout(showTelegramModal, 1000); // Show after 1 second
+            setTimeout(showTelegramModal, 1000);
         });
 
         // Initialize
