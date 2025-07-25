@@ -764,6 +764,34 @@
             filter: brightness(1.05); /* Slightly brighter on hover */
         }
 
+        /* UPDATED: Full Screen Video Mode for all screen sizes */
+        body.video-mode-active header {
+            display: none;
+        }
+
+        body.video-mode-active #videoPage.page.active {
+            padding: 0;
+            max-width: none;
+        }
+
+        body.video-mode-active .video-page {
+            padding: 0;
+            gap: 0;
+            max-width: none;
+        }
+
+        body.video-mode-active .video-container {
+            border-radius: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: none;
+        }
+
+        body.video-mode-active .video-details {
+            margin: 2rem auto;
+            max-width: 1000px;
+            width: calc(100% - 2rem);
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -803,33 +831,6 @@
 
             .btn {
                 padding: 0.8rem 1rem;
-            }
-            
-            /* NEW: Full Screen Video on Mobile */
-            body.video-active-on-mobile header {
-                display: none;
-            }
-
-            body.video-active-on-mobile #videoPage.page.active {
-                padding: 0;
-            }
-
-            body.video-active-on-mobile .video-page {
-                padding: 0;
-                gap: 0;
-            }
-
-            body.video-active-on-mobile .video-container {
-                border-radius: 0;
-                width: 100%;
-                margin: 0;
-                box-shadow: none;
-                height: auto; /* Let aspect ratio control height */
-            }
-
-            body.video-active-on-mobile .video-details {
-                margin: 1rem;
-                width: calc(100% - 2rem);
             }
         }
 
@@ -1123,11 +1124,11 @@
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            // UPDATED: Add/remove class for mobile fullscreen video
+            // UPDATED: Add/remove class for fullscreen video mode
             if (page === "video") {
-                document.body.classList.add("video-active-on-mobile");
+                document.body.classList.add("video-mode-active");
             } else {
-                document.body.classList.remove("video-active-on-mobile");
+                document.body.classList.remove("video-mode-active");
             }
 
             // Clean up when leaving video page
