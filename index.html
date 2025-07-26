@@ -1364,10 +1364,8 @@
 
             const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
 
-            // *** MODIFIED: Added 'rewind' and 'fast-forward' to the controls array ***
-            const playerControls = isHLS 
-                ? ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"]
-                : ["play-large", "play", "progress", "current-time", "settings", "fullscreen"];
+            // *** MODIFIED: Controls are now the same for all video types ***
+            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
             player = new Plyr("#player", {
                 controls: playerControls,
