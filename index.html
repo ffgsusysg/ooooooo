@@ -773,6 +773,52 @@
             filter: brightness(1.05);
         }
 
+        /* NEW: Seek Buttons for m3u8 videos */
+        .plyr .seek-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 15;
+            background: rgba(25, 31, 42, 0.6);
+            color: white;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            transition: all 0.2s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .plyr--playing.plyr--hover .seek-button,
+        .plyr--paused.plyr--hover .seek-button {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .seek-button:hover {
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateY(-50%) scale(1.1);
+            border-color: var(--accent);
+        }
+
+        .seek-rewind {
+            left: 2.5rem;
+        }
+
+        .seek-forward {
+            right: 2.5rem;
+        }
+
+        .seek-button i {
+            width: 26px;
+            height: 26px;
+        }
+
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -825,6 +871,18 @@
             .video-details {
                 padding: 1.2rem;
                 width: 100%;
+            }
+
+            /* Seek buttons on mobile */
+            .seek-rewind {
+                left: 1rem;
+            }
+            .seek-forward {
+                right: 1rem;
+            }
+            .plyr .seek-button {
+                width: 44px;
+                height: 44px;
             }
         }
 
@@ -1372,6 +1430,27 @@
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
+
+            // *** NEW: Add seek buttons for HLS videos ***
+            if (isHLS) {
+                const playerWrapper = player.elements.container;
+
+                const rewindButton = document.createElement('button');
+                rewindButton.className = 'btn btn-icon seek-button seek-rewind';
+                rewindButton.innerHTML = '<i data-lucide="rewind"></i>';
+                rewindButton.setAttribute('aria-label', 'Rewind 10s');
+                rewindButton.addEventListener('click', () => player.rewind(10));
+
+                const forwardButton = document.createElement('button');
+                forwardButton.className = 'btn btn-icon seek-button seek-forward';
+                forwardButton.innerHTML = '<i data-lucide="fast-forward"></i>';
+                forwardButton.setAttribute('aria-label', 'Forward 10s');
+                forwardButton.addEventListener('click', () => player.forward(10));
+
+                playerWrapper.appendChild(rewindButton);
+                playerWrapper.appendChild(forwardButton);
+                lucide.createIcons();
+            }
 
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
