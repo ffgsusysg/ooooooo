@@ -11,7 +11,7 @@
     <!-- Elegant Arabic Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleaapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -773,49 +773,34 @@
             filter: brightness(1.05);
         }
 
-        /* NEW: Seek Buttons for m3u8 videos */
-        .plyr .seek-button {
+        /* NEW: Double-tap seek indicator styles */
+        .plyr .seek-indicator {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 15;
-            background: rgba(25, 31, 42, 0.6);
+            background: rgba(25, 31, 42, 0.7);
             color: white;
-            width: 52px;
-            height: 52px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 2px solid rgba(255, 255, 255, 0.25);
-            transition: all 0.2s ease-in-out;
+            pointer-events: none; /* Important to allow clicks to pass through */
             opacity: 0;
-            pointer-events: none;
+            transition: opacity 0.5s ease-out;
         }
 
-        .plyr--playing.plyr--hover .seek-button,
-        .plyr--paused.plyr--hover .seek-button {
+        .plyr .seek-indicator.show {
             opacity: 1;
-            pointer-events: all;
+            transition: opacity 0.1s ease-in;
         }
 
-        .seek-button:hover {
-            background: rgba(30, 41, 59, 0.9);
-            transform: translateY(-50%) scale(1.1);
-            border-color: var(--accent);
-        }
-
-        .seek-rewind {
-            left: 2.5rem;
-        }
-
-        .seek-forward {
-            right: 2.5rem;
-        }
-
-        .seek-button i {
-            width: 26px;
-            height: 26px;
+        .plyr .seek-indicator i {
+            width: 40px;
+            height: 40px;
         }
 
 
@@ -871,18 +856,6 @@
             .video-details {
                 padding: 1.2rem;
                 width: 100%;
-            }
-
-            /* Seek buttons on mobile */
-            .seek-rewind {
-                left: 1rem;
-            }
-            .seek-forward {
-                right: 1rem;
-            }
-            .plyr .seek-button {
-                width: 44px;
-                height: 44px;
             }
         }
 
@@ -1430,27 +1403,65 @@
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
-
-            // *** NEW: Add seek buttons for HLS videos ***
+            
+            // *** NEW: Add double-click to seek functionality for HLS videos ***
             if (isHLS) {
                 const playerWrapper = player.elements.container;
 
-                const rewindButton = document.createElement('button');
-                rewindButton.className = 'btn btn-icon seek-button seek-rewind';
-                rewindButton.innerHTML = '<i data-lucide="rewind"></i>';
-                rewindButton.setAttribute('aria-label', 'Rewind 10s');
-                rewindButton.addEventListener('click', () => player.rewind(10));
+                // Create visual indicators for seeking
+                const rewindIndicator = document.createElement('div');
+                rewindIndicator.className = 'seek-indicator';
+                rewindIndicator.innerHTML = '<i data-lucide="rewind"></i>';
 
-                const forwardButton = document.createElement('button');
-                forwardButton.className = 'btn btn-icon seek-button seek-forward';
-                forwardButton.innerHTML = '<i data-lucide="fast-forward"></i>';
-                forwardButton.setAttribute('aria-label', 'Forward 10s');
-                forwardButton.addEventListener('click', () => player.forward(10));
+                const forwardIndicator = document.createElement('div');
+                forwardIndicator.className = 'seek-indicator';
+                forwardIndicator.innerHTML = '<i data-lucide="fast-forward"></i>';
 
-                playerWrapper.appendChild(rewindButton);
-                playerWrapper.appendChild(forwardButton);
-                lucide.createIcons();
+                playerWrapper.appendChild(rewindIndicator);
+                playerWrapper.appendChild(forwardIndicator);
+                lucide.createIcons(); // Re-render icons after adding them
+
+                let indicatorTimeout;
+
+                function showIndicator(indicator) {
+                    clearTimeout(indicatorTimeout);
+                    // Hide both indicators first to reset animation
+                    rewindIndicator.classList.remove('show');
+                    forwardIndicator.classList.remove('show');
+
+                    // Force reflow to restart animation
+                    void indicator.offsetWidth;
+
+                    // Show the correct indicator
+                    indicator.classList.add('show');
+                    indicatorTimeout = setTimeout(() => {
+                        indicator.classList.remove('show');
+                    }, 500); // Indicator visible for 500ms
+                }
+
+                // Add the double-click event listener to the player container
+                playerWrapper.addEventListener('dblclick', (event) => {
+                    // Prevent Plyr's default double-click (toggle fullscreen)
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    const rect = playerWrapper.getBoundingClientRect();
+                    // Calculate click position relative to the player element
+                    const clickX = event.clientX - rect.left;
+                    const midpoint = rect.width / 2;
+
+                    if (clickX < midpoint) {
+                        // Clicked on the left half
+                        player.rewind(10);
+                        showIndicator(rewindIndicator);
+                    } else {
+                        // Clicked on the right half
+                        player.forward(10);
+                        showIndicator(forwardIndicator);
+                    }
+                });
             }
+
 
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
