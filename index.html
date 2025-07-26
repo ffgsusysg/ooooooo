@@ -11,7 +11,7 @@
     <!-- Elegant Arabic Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleaapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -773,37 +773,6 @@
             filter: brightness(1.05);
         }
 
-        /* NEW: Double-tap seek indicator styles */
-        .plyr .seek-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 15;
-            background: rgba(25, 31, 42, 0.7);
-            color: white;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none; /* Important to allow clicks to pass through */
-            opacity: 0;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .plyr .seek-indicator.show {
-            opacity: 1;
-            transition: opacity 0.1s ease-in;
-        }
-
-        .plyr .seek-indicator i {
-            width: 40px;
-            height: 40px;
-        }
-
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -1395,73 +1364,19 @@
 
             const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
 
+            // *** MODIFIED: Added 'rewind' and 'fast-forward' to the controls array ***
+            const playerControls = isHLS 
+                ? ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"]
+                : ["play-large", "play", "progress", "current-time", "settings", "fullscreen"];
+
             player = new Plyr("#player", {
-                controls: ["play-large", "play", "progress", "current-time", "fullscreen", "settings"],
+                controls: playerControls,
                 keyboard: { focused: true, global: true },
                 tooltips: { controls: true, seek: true },
                 captions: { active: false },
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
-            
-            // *** NEW: Add double-click to seek functionality for HLS videos ***
-            if (isHLS) {
-                const playerWrapper = player.elements.container;
-
-                // Create visual indicators for seeking
-                const rewindIndicator = document.createElement('div');
-                rewindIndicator.className = 'seek-indicator';
-                rewindIndicator.innerHTML = '<i data-lucide="rewind"></i>';
-
-                const forwardIndicator = document.createElement('div');
-                forwardIndicator.className = 'seek-indicator';
-                forwardIndicator.innerHTML = '<i data-lucide="fast-forward"></i>';
-
-                playerWrapper.appendChild(rewindIndicator);
-                playerWrapper.appendChild(forwardIndicator);
-                lucide.createIcons(); // Re-render icons after adding them
-
-                let indicatorTimeout;
-
-                function showIndicator(indicator) {
-                    clearTimeout(indicatorTimeout);
-                    // Hide both indicators first to reset animation
-                    rewindIndicator.classList.remove('show');
-                    forwardIndicator.classList.remove('show');
-
-                    // Force reflow to restart animation
-                    void indicator.offsetWidth;
-
-                    // Show the correct indicator
-                    indicator.classList.add('show');
-                    indicatorTimeout = setTimeout(() => {
-                        indicator.classList.remove('show');
-                    }, 500); // Indicator visible for 500ms
-                }
-
-                // Add the double-click event listener to the player container
-                playerWrapper.addEventListener('dblclick', (event) => {
-                    // Prevent Plyr's default double-click (toggle fullscreen)
-                    event.preventDefault();
-                    event.stopPropagation();
-                    
-                    const rect = playerWrapper.getBoundingClientRect();
-                    // Calculate click position relative to the player element
-                    const clickX = event.clientX - rect.left;
-                    const midpoint = rect.width / 2;
-
-                    if (clickX < midpoint) {
-                        // Clicked on the left half
-                        player.rewind(10);
-                        showIndicator(rewindIndicator);
-                    } else {
-                        // Clicked on the right half
-                        player.forward(10);
-                        showIndicator(forwardIndicator);
-                    }
-                });
-            }
-
 
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
