@@ -193,41 +193,51 @@
 },
 {
   "name": "اثرائيات الفصل الاول",
-  "lectures": [
-    {
-      "title": "محاضرة 1",
-      "description": "وصف المحاضرة",
-      "url": "https://vz-99e5c202-ca5.b-cdn.net/00386bfa-fc2d-418b-8a99-9b368b8dec37/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/9c0748ef-1c0a-4ad1-a60a-89ba9621bfc9/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/619b4de9-6dc7-4b3d-9df6-89fe9915e6c4/1080p/video.m3u8"
-            }
-          ]
-        },
-        {
-          "name": "حلول اسئلة الامتحان التراكمي للفصل الاول",
-          "lectures": [
-            {
-              "title": "الامتحان التراكمي الاول",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a278391a-06ea-4e84-8919-85125f3faecc/1080p/video.m3u8"
-            },
-            {
-              "title": "الامتحان التراكمي الثاني",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/82be7ec3-12e4-41b0-be0b-cbc920245463/1080p/video.m3u8"
-            },
-            {
-              "title": "الامتحان التراكمي الثالث",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/2d1ea0aa-779a-48fc-abdb-4864a16abce7/1080p/video.m3u8"
+    "lectures": [
+      {
+        "title": "محاضرة 1",
+        "description": "﴿ فَصَبْرٌ جَمِيلٌ ﴾ [يوسف: 18]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/00386bfa-fc2d-418b-8a99-9b368b8dec37/1080p/video.m3u8"
+      },
+      {
+        "title": "محاضرة 2",
+        "description": "﴿ وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ ﴾ [البقرة: 216]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/9c0748ef-1c0a-4ad1-a60a-89ba9621bfc9/1080p/video.m3u8"
+      },
+      {
+        "title": "محاضرة 3",
+        "description": "﴿ وَاللَّهُ سَرِيعُ الْحِسَابِ ﴾ [آل عمران: 199]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/619b4de9-6dc7-4b3d-9df6-89fe9915e6c4/1080p/video.m3u8"
+      }
+    ]
+  },
+  {
+    "name": "حلول اسئلة الامتحان التراكمي للفصل الاول",
+    "lectures": [
+      {
+        "title": "الامتحان التراكمي الاول",
+        "description": "﴿ وَاتَّقُوا يَوْمًا تُرْجَعُونَ فِيهِ إِلَى اللَّهِ ﴾ [البقرة: 281]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/a278391a-06ea-4e84-8919-85125f3faecc/1080p/video.m3u8"
+      },
+      {
+        "title": "الامتحان التراكمي الثاني",
+        "description": "﴿ قُل لَّن يُصِيبَنَا إِلَّا مَا كَتَبَ اللَّهُ لَنَا ﴾ [التوبة: 51]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/82be7ec3-12e4-41b0-be0b-cbc920245463/1080p/video.m3u8"
+      },
+      {
+        "title": "الامتحان التراكمي الثالث",
+        "description": "﴿ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾ [الشرح: 6]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/2d1ea0aa-779a-48fc-abdb-4864a16abce7/1080p/video.m3u8"
+      }
+    ]
+  },
+  {
+    "name": "طرق حل وملاحظات جدا مهمة",
+    "lectures": [
+      {
+        "title": "الجزء الاول",
+        "description": "﴿ يُرِيدُ اللَّهُ بِكُمُ الْيُسْرَ ﴾ [البقرة: 185]",
+        "url": "https://vz-99e5c202-ca5.b-cdn.net/f6f94b74-da2e-4972-804b-d741637dafd1/1080p/video.m3u8"
             }
           ]
         },
