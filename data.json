@@ -2930,29 +2930,29 @@
           "name": "احكام التلاوة",
           "lectures": [
             {
-              "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/651c6498-e12f-48ab-8e3c-9ba6f18949f1/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0707b01f-bf4a-4079-829b-1802fccd42c4/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة ملحق 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/e3a03f56-3495-40f5-bccf-c52576ce235f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3f97ea15-c216-49cc-a149-3a242c7f4e54/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة ملحق 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4911d9a6-5fe2-4cd9-bfea-9591fc82198b/1080p/video.m3u8"
+             "title": "محاضرة 1",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/651c6498-e12f-48ab-8e3c-9ba6f18949f1"
+      },
+      {
+        "title": "محاضرة 2",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/0707b01f-bf4a-4079-829b-1802fccd42c4"
+      },
+      {
+        "title": "محاضرة ملحق 2",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/e3a03f56-3495-40f5-bccf-c52576ce235f"
+      },
+      {
+        "title": "محاضرة 3",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/3f97ea15-c216-49cc-a149-3a242c7f4e54"
+      },
+      {
+        "title": "محاضرة ملحق 3",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/4911d9a6-5fe2-4cd9-bfea-9591fc82198b"
             }
           ]
         },
