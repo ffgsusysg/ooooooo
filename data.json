@@ -2961,53 +2961,53 @@
           "lectures": [
             {
               "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ba3d633a-8113-40b5-8d7f-1587464dc99d/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5217224f-7a43-4307-b259-85db549aa5ae/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/0cd3f218-f091-4b7e-980d-a01c34115e52/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/6953b307-f288-4149-a355-21be3a7997d7/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d7189415-d557-402f-97e1-9b6441970853/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/89e0f47f-5892-4a08-b09c-f40dc116f7ed/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/5741f6ab-111d-4ca4-b12b-92e0d2fc7381/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/b226b50c-5828-4036-b512-d684f1a43c38/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/16b241cb-40f3-4751-b8da-780fe7d8572f/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d5e94228-c986-4aba-8e27-21887d9ba206/1080p/video.m3u8"
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/ba3d633a-8113-40b5-8d7f-1587464dc99d"
+      },
+      {
+        "title": "محاضرة 2",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/5217224f-7a43-4307-b259-85db549aa5ae"
+      },
+      {
+        "title": "محاضرة 3",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/0cd3f218-f091-4b7e-980d-a01c34115e52"
+      },
+      {
+        "title": "محاضرة 4",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/6953b307-f288-4149-a355-21be3a7997d7"
+      },
+      {
+        "title": "محاضرة 5",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/d7189415-d557-402f-97e1-9b6441970853"
+      },
+      {
+        "title": "محاضرة 6",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/89e0f47f-5892-4a08-b09c-f40dc116f7ed"
+      },
+      {
+        "title": "محاضرة 7",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/5741f6ab-111d-4ca4-b12b-92e0d2fc7381"
+      },
+      {
+        "title": "محاضرة 8",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/b226b50c-5828-4036-b512-d684f1a43c38"
+      },
+      {
+        "title": "محاضرة 9",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/16b241cb-40f3-4751-b8da-780fe7d8572f"
+      },
+      {
+        "title": "محاضرة 10",
+        "description": "وصف المحاضرة",
+        "url": "https://iframe.mediadelivery.net/embed/215061/d5e94228-c986-4aba-8e27-21887d9ba206"
             }
           ]
         },
