@@ -504,46 +504,82 @@
             margin-top: 1.5rem;
         }
 
+        /* NEW Category Card Styles */
         .category-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
+            border: none;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 240px;
+            position: relative;
             overflow: hidden;
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            transform: translateY(-5px);
+            color: white;
             box-shadow: var(--shadow-lg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .category-image {
-            height: 180px;
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: var(--gradient);
             background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid var(--border);
+            z-index: 1;
+            transition: transform 0.4s ease;
+        }
+
+        .category-card:hover::before {
+            transform: scale(1.05);
+        }
+        
+        .category-card:hover {
+             transform: translateY(-8px);
+             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
+        }
+
+        .category-icon, .category-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .category-icon {
+            text-align: left;
+            opacity: 0.7;
         }
 
         .category-content {
-            padding: 1.5rem;
-            text-align: center;
+            padding: 0;
+            text-align: right;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            margin: -1.5rem;
+            padding: 3rem 1.5rem 1.5rem 1.5rem;
         }
 
         .category-title {
-            font-size: 1.4rem;
-            color: var(--primary-1);
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
+            color: white;
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+            margin-bottom: 0.25rem;
         }
 
         .category-description {
-            color: var(--text);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 1rem;
-            opacity: 0.8;
-            transition: color 0.3s ease;
         }
+
+        .category-card .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            color: white;
+            align-self: flex-start;
+        }
+        
+        .category-card:hover .btn {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
 
         /* Teachers grid */
         .teachers-grid {
@@ -931,7 +967,7 @@
             transition: opacity 0.3s ease;
         }
         
-        /* NEW: Iframe placeholder styles */
+        /* Iframe placeholder styles */
         .iframe-placeholder {
             position: absolute;
             top: 0;
@@ -1314,26 +1350,26 @@
         </div>
         
         <div class="categories-grid">
-            <div class="category-card" onclick="loadCategory('year-2026')">
-                <div class="category-image" style="background: linear-gradient(135deg, #0ea5e9, #1a56db);"></div>
+            <div class="category-card" onclick="loadCategory('year-2026')" style="--gradient: linear-gradient(135deg, #0ea5e9, #1a56db);">
+                <div class="category-icon"><i data-lucide="calendar-days" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
-                    <h3 class="category-title"> مدرسين سنة 2026</h3>
+                    <h3 class="category-title">مدرسين سنة 2026</h3>
                     <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
                     <button class="btn">عرض المواد</button>
                 </div>
             </div>
             
-            <div class="category-card" onclick="loadCategory('year-2025')">
-                <div class="category-image" style="background: linear-gradient(135deg, #f59e0b, #f97316);"></div>
+            <div class="category-card" onclick="loadCategory('year-2025')" style="--gradient: linear-gradient(135deg, #f59e0b, #f97316);">
+                <div class="category-icon"><i data-lucide="calendar-days" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
-                    <h3 class="category-title"> مدرسين سنة 2025 </h3>
+                    <h3 class="category-title">مدرسين سنة 2025</h3>
                     <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
                     <button class="btn">عرض المواد</button>
                 </div>
             </div>
             
-            <div class="category-card" onclick="loadCategory('distinguished')">
-                <div class="category-image" style="background: linear-gradient(135deg, #10b981, #047857);"></div>
+            <div class="category-card" onclick="loadCategory('distinguished')" style="--gradient: linear-gradient(135deg, #10b981, #047857);">
+                 <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
                     <h3 class="category-title">قسم المتميزين</h3>
                     <p class="category-description">مواد خاصة للطلاب المتميزين</p>
@@ -1341,11 +1377,11 @@
                 </div>
             </div>
             
-            <div class="category-card" onclick="loadCategory('literary')">
-                <div class="category-image" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);"></div>
+            <div class="category-card" onclick="loadCategory('literary')" style="--gradient: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                <div class="category-icon"><i data-lucide="scroll-text" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
                     <h3 class="category-title">القسم الأدبي</h3>
-                    <p class="category-description">المواد والمناهج الادبي </p>
+                    <p class="category-description">المواد والمناهج الادبي</p>
                     <button class="btn">عرض المواد</button>
                 </div>
             </div>
@@ -1517,7 +1553,7 @@
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
-        let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {}; // NEW: For completion status
+        let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
         let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
 
@@ -1527,29 +1563,25 @@
             category: document.getElementById("categoryPage"),
             classes: document.getElementById("classesPage"),
             video: document.getElementById("videoPage"),
-            dashboard: document.getElementById("dashboardPage") // NEW: Dashboard page
+            dashboard: document.getElementById("dashboardPage")
         };
 
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            // Clean up when leaving video page
             if (page !== "video") {
                 if (player) {
                     player.destroy();
                     player = null;
                 }
-
                 if (window.hlsInstance) {
                     window.hlsInstance.destroy();
                     window.hlsInstance = null;
                 }
-
                 if (window.progressInterval) {
                     clearInterval(window.progressInterval);
                     window.progressInterval = null;
                 }
-
                 playerContainer.innerHTML = "";
                 videoLoader.style.display = 'none';
             }
@@ -1572,7 +1604,6 @@
         let currentLectureIndex = 0;
         let currentLectureLink = "";
 
-        // Categories data
         const categories = {
             "year-2026": {
                 title: "الصفوف الدراسية 2026",
@@ -1595,7 +1626,6 @@
         function loadCategory(categoryId) {
             const category = categories[categoryId];
             if (!category) return;
-
             categoryTitle.textContent = category.title;
             loadData(category.endpoint);
             navigate("category");
@@ -1606,21 +1636,16 @@
                 teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
                 return;
             }
-
             teachersGrid.innerHTML = "";
-
             list.forEach((t, idx) => {
                 const rating = ratings[t.id] || 0;
-
                 const card = document.createElement("div");
                 card.className = "teacher-card";
                 card.innerHTML = `
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
                     <h3 class="teacher-name">${t.name}</h3>
                     <p class="teacher-subject">${t.subject}</p>
-                    <div class="teacher-rating">
-                        ${renderStars(rating)}
-                    </div>
+                    <div class="teacher-rating">${renderStars(rating)}</div>
                 `;
                 card.onclick = () => showTeacher(t.id);
                 teachersGrid.appendChild(card);
@@ -1639,7 +1664,6 @@
         window.showTeacher = (id) => {
             currentTeacher = teachers.find((t) => t.id == id);
             if (!currentTeacher) return;
-
             teacherImage.src = currentTeacher.image;
             teacherImage.onerror = function() {
                 this.onerror = null;
@@ -1647,57 +1671,45 @@
             };
             teacherName.textContent = currentTeacher.name;
             teacherSubject.textContent = currentTeacher.subject;
-
             const rating = ratings[currentTeacher.id] || 0;
             teacherRating.innerHTML = renderStars(rating);
-
             renderClasses(currentTeacher.classes);
             navigate("classes");
         };
 
         function renderClasses(classesData) {
-            classesList.innerHTML = classesData
-                .map((cls, ci) => {
-                    const totalLectures = cls.lectures.length;
-                    const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
-                    
-                    const lectures = cls.lectures
-                        .map((lec, li) => {
-                            const isCompleted = !!completedLectures[lec.url];
-                            return `
-                                <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                                    <div class="lecture-play-area" 
-                                         onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                        <i data-lucide="play-circle"></i>
-                                        <span>${li + 1}. ${lec.title}</span>
-                                    </div>
-                                    <div class="star-burst"></div>
-                                    <label class="completion-checkbox">
-                                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                            `;
-                        })
-                        .join("");
-
+            classesList.innerHTML = classesData.map((cls, ci) => {
+                const totalLectures = cls.lectures.length;
+                const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
+                const lectures = cls.lectures.map((lec, li) => {
+                    const isCompleted = !!completedLectures[lec.url];
                     return `
-                        <div class="class-card">
-                            <div class="class-header" onclick="toggleLectures(this)">
-                                <div class="class-header-content">
-                                    <h3>${cls.name}</h3>
-                                    <span class="class-progress" data-class-index="${ci}">
-                                        المكتمل: ${completedCount} / ${totalLectures}
-                                    </span>
-                                </div>
-                                <i data-lucide="chevron-down" class="chevron-icon"></i>
+                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
+                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                <i data-lucide="play-circle"></i>
+                                <span>${li + 1}. ${lec.title}</span>
                             </div>
-                            <div class="lectures-list">${lectures}</div>
+                            <div class="star-burst"></div>
+                            <label class="completion-checkbox">
+                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     `;
-                })
-                .join("");
-
+                }).join("");
+                return `
+                    <div class="class-card">
+                        <div class="class-header" onclick="toggleLectures(this)">
+                            <div class="class-header-content">
+                                <h3>${cls.name}</h3>
+                                <span class="class-progress" data-class-index="${ci}">المكتمل: ${completedCount} / ${totalLectures}</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="chevron-icon"></i>
+                        </div>
+                        <div class="lectures-list">${lectures}</div>
+                    </div>
+                `;
+            }).join("");
             lucide.createIcons();
         }
         
@@ -1705,12 +1717,9 @@
             event.stopPropagation();
             const lectureItem = checkbox.closest('.lecture-item');
             const isCompleted = checkbox.checked;
-
             completedLectures[lectureUrl] = isCompleted;
             localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
-
             lectureItem.classList.toggle('completed', isCompleted);
-
             if (isCompleted) {
                 const starBurst = lectureItem.querySelector('.star-burst');
                 starBurst.innerHTML = Array(8).fill(0).map(() => {
@@ -1724,7 +1733,6 @@
                     starBurst.innerHTML = '';
                 }, 600);
             }
-            
             updateClassProgress(lectureItem.closest('.class-card'));
         };
 
@@ -1732,26 +1740,21 @@
             const progressSpan = classCardElement.querySelector('.class-progress');
             const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
             const classData = currentTeacher.classes[classIndex];
-            
             const totalLectures = classData.lectures.length;
             const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
-            
             progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
         }
-
 
         window.toggleLectures = (header) => {
             const list = header.parentElement.querySelector(".lectures-list");
             const icon = header.querySelector(".chevron-icon");
             const open = list.style.display !== "flex";
-
             list.style.display = open ? "flex" : "none";
             header.classList.toggle("open", open);
             icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
         
-        // NEW: Function to load the iframe player on demand
         window.loadIframePlayer = (url) => {
             videoLoader.style.display = 'flex';
             const encodedUrl = btoa(url);
@@ -1764,7 +1767,7 @@
                         loading="eager"
                         style="width: 100%; height: 100%; border: none; border-radius: inherit;"
                         referrerpolicy="no-referrer-when-downgrade"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                         onload="document.getElementById('videoLoader').style.display='none';"
                     ></iframe>
                 </div>
@@ -1792,7 +1795,6 @@
             [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
-
             document.getElementById("videoDate").textContent = "15/10/2026";
 
             lastWatched = {
@@ -1809,15 +1811,7 @@
             navigate("video");
 
             if (url.includes("iframe.mediadelivery.net/embed/")) {
-                const placeholderHtml = `
-                    <div class="iframe-placeholder" onclick="loadIframePlayer('${url}')">
-                         <div class="play-button-overlay">
-                             <i data-lucide="play-circle" style="width: 80px; height: 80px;"></i>
-                         </div>
-                    </div>
-                `;
-                playerContainer.innerHTML = placeholderHtml;
-                lucide.createIcons();
+                loadIframePlayer(url); // Autoplay iframe
                 return;
             }
             
@@ -1828,25 +1822,11 @@
             const isHLS = url.endsWith(".m3u8");
             const referer = "https://abwaab.com";
             
-            const directPlayDomains = [
-                "https://9bf9f797be0a4677a8-akamai-cdn.com",
-                "https://vidcdn.akamai-cdn-delivery.com"
-            ];
-            
-            let useProxy = true;
-            for (const domain of directPlayDomains) {
-                if (url.startsWith(domain)) {
-                    useProxy = false;
-                    break;
-                }
-            }
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            let useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
 
-            const finalVideoUrl = useProxy && isHLS
-                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
-                : url;
-
+            const finalVideoUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}` : url;
             const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-
             const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
             player = new Plyr("#player", {
@@ -1872,13 +1852,9 @@
                     window.hlsInstance = hls;
                     hls.attachMedia(videoElement);
                     hls.loadSource(finalVideoUrl);
-
                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player.play().then(() => {
-                            if (savedTime > 0) player.currentTime = savedTime;
-                        }).catch(console.error);
+                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
                     });
-
                     hls.on(Hls.Events.ERROR, (_, data) => {
                         if (data.fatal) {
                             switch (data.type) {
@@ -1893,12 +1869,9 @@
                         type: "video",
                         sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
                     };
-                    player.play().then(() => {
-                        if (savedTime > 0) player.currentTime = savedTime;
-                    }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
                 }
             }
-
             tryPlay();
         };
 
