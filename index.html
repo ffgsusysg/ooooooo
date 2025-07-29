@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -116,7 +117,7 @@
         }
 
         body {
-            font-family: 'Almarai', sans-serif; /* Updated Font */
+            font-family: 'Almarai', 'Tajawal', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -226,6 +227,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.45rem;
             padding: 0.9rem 1.35rem;
             border-radius: var(--radius);
@@ -280,10 +282,204 @@
             padding: 2rem;
             max-width: 1300px;
             margin: 0 auto;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page.active {
             display: block;
+        }
+        
+        /* Dashboard Page Styles */
+        #dashboardPage {
+            --dash-grad-1: #8E2DE2;
+            --dash-grad-2: #4A00E0;
+            --dash-grad-3: #11998e;
+            --dash-grad-4: #38ef7d;
+            --dash-grad-5: #f2709c;
+            --dash-grad-6: #ff9472;
+            --dash-text-light: #f0f0f0;
+        }
+        
+        [data-theme="dark"] #dashboardPage {
+            --dash-grad-1: #4e54c8;
+            --dash-grad-2: #8f94fb;
+            --dash-grad-3: #00467F;
+            --dash-grad-4: #A5CC82;
+            --dash-grad-5: #5614B0;
+            --dash-grad-6: #dbd65c;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-1);
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-header p {
+            font-size: 1.1rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .profile-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            grid-column: 1 / -1; /* Span full width on larger screens */
+        }
+        
+        @media (min-width: 768px) {
+            .profile-card {
+                flex-direction: row;
+            }
+        }
+        
+        .profile-picture-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        #profilePicture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid;
+            border-image: linear-gradient(45deg, var(--dash-grad-1), var(--dash-grad-2)) 1;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .profile-picture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .profile-picture-wrapper:hover .profile-picture-overlay {
+            opacity: 1;
+        }
+        
+        .profile-info {
+            text-align: center;
+            flex-grow: 1;
+        }
+        
+        @media (min-width: 768px) {
+             .profile-info {
+                text-align: right;
+            }
+        }
+        
+        .profile-info h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .goal-card {
+            border-radius: var(--radius);
+            padding: 2rem;
+            color: var(--dash-text-light);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .goal-card.dream-card {
+            background: linear-gradient(45deg, var(--dash-grad-3), var(--dash-grad-4));
+        }
+        
+        .goal-card.grade-card {
+            background: linear-gradient(45deg, var(--dash-grad-5), var(--dash-grad-6));
+        }
+        
+        .goal-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 1rem;
+        }
+        
+        .goal-card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .goal-card input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0.5rem;
+            width: 100%;
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .goal-card input::placeholder {
+            color: rgba(255,255,255,0.6);
+            font-weight: normal;
+        }
+        
+        .goal-card input:focus {
+            outline: none;
+            border-bottom-color: white;
+        }
+        
+        .dashboard-save-btn {
+            background: var(--accent);
+            color: var(--text);
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border-radius: var(--radius);
+            margin-top: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .dashboard-save-btn:hover {
+            background: var(--accent-2);
         }
 
         /* Category grid */
@@ -904,7 +1100,7 @@
                 width: 100%;
             }
 
-            .btn span {
+            .btn span.btn-text {
                 display: none;
             }
 
@@ -1004,11 +1200,14 @@
         </h1>
 
         <div class="header-actions">
-            <button id="themeToggle" class="btn">
-                <i data-lucide="sun"></i><span>المظهر</span>
+            <button id="dashboardButton" class="btn btn-icon" onclick="navigate('dashboard')">
+                <i data-lucide="user"></i>
+            </button>
+            <button id="themeToggle" class="btn btn-icon">
+                <i data-lucide="sun"></i>
             </button>
             <button id="examsButton" class="btn">
-                <i data-lucide="file-text"></i><span>امتحانات الأساتذة</span>
+                <i data-lucide="file-text"></i><span class="btn-text">امتحانات الأساتذة</span>
             </button>
         </div>
 
@@ -1178,6 +1377,51 @@
         </div>
     </div>
 
+    <!-- NEW: Dashboard Page -->
+    <div id="dashboardPage" class="page">
+        <div class="dashboard-header">
+            <h1>لوحة التحكم</h1>
+            <p>هنا تبدأ رحلتك نحو تحقيق حلمك. خصص صفحتك لتكون مصدر إلهامك اليومي!</p>
+        </div>
+        
+        <div class="profile-card">
+            <div class="profile-picture-wrapper" onclick="document.getElementById('profilePictureInput').click()">
+                <img id="profilePicture" src="https://placehold.co/150x150/E2E8F0/A0AEC0?text=صورتك" alt="صورة الطالب الشخصية">
+                <div class="profile-picture-overlay">
+                    <i data-lucide="camera"></i>
+                </div>
+            </div>
+            <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
+            
+            <div class="profile-info">
+                <h2>مرحباً أيها البطل!</h2>
+                <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
+            </div>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="goal-card dream-card">
+                <div class="goal-card-header">
+                    <i data-lucide="rocket"></i>
+                    <h3>حلمي هو أن أصبح...</h3>
+                </div>
+                <input type="text" id="dreamInput" placeholder="مثلاً: طبيب، مهندس، مبرمج...">
+            </div>
+            <div class="goal-card grade-card">
+                <div class="goal-card-header">
+                    <i data-lucide="target"></i>
+                    <h3>المعدل المستهدف</h3>
+                </div>
+                <input type="text" id="gradeInput" placeholder="مثلاً: 99.5%">
+            </div>
+        </div>
+        <button class="btn dashboard-save-btn" id="saveDashboardButton">
+            <i data-lucide="save"></i>
+            حفظ التغييرات
+        </button>
+    </div>
+
+
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -1237,7 +1481,8 @@
             home: document.getElementById("homePage"),
             category: document.getElementById("categoryPage"),
             classes: document.getElementById("classesPage"),
-            video: document.getElementById("videoPage")
+            video: document.getElementById("videoPage"),
+            dashboard: document.getElementById("dashboardPage") // NEW: Dashboard page
         };
 
         function navigate(page) {
@@ -1263,9 +1508,14 @@
                 playerContainer.innerHTML = "";
                 videoLoader.style.display = 'none';
             }
+            
+            if (page === 'dashboard') {
+                loadDashboardData();
+            }
 
             Object.values(pages).forEach((p) => p.classList.remove("active"));
             pages[page].classList.add("active");
+            lucide.createIcons();
         }
 
         /* ========= Teachers Data ========= */
@@ -1542,7 +1792,6 @@
 
             const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
 
-            // *** MODIFIED: Controls are now the same for all video types ***
             const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
             player = new Plyr("#player", {
@@ -1627,8 +1876,57 @@
                 .then((data) => { teachers = data.teachers; renderTeachers(); })
                 .catch(() => { teachersGrid.innerHTML = err; });
         }
+        
+        /* ========= Dashboard Logic ========= */
+        const profilePictureEl = document.getElementById('profilePicture');
+        const profilePictureInputEl = document.getElementById('profilePictureInput');
+        const dreamInputEl = document.getElementById('dreamInput');
+        const gradeInputEl = document.getElementById('gradeInput');
+        const saveDashboardButton = document.getElementById('saveDashboardButton');
 
-        // Modal Logic
+        function loadDashboardData() {
+            const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+            if (profile.picture) {
+                profilePictureEl.src = profile.picture;
+            }
+            if (profile.dream) {
+                dreamInputEl.value = profile.dream;
+            }
+            if (profile.grade) {
+                gradeInputEl.value = profile.grade;
+            }
+        }
+        
+        profilePictureInputEl.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profilePictureEl.src = e.target.result;
+                    // Note: The image is only saved when the "Save" button is clicked.
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        saveDashboardButton.addEventListener('click', () => {
+            const profile = {
+                picture: profilePictureEl.src,
+                dream: dreamInputEl.value,
+                grade: gradeInputEl.value
+            };
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            
+            // Show a confirmation
+            saveDashboardButton.innerHTML = '<i data-lucide="check"></i> تم الحفظ بنجاح!';
+            lucide.createIcons();
+            setTimeout(() => {
+                saveDashboardButton.innerHTML = '<i data-lucide="save"></i> حفظ التغييرات';
+                lucide.createIcons();
+            }, 2000);
+        });
+
+        /* ========= Modal Logic ========= */
         const telegramModal = document.getElementById("telegramModal");
         const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
         const continueWatchingModal = document.getElementById("continueWatchingModal");
@@ -1684,6 +1982,7 @@
                 fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
                     .then(response => response.json())
                     .then(data => {
+                        if (foundTeacher) return;
                         const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
                         if (teacher) {
                             currentTeacher = teacher;
@@ -1698,6 +1997,7 @@
 
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000);
+            loadDashboardData(); // Pre-load dashboard data on initial load
         });
 
         // Initialize
