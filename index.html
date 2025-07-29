@@ -268,7 +268,7 @@
             justify-content: center;
         }
         
-        /* NEW: Header Profile Button */
+        /* Header Profile Button */
         #dashboardButton.btn-icon {
             padding: 0;
             overflow: hidden;
@@ -741,7 +741,7 @@
             transition: color 0.3s ease;
         }
         
-        /* NEW: Completion Checkbox Styles */
+        /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
             width: 24px;
@@ -797,7 +797,7 @@
             transform: rotate(45deg);
         }
 
-        /* NEW: Star Burst Animation */
+        /* Star Burst Animation */
         .star-burst {
             position: absolute;
             top: 50%;
@@ -834,7 +834,7 @@
         }
 
 
-        /* MODIFIED: Default Video Page Layout (Tablets & Desktops) */
+        /* Video Page Layout */
         #videoPage.page.active {
             display: flex;
             flex-direction: column;
@@ -930,6 +930,33 @@
             border-radius: var(--radius);
             transition: opacity 0.3s ease;
         }
+        
+        /* NEW: Iframe placeholder styles */
+        .iframe-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: inherit;
+        }
+
+        .play-button-overlay {
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .iframe-placeholder:hover .play-button-overlay {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
 
         .loader-spinner {
             border: 6px solid #f3f3f3;
@@ -1411,6 +1438,9 @@
             <div class="profile-info">
                 <h2>مرحباً أيها البطل!</h2>
                 <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
+                 <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
+                    <i data-lucide="upload"></i> تحميل صورة جديدة
+                </button>
             </div>
         </div>
         
@@ -1671,9 +1701,8 @@
             lucide.createIcons();
         }
         
-        // NEW: Toggle lecture completion status
         window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
-            event.stopPropagation(); // Prevent the click from bubbling up to the play area
+            event.stopPropagation();
             const lectureItem = checkbox.closest('.lecture-item');
             const isCompleted = checkbox.checked;
 
@@ -1682,7 +1711,6 @@
 
             lectureItem.classList.toggle('completed', isCompleted);
 
-            // Trigger animation if newly completed
             if (isCompleted) {
                 const starBurst = lectureItem.querySelector('.star-burst');
                 starBurst.innerHTML = Array(8).fill(0).map(() => {
@@ -1697,11 +1725,9 @@
                 }, 600);
             }
             
-            // Update progress counter
             updateClassProgress(lectureItem.closest('.class-card'));
         };
 
-        // NEW: Update the progress counter for a class
         function updateClassProgress(classCardElement) {
             const progressSpan = classCardElement.querySelector('.class-progress');
             const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
@@ -1724,6 +1750,27 @@
             icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
+        
+        // NEW: Function to load the iframe player on demand
+        window.loadIframePlayer = (url) => {
+            videoLoader.style.display = 'flex';
+            const encodedUrl = btoa(url);
+            const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
+            const iframeHtml = `
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <iframe 
+                        src="${iframeUrl}" 
+                        allowfullscreen 
+                        loading="eager"
+                        style="width: 100%; height: 100%; border: none; border-radius: inherit;"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        onload="document.getElementById('videoLoader').style.display='none';"
+                    ></iframe>
+                </div>
+            `;
+            playerContainer.innerHTML = iframeHtml;
+        }
 
         window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
             if (player) {
@@ -1758,7 +1805,29 @@
                 lectureDescription: desc
             };
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+            
+            navigate("video");
 
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                const placeholderHtml = `
+                    <div class="iframe-placeholder" onclick="loadIframePlayer('${url}')">
+                         <div class="play-button-overlay">
+                             <i data-lucide="play-circle" style="width: 80px; height: 80px;"></i>
+                         </div>
+                    </div>
+                `;
+                playerContainer.innerHTML = placeholderHtml;
+                lucide.createIcons();
+                return;
+            }
+            
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            lucide.createIcons();
+            
+            const videoElement = document.getElementById("player");
+            const isHLS = url.endsWith(".m3u8");
+            const referer = "https://abwaab.com";
+            
             const directPlayDomains = [
                 "https://9bf9f797be0a4677a8-akamai-cdn.com",
                 "https://vidcdn.akamai-cdn-delivery.com"
@@ -1771,35 +1840,6 @@
                     break;
                 }
             }
-
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                videoLoader.style.display = 'flex';
-                const encodedUrl = btoa(url);
-                const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
-                const iframeHtml = `
-                    <div style="position: relative; width: 100%; padding-top: 56.25%;">
-                        <iframe 
-                            src="${iframeUrl}" 
-                            allowfullscreen 
-                            loading="eager"
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                            onload="document.getElementById('videoLoader').style.display='none';"
-                        ></iframe>
-                    </div>
-                `;
-                playerContainer.innerHTML = iframeHtml;
-                navigate("video");
-                return;
-            }
-            
-            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
-            lucide.createIcons();
-            
-            const videoElement = document.getElementById("player");
-            const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
 
             const finalVideoUrl = useProxy && isHLS
                 ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
@@ -1860,7 +1900,6 @@
             }
 
             tryPlay();
-            navigate("video");
         };
 
         /* ========= Search ========= */
@@ -1900,6 +1939,7 @@
         const saveDashboardButton = document.getElementById('saveDashboardButton');
         const headerProfilePicEl = document.getElementById('headerProfilePic');
         const defaultUserIconEl = document.getElementById('defaultUserIcon');
+        const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
 
         function updateHeaderProfilePic() {
             const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
@@ -1927,6 +1967,10 @@
             }
             updateHeaderProfilePic();
         }
+        
+        uploadProfilePicBtn.addEventListener('click', () => {
+            profilePictureInputEl.click();
+        });
         
         profilePictureInputEl.addEventListener('change', (event) => {
             const file = event.target.files[0];
