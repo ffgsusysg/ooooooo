@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title> اديسون</title>
+    <title>اديسون - نسخة مطورة</title>
     
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
@@ -116,7 +116,7 @@
         }
 
         body {
-            font-family: 'Almarai', sans-serif; /* Updated Font */
+            font-family: 'Almarai', sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -135,6 +135,11 @@
             cursor: pointer;
             border: none;
             background: none;
+        }
+        
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
         }
 
         /* Header styles */
@@ -226,6 +231,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.45rem;
             padding: 0.9rem 1.35rem;
             border-radius: var(--radius);
@@ -237,17 +243,10 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .btn:hover {
+        .btn:hover:not(:disabled) {
             opacity: 0.9;
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: var(--shadow-sm);
         }
 
         .btn-outline {
@@ -257,7 +256,7 @@
             box-shadow: none;
         }
 
-        .btn-outline:hover {
+        .btn-outline:hover:not(:disabled) {
             background: var(--primary-1);
             color: #fff;
             transform: translateY(-2px);
@@ -269,7 +268,6 @@
             border-radius: 50%;
             width: 42px;
             height: 42px;
-            justify-content: center;
         }
 
         .btn-accent {
@@ -277,7 +275,7 @@
             color: white;
         }
 
-        .btn-accent:hover {
+        .btn-accent:hover:not(:disabled) {
             background: var(--accent-2);
         }
 
@@ -471,12 +469,25 @@
         .class-header:hover {
             background: var(--hover);
         }
+        
+        .class-header-title {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .class-header-title h3 {
+            margin: 0;
+        }
+        .class-progress-text {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
 
-        .class-header span {
+        .class-header .chevron-icon {
             transition: transform 0.25s ease;
         }
 
-        .class-header.open span {
+        .class-header.open .chevron-icon {
             transform: rotate(180deg);
         }
 
@@ -496,28 +507,42 @@
             cursor: pointer;
             transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column; /* Changed */
+            gap: 0.5rem; /* Added */
+        }
+        
+        .lecture-item.active {
+            border-right-color: var(--accent);
+            background: color-mix(in srgb, var(--primary-1) 15%, transparent);
         }
 
         .lecture-item:hover {
             background: rgba(0, 0, 0, 0.08);
         }
         
-        /* NEW: Style for completed lectures */
-        .lecture-item.completed {
-            border-right-color: var(--success);
-            background: #e8f5e9; /* Light green background */
+        .lecture-title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
-        [data-theme="dark"] .lecture-item.completed {
-            background: #2e473b; /* Dark green background for dark mode */
+        
+        .lecture-title-text {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
-        .lecture-item.completed .lecture-icon {
-            color: var(--success) !important;
+        
+        .lecture-duration {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        
+        .lecture-completed-icon {
+            color: var(--success);
         }
 
-
-        .lecture-item .lecture-icon {
+        .lecture-item .play-icon {
             position: absolute;
             left: 12px;
             top: 50%;
@@ -525,6 +550,21 @@
             color: var(--primary-1);
             transition: color 0.3s ease;
         }
+        
+        .lecture-progress-bar {
+            width: 100%;
+            height: 4px;
+            background-color: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .lecture-progress-bar-inner {
+            height: 100%;
+            background-color: var(--success);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
 
         /* MODIFIED: Default Video Page Layout (Tablets & Desktops) */
         #videoPage.page.active {
@@ -573,6 +613,13 @@
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
+        
+        /* NEW: Video Navigation Buttons */
+        .video-nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+        }
 
         .video-info {
             text-align: right;
@@ -594,14 +641,6 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-        }
-
-        /* NEW: Video navigation buttons container */
-        .video-navigation {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
         }
 
         .section-title {
@@ -817,10 +856,6 @@
             .btn span {
                 display: none;
             }
-            
-            .btn.btn-no-hide-span span {
-                display: inline; /* Keep span visible for specific buttons */
-            }
 
             .teacher-img {
                 width: 100px;
@@ -928,7 +963,7 @@
 
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
-            <input id="searchInput" type="text" placeholder="ابحث عن مدرس, مادة, أو محاضرة..." />
+            <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
             <button id="searchButton" class="btn btn-icon">
                 <i data-lucide="search"></i>
             </button>
@@ -1026,8 +1061,8 @@
     </div>
 
     <div id="categoryPage" class="page">
-        <button class="btn back-button btn-no-hide-span" onclick="navigate('home')">
-            <i data-lucide="arrow-right"></i> <span>ارجع واختر قسماً جديداً</span>
+        <button class="btn back-button" onclick="navigate('home')">
+            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
         </button>
         
         <div class="section-title">
@@ -1041,8 +1076,8 @@
     </div>
 
     <div id="classesPage" class="page">
-        <button class="btn back-button btn-no-hide-span" onclick="navigate('category')">
-            <i data-lucide="arrow-right"></i><span>الرجوع للمدرسين</span>
+        <button class="btn back-button" onclick="navigate('category')">
+            <i data-lucide="arrow-right"></i>الرجوع للمدرسين
         </button>
         
         <div class="teacher-info">
@@ -1086,18 +1121,20 @@
                 </div>
                 
                 <!-- NEW: Video Navigation Buttons -->
-                <div class="video-navigation">
-                    <button class="btn btn-outline" onclick="playPreviousLecture()">
-                        <i data-lucide="skip-back"></i> <span>السابقة</span>
+                <div id="videoNav" class="video-nav-buttons">
+                     <button id="prevLectureBtn" class="btn btn-outline">
+                        <i data-lucide="arrow-right"></i>
+                        <span>السابقة</span>
                     </button>
-                    <button class="btn back-button btn-no-hide-span" onclick="navigate('classes')">
-                        <i data-lucide="arrow-right"></i><span>العودة للفصول</span>
-                    </button>
-                    <button class="btn" onclick="playNextLecture()">
-                        <i data-lucide="skip-forward"></i> <span>التالية</span>
+                    <button id="nextLectureBtn" class="btn">
+                        <span>التالية</span>
+                        <i data-lucide="arrow-left"></i>
                     </button>
                 </div>
-
+                
+                <button class="btn back-button" onclick="navigate('classes')" style="margin-top: 1.5rem;">
+                    <i data-lucide="arrow-right"></i>العودة للفصول
+                </button>
             </div>
         </div>
     </div>
@@ -1134,10 +1171,28 @@
             updateThemeIcon(next);
         });
 
-        // Set up player
+        // =================================================================
+        // App State & Global Variables
+        // =================================================================
         let player = null;
-
+        let teachers = [];
+        let currentTeacher = null;
+        let currentCategoryEndpoint = '';
+        let currentClassIndex = -1;
+        let currentLectureIndex = -1;
+        
+        // Data from localStorage
+        let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
+        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
+        
         // DOM references
+        const pages = {
+            home: document.getElementById("homePage"),
+            category: document.getElementById("categoryPage"),
+            classes: document.getElementById("classesPage"),
+            video: document.getElementById("videoPage")
+        };
         const teacherImage = document.getElementById("teacherImage");
         const teacherName = document.getElementById("teacherName");
         const teacherSubject = document.getElementById("teacherSubject");
@@ -1149,8 +1204,405 @@
         const teachersGrid = document.getElementById("teachersGrid");
         const playerContainer = document.getElementById("playerContainer");
         const videoLoader = document.getElementById("videoLoader");
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchButton");
 
-        // Progress variables
-        let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
-        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getI
+
+        // =================================================================
+        // Navigation Logic
+        // =================================================================
+        function navigate(page) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            if (page !== "video" && player) {
+                destroyPlayer();
+            }
+
+            Object.values(pages).forEach((p) => p.classList.remove("active"));
+            pages[page].classList.add("active");
+        }
+        
+        function destroyPlayer() {
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+            if (window.hlsInstance) {
+                window.hlsInstance.destroy();
+                window.hlsInstance = null;
+            }
+            if (window.progressInterval) {
+                clearInterval(window.progressInterval);
+                window.progressInterval = null;
+            }
+            playerContainer.innerHTML = "";
+            videoLoader.style.display = 'none';
+        }
+
+
+        // =================================================================
+        // Data Loading & Rendering
+        // =================================================================
+        const categories = {
+            "year-2026": { title: "الصفوف الدراسية 2026", endpoint: "https://adson.netlify.app/data2.json" },
+            "year-2025": { title: "الصفوف الدراسية 2025", endpoint: "https://adson.netlify.app/data.json" },
+            "distinguished": { title: "قسم المتميزين", endpoint: "https://adson.netlify.app/ff.json" },
+            "literary": { title: "القسم الأدبي", endpoint: "https://adson.netlify.app/mm.json" }
+        };
+
+        function loadCategory(categoryId) {
+            const category = categories[categoryId];
+            if (!category) return;
+            
+            currentCategoryEndpoint = category.endpoint; // Store current endpoint
+            categoryTitle.textContent = category.title;
+            loadData(category.endpoint);
+            navigate("category");
+        }
+
+        function loadData(endpoint) {
+            const errHtml = `<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>`;
+            const loadingHtml = Array(3).fill(`
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>`).join('');
+            
+            teachersGrid.innerHTML = loadingHtml;
+
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then((r) => { if (!r.ok) throw new Error('Network response was not ok'); return r.json(); })
+                .then((data) => { teachers = data.teachers; renderTeachers(); })
+                .catch(() => { teachersGrid.innerHTML = errHtml; });
+        }
+
+        function renderTeachers(list = teachers) {
+            if (!list.length) {
+                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
+                return;
+            }
+
+            teachersGrid.innerHTML = list.map(t => {
+                const rating = ratings[t.id] || 0;
+                return `
+                    <div class="teacher-card" onclick="showTeacher(${t.id})">
+                        <img class="teacher-img" src="${t.image}" alt="${t.name}" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
+                        <h3 class="teacher-name">${t.name}</h3>
+                        <p class="teacher-subject">${t.subject}</p>
+                        <div class="teacher-rating">${renderStars(rating)}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        function renderStars(rating) {
+            return Array.from({ length: 5 }, (_, i) => 
+                `<span class="star ${i < rating ? "filled" : ""}">★</span>`
+            ).join('');
+        }
+        
+        window.showTeacher = (id) => {
+            currentTeacher = teachers.find((t) => t.id == id);
+            if (!currentTeacher) return;
+
+            teacherImage.src = currentTeacher.image;
+            teacherImage.onerror = () => { teacherImage.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image'; };
+            teacherName.textContent = currentTeacher.name;
+            teacherSubject.textContent = currentTeacher.subject;
+            teacherRating.innerHTML = renderStars(ratings[currentTeacher.id] || 0);
+
+            renderClasses(currentTeacher.classes);
+            navigate("classes");
+        };
+
+        function renderClasses(classesData) {
+            classesList.innerHTML = classesData.map((cls, ci) => {
+                let completedCount = 0;
+                const lecturesHtml = cls.lectures.map((lec, li) => {
+                    const progress = lectureProgress[lec.url] || 0;
+                    if (progress >= 95) completedCount++;
+                    
+                    const isCompleted = progress >= 95;
+                    // Note: JSON should include a "duration" field like "15:30"
+                    const duration = lec.duration || "00:00"; 
+                    
+                    return `
+                        <div class="lecture-item" id="lecture-item-${ci}-${li}"
+                             onclick="playLecture(${ci}, ${li})">
+                            <div class="lecture-title-container">
+                                <div class="lecture-title-text">
+                                    ${isCompleted ? '<i data-lucide="check-circle-2" class="lecture-completed-icon"></i>' : ''}
+                                    <span>${li + 1}. ${lec.title}</span>
+                                </div>
+                                <span class="lecture-duration">${duration}</span>
+                            </div>
+                            <div class="lecture-progress-bar">
+                                <div class="lecture-progress-bar-inner" style="width: ${progress}%;"></div>
+                            </div>
+                            <i data-lucide="play-circle" class="play-icon"></i>
+                        </div>`;
+                }).join("");
+
+                return `
+                    <div class="class-card">
+                        <div class="class-header" onclick="toggleLectures(this)">
+                            <div class="class-header-title">
+                                <h3>${cls.name}</h3>
+                                <span class="class-progress-text">${completedCount} / ${cls.lectures.length} مكتمل</span>
+                            </div>
+                            <i data-lucide="chevron-down" class="chevron-icon"></i>
+                        </div>
+                        <div class="lectures-list">${lecturesHtml}</div>
+                    </div>`;
+            }).join("");
+
+            lucide.createIcons();
+        }
+
+        window.toggleLectures = (header) => {
+            const list = header.nextElementSibling;
+            const icon = header.querySelector(".chevron-icon");
+            const isOpen = list.style.display === "flex";
+            
+            list.style.display = isOpen ? "none" : "flex";
+            header.classList.toggle("open", !isOpen);
+            icon.setAttribute("data-lucide", isOpen ? "chevron-down" : "chevron-up");
+            lucide.createIcons();
+        };
+        
+        function updateActiveLectureUI(activeCi, activeLi) {
+            document.querySelectorAll('.lecture-item.active').forEach(el => el.classList.remove('active'));
+            const activeEl = document.getElementById(`lecture-item-${activeCi}-${activeLi}`);
+            if (activeEl) {
+                activeEl.classList.add('active');
+            }
+        }
+
+
+        // =================================================================
+        // Video Player Logic
+        // =================================================================
+        window.playLecture = (ci, li) => {
+            destroyPlayer(); // Clean up previous player instance
+            
+            const lecture = currentTeacher?.classes[ci]?.lectures[li];
+            if (!lecture) return;
+
+            [currentClassIndex, currentLectureIndex] = [ci, li];
+            
+            // Update UI elements
+            videoTitle.textContent = lecture.title;
+            videoDescription.textContent = lecture.description;
+            document.getElementById("videoDate").textContent = lecture.date || new Date().toLocaleDateString('ar-EG');
+            updateActiveLectureUI(ci, li);
+            setupVideoNavigation(ci, li);
+
+            // Save state
+            saveLastWatched(lecture);
+
+            // Handle video source (iframe vs. direct link)
+            if (lecture.url.includes("iframe.mediadelivery.net/embed/")) {
+                playIframeVideo(lecture.url);
+            } else {
+                playDirectVideo(lecture.url);
+            }
+            
+            navigate("video");
+        };
+        
+        function saveLastWatched(lecture) {
+            lastWatched = {
+                teacherId: currentTeacher.id,
+                teacherName: currentTeacher.name,
+                classIndex: currentClassIndex,
+                lectureIndex: currentLectureIndex,
+                lectureTitle: lecture.title,
+                lectureUrl: lecture.url,
+                lectureDescription: lecture.description,
+                categoryEndpoint: currentCategoryEndpoint // <-- Performance Improvement!
+            };
+            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+        }
+
+        function playIframeVideo(url) {
+            videoLoader.style.display = 'flex';
+            const encodedUrl = btoa(url);
+            const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
+            const iframeHtml = `
+                <div style="position: relative; width: 100%; padding-top: 56.25%;">
+                    <iframe 
+                        src="${iframeUrl}" 
+                        allowfullscreen loading="eager"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        onload="document.getElementById('videoLoader').style.display='none';"
+                    ></iframe>
+                </div>`;
+            playerContainer.innerHTML = iframeHtml;
+        }
+
+        function playDirectVideo(url) {
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            const videoElement = document.getElementById("player");
+            const isHLS = url.endsWith(".m3u8");
+            const useProxy = !["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"].some(domain => url.startsWith(domain));
+            
+            const finalVideoUrl = useProxy && isHLS
+                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent("https://abwaab.com")}`
+                : url;
+
+            player = new Plyr("#player", {
+                controls: ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"],
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+            });
+
+            if (isHLS && Hls.isSupported()) {
+                const hls = new Hls();
+                window.hlsInstance = hls;
+                hls.loadSource(finalVideoUrl);
+                hls.attachMedia(videoElement);
+            } else {
+                player.source = {
+                    type: "video",
+                    sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                };
+            }
+            
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player.duration || 0) : 0;
+            player.once('canplay', () => {
+                if (savedTime > 1) player.currentTime = savedTime;
+                player.play();
+            });
+            
+            // Progress Tracking
+            window.progressInterval = setInterval(() => {
+                if (player && player.duration > 0 && !player.paused) {
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                    // Update UI in real-time
+                    const progressBar = document.querySelector(`#lecture-item-${currentClassIndex}-${currentLectureIndex} .lecture-progress-bar-inner`);
+                    if(progressBar) progressBar.style.width = `${progress}%`;
+                }
+            }, 3000);
+            
+            player.on('ended', () => {
+                 lectureProgress[url] = 100;
+                 localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                 renderClasses(currentTeacher.classes); // Re-render to show checkmark
+                 updateActiveLectureUI(currentClassIndex, currentLectureIndex);
+            });
+        }
+        
+        function setupVideoNavigation(ci, li) {
+            const prevBtn = document.getElementById('prevLectureBtn');
+            const nextBtn = document.getElementById('nextLectureBtn');
+
+            // Previous lecture logic
+            const hasPrev = li > 0;
+            prevBtn.disabled = !hasPrev;
+            prevBtn.onclick = hasPrev ? () => playLecture(ci, li - 1) : null;
+
+            // Next lecture logic
+            const hasNext = li < currentTeacher.classes[ci].lectures.length - 1;
+            nextBtn.disabled = !hasNext;
+            nextBtn.onclick = hasNext ? () => playLecture(ci, li + 1) : null;
+        }
+
+
+        // =================================================================
+        // Search Logic
+        // =================================================================
+        function handleSearch() {
+            const term = searchInput.value.trim().toLowerCase();
+            if (!term) {
+                renderTeachers(teachers);
+                return;
+            }
+            const filtered = teachers.filter(t => 
+                t.name.toLowerCase().includes(term) || 
+                t.subject.toLowerCase().includes(term)
+            );
+            renderTeachers(filtered);
+        }
+
+        let searchTimeout;
+        searchInput.addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(handleSearch, 300);
+        });
+        searchBtn.addEventListener("click", handleSearch);
+
+
+        // =================================================================
+        // Modal & Startup Logic
+        // =================================================================
+        const telegramModal = document.getElementById("telegramModal");
+        const continueWatchingModal = document.getElementById("continueWatchingModal");
+
+        function showTelegramModal() {
+            if (!localStorage.getItem("telegramSubscribed")) {
+                telegramModal.classList.add("show");
+                lucide.createIcons();
+            } else {
+                showContinueWatchingModal();
+            }
+        }
+
+        function hideTelegramModal() {
+            telegramModal.classList.remove("show");
+        }
+        
+        document.getElementById("continueWithoutSubscribingBtn").addEventListener("click", () => {
+            localStorage.setItem("telegramSubscribed", "true");
+            hideTelegramModal();
+            showContinueWatchingModal();
+        });
+
+        document.querySelector(".btn-telegram").addEventListener("click", () => {
+            localStorage.setItem("telegramSubscribed", "true");
+            // No need to hide modal, as the link opens in a new tab
+        });
+
+        function showContinueWatchingModal() {
+            if (lastWatched) {
+                document.getElementById("lastWatchedTeacherName").textContent = lastWatched.teacherName;
+                document.getElementById("lastWatchedLectureTitle").textContent = lastWatched.lectureTitle;
+                continueWatchingModal.classList.add("show");
+                lucide.createIcons();
+            }
+        }
+        
+        document.getElementById("continueNowBtn").addEventListener("click", async () => {
+            continueWatchingModal.classList.remove("show");
+            if (!lastWatched || !lastWatched.categoryEndpoint) return;
+
+            try {
+                const response = await fetch(lastWatched.categoryEndpoint);
+                if (!response.ok) throw new Error('Failed to fetch data');
+                const data = await response.json();
+                
+                const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                if (teacher) {
+                    currentTeacher = teacher;
+                    playLecture(lastWatched.classIndex, lastWatched.lectureIndex);
+                }
+            } catch (error) {
+                console.error("Error loading last watched data:", error);
+                alert("حدث خطأ أثناء محاولة استئناف الدرس.");
+            }
+        });
+
+        window.addEventListener("load", () => {
+            setTimeout(showTelegramModal, 1000);
+            lucide.createIcons(); // Initial icon creation
+        });
+
+    </script>
+</body>
+</html>
