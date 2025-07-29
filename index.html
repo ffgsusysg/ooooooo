@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>اديسون - نسخة مطورة</title>
+    <title> اديسون</title>
     
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
@@ -18,7 +18,11 @@
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
     <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
@@ -39,9 +43,33 @@
             --success: #22c55e;
             --warning: #facc15;
             --error: #ef4444;
+            --telegram-blue: #0088cc;
+            --telegram-light: #2aabee;
+            --telegram-text: #ffffff;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+            /* Modal colors */
+            --modal-bg-start: #6a11cb;
+            --modal-bg-end: #2575fc;
+            --modal-text-color: #ffffff;
+            --modal-button-gradient-start: #00c6ff;
+            --modal-button-gradient-end: #0072ff;
+            --modal-button-text: #ffffff;
+            --modal-outline-button-border: #ffffff;
+            --modal-outline-button-text: #ffffff;
+
+            /* Continue watching modal colors */
+            --continue-modal-bg-start: #4facfe;
+            --continue-modal-bg-end: #00f2fe;
+            --continue-modal-text: #ffffff;
+            --continue-button-bg: #00c896;
+            --continue-button-hover: #00a87a;
+            --continue-outline-button-border: #00c896;
+            --continue-outline-button-text: #00c896;
+            --highlight-color: #ffeb3b;
+            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
         }
 
         /* Dark theme adjustments */
@@ -57,12 +85,38 @@
             --primary-3: #2563eb;
             --accent: #fcd34d;
             --accent-2: #fbbf24;
+
+            /* Dark theme modal colors */
+            --modal-bg-start: #1a2a6c;
+            --modal-bg-end: #004d99;
+            --modal-text-color: #e0e7ff;
+            --modal-button-gradient-start: #007bff;
+            --modal-button-gradient-end: #0056b3;
+            --modal-button-text: #ffffff;
+            --modal-outline-button-border: #9ec5ff;
+            --modal-outline-button-text: #9ec5ff;
+
+            /* Dark theme continue watching modal colors */
+            --continue-modal-bg-start: #004d99;
+            --continue-modal-bg-end: #1a2a6c;
+            --continue-modal-text: #e0e7ff;
+            --continue-button-bg: #007a5e;
+            --continue-button-hover: #005a41;
+            --continue-outline-button-border: #007a5e;
+            --continue-outline-button-text: #007a5e;
         }
 
         /* General styles */
-        *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Almarai', sans-serif;
+            font-family: 'Almarai', sans-serif; /* Updated Font */
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -70,14 +124,27 @@
             overflow-y: auto;
             transition: background 0.3s ease, color 0.3s ease;
         }
-        img { max-width: 100%; display: block; }
-        button { font-family: inherit; cursor: pointer; border: none; background: none; }
-        button:disabled { cursor: not-allowed; opacity: 0.5; }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
 
         /* Header styles */
         header {
-            position: sticky; top: 0; z-index: 1000;
-            display: flex; align-items: center; gap: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
             padding: 1rem 1.6rem;
             background: var(--bg-glass);
             backdrop-filter: blur(14px);
@@ -86,272 +153,998 @@
             flex-wrap: wrap;
             transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
+
         .site-title {
-            font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 700;
-            color: var(--primary-1); display: flex; align-items: center;
-            gap: 0.5rem; flex: 1; min-width: 200px;
-            cursor: pointer; transition: color 0.3s ease;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 700;
+            color: var(--primary-1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 200px;
+            cursor: pointer;
+            transition: color 0.3s ease;
         }
+
         .site-logo {
-            width: 40px; height: 40px; background: var(--primary-1);
-            border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; color: white; font-weight: bold;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
             box-shadow: var(--shadow-sm);
         }
-        .header-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-        .search-container {
-            flex: 1; max-width: 650px; display: flex; gap: 0.5rem;
-            position: relative; min-width: 250px; margin-top: 0.5rem;
+
+        .header-actions {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
         }
+
+        .search-container {
+            flex: 1;
+            max-width: 650px;
+            display: flex;
+            gap: 0.5rem;
+            position: relative;
+            min-width: 250px;
+            margin-top: 0.5rem;
+        }
+
         .search-container input {
-            flex: 1; padding: 0.95rem 1rem 0.95rem 3rem; font-size: 1rem;
-            background: var(--card); color: var(--text); border: 2px solid var(--border);
+            flex: 1;
+            padding: 0.95rem 1rem 0.95rem 3rem;
+            font-size: 1rem;
+            background: var(--card);
+            color: var(--text);
+            border: 2px solid var(--border);
             border-radius: var(--radius);
             transition: border 0.25s, box-shadow 0.25s, background 0.3s ease, color 0.3s ease;
         }
+
         .search-container input:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
         }
+
         .search-icon {
-            position: absolute; left: 1rem; top: 50%;
-            transform: translateY(-50%); color: var(--primary-1);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-1);
             transition: color 0.3s ease;
         }
 
         /* Button styles */
         .btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 0.45rem; padding: 0.9rem 1.35rem; border-radius: var(--radius);
-            background: var(--primary-1); color: #fff; font-weight: 600;
-            transition: all 0.25s ease; white-space: nowrap; box-shadow: var(--shadow-sm);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.9rem 1.35rem;
+            border-radius: var(--radius);
+            background: var(--primary-1);
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.25s ease, background 0.3s ease, color 0.3s ease;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
         }
-        .btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .btn-outline { background: transparent; border: 2px solid var(--primary-1); color: var(--primary-1); box-shadow: none; }
-        .btn-outline:hover:not(:disabled) { background: var(--primary-1); color: #fff; }
-        .btn-icon { padding: 0.8rem; border-radius: 50%; width: 42px; height: 42px; }
-        
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-1);
+            color: var(--primary-1);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-1);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-icon {
+            padding: 0.8rem;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            justify-content: center;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-2);
+        }
+
         /* Page layout */
-        .page { display: none; padding: 2rem; max-width: 1300px; margin: 0 auto; }
-        .page.active { display: block; }
-        .section-title {
-            display: flex; align-items: center; gap: 0.5rem;
-            margin: 1.5rem 0 1rem; padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-1); color: var(--primary-1);
+        .page {
+            display: none;
+            padding: 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        /* Category & Teacher Cards */
-        .categories-grid, .teachers-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem; margin-top: 1.5rem;
+        .page.active {
+            display: block;
         }
-        .teachers-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-        .category-card, .teacher-card {
-            background: var(--card); border-radius: var(--radius);
-            border: 1px solid var(--border); overflow: hidden;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            box-shadow: var(--shadow-sm); cursor: pointer;
+
+        /* Category grid */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
         }
-        .category-card:hover, .teacher-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-        .category-image { height: 180px; background-size: cover; background-position: center; }
-        .category-content { padding: 1.5rem; text-align: center; }
-        .category-title { font-size: 1.4rem; color: var(--primary-1); margin-bottom: 0.5rem; }
-        .category-description { opacity: 0.8; margin-bottom: 1rem; }
-        .teacher-card { padding: 1.4rem 1.1rem; text-align: center; }
+
+        .category-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .category-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            color: var(--primary-1);
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .category-description {
+            color: var(--text);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            transition: color 0.3s ease;
+        }
+
+        /* Teachers grid */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+
+        .teacher-card {
+            background: var(--card);
+            padding: 1.4rem 1.1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
         .teacher-img {
-            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-            margin: 0 auto 1rem; border: 3px solid var(--accent); box-shadow: var(--shadow-sm);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: border-color 0.3s ease;
         }
-        .teacher-name { font-size: 1.2rem; font-weight: 700; color: var(--primary-1); }
-        .teacher-subject { font-size: 0.92rem; opacity: 0.7; }
-        .teacher-rating { display: flex; justify-content: center; gap: 0.2rem; margin-top: 0.5rem; }
-        .teacher-rating .star { color: #ddd; font-size: 1.1rem; }
-        .teacher-rating .star.filled { color: var(--warning); }
-        
-        /* Classes Page */
-        .back-button { margin-bottom: 1.5rem; background: var(--primary-2); }
+
+        .teacher-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0.4rem 0 0.15rem;
+            color: var(--primary-1);
+            transition: color 0.3s ease;
+        }
+
+        .teacher-subject {
+            color: var(--text);
+            font-size: 0.92rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+            transition: color 0.3s ease;
+        }
+
+        .teacher-rating {
+            display: flex;
+            justify-content: center;
+            gap: 0.2rem;
+            margin: 0.5rem 0;
+        }
+
+        .teacher-rating .star {
+            color: #ddd;
+            font-size: 1.1rem;
+        }
+
+        .teacher-rating .star.filled {
+            color: var(--warning);
+        }
+
+        .back-button {
+            margin-bottom: 1.5rem;
+            background: var(--primary-2);
+            box-shadow: var(--shadow-sm);
+        }
+
         .teacher-info {
-            display: flex; align-items: center; gap: 1.4rem; background: var(--card);
-            padding: 1.6rem; border-radius: var(--radius); border: 1px solid var(--border);
-            flex-wrap: wrap; margin-bottom: 1.5rem; box-shadow: var(--shadow-md);
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            background: var(--card);
+            padding: 1.6rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
+
         .teacher-img-lg {
-            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--accent); box-shadow: var(--shadow-md);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: var(--shadow-md);
+            transition: border-color 0.3s ease;
         }
-        .classes-list { display: grid; gap: 1.4rem; }
-        .class-card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; }
+
+        .classes-list {
+            display: grid;
+            gap: 1.4rem;
+        }
+
+        .class-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
         .class-header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.1rem 1.3rem; cursor: pointer; user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.3rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--bg-glass);
+            backdrop-filter: blur(8px);
             border-right: 4px solid var(--primary-2);
+            transition: background 0.25s ease, border-color 0.3s ease;
         }
-        .class-header-title { display: flex; flex-direction: column; gap: 0.25rem; }
-        .class-progress-text { font-size: 0.8rem; opacity: 0.7; }
-        .class-header .chevron-icon { transition: transform 0.25s ease; }
-        .class-header.open .chevron-icon { transform: rotate(180deg); }
-        .lectures-list { display: none; flex-direction: column; gap: 0.5rem; padding: 1rem; }
-        .lecture-item {
-            display: flex; align-items: center; gap: 0.75rem;
-            padding: 0.8rem 1rem; border-radius: var(--radius);
-            cursor: pointer; transition: background-color 0.2s ease;
-            border-right: 4px solid transparent;
-        }
-        .lecture-item:hover { background-color: var(--hover); }
-        .lecture-item.active {
-            background-color: color-mix(in srgb, var(--primary-1) 15%, transparent);
-            border-right-color: var(--accent);
-        }
-        .lecture-details { flex-grow: 1; display: flex; flex-direction: column; gap: 0.3rem; }
-        .lecture-title-container { display: flex; justify-content: space-between; align-items: center; }
-        .lecture-duration { font-size: 0.85rem; opacity: 0.7; }
-        .lecture-progress-bar { width: 100%; height: 4px; background-color: var(--border); border-radius: 2px; overflow: hidden; }
-        .lecture-progress-bar-inner { height: 100%; background-color: var(--success); width: 0%; transition: width 0.3s ease; }
         
-        /* NEW: Mark as Complete Checkbox */
-        .lecture-complete-checkbox {
-            width: 22px; height: 22px; border: 2px solid var(--border);
-            background-color: var(--card); border-radius: 6px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease; flex-shrink: 0;
+        .class-header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
         }
-        .lecture-complete-checkbox.completed { background-color: var(--success); border-color: var(--success); }
-        .lecture-complete-checkbox i { color: white; opacity: 0; transform: scale(0.5); transition: all 0.2s ease; }
-        .lecture-complete-checkbox.completed i { opacity: 1; transform: scale(1); }
+        
+        .class-progress {
+            font-size: 0.85rem;
+            color: var(--text);
+            opacity: 0.8;
+            font-weight: 500;
+        }
 
-        /* Video Page */
+        .class-header:hover {
+            background: var(--hover);
+        }
+
+        .class-header .chevron-icon {
+            transition: transform 0.25s ease;
+        }
+
+        .class-header.open .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .lectures-list {
+            display: none;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 1.1rem 1.5rem 0.9rem 0;
+        }
+
+        .lecture-item {
+            position: relative;
+            background: var(--hover);
+            border-right: 3px solid var(--primary-3);
+            border-radius: var(--radius);
+            transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.1rem;
+        }
+        
+        .lecture-item.completed {
+            background-color: #dcfce7; /* Light green for completed */
+            border-right-color: var(--success);
+        }
+        
+        [data-theme="dark"] .lecture-item.completed {
+             background-color: #164e3b; /* Dark green for completed */
+        }
+
+        .lecture-item:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+        
+        .lecture-play-area {
+             display: flex;
+             align-items: center;
+             gap: 0.75rem;
+             flex-grow: 1;
+             cursor: pointer;
+        }
+
+        .lecture-play-area i {
+            color: var(--primary-1);
+            transition: color 0.3s ease;
+        }
+        
+        /* NEW: Completion Checkbox Styles */
+        .completion-checkbox {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            margin-left: 1rem; /* Spacing from play button */
+        }
+
+        .completion-checkbox input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .completion-checkbox:hover input ~ .checkmark {
+            background-color: var(--hover);
+        }
+
+        .completion-checkbox input:checked ~ .checkmark {
+            background-color: var(--success);
+            border-color: var(--success);
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        .completion-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .completion-checkbox .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+        }
+
+        /* NEW: Star Burst Animation */
+        .star-burst {
+            position: absolute;
+            top: 50%;
+            left: 12px; /* Centered on the checkbox */
+            width: 1px;
+            height: 1px;
+            pointer-events: none; /* Allows clicking through */
+        }
+
+        .star-burst.animate .star-particle {
+            animation: burst 0.6s ease-out forwards;
+        }
+
+        .star-particle {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: scale(0.5) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1) rotate(90deg) translate(var(--translateX), var(--translateY));
+                opacity: 0;
+            }
+        }
+
+
+        /* MODIFIED: Default Video Page Layout (Tablets & Desktops) */
         #videoPage.page.active {
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; min-height: calc(100vh - 85px); padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 85px);
+            padding: 2rem;
+            padding-bottom: 10vh;
         }
-        .video-page {
-            display: flex; flex-direction: column; gap: 1.5rem;
-            max-width: 1000px; width: 100%; margin: 0 auto;
-        }
-        .video-container {
-            position: relative; width: 100%; background: #000;
-            border-radius: var(--radius); overflow: hidden;
-            aspect-ratio: 16/9; box-shadow: var(--shadow-lg);
-        }
-        .plyr { border-radius: var(--radius); overflow: hidden; width: 100%; height: 100%; }
-        .video-details {
-            background: var(--card); padding: 1.5rem; border-radius: var(--radius);
-            border: 1px solid var(--border); text-align: center; box-shadow: var(--shadow-md);
-        }
-        .video-nav-buttons { display: flex; justify-content: space-between; margin-top: 1.5rem; }
-        .video-info { text-align: right; padding: 1rem 0; }
-        .video-meta { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; opacity: 0.8; }
 
-        /* Loader */
+        .video-page {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 1000px; /* Constrained width for larger screens */
+            width: 100%;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            background: #000;
+            border-radius: var(--radius); /* Rounded corners for larger screens */
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: var(--shadow-lg); /* Shadow for larger screens */
+        }
+
+        .plyr {
+            border-radius: var(--radius);
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-details {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .video-info {
+            text-align: right;
+            padding: 1rem 0;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            color: var(--text);
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-1);
+            color: var(--primary-1);
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* Smart Loader for iframe videos */
         .video-loader {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center;
-            align-items: center; z-index: 10; border-radius: var(--radius);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: var(--radius);
             transition: opacity 0.3s ease;
         }
+
         .loader-spinner {
-            border: 6px solid #f3f3f3; border-top: 6px solid var(--primary-1);
-            border-radius: 50%; width: 60px; height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-1);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
         /* Modal Styles */
         .modal {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center;
-            align-items: center; z-index: 2000; opacity: 0; visibility: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-        .modal.show { opacity: 1; visibility: visible; }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .modal-content {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-lg);
-            max-width: 550px; width: 90%; text-align: center;
-            transform: translateY(-20px); transition: transform 0.3s ease;
+            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end));
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-lg);
+            max-width: 550px;
+            width: 90%;
+            text-align: center;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease, background 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .modal.show .modal-content { transform: translateY(0); }
-        .modal-title { font-size: 2rem; color: #fff; }
-        .modal-body p { font-size: 1.2rem; color: #fff; margin: 1.5rem 0 2.5rem; }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--modal-text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 700;
+        }
+
+        .modal-body p {
+            font-size: 1.2rem;
+            color: var(--modal-text-color);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
         .btn-telegram {
-            background: linear-gradient(45deg, #00c6ff, #0072ff); color: #fff;
-            padding: 1.2rem 2.5rem; font-size: 1.2rem; margin-bottom: 1.2rem;
+            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end));
+            color: var(--modal-button-text);
+            padding: 1.2rem 2.5rem;
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
-        .btn-telegram:hover { transform: translateY(-5px) scale(1.02); }
-        .btn-outline-telegram { border: 2px solid #fff; color: #fff; padding: 0.9rem 1.8rem; }
-        .btn-outline-telegram:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .btn-telegram:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .btn-outline-telegram {
+            background: transparent;
+            border: 2px solid var(--modal-outline-button-border);
+            color: var(--modal-outline-button-text);
+            padding: 0.9rem 1.8rem;
+            font-size: 1rem;
+            transition: all 0.25s ease;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: none;
+        }
+
+        .btn-outline-telegram:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--modal-outline-button-text);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Continue Watching Modal Styles */
+        #continueWatchingModal .modal-content {
+            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
+            max-width: 450px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #continueWatchingModal .modal-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--continue-modal-text);
+        }
+
+        #continueWatchingModal .modal-body p {
+            font-size: 1rem;
+            color: var(--continue-modal-text);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
         
-        /* Responsive */
-        @media (max-width: 768px) {
-            header { padding: 0.9rem 1rem; gap: 0.8rem; }
-            .search-container { order: 3; width: 100%; }
-            .btn span:not(.lecture-duration) { display: none; }
-            .teacher-img { width: 100px; height: 100px; }
-            #videoPage.page.active { padding: 0; }
-            .video-page { max-width: none; }
-            .video-container { border-radius: 0; box-shadow: none; }
-            .video-details { padding: 1.2rem; width: 100%; }
+        #continueWatchingModal .modal-body p .highlight-text {
+            color: var(--highlight-color);
+            font-weight: bold;
+            text-shadow: var(--highlight-shadow);
+            transition: color 0.3s ease, text-shadow 0.3s ease;
         }
+
+        .btn-continue-now {
+            background-color: var(--continue-button-bg);
+            color: var(--continue-modal-text);
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: var(--radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-continue-now:hover {
+            background-color: var(--continue-button-hover);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.05);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding: 0.9rem 1rem;
+                gap: 0.8rem;
+            }
+
+            .search-container {
+                order: 3;
+                width: 100%;
+            }
+
+            .btn span {
+                display: none;
+            }
+
+            .teacher-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .lecture-item {
+                padding-left: 2.5rem;
+            }
+
+            .video-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .btn {
+                padding: 0.8rem 1rem;
+            }
+
+            /* MODIFIED: Full-width video styles ONLY for mobile */
+            #videoPage.page.active {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .video-page {
+                max-width: none;
+                align-items: center;
+            }
+            .video-container {
+                border-radius: 0;
+                box-shadow: none;
+            }
+            .video-details {
+                padding: 1.2rem;
+                width: 100%;
+            }
+        }
+
         @media (max-width: 480px) {
-            .page { padding: 1rem; }
-            .teacher-info { flex-direction: column; text-align: center; }
-            .teacher-img-lg { margin-bottom: 1rem; }
+            .page {
+                padding: 1rem;
+            }
+
+            .teacher-info {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .teacher-img-lg {
+                margin-bottom: 1rem;
+            }
+
+            .site-title {
+                font-size: 1.5rem;
+            }
+            /* Responsive adjustments for modal */
+            .modal-content {
+                padding: 1.5rem;
+            }
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            .modal-body p {
+                font-size: 1rem;
+            }
+            .btn-telegram {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+            .btn-outline-telegram {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            .btn-continue-now {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            /* Ensure video page padding is correct on smallest screens */
+            #videoPage.page.active {
+                padding-top: 1rem;
+                padding-bottom: 5vh;
+            }
         }
     </style>
+
 </head>
 <body>
     <header>
         <h1 class="site-title" onclick="navigate('home')">
             <div class="site-logo">إ</div>
-            <span>منصة إديسون</span>
+            منصة إديسون
         </h1>
+
         <div class="header-actions">
-            <button id="themeToggle" class="btn btn-icon"><i data-lucide="sun"></i></button>
+            <button id="themeToggle" class="btn">
+                <i data-lucide="sun"></i><span>المظهر</span>
+            </button>
+            <button id="examsButton" class="btn">
+                <i data-lucide="file-text"></i><span>امتحانات الأساتذة</span>
+            </button>
         </div>
+
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
             <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
+            <button id="searchButton" class="btn btn-icon">
+                <i data-lucide="search"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Modals -->
+    <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
         <div class="modal-content">
-            <h3 class="modal-title">مرحبًا في منصة إديسون!</h3>
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i data-lucide="bell"></i>
+                    مرحبًا في منصة إديسون!
+                </h3>
+            </div>
             <div class="modal-body">
-                <p>اشترك في قناتنا على تيلجرام لتصلك آخر التحديثات.</p>
-                <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram"><i data-lucide="send"></i> اشترك الآن</a>
-                <button id="closeTelegramBtn" class="btn btn-outline-telegram">المتابعة للمنصة</button>
+                <p>لا تنسى تشترك في قناتنا على تيلجرام حتى توصلك أحدث التحديثات والأخبار الجديدة.</p>
+                <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
+                    <i data-lucide="send"></i>
+                    <span>اشترك الآن</span>
+                </a>
+                <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
+                    اشتركت سابقا المتابعة
+                </button>
             </div>
         </div>
     </div>
-    <div id="continueWatchingModal" class="modal">
-        <div class="modal-content" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
-            <h3 class="modal-title">أهلاً بعودتك!</h3>
-            <div class="modal-body">
-                <p>آخر ما كنت تشاهده هو محاضرة <strong id="lastWatchedLectureTitle" style="color: #ffeb3b;"></strong></p>
-                <button id="continueNowBtn" class="btn" style="background: #00c896;"><i data-lucide="play"></i> متابعة المشاهدة</button>
-            </div>
-        </div>
-    </div>
+    <!-- End Telegram Modal -->
 
-    <!-- Pages -->
+    <!-- Continue Watching Modal -->
+    <div id="continueWatchingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i data-lucide="graduation-cap"></i>
+                    عزيزي الطالب 
+                </h3>
+            </div>
+            <div class="modal-body">
+                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
+                <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
+                <p>لاتنسى تكمل محاضراتك وبس حبيت اذكرك ❤️</p>
+                <button id="continueNowBtn" class="btn btn-continue-now">
+                    <i data-lucide="play"></i>
+                    متابعة 
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End Continue Watching Modal -->
+
     <div id="homePage" class="page active">
-        <div class="section-title"><i data-lucide="layout-grid"></i><h3>اختر القسم المناسب لك</h3></div>
-        <div id="categoriesGrid" class="categories-grid"></div>
+        <div class="section-title">
+            <i data-lucide="layout-grid"></i>
+            <h3>اختر القسم المناسب لك</h3>
+        </div>
+        
+        <div class="categories-grid">
+            <div class="category-card" onclick="loadCategory('year-2026')">
+                <div class="category-image" style="background: linear-gradient(135deg, #0ea5e9, #1a56db);"></div>
+                <div class="category-content">
+                    <h3 class="category-title"> مدرسين سنة 2026</h3>
+                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+            
+            <div class="category-card" onclick="loadCategory('year-2025')">
+                <div class="category-image" style="background: linear-gradient(135deg, #f59e0b, #f97316);"></div>
+                <div class="category-content">
+                    <h3 class="category-title"> مدرسين سنة 2025 </h3>
+                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+            
+            <div class="category-card" onclick="loadCategory('distinguished')">
+                <div class="category-image" style="background: linear-gradient(135deg, #10b981, #047857);"></div>
+                <div class="category-content">
+                    <h3 class="category-title">قسم المتميزين</h3>
+                    <p class="category-description">مواد خاصة للطلاب المتميزين</p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+            
+            <div class="category-card" onclick="loadCategory('literary')">
+                <div class="category-image" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);"></div>
+                <div class="category-content">
+                    <h3 class="category-title">القسم الأدبي</h3>
+                    <p class="category-description">المواد والمناهج الادبي </p>
+                    <button class="btn">عرض المواد</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="categoryPage" class="page">
-        <button class="btn back-button" onclick="navigate('home')"><i data-lucide="arrow-right"></i> اختيار قسم آخر</button>
-        <div class="section-title"><i data-lucide="users"></i><h3 id="categoryTitle"></h3></div>
-        <div id="teachersGrid" class="teachers-grid"></div>
+        <button class="btn back-button" onclick="navigate('home')">
+            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
+        </button>
+        
+        <div class="section-title">
+            <i data-lucide="users"></i>
+            <h3 id="categoryTitle">المدرسين</h3>
+        </div>
+        
+        <div id="teachersGrid" class="teachers-grid">
+            <!-- Teachers will be loaded here -->
+        </div>
     </div>
 
     <div id="classesPage" class="page">
-        <button class="btn back-button" onclick="navigate('category')"><i data-lucide="arrow-right"></i> الرجوع للمدرسين</button>
-        <div id="teacherInfo" class="teacher-info"></div>
-        <div class="section-title"><i data-lucide="book-open"></i><h3>الفصول الدراسية</h3></div>
+        <button class="btn back-button" onclick="navigate('category')">
+            <i data-lucide="arrow-right"></i>الرجوع للمدرسين
+        </button>
+        
+        <div class="teacher-info">
+            <img id="teacherImage" class="teacher-img-lg" alt="" />
+            <div>
+                <h2 id="teacherName"></h2>
+                <p id="teacherSubject" class="teacher-subject"></p>
+                <div id="teacherRating" class="teacher-rating"></div>
+            </div>
+        </div>
+        
+        <div class="section-title">
+            <i data-lucide="book-open"></i>
+            <h3>الفصول الدراسية</h3>
+        </div>
+        
         <div id="classesList" class="classes-list"></div>
     </div>
 
@@ -359,16 +1152,28 @@
         <div class="video-page">
             <div id="videoContainer" class="video-container">
                 <div id="playerContainer"></div>
-                <div id="videoLoader" class="video-loader" style="display: none;"><div class="loader-spinner"></div></div>
+                <!-- Loader for iframe videos -->
+                <div id="videoLoader" class="video-loader" style="display: none;">
+                    <div class="loader-spinner"></div>
+                </div>
             </div>
+            
             <div class="video-details">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
-                <div id="videoNav" class="video-nav-buttons">
-                    <button id="prevLectureBtn" class="btn btn-outline"><i data-lucide="arrow-right"></i><span>السابقة</span></button>
-                    <button id="nextLectureBtn" class="btn"><span>التالية</span><i data-lucide="arrow-left"></i></button>
+                
+                <div class="video-info">
+                    <div class="video-meta">
+                        <span>
+                            <i data-lucide="calendar"></i> تاريخ النشر:
+                            <span id="videoDate">--/--/----</span>
+                        </span>
+                    </div>
                 </div>
-                <button class="btn back-button" onclick="navigate('classes')" style="margin-top: 1.5rem;"><i data-lucide="arrow-right"></i> العودة للفصول</button>
+                
+                <button class="btn back-button" onclick="navigate('classes')">
+                    <i data-lucide="arrow-right"></i>العودة للفصول
+                </button>
             </div>
         </div>
     </div>
@@ -377,47 +1182,285 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <script type="text/babel">
-        // =================================================================
-        // App State & Global Variables
-        // =================================================================
-        let player = null;
-        let allData = {}; // Cache for fetched data
-        let teachers = [];
-        let currentTeacher = null;
-        let currentCategoryEndpoint = '';
-        let currentClassIndex = -1;
-        let currentLectureIndex = -1;
-        
-        // Data from localStorage
-        const getFromStorage = (key, defaultValue) => JSON.parse(localStorage.getItem(key)) || defaultValue;
-        const saveToStorage = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+        // Initialize theme
+        function initializeTheme() {
+            const stored = localStorage.getItem("theme");
+            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
+            const theme = stored || preferred;
+            document.documentElement.setAttribute("data-theme", theme);
+            updateThemeIcon(theme);
+        }
 
-        let lectureProgress = getFromStorage("lectureProgress", {});
-        let manualCompletion = getFromStorage("manualCompletion", {});
-        let lastWatched = getFromStorage("lastWatched", null);
-        
+        function updateThemeIcon(theme) {
+            document
+                .querySelector("#themeToggle i")
+                .setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
+            lucide.createIcons();
+        }
+
+        initializeTheme();
+
+        document.getElementById("themeToggle").addEventListener("click", () => {
+            const cur = document.documentElement.getAttribute("data-theme");
+            const next = cur === "dark" ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("theme", next);
+            updateThemeIcon(next);
+        });
+
+        // Set up player
+        let player = null;
+
         // DOM references
+        const teacherImage = document.getElementById("teacherImage");
+        const teacherName = document.getElementById("teacherName");
+        const teacherSubject = document.getElementById("teacherSubject");
+        const teacherRating = document.getElementById("teacherRating");
+        const videoTitle = document.getElementById("videoTitle");
+        const videoDescription = document.getElementById("videoDescription");
+        const categoryTitle = document.getElementById("categoryTitle");
+        const classesList = document.getElementById("classesList");
+        const teachersGrid = document.getElementById("teachersGrid");
+        const playerContainer = document.getElementById("playerContainer");
+        const videoLoader = document.getElementById("videoLoader");
+
+        // Progress variables
+        let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
+        let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {}; // NEW: For completion status
+        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
+
+        // Navigation
         const pages = {
             home: document.getElementById("homePage"),
             category: document.getElementById("categoryPage"),
             classes: document.getElementById("classesPage"),
-            video: document.getElementById("videoPage"),
+            video: document.getElementById("videoPage")
         };
-        const searchInput = document.getElementById("searchInput");
 
-        // =================================================================
-        // Core App Logic
-        // =================================================================
-        
         function navigate(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
-            if (page !== "video" && player) destroyPlayer();
+
+            // Clean up when leaving video page
+            if (page !== "video") {
+                if (player) {
+                    player.destroy();
+                    player = null;
+                }
+
+                if (window.hlsInstance) {
+                    window.hlsInstance.destroy();
+                    window.hlsInstance = null;
+                }
+
+                if (window.progressInterval) {
+                    clearInterval(window.progressInterval);
+                    window.progressInterval = null;
+                }
+
+                playerContainer.innerHTML = "";
+                videoLoader.style.display = 'none';
+            }
+
             Object.values(pages).forEach((p) => p.classList.remove("active"));
             pages[page].classList.add("active");
-            if (page === 'category') searchInput.value = '';
         }
 
-        function destroyPlayer() {
+        /* ========= Teachers Data ========= */
+        const searchInput = document.getElementById("searchInput");
+        const searchBtn = document.getElementById("searchButton");
+        let teachers = [];
+        let currentTeacher = null;
+        let currentClassIndex = 0;
+        let currentLectureIndex = 0;
+        let currentLectureLink = "";
+
+        // Categories data
+        const categories = {
+            "year-2026": {
+                title: "الصفوف الدراسية 2026",
+                endpoint: "https://adson.netlify.app/data2.json"
+            },
+            "year-2025": {
+                title: "الصفوف الدراسية 2025",
+                endpoint: "https://adson.netlify.app/data.json"
+            },
+            "distinguished": {
+                title: "قسم المتميزين",
+                endpoint: "https://adson.netlify.app/ff.json"
+            },
+            "literary": {
+                title: "القسم الأدبي",
+                endpoint: "https://adson.netlify.app/mm.json"
+            }
+        };
+
+        function loadCategory(categoryId) {
+            const category = categories[categoryId];
+            if (!category) return;
+
+            categoryTitle.textContent = category.title;
+            loadData(category.endpoint);
+            navigate("category");
+        }
+
+        function renderTeachers(list = teachers) {
+            if (!list.length) {
+                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
+                return;
+            }
+
+            teachersGrid.innerHTML = "";
+
+            list.forEach((t, idx) => {
+                const rating = ratings[t.id] || 0;
+
+                const card = document.createElement("div");
+                card.className = "teacher-card";
+                card.innerHTML = `
+                    <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
+                    <h3 class="teacher-name">${t.name}</h3>
+                    <p class="teacher-subject">${t.subject}</p>
+                    <div class="teacher-rating">
+                        ${renderStars(rating)}
+                    </div>
+                `;
+                card.onclick = () => showTeacher(t.id);
+                teachersGrid.appendChild(card);
+                lucide.createIcons();
+            });
+        }
+
+        function renderStars(rating) {
+            let stars = "";
+            for (let i = 1; i <= 5; i++) {
+                stars += `<span class="star ${i <= rating ? "filled" : ""}">★</span>`;
+            }
+            return stars;
+        }
+
+        window.showTeacher = (id) => {
+            currentTeacher = teachers.find((t) => t.id == id);
+            if (!currentTeacher) return;
+
+            teacherImage.src = currentTeacher.image;
+            teacherImage.onerror = function() {
+                this.onerror = null;
+                this.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';
+            };
+            teacherName.textContent = currentTeacher.name;
+            teacherSubject.textContent = currentTeacher.subject;
+
+            const rating = ratings[currentTeacher.id] || 0;
+            teacherRating.innerHTML = renderStars(rating);
+
+            renderClasses(currentTeacher.classes);
+            navigate("classes");
+        };
+
+        function renderClasses(classesData) {
+            classesList.innerHTML = classesData
+                .map((cls, ci) => {
+                    const totalLectures = cls.lectures.length;
+                    const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
+                    
+                    const lectures = cls.lectures
+                        .map((lec, li) => {
+                            const isCompleted = !!completedLectures[lec.url];
+                            return `
+                                <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
+                                    <div class="lecture-play-area" 
+                                         onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                        <i data-lucide="play-circle"></i>
+                                        <span>${li + 1}. ${lec.title}</span>
+                                    </div>
+                                    <div class="star-burst"></div>
+                                    <label class="completion-checkbox">
+                                        <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            `;
+                        })
+                        .join("");
+
+                    return `
+                        <div class="class-card">
+                            <div class="class-header" onclick="toggleLectures(this)">
+                                <div class="class-header-content">
+                                    <h3>${cls.name}</h3>
+                                    <span class="class-progress" data-class-index="${ci}">
+                                        المكتمل: ${completedCount} / ${totalLectures}
+                                    </span>
+                                </div>
+                                <i data-lucide="chevron-down" class="chevron-icon"></i>
+                            </div>
+                            <div class="lectures-list">${lectures}</div>
+                        </div>
+                    `;
+                })
+                .join("");
+
+            lucide.createIcons();
+        }
+        
+        // NEW: Toggle lecture completion status
+        window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
+            event.stopPropagation(); // Prevent the click from bubbling up to the play area
+            const lectureItem = checkbox.closest('.lecture-item');
+            const isCompleted = checkbox.checked;
+
+            completedLectures[lectureUrl] = isCompleted;
+            localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
+
+            lectureItem.classList.toggle('completed', isCompleted);
+
+            // Trigger animation if newly completed
+            if (isCompleted) {
+                const starBurst = lectureItem.querySelector('.star-burst');
+                starBurst.innerHTML = Array(8).fill(0).map(() => {
+                    const translateX = (Math.random() - 0.5) * 80;
+                    const translateY = (Math.random() - 0.5) * 80;
+                    return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
+                }).join('');
+                starBurst.classList.add('animate');
+                setTimeout(() => {
+                    starBurst.classList.remove('animate');
+                    starBurst.innerHTML = '';
+                }, 600);
+            }
+            
+            // Update progress counter
+            updateClassProgress(lectureItem.closest('.class-card'));
+        };
+
+        // NEW: Update the progress counter for a class
+        function updateClassProgress(classCardElement) {
+            const progressSpan = classCardElement.querySelector('.class-progress');
+            const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
+            const classData = currentTeacher.classes[classIndex];
+            
+            const totalLectures = classData.lectures.length;
+            const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
+            
+            progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
+        }
+
+
+        window.toggleLectures = (header) => {
+            const list = header.parentElement.querySelector(".lectures-list");
+            const icon = header.querySelector(".chevron-icon");
+            const open = list.style.display !== "flex";
+
+            list.style.display = open ? "flex" : "none";
+            header.classList.toggle("open", open);
+            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
+            lucide.createIcons();
+        };
+
+        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
             if (player) {
                 player.destroy();
                 player = null;
@@ -430,332 +1473,235 @@
                 clearInterval(window.progressInterval);
                 window.progressInterval = null;
             }
-            document.getElementById("playerContainer").innerHTML = "";
-        }
 
-        async function fetchData(endpoint) {
-            if (allData[endpoint]) return allData[endpoint];
-            try {
-                const response = await fetch(endpoint, { cache: "no-cache" });
-                if (!response.ok) throw new Error('Network response was not ok');
-                const data = await response.json();
-                allData[endpoint] = data;
-                return data;
-            } catch (error) {
-                console.error("Failed to fetch data:", error);
-                return null;
-            }
-        }
+            playerContainer.innerHTML = "";
+            videoLoader.style.display = 'none';
 
-        // =================================================================
-        // Rendering Functions
-        // =================================================================
+            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
+            videoTitle.textContent = title;
+            videoDescription.textContent = desc;
 
-        function renderCategories() {
-            const categories = {
-                "year-2026": { title: "مدرسين سنة 2026", desc: "المحاضرات والمواد الدراسية لطلاب 2026", endpoint: "https://adson.netlify.app/data2.json", gradient: "linear-gradient(135deg, #0ea5e9, #1a56db)" },
-                "year-2025": { title: "مدرسين سنة 2025", desc: "المحاضرات والمواد الدراسية لطلاب 2025", endpoint: "https://adson.netlify.app/data.json", gradient: "linear-gradient(135deg, #f59e0b, #f97316)" },
-                "distinguished": { title: "قسم المتميزين", desc: "مواد خاصة للطلاب المتميزين", endpoint: "https://adson.netlify.app/ff.json", gradient: "linear-gradient(135deg, #10b981, #047857)" },
-                "literary": { title: "القسم الأدبي", desc: "المواد والمناهج الادبي", endpoint: "https://adson.netlify.app/mm.json", gradient: "linear-gradient(135deg, #8b5cf6, #7c3aed)" }
+            document.getElementById("videoDate").textContent = "15/10/2026";
+
+            lastWatched = {
+                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
+                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
+                classIndex: ci,
+                lectureIndex: li,
+                lectureTitle: title,
+                lectureUrl: url,
+                lectureDescription: desc
             };
-            const grid = document.getElementById('categoriesGrid');
-            grid.innerHTML = Object.entries(categories).map(([key, cat]) => `
-                <div class="category-card" onclick="loadCategory('${cat.endpoint}', '${cat.title}')">
-                    <div class="category-image" style="background: ${cat.gradient};"></div>
-                    <div class="category-content">
-                        <h3 class="category-title">${cat.title}</h3>
-                        <p class="category-description">${cat.desc}</p>
-                        <button class="btn">عرض المواد</button>
-                    </div>
-                </div>
-            `).join('');
-        }
+            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
-        async function loadCategory(endpoint, title) {
-            currentCategoryEndpoint = endpoint;
-            document.getElementById('categoryTitle').textContent = title;
-            navigate("category");
+            const directPlayDomains = [
+                "https://9bf9f797be0a4677a8-akamai-cdn.com",
+                "https://vidcdn.akamai-cdn-delivery.com"
+            ];
             
-            const loadingHtml = Array(6).fill(`<div class="teacher-card" style="height: 250px; background-color: var(--hover);"></div>`).join('');
-            document.getElementById('teachersGrid').innerHTML = loadingHtml;
-
-            const data = await fetchData(endpoint);
-            if (data && data.teachers) {
-                teachers = data.teachers;
-                renderTeachers(teachers);
-            } else {
-                document.getElementById('teachersGrid').innerHTML = '<p>فشل تحميل بيانات المدرسين.</p>';
+            let useProxy = true;
+            for (const domain of directPlayDomains) {
+                if (url.startsWith(domain)) {
+                    useProxy = false;
+                    break;
+                }
             }
-        }
 
-        function renderTeachers(list = []) {
-            const grid = document.getElementById('teachersGrid');
-            if (!list.length) {
-                grid.innerHTML = "<p style='text-align: center;'>لا توجد نتائج مطابقة.</p>";
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                videoLoader.style.display = 'flex';
+                const encodedUrl = btoa(url);
+                const iframeUrl = `https://weathered-truth-412e.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
+                const iframeHtml = `
+                    <div style="position: relative; width: 100%; padding-top: 56.25%;">
+                        <iframe 
+                            src="${iframeUrl}" 
+                            allowfullscreen 
+                            loading="eager"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                            onload="document.getElementById('videoLoader').style.display='none';"
+                        ></iframe>
+                    </div>
+                `;
+                playerContainer.innerHTML = iframeHtml;
+                navigate("video");
                 return;
             }
-            grid.innerHTML = list.map(t => `
-                <div class="teacher-card" onclick="showTeacher(${t.id})">
-                    <img class="teacher-img" src="${t.image}" alt="${t.name}" loading="lazy" onerror="this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
-                    <h3 class="teacher-name">${t.name}</h3>
-                    <p class="teacher-subject">${t.subject}</p>
-                </div>
-            `).join('');
-        }
-        
-        function showTeacher(id) {
-            currentTeacher = teachers.find((t) => t.id == id);
-            if (!currentTeacher) return;
-
-            document.getElementById('teacherInfo').innerHTML = `
-                <img id="teacherImage" class="teacher-img-lg" src="${currentTeacher.image}" onerror="this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
-                <div>
-                    <h2 id="teacherName">${currentTeacher.name}</h2>
-                    <p id="teacherSubject" class="teacher-subject">${currentTeacher.subject}</p>
-                </div>`;
             
-            renderClasses();
-            navigate("classes");
-        }
-
-        function renderClasses() {
-            const listEl = document.getElementById('classesList');
-            listEl.innerHTML = currentTeacher.classes.map((cls, ci) => {
-                let completedCount = 0;
-                const lecturesHtml = cls.lectures.map((lec, li) => {
-                    const isCompleted = (lectureProgress[lec.url] >= 95) || manualCompletion[lec.url];
-                    if (isCompleted) completedCount++;
-                    
-                    return `
-                        <div class="lecture-item" id="lecture-item-${ci}-${li}" onclick="playLecture(${ci}, ${li})">
-                            <div class="lecture-complete-checkbox ${isCompleted ? 'completed' : ''}" onclick="toggleManualComplete(event, '${lec.url}', ${ci})">
-                                <i data-lucide="check"></i>
-                            </div>
-                            <div class="lecture-details">
-                                <div class="lecture-title-container">
-                                    <span>${li + 1}. ${lec.title}</span>
-                                    <span class="lecture-duration">${lec.duration || ''}</span>
-                                </div>
-                                <div class="lecture-progress-bar">
-                                    <div class="lecture-progress-bar-inner" style="width: ${lectureProgress[lec.url] || 0}%;"></div>
-                                </div>
-                            </div>
-                        </div>`;
-                }).join("");
-
-                return `
-                    <div class="class-card">
-                        <div class="class-header" onclick="toggleLectures(this)">
-                            <div class="class-header-title">
-                                <h3>${cls.name}</h3>
-                                <span class="class-progress-text" id="class-progress-text-${ci}">${completedCount} / ${cls.lectures.length} مكتمل</span>
-                            </div>
-                            <i data-lucide="chevron-down" class="chevron-icon"></i>
-                        </div>
-                        <div class="lectures-list">${lecturesHtml}</div>
-                    </div>`;
-            }).join("");
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
-        }
-        
-        window.toggleLectures = (header) => {
-            const list = header.nextElementSibling;
-            const icon = header.querySelector(".chevron-icon");
-            const isOpen = list.style.display === "flex";
-            list.style.display = isOpen ? "none" : "flex";
-            icon.setAttribute("data-lucide", isOpen ? "chevron-down" : "chevron-up");
-            lucide.createIcons();
-        };
-
-        // =================================================================
-        // Player & Interaction Logic
-        // =================================================================
-        
-        window.toggleManualComplete = (event, url, classIndex) => {
-            event.stopPropagation();
-            manualCompletion[url] = !manualCompletion[url];
-            if (!manualCompletion[url]) delete manualCompletion[url]; // Clean up
-            saveToStorage("manualCompletion", manualCompletion);
             
-            // Update UI
-            const checkbox = event.currentTarget;
-            checkbox.classList.toggle('completed', manualCompletion[url]);
-            
-            // Update class progress summary
-            const cls = currentTeacher.classes[classIndex];
-            let completedCount = 0;
-            cls.lectures.forEach(lec => {
-                if ((lectureProgress[lec.url] >= 95) || manualCompletion[lec.url]) {
-                    completedCount++;
-                }
-            });
-            document.getElementById(`class-progress-text-${classIndex}`).textContent = `${completedCount} / ${cls.lectures.length} مكتمل`;
-        };
-
-        window.playLecture = (ci, li) => {
-            destroyPlayer();
-            const lecture = currentTeacher?.classes?.[ci]?.lectures?.[li];
-            if (!lecture) return;
-
-            [currentClassIndex, currentLectureIndex] = [ci, li];
-            
-            document.getElementById("videoTitle").textContent = lecture.title;
-            document.getElementById("videoDescription").textContent = lecture.description;
-            updateActiveLectureUI(ci, li);
-            setupVideoNavigation(ci, li);
-            saveLastWatched(lecture);
-
-            if (lecture.url.includes("iframe.mediadelivery.net/embed/")) {
-                playIframeVideo(lecture.url);
-            } else {
-                playDirectVideo(lecture.url);
-            }
-            navigate("video");
-        };
-
-        function playDirectVideo(url) {
-            document.getElementById("playerContainer").innerHTML = `<video id="player" playsinline controls></video>`;
             const videoElement = document.getElementById("player");
             const isHLS = url.endsWith(".m3u8");
-            
-            player = new Plyr(videoElement, {
-                controls: ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"],
+            const referer = "https://abwaab.com";
+
+            const finalVideoUrl = useProxy && isHLS
+                ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`
+                : url;
+
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
+
+            // *** MODIFIED: Controls are now the same for all video types ***
+            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
+
+            player = new Plyr("#player", {
+                controls: playerControls,
                 keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            if (isHLS && Hls.isSupported()) {
-                const hls = new Hls();
-                window.hlsInstance = hls;
-                hls.loadSource(url);
-                hls.attachMedia(videoElement);
-            } else {
-                player.source = { type: "video", sources: [{ src: url }] };
-            }
-            
-            const savedProgress = lectureProgress[url] || 0;
-            player.once('canplay', () => {
-                if (player.duration && savedProgress > 0) {
-                    player.currentTime = (savedProgress / 100) * player.duration;
-                }
-                player.play();
-            });
-            
-            player.on('ended', () => {
-                lectureProgress[url] = 100;
-                saveToStorage("lectureProgress", lectureProgress);
-                renderClasses(); 
-                updateActiveLectureUI(currentClassIndex, currentLectureIndex);
-            });
-
             window.progressInterval = setInterval(() => {
-                if (player && player.duration > 0 && !player.paused) {
+                if (player && player.duration > 0) {
                     const progress = (player.currentTime / player.duration) * 100;
                     lectureProgress[url] = progress;
-                    saveToStorage("lectureProgress", lectureProgress);
-                    const bar = document.querySelector(`#lecture-item-${currentClassIndex}-${currentLectureIndex} .lecture-progress-bar-inner`);
-                    if (bar) bar.style.width = `${progress}%`;
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
                 }
-            }, 3000);
-        }
-        
-        function updateActiveLectureUI(ci, li) {
-            document.querySelectorAll('.lecture-item.active').forEach(el => el.classList.remove('active'));
-            const activeEl = document.getElementById(`lecture-item-${ci}-${li}`);
-            if (activeEl) activeEl.classList.add('active');
-        }
+            }, 5000);
 
-        function setupVideoNavigation(ci, li) {
-            const prevBtn = document.getElementById('prevLectureBtn');
-            const nextBtn = document.getElementById('nextLectureBtn');
-            const hasPrev = li > 0;
-            const hasNext = li < currentTeacher.classes[ci].lectures.length - 1;
-            prevBtn.disabled = !hasPrev;
-            nextBtn.disabled = !hasNext;
-            prevBtn.onclick = hasPrev ? () => playLecture(ci, li - 1) : null;
-            nextBtn.onclick = hasNext ? () => playLecture(ci, li + 1) : null;
-        }
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(finalVideoUrl);
 
-        function saveLastWatched(lecture) {
-            lastWatched = {
-                teacherId: currentTeacher.id,
-                classIndex: currentClassIndex,
-                lectureIndex: currentLectureIndex,
-                lectureTitle: lecture.title,
-                categoryEndpoint: currentCategoryEndpoint
-            };
-            saveToStorage("lastWatched", lastWatched);
-        }
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player.play().then(() => {
+                            if (savedTime > 0) player.currentTime = savedTime;
+                        }).catch(console.error);
+                    });
 
-        // =================================================================
-        // Startup & Event Listeners
-        // =================================================================
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                    };
+                    player.play().then(() => {
+                        if (savedTime > 0) player.currentTime = savedTime;
+                    }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                }
+            }
 
-        // Theme
-        document.getElementById("themeToggle").addEventListener("click", () => {
-            const currentTheme = document.documentElement.getAttribute("data-theme") || 'light';
-            const newTheme = currentTheme === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", newTheme);
-            localStorage.setItem("theme", newTheme);
-            document.querySelector("#themeToggle i").setAttribute("data-lucide", newTheme === "dark" ? "sun" : "moon");
-            lucide.createIcons();
-        });
+            tryPlay();
+            navigate("video");
+        };
 
-        // Search
-        searchInput.addEventListener("input", () => {
+        /* ========= Search ========= */
+        function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
-            const filtered = teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term));
-            renderTeachers(filtered);
-        });
+            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+        }
 
-        // Modals
-        document.getElementById("closeTelegramBtn").addEventListener("click", () => {
+        let searchTimeout;
+        searchInput.addEventListener("input", () => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(handleSearch, 250);
+        });
+        searchBtn.addEventListener("click", handleSearch);
+
+        /* ========= Load Data ========= */
+        function loadData(endpoint) {
+            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+            teachersGrid.innerHTML = Array(3).fill(`
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>`).join('');
+
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+                .then((data) => { teachers = data.teachers; renderTeachers(); })
+                .catch(() => { teachersGrid.innerHTML = err; });
+        }
+
+        // Modal Logic
+        const telegramModal = document.getElementById("telegramModal");
+        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
+        const continueWatchingModal = document.getElementById("continueWatchingModal");
+        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
+        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
+        const continueNowBtn = document.getElementById("continueNowBtn");
+
+        function showTelegramModal() {
+            const hasSubscribed = localStorage.getItem("telegramSubscribed");
+            if (!hasSubscribed) {
+                telegramModal.classList.add("show");
+                lucide.createIcons();
+            } else {
+                showContinueWatchingModal();
+            }
+        }
+
+        function hideTelegramModal() {
+            telegramModal.classList.remove("show");
+        }
+
+        continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
-            document.getElementById("telegramModal").classList.remove("show");
+            hideTelegramModal();
             showContinueWatchingModal();
         });
 
-        document.getElementById("continueNowBtn").addEventListener("click", async () => {
-            document.getElementById("continueWatchingModal").classList.remove("show");
-            if (!lastWatched || !lastWatched.categoryEndpoint) return;
-            
-            const data = await fetchData(lastWatched.categoryEndpoint);
-            if(data && data.teachers) {
-                const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                if (teacher) {
-                    teachers = data.teachers; // Ensure the full teacher list for the category is loaded
-                    currentTeacher = teacher;
-                    showTeacher(teacher.id); // Go to classes page first
-                    playLecture(lastWatched.classIndex, lastWatched.lectureIndex);
-                }
-            }
+        document.querySelector(".btn-telegram").addEventListener("click", () => {
+            localStorage.setItem("telegramSubscribed", "true");
+            hideTelegramModal();
+            showContinueWatchingModal();
         });
 
         function showContinueWatchingModal() {
             if (lastWatched) {
-                document.getElementById("lastWatchedLectureTitle").textContent = lastWatched.lectureTitle;
-                document.getElementById("continueWatchingModal").classList.add("show");
+                lastWatchedTeacherName.textContent = lastWatched.teacherName;
+                lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
+                continueWatchingModal.classList.add("show");
                 lucide.createIcons();
             }
         }
-        
-        // App Initialization
-        window.addEventListener("load", () => {
-            // Set initial theme
-            const savedTheme = localStorage.getItem("theme") || 'light';
-            document.documentElement.setAttribute("data-theme", savedTheme);
-            document.querySelector("#themeToggle i").setAttribute("data-lucide", savedTheme === "dark" ? "sun" : "moon");
-            
-            renderCategories();
-            
-            if (!localStorage.getItem("telegramSubscribed")) {
-                setTimeout(() => document.getElementById("telegramModal").classList.add("show"), 1000);
-            } else {
-                showContinueWatchingModal();
+
+        function hideContinueWatchingModal() {
+            continueWatchingModal.classList.remove("show");
+        }
+
+        continueNowBtn.addEventListener("click", () => {
+            hideContinueWatchingModal();
+            const categoryKeys = Object.keys(categories);
+            let foundTeacher = false;
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                    .then(response => response.json())
+                    .then(data => {
+                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                        if (teacher) {
+                            currentTeacher = teacher;
+                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                            foundTeacher = true;
+                        }
+                    })
+                    .catch(error => console.error("Error loading teacher data:", error));
+                if (foundTeacher) break;
             }
-            lucide.createIcons();
         });
+
+        window.addEventListener("load", () => {
+            setTimeout(showTelegramModal, 1000);
+        });
+
+        // Initialize
+        lucide.createIcons();
     </script>
 </body>
 </html>
