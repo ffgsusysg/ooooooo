@@ -71,6 +71,11 @@
             animation: fadeInSlideUp 1s ease-out 1.2s forwards; /* 1.2s delay */
         }
 
+        .animate-fade-in-5 {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 1.6s forwards; /* 1.6s delay */
+        }
+
         .neon-text {
             animation: neon-glow 2.5s infinite alternate;
         }
@@ -95,23 +100,28 @@
     <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 sm:p-8 text-center">
         
         <!-- Animated Clock Icon -->
-        <div class="mb-6 animate-fade-in-1">
+        <div class="mb-4 animate-fade-in-1">
             <svg class="w-20 h-20 md:w-24 md:h-24 text-cyan-400 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </div>
 
+        <!-- Added Text -->
+        <h2 class="text-2xl sm:text-3xl font-bold mb-5 text-gray-200 animate-fade-in-2">
+            تم إيقاف المنصة
+        </h2>
+
         <!-- Main Title -->
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-white neon-text animate-fade-in-2">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-white neon-text animate-fade-in-3">
             المنصة قيد الصيانة حالياً
         </h1>
 
         <!-- Subtitle / Maintenance Details -->
         <div class="space-y-3 max-w-2xl">
-            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-3">
+            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-4">
                 نقوم حالياً بإجراء بعض التحديثات الهامة لتحسين تجربتكم.
             </p>
-            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-4">
+            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-5">
                 نعتذر عن أي إزعاج، وسنعود للعمل في أقرب وقت ممكن.
             </p>
         </div>
