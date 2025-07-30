@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المنصة متوقفة للصيانة</title>
+    <title>المنصة قيد الصيانة</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cairo -->
+    <!-- Google Fonts: Tajawal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Apply the Cairo font to the body */
+        /* Apply the Tajawal font and a futuristic gradient background */
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
         }
 
-        /* Custom animation for text fade-in and slide-up */
+        /* --- Animations --- */
+        /* Fade in and slide up effect */
         @keyframes fadeInSlideUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(25px);
             }
             to {
                 opacity: 1;
@@ -28,50 +30,160 @@
             }
         }
 
-        /* Custom animation for the neon glow effect */
+        /* Neon glow effect for the main title */
         @keyframes neon-glow {
             0%, 100% {
-                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #007bff, 0 0 20px #007bff, 0 0 25px #007bff, 0 0 30px #007bff, 0 0 35px #007bff;
+                text-shadow: 0 0 5px #fff, 0 0 10px #22d3ee, 0 0 20px #22d3ee, 0 0 30px #22d3ee;
             }
             50% {
-                text-shadow: 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #00aaff, 0 0 25px #00aaff, 0 0 30px #00aaff, 0 0 35px #00aaff, 0 0 40px #00aaff;
+                text-shadow: 0 0 10px #fff, 0 0 20px #0ea5e9, 0 0 30px #0ea5e9, 0 0 40px #0ea5e9;
             }
         }
         
-        /* Apply animations with delays for sequential appearance */
-        .animate-fade-slide-up-1 {
-            animation: fadeInSlideUp 1s ease-out forwards;
+        /* Subtle pulse animation for the icon */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
-        .animate-fade-slide-up-2 {
-            opacity: 0; /* Start hidden */
-            animation: fadeInSlideUp 1s ease-out 0.5s forwards; /* 0.5s delay */
+        /* --- Animation Application --- */
+        /* We apply animations with delays for a staggered, professional effect */
+        .animate-fade-in-1 {
+            animation: fadeInSlideUp 1s ease-out forwards, pulse 2.5s infinite;
         }
 
-        .animate-fade-slide-up-3 {
-            opacity: 0; /* Start hidden */
-            animation: fadeInSlideUp 1s ease-out 1s forwards; /* 1s delay */
+        .animate-fade-in-2 {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 0.4s forwards; /* 0.4s delay */
+        }
+
+        .animate-fade-in-3 {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 0.8s forwards; /* 0.8s delay */
         }
         
+        .animate-fade-in-4 {
+            opacity: 0;
+            animation: fadeInSlideUp 1s ease-out 1.2s forwards; /* 1.2s delay */
+        }
+
         .neon-text {
             animation: neon-glow 2.5s infinite alternate;
         }
 
         /* Canvas styling to ensure it's in the background */
         #stars-canvas {
-            position: absolute;
+            position: fixed; /* Use fixed to ensure it covers the viewport */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Place it behind the content */
+            z-index: 0; /* Behind the content */
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white overflow-hidden">
+<body class="text-white overflow-hidden">
 
     <!-- Canvas for the starfield background -->
     <canvas id="stars-canvas"></canvas>
 
-    <!-- Main content container -->
-    <div class="relative flex flex-col items-cen
+    <!-- Main content container. z-index ensures it's on top of the canvas -->
+    <div class="relative z-10 flex flex-col items-center justify-center min-h-screen p-6 sm:p-8 text-center">
+        
+        <!-- Animated Clock Icon -->
+        <div class="mb-6 animate-fade-in-1">
+            <svg class="w-20 h-20 md:w-24 md:h-24 text-cyan-400 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-5 text-white neon-text animate-fade-in-2">
+            المنصة قيد الصيانة حالياً
+        </h1>
+
+        <!-- Subtitle / Maintenance Details -->
+        <div class="space-y-3 max-w-2xl">
+            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-3">
+                نقوم حالياً بإجراء بعض التحديثات الهامة لتحسين تجربتكم.
+            </p>
+            <p class="text-lg md:text-xl text-gray-300 animate-fade-in-4">
+                نعتذر عن أي إزعاج، وسنعود للعمل في أقرب وقت ممكن.
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Starfield Background Animation ---
+        const canvas = document.getElementById('stars-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let stars = [];
+        const numStars = window.innerWidth > 768 ? 600 : 300; // More stars for desktop, less for mobile
+
+        // Set canvas to full screen size and handle resizing
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // Re-initialize stars on resize to fit the new screen
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 1.5,
+                    alpha: Math.random(), // Individual transparency
+                    speed: 0.1 + Math.random() * 0.4 // Different speeds for parallax effect
+                });
+            }
+        }
+
+        function draw() {
+            // Clear the canvas. The background is now set by the body's CSS gradient.
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw each star
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            for (let i = 0; i < stars.length; i++) {
+                const star = stars[i];
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.globalAlpha = star.alpha;
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1; // Reset global alpha
+        }
+
+        function update() {
+            // Move each star downwards
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].y += stars[i].speed;
+                
+                // If star goes off the bottom, reset it to the top with a new random x position
+                if (stars[i].y > canvas.height) {
+                    stars[i].y = 0;
+                    stars[i].x = Math.random() * canvas.width;
+                }
+            }
+        }
+
+        function animate() {
+            draw();
+            update();
+            requestAnimationFrame(animate);
+        }
+
+        // Initial setup and event listener for window resize
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial call
+        animate(); // Start the animation loop
+    </script>
+
+</body>
+</html>
