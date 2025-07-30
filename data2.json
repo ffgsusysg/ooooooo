@@ -174,11 +174,20 @@
     "description": "ا",
     "url": "https://iframe.mediadelivery.net/embed/215061/4e52d7ab-3333-492c-8b4d-e11265fbb029" 
 }
-          ]
-        }
-      ]
-    },
-    {
+]
+},
+{
+  "name": "الفصل الثاني ( الحث الكهرومغناطيسي)",
+    "lectures": [
+      {
+        "title": "المحاضرة الأولى من الفصل الثاني",
+        "description": "﴿ فَصَبْرٌ جَمِيلٌ ﴾ [يوسف: 18]",
+        "url": "https://iframe.mediadelivery.net/embed/215061/f89c011f-4bb5-407d-8170-8b088598e317"
+      
+      }
+    ]
+  },
+  {
       "id": 1746651198934,
       "name": "حيدر عبدالائمة 2026",
       "subject": "مدرس مادة الرياضيات",
