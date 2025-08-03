@@ -14,18 +14,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <!-- Video.js and related libraries -->
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-http-streaming/3.13.0/videojs-http-streaming.min.js"></script>
+
+    <!-- Original scripts and styles -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
-    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -526,7 +529,10 @@
         .category-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-image: var(--gradient);
             background-size: cover;
             z-index: 1;
@@ -536,17 +542,17 @@
         .category-card:hover::before {
             transform: scale(1.05);
         }
-        
+
         .category-card:hover {
-             transform: translateY(-8px);
-             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
         }
 
         .category-icon, .category-content {
             position: relative;
             z-index: 2;
         }
-        
+
         .category-icon {
             text-align: left;
             opacity: 0.7;
@@ -579,11 +585,10 @@
             color: white;
             align-self: flex-start;
         }
-        
+
         .category-card:hover .btn {
             background: rgba(255, 255, 255, 0.3);
         }
-
 
         /* Teachers grid */
         .teachers-grid {
@@ -697,7 +702,7 @@
             box-shadow: var(--shadow-sm);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
-
+        
         .class-header {
             display: flex;
             justify-content: space-between;
@@ -708,299 +713,306 @@
             background: var(--bg-glass);
             backdrop-filter: blur(8px);
             border-right: 4px solid var(--primary-2);
-            transition: background 0.25s ease, border-color 0.3s ease;
-        }
-        
-        .class-header-content {
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-        
-        .class-progress {
-            font-size: 0.85rem;
-            color: var(--text);
-            opacity: 0.8;
-            font-weight: 500;
+            transition: background 0.25s ease, border-color 0.25s ease;
         }
 
         .class-header:hover {
             background: var(--hover);
         }
 
-        .class-header .chevron-icon {
-            transition: transform 0.25s ease;
+        .class-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            transition: color 0.3s ease;
         }
 
-        .class-header.open .chevron-icon {
-            transform: rotate(180deg);
+        .class-lectures {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
         }
 
-        .lectures-list {
-            display: none;
-            flex-direction: column;
-            gap: 0.7rem;
-            padding: 1.1rem 1.5rem 0.9rem 0;
+        .class-card.open .class-lectures {
+            max-height: 1000px;
+            padding: 0.5rem 0 1rem;
         }
 
-        .lecture-item {
-            position: relative;
-            background: var(--hover);
-            border-right: 3px solid var(--primary-3);
-            border-radius: var(--radius);
-            transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+        .lecture-card {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 0.9rem 1.1rem;
-        }
-        
-        .lecture-item.completed {
-            background-color: #dcfce7; /* Light green for completed */
-            border-right-color: var(--success);
-        }
-        
-        [data-theme="dark"] .lecture-item.completed {
-             background-color: #164e3b; /* Dark green for completed */
+            gap: 1rem;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-right: 4px solid transparent;
+            transition: background 0.2s ease, border-color 0.2s ease;
         }
 
-        .lecture-item:hover {
-            background: rgba(0, 0, 0, 0.08);
-        }
-        
-        .lecture-play-area {
-             display: flex;
-             align-items: center;
-             gap: 0.75rem;
-             flex-grow: 1;
-             cursor: pointer;
+        .lecture-card:hover {
+            background: var(--hover);
         }
 
-        .lecture-play-area i {
+        .lecture-card.playing {
+            background: var(--primary-1);
+            color: white;
+            border-right-color: var(--accent);
+            transform: translateX(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .lecture-card.playing .lecture-icon,
+        .lecture-card.playing .lecture-title,
+        .lecture-card.playing .lecture-duration {
+            color: white;
+        }
+
+        .lecture-icon {
             color: var(--primary-1);
             transition: color 0.3s ease;
         }
+
+        .lecture-title {
+            flex: 1;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .lecture-duration {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+            transition: color 0.3s ease;
+        }
+
+        /* Video Player Page */
+        #playerPage {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
         
-        /* Completion Checkbox Styles */
-        .completion-checkbox {
+        .video-container {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .video-player-wrapper {
             position: relative;
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            margin-left: 1rem; /* Spacing from play button */
-        }
-
-        .completion-checkbox input {
-            opacity: 0;
-            width: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
+            overflow: hidden;
         }
 
-        .checkmark {
-            position: absolute;
+        /* Custom styles for Video.js player */
+        .video-js {
+            position: absolute !important;
             top: 0;
             left: 0;
-            height: 24px;
-            width: 24px;
-            background-color: var(--bg);
-            border: 2px solid var(--border);
-            border-radius: 6px;
-            transition: all 0.2s ease;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: var(--radius);
+            background-color: #000;
+            font-family: 'Almarai', 'Tajawal', sans-serif;
         }
 
-        .completion-checkbox:hover input ~ .checkmark {
-            background-color: var(--hover);
+        .vjs-poster {
+            background-size: cover;
+            background-position: center;
         }
 
-        .completion-checkbox input:checked ~ .checkmark {
-            background-color: var(--success);
-            border-color: var(--success);
+        .vjs-control-bar {
+            background-color: rgba(33, 40, 48, 0.7);
         }
 
-        .checkmark:after {
-            content: "";
-            position: absolute;
+        .vjs-button > .vjs-icon-placeholder:before, .video-js .vjs-menu-button-popup .vjs-menu-button-popup-sub-label {
+            font-family: 'VideoJS' !important;
+        }
+        
+        .video-info-wrapper {
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .video-info-wrapper h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-1);
+            margin-bottom: 0.5rem;
+        }
+        
+        .video-info-wrapper p {
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .related-lessons {
+            margin-top: 2rem;
+        }
+        
+        .related-lessons h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        /* Modals */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
             display: none;
         }
 
-        .completion-checkbox input:checked ~ .checkmark:after {
-            display: block;
-        }
-
-        .completion-checkbox .checkmark:after {
-            left: 7px;
-            top: 3px;
-            width: 6px;
-            height: 12px;
-            border: solid white;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-        }
-
-        /* Star Burst Animation */
-        .star-burst {
-            position: absolute;
-            top: 50%;
-            left: 12px; /* Centered on the checkbox */
-            width: 1px;
-            height: 1px;
-            pointer-events: none; /* Allows clicking through */
-        }
-
-        .star-burst.animate .star-particle {
-            animation: burst 0.6s ease-out forwards;
-        }
-
-        .star-particle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            opacity: 0;
-        }
-
-        @keyframes burst {
-            0% {
-                transform: scale(0.5) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1) rotate(90deg) translate(var(--translateX), var(--translateY));
-                opacity: 0;
-            }
-        }
-
-
-        /* Video Page Layout */
-        #videoPage.page.active {
+        .modal.active {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 85px);
-            padding: 2rem;
-            padding-bottom: 10vh;
         }
 
-        .video-page {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 1000px; /* Constrained width for larger screens */
-            width: 100%;
-            margin: 0 auto;
-            padding: 0;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            background: #000;
-            border-radius: var(--radius); /* Rounded corners for larger screens */
-            overflow: hidden;
-            aspect-ratio: 16/9;
-            box-shadow: var(--shadow-lg); /* Shadow for larger screens */
-        }
-
-        .plyr {
-            border-radius: var(--radius);
-            overflow: hidden;
-            width: 100%;
-            height: 100%;
-        }
-
-        .video-details {
+        .modal-content {
             background: var(--card);
-            padding: 1.5rem;
+            padding: 2.5rem;
             border-radius: var(--radius);
-            border: 1px solid var(--border);
+            max-width: 500px;
+            width: 90%;
             text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-
-        .video-info {
-            text-align: right;
-            padding: 1rem 0;
-        }
-
-        .video-meta {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            opacity: 0.8;
-            font-size: 0.9rem;
-            flex-wrap: wrap;
-            color: var(--text);
-        }
-
-        .video-meta span {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin: 1.5rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--primary-1);
-            color: var(--primary-1);
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        /* Smart Loader for iframe videos */
-        .video-loader {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            border-radius: var(--radius);
-            transition: opacity 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            animation: modalSlideUp 0.4s ease-in-out forwards;
+            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end));
+            color: var(--modal-text-color);
         }
         
-        /* Iframe placeholder styles */
-        .iframe-placeholder {
-            position: absolute;
+        @keyframes modalSlideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-content h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .modal-content .btn {
+            background: linear-gradient(90deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end));
+            color: var(--modal-button-text);
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 0.9rem 2.2rem;
+            font-weight: bold;
+        }
+        
+        .modal-content .btn-outline {
+            background: transparent;
+            border: 2px solid var(--modal-outline-button-border);
+            color: var(--modal-outline-button-text);
+            box-shadow: none;
+        }
+        
+        .modal-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Continue Watching Modal */
+        #continueWatchingModal .modal-content {
+            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
+        }
+
+        #continueWatchingModal .modal-content .highlight {
+            font-weight: 700;
+            color: var(--highlight-color);
+            text-shadow: var(--highlight-shadow);
+        }
+
+        #continueWatchingModal .btn {
+            background: var(--continue-button-bg);
+            color: var(--continue-button-text);
+            box-shadow: none;
+        }
+
+        #continueWatchingModal .btn:hover {
+            background: var(--continue-button-hover);
+        }
+
+        #continueWatchingModal .btn-outline {
+            border: 2px solid var(--continue-outline-button-border);
+            color: var(--continue-outline-button-text);
+        }
+
+        .player-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .player-actions .btn {
+            flex: 1;
+            font-size: 1rem;
+        }
+
+        .telegram-modal-content {
+            max-width: 450px;
+            background: linear-gradient(135deg, var(--telegram-blue), var(--telegram-light));
+            color: var(--telegram-text);
+        }
+
+        .telegram-modal-content .btn {
+            background-color: var(--telegram-text);
+            color: var(--telegram-blue);
+            font-weight: bold;
+            box-shadow: none;
+        }
+        
+        .telegram-modal-content .btn-outline {
+            border-color: var(--telegram-text);
+            color: var(--telegram-text);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #000;
+            background: var(--bg);
+            z-index: 9999;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            border-radius: inherit;
+            flex-direction: column;
+            gap: 1.5rem;
+            transition: opacity 0.5s ease;
         }
 
-        .play-button-overlay {
-            color: white;
-            opacity: 0.8;
-            transition: opacity 0.3s ease, transform 0.3s ease;
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .iframe-placeholder:hover .play-button-overlay {
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-
-        .loader-spinner {
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid var(--primary-1);
+        .preloader-spinner {
+            border: 5px solid var(--primary-1);
+            border-top: 5px solid var(--primary-2);
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -1012,1019 +1024,551 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: linear-gradient(135deg, var(--modal-bg-start), var(--modal-bg-end));
-            border-radius: var(--radius);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-lg);
-            max-width: 550px;
-            width: 90%;
-            text-align: center;
-            transform: translateY(-20px);
-            transition: transform 0.3s ease, background 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 1rem;
-        }
-
-        .modal-title {
-            font-size: 2rem;
-            color: var(--modal-text-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
+        .preloader-text {
+            font-size: 1.2rem;
             font-weight: 700;
+            color: var(--text);
+            animation: pulse 1.5s infinite;
         }
 
-        .modal-body p {
-            font-size: 1.2rem;
-            color: var(--modal-text-color);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        .btn-telegram {
-            background: linear-gradient(45deg, var(--modal-button-gradient-start), var(--modal-button-gradient-end));
-            color: var(--modal-button-text);
-            padding: 1.2rem 2.5rem;
-            font-size: 1.2rem;
-            margin-bottom: 1.2rem;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .btn-telegram:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn-outline-telegram {
-            background: transparent;
-            border: 2px solid var(--modal-outline-button-border);
-            color: var(--modal-outline-button-text);
-            padding: 0.9rem 1.8rem;
-            font-size: 1rem;
-            transition: all 0.25s ease;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: var(--radius);
-            box-shadow: none;
-        }
-
-        .btn-outline-telegram:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--modal-outline-button-text);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Continue Watching Modal Styles */
-        #continueWatchingModal .modal-content {
-            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
-            max-width: 450px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        #continueWatchingModal .modal-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--continue-modal-text);
-        }
-
-        #continueWatchingModal .modal-body p {
-            font-size: 1rem;
-            color: var(--continue-modal-text);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            font-weight: 500;
-        }
-        
-        #continueWatchingModal .modal-body p .highlight-text {
-            color: var(--highlight-color);
-            font-weight: bold;
-            text-shadow: var(--highlight-shadow);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .btn-continue-now {
-            background-color: var(--continue-button-bg);
-            color: var(--continue-modal-text);
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            margin-top: 1.5rem;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-continue-now:hover {
-            background-color: var(--continue-button-hover);
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            header {
-                flex-wrap: wrap;
-                padding: 0.9rem 1rem;
-                gap: 0.8rem;
-            }
-
-            .search-container {
-                order: 3;
-                width: 100%;
-            }
-
-            .btn span.btn-text {
-                display: none;
-            }
-
-            .teacher-img {
-                width: 100px;
-                height: 100px;
-            }
-            
-            .lecture-item {
-                padding-left: 2.5rem;
-            }
-
-            .video-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: center;
-            }
-
-            .btn {
-                padding: 0.8rem 1rem;
-            }
-
-            /* MODIFIED: Full-width video styles ONLY for mobile */
-            #videoPage.page.active {
-                padding-left: 0;
-                padding-right: 0;
-            }
-            .video-page {
-                max-width: none;
-                align-items: center;
-            }
-            .video-container {
-                border-radius: 0;
-                box-shadow: none;
-            }
-            .video-details {
-                padding: 1.2rem;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .page {
-                padding: 1rem;
-            }
-
-            .teacher-info {
-                padding: 1rem;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .teacher-img-lg {
-                margin-bottom: 1rem;
-            }
-
-            .site-title {
-                font-size: 1.5rem;
-            }
-            /* Responsive adjustments for modal */
-            .modal-content {
-                padding: 1.5rem;
-            }
-            .modal-title {
-                font-size: 1.4rem;
-            }
-            .modal-body p {
-                font-size: 1rem;
-            }
-            .btn-telegram {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-            }
-            .btn-outline-telegram {
-                padding: 0.7rem 1.2rem;
-                font-size: 0.9rem;
-            }
-            .btn-continue-now {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-            }
-            
-            /* Ensure video page padding is correct on smallest screens */
-            #videoPage.page.active {
-                padding-top: 1rem;
-                padding-bottom: 5vh;
-            }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
-
 </head>
 <body>
+    <div class="preloader">
+        <div class="preloader-spinner"></div>
+        <div class="preloader-text">...جاري التحميل</div>
+    </div>
+    
     <header>
-        <h1 class="site-title" onclick="navigate('home')">
-            <div class="site-logo">إ</div>
-            منصة إديسون
-        </h1>
-
-        <div class="header-actions">
-            <button id="dashboardButton" class="btn btn-icon" onclick="navigate('dashboard')">
-                <img id="headerProfilePic" src="https://placehold.co/42x42/E2E8F0/A0AEC0?text= " alt="صورة الملف الشخصي" style="display: none;">
-                <i data-lucide="user" id="defaultUserIcon"></i>
-            </button>
-            <button id="themeToggle" class="btn btn-icon">
-                <i data-lucide="sun"></i>
-            </button>
-            <button id="examsButton" class="btn">
-                <i data-lucide="file-text"></i><span class="btn-text">امتحانات الأساتذة</span>
-            </button>
+        <div class="site-title" onclick="navigateTo('dashboard')">
+            <div class="site-logo">
+                <img src="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203" alt="Logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+            </div>
+            اديسون
         </div>
-
         <div class="search-container">
-            <i class="search-icon" data-lucide="search"></i>
-            <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
-            <button id="searchButton" class="btn btn-icon">
+            <input type="text" id="searchInput" placeholder="ابحث عن أستاذ أو مادة..." />
+            <span class="search-icon">
                 <i data-lucide="search"></i>
+            </span>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-icon" onclick="toggleTheme()" id="themeToggleButton">
+                <i data-lucide="sun" id="themeIcon"></i>
+            </button>
+            <button class="btn btn-icon" id="dashboardButton" onclick="navigateTo('dashboard')">
+                <img id="headerProfilePic" src="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/man-in-suit.jpg?v=1707920700812" alt="Profile">
             </button>
         </div>
     </header>
 
+    <main>
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page active">
+            <div class="dashboard-header">
+                <h1 id="welcomeMessage">مرحباً بك، </h1>
+                <p>هنا يمكنك متابعة تقدمك وأهدافك الدراسية.</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="profile-card">
+                    <div class="profile-picture-wrapper">
+                        <img id="profilePicture" src="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/man-in-suit.jpg?v=1707920700812" alt="صورة الملف الشخصي">
+                        <div class="profile-picture-overlay" onclick="changeProfilePicture()">
+                            <i data-lucide="camera"></i>
+                        </div>
+                    </div>
+                    <div class="profile-info">
+                        <h2 id="studentNameDisplay"></h2>
+                    </div>
+                </div>
+                <div class="goal-card dream-card">
+                    <div class="goal-card-header">
+                        <i data-lucide="target"></i>
+                        <h3>درجة الحلم</h3>
+                    </div>
+                    <input type="text" id="dreamGradeInput" placeholder="أدخل درجة الحلم">
+                </div>
+                <div class="goal-card grade-card">
+                    <div class="goal-card-header">
+                        <i data-lucide="award"></i>
+                        <h3>معدلك الحالي</h3>
+                    </div>
+                    <input type="text" id="currentGradeInput" placeholder="أدخل معدلك الحالي">
+                </div>
+            </div>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Category cards will be injected here -->
+            </div>
+        </div>
+
+        <!-- Teachers Page -->
+        <div id="teachersPage" class="page">
+            <button class="btn back-button" onclick="goBackToDashboard()">
+                <i data-lucide="arrow-right"></i>
+                <span>عودة</span>
+            </button>
+            <div class="teachers-grid" id="teachersGrid">
+                <!-- Teacher cards will be injected here -->
+            </div>
+        </div>
+
+        <!-- Teacher's Classes Page -->
+        <div id="teacherClassesPage" class="page">
+            <button class="btn back-button" onclick="goBackToTeachers()">
+                <i data-lucide="arrow-right"></i>
+                <span>عودة</span>
+            </button>
+            <div class="teacher-info" id="teacherInfo">
+                <img id="teacherImgLg" src="" alt="صورة الأستاذ" class="teacher-img-lg">
+                <div class="teacher-details">
+                    <h2 id="teacherNameLg" class="site-title"></h2>
+                    <p id="teacherSubjectLg" class="teacher-subject"></p>
+                </div>
+            </div>
+            <div class="classes-list" id="classesList">
+                <!-- Classes will be injected here -->
+            </div>
+        </div>
+
+        <!-- Video Player Page -->
+        <div id="playerPage" class="page">
+            <button class="btn back-button" onclick="goBackToClasses()">
+                <i data-lucide="arrow-right"></i>
+                <span>عودة</span>
+            </button>
+            
+            <div class="video-container">
+                <div class="video-player-wrapper">
+                    <video id="videoPlayer" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" data-setup='{}'>
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                supports HTML5 video
+                            </a>
+                        </p>
+                    </video>
+                </div>
+                <div class="video-info-wrapper">
+                    <h2 id="videoTitle"></h2>
+                    <p id="videoDescription"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <i data-lucide="bell"></i>
-                    مرحبًا في منصة إديسون!
-                </h3>
-            </div>
-            <div class="modal-body">
-                <p>لا تنسى تشترك في قناتنا على تيلجرام حتى توصلك أحدث التحديثات والأخبار الجديدة.</p>
-                <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
+        <div class="modal-content telegram-modal-content">
+            <h3>هل أنت جديد على المنصة؟</h3>
+            <p>انضم إلى قناة التليجرام الخاصة بنا للبقاء على اطلاع بآخر التحديثات والمحتوى.</p>
+            <div class="modal-actions">
+                <button class="btn" onclick="hideTelegramModal()">ليس الآن</button>
+                <a href="https://t.me/your_telegram_channel" target="_blank" class="btn btn-outline">
                     <i data-lucide="send"></i>
-                    <span>اشترك الآن</span>
+                    <span>انضم الآن</span>
                 </a>
-                <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
-                    اشتركت سابقا المتابعة
-                </button>
             </div>
         </div>
     </div>
-    <!-- End Telegram Modal -->
 
     <!-- Continue Watching Modal -->
     <div id="continueWatchingModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <i data-lucide="graduation-cap"></i>
-                    عزيزي الطالب 
-                </h3>
-            </div>
-            <div class="modal-body">
-                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
-                <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
-                <p>لاتنسى تكمل محاضراتك وبس حبيت اذكرك ❤️</p>
-                <button id="continueNowBtn" class="btn btn-continue-now">
-                    <i data-lucide="play"></i>
-                    متابعة 
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- End Continue Watching Modal -->
-
-    <div id="homePage" class="page active">
-        <div class="section-title">
-            <i data-lucide="layout-grid"></i>
-            <h3>اختر القسم المناسب لك</h3>
-        </div>
-        
-        <div class="categories-grid">
-            <div class="category-card" onclick="loadCategory('year-2026')" style="--gradient: linear-gradient(135deg, #0ea5e9, #1a56db);">
-                <div class="category-icon"><i data-lucide="calendar-days" style="width: 48px; height: 48px;"></i></div>
-                <div class="category-content">
-                    <h3 class="category-title">مدرسين سنة 2026</h3>
-                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2026</p>
-                    <button class="btn">عرض المواد</button>
-                </div>
-            </div>
-            
-            <div class="category-card" onclick="loadCategory('year-2025')" style="--gradient: linear-gradient(135deg, #f59e0b, #f97316);">
-                <div class="category-icon"><i data-lucide="calendar-days" style="width: 48px; height: 48px;"></i></div>
-                <div class="category-content">
-                    <h3 class="category-title">مدرسين سنة 2025</h3>
-                    <p class="category-description">المحاضرات والمواد الدراسية لطلاب 2025</p>
-                    <button class="btn">عرض المواد</button>
-                </div>
-            </div>
-            
-            <div class="category-card" onclick="loadCategory('distinguished')" style="--gradient: linear-gradient(135deg, #10b981, #047857);">
-                 <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
-                <div class="category-content">
-                    <h3 class="category-title">قسم المتميزين</h3>
-                    <p class="category-description">مواد خاصة للطلاب المتميزين</p>
-                    <button class="btn">عرض المواد</button>
-                </div>
-            </div>
-            
-            <div class="category-card" onclick="loadCategory('literary')" style="--gradient: linear-gradient(135deg, #8b5cf6, #7c3aed);">
-                <div class="category-icon"><i data-lucide="scroll-text" style="width: 48px; height: 48px;"></i></div>
-                <div class="category-content">
-                    <h3 class="category-title">القسم الأدبي</h3>
-                    <p class="category-description">المواد والمناهج الادبي</p>
-                    <button class="btn">عرض المواد</button>
-                </div>
+            <h3>متابعة المشاهدة؟</h3>
+            <p>هل تود متابعة مشاهدة <span class="highlight" id="lastWatchedTitle"></span>؟</p>
+            <div class="modal-actions">
+                <button class="btn btn-outline" id="startOverBtn">البدء من جديد</button>
+                <button class="btn" id="continueNowBtn">متابعة الآن</button>
             </div>
         </div>
     </div>
 
-    <div id="categoryPage" class="page">
-        <button class="btn back-button" onclick="navigate('home')">
-            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
-        </button>
-        
-        <div class="section-title">
-            <i data-lucide="users"></i>
-            <h3 id="categoryTitle">المدرسين</h3>
-        </div>
-        
-        <div id="teachersGrid" class="teachers-grid">
-            <!-- Teachers will be loaded here -->
-        </div>
-    </div>
-
-    <div id="classesPage" class="page">
-        <button class="btn back-button" onclick="navigate('category')">
-            <i data-lucide="arrow-right"></i>الرجوع للمدرسين
-        </button>
-        
-        <div class="teacher-info">
-            <img id="teacherImage" class="teacher-img-lg" alt="" />
-            <div>
-                <h2 id="teacherName"></h2>
-                <p id="teacherSubject" class="teacher-subject"></p>
-                <div id="teacherRating" class="teacher-rating"></div>
-            </div>
-        </div>
-        
-        <div class="section-title">
-            <i data-lucide="book-open"></i>
-            <h3>الفصول الدراسية</h3>
-        </div>
-        
-        <div id="classesList" class="classes-list"></div>
-    </div>
-
-    <div id="videoPage" class="page">
-        <div class="video-page">
-            <div id="videoContainer" class="video-container">
-                <div id="playerContainer"></div>
-                <!-- Loader for iframe videos -->
-                <div id="videoLoader" class="video-loader" style="display: none;">
-                    <div class="loader-spinner"></div>
-                </div>
-            </div>
-            
-            <div class="video-details">
-                <h2 id="videoTitle"></h2>
-                <p id="videoDescription"></p>
-                
-                <div class="video-info">
-                    <div class="video-meta">
-                        <span>
-                            <i data-lucide="calendar"></i> تاريخ النشر:
-                            <span id="videoDate">--/--/----</span>
-                        </span>
-                    </div>
-                </div>
-                
-                <button class="btn back-button" onclick="navigate('classes')">
-                    <i data-lucide="arrow-right"></i>العودة للفصول
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- NEW: Dashboard Page -->
-    <div id="dashboardPage" class="page">
-        <div class="dashboard-header">
-            <h1>لوحة التحكم</h1>
-            <p>هنا تبدأ رحلتك نحو تحقيق حلمك. خصص صفحتك لتكون مصدر إلهامك اليومي!</p>
-        </div>
-        
-        <div class="profile-card">
-            <div class="profile-picture-wrapper" onclick="document.getElementById('profilePictureInput').click()">
-                <img id="profilePicture" src="https://placehold.co/150x150/E2E8F0/A0AEC0?text=صورتك" alt="صورة الطالب الشخصية">
-                <div class="profile-picture-overlay">
-                    <i data-lucide="camera"></i>
-                </div>
-            </div>
-            <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
-            
-            <div class="profile-info">
-                <h2>مرحباً أيها البطل!</h2>
-                <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
-                 <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
-                    <i data-lucide="upload"></i> تحميل صورة جديدة
-                </button>
-            </div>
-        </div>
-        
-        <div class="dashboard-grid">
-            <div class="goal-card dream-card">
-                <div class="goal-card-header">
-                    <i data-lucide="rocket"></i>
-                    <h3>حلمي هو أن أصبح...</h3>
-                </div>
-                <input type="text" id="dreamInput" placeholder="مثلاً: طبيب، مهندس، مبرمج...">
-            </div>
-            <div class="goal-card grade-card">
-                <div class="goal-card-header">
-                    <i data-lucide="target"></i>
-                    <h3>المعدل المستهدف</h3>
-                </div>
-                <input type="text" id="gradeInput" placeholder="مثلاً: 99.5%">
-            </div>
-        </div>
-        <button class="btn dashboard-save-btn" id="saveDashboardButton">
-            <i data-lucide="save"></i>
-            حفظ التغييرات
-        </button>
-    </div>
-
-
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-    <script type="text/babel">
-        // Initialize theme
-        function initializeTheme() {
-            const stored = localStorage.getItem("theme");
-            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
-                ? "light"
-                : "dark";
-            const theme = stored || preferred;
-            document.documentElement.setAttribute("data-theme", theme);
-            updateThemeIcon(theme);
-        }
-
-        function updateThemeIcon(theme) {
-            document
-                .querySelector("#themeToggle i")
-                .setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
-            lucide.createIcons();
-        }
-
-        initializeTheme();
-
-        document.getElementById("themeToggle").addEventListener("click", () => {
-            const cur = document.documentElement.getAttribute("data-theme");
-            const next = cur === "dark" ? "light" : "dark";
-            document.documentElement.setAttribute("data-theme", next);
-            localStorage.setItem("theme", next);
-            updateThemeIcon(next);
-        });
-
-        // Set up player
-        let player = null;
-
-        // DOM references
-        const teacherImage = document.getElementById("teacherImage");
-        const teacherName = document.getElementById("teacherName");
-        const teacherSubject = document.getElementById("teacherSubject");
-        const teacherRating = document.getElementById("teacherRating");
-        const videoTitle = document.getElementById("videoTitle");
-        const videoDescription = document.getElementById("videoDescription");
-        const categoryTitle = document.getElementById("categoryTitle");
-        const classesList = document.getElementById("classesList");
-        const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer");
-        const videoLoader = document.getElementById("videoLoader");
-
-        // Progress variables
-        let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
-        let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
-        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
-
-        // Navigation
-        const pages = {
-            home: document.getElementById("homePage"),
-            category: document.getElementById("categoryPage"),
-            classes: document.getElementById("classesPage"),
-            video: document.getElementById("videoPage"),
-            dashboard: document.getElementById("dashboardPage")
-        };
-
-        function navigate(page) {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            if (page !== "video") {
-                if (player) {
-                    player.destroy();
-                    player = null;
-                }
-                if (window.hlsInstance) {
-                    window.hlsInstance.destroy();
-                    window.hlsInstance = null;
-                }
-                if (window.progressInterval) {
-                    clearInterval(window.progressInterval);
-                    window.progressInterval = null;
-                }
-                playerContainer.innerHTML = "";
-                videoLoader.style.display = 'none';
-            }
-            
-            if (page === 'dashboard') {
-                loadDashboardData();
-            }
-
-            Object.values(pages).forEach((p) => p.classList.remove("active"));
-            pages[page].classList.add("active");
-            lucide.createIcons();
-        }
-
-        /* ========= Teachers Data ========= */
-        const searchInput = document.getElementById("searchInput");
-        const searchBtn = document.getElementById("searchButton");
-        let teachers = [];
-        let currentTeacher = null;
-        let currentClassIndex = 0;
-        let currentLectureIndex = 0;
-        let currentLectureLink = "";
-
+    <!-- Scripting -->
+    <script>
         const categories = {
-            "year-2026": {
-                title: "الصفوف الدراسية 2026",
-                endpoint: "https://adson.netlify.app/data2.json"
+            'math': {
+                name: "الرياضيات",
+                description: "شروحات مبسطة لجميع الفصول الدراسية",
+                gradient: "linear-gradient(135deg, #FF6B6B, #FFD93D)",
+                icon: "trending-up",
+                endpoint: "https://teachers.glitch.me/math"
             },
-            "year-2025": {
-                title: "الصفوف الدراسية 2025",
-                endpoint: "https://adson.netlify.app/data.json"
+            'physics': {
+                name: "الفيزياء",
+                description: "رحلة شيقة في عالم القوانين الطبيعية",
+                gradient: "linear-gradient(135deg, #48A9A6, #C1DFF0)",
+                icon: "atom",
+                endpoint: "https://teachers.glitch.me/physics"
             },
-            "distinguished": {
-                title: "قسم المتميزين",
-                endpoint: "https://adson.netlify.app/ff.json"
+            'chemistry': {
+                name: "الكيمياء",
+                description: "تجارب ومفاهيم أساسية لفهم التفاعلات",
+                gradient: "linear-gradient(135deg, #1A535C, #4ECDC4)",
+                icon: "flask-conical",
+                endpoint: "https://teachers.glitch.me/chemistry"
             },
-            "literary": {
-                title: "القسم الأدبي",
-                endpoint: "https://adson.netlify.app/mm.json"
+            'biology': {
+                name: "الأحياء",
+                description: "اكتشف أسرار الحياة والكائنات الحية",
+                gradient: "linear-gradient(135deg, #3A7D44, #87C38F)",
+                icon: "leaf",
+                endpoint: "https://teachers.glitch.me/biology"
             }
         };
 
-        function loadCategory(categoryId) {
-            const category = categories[categoryId];
-            if (!category) return;
-            categoryTitle.textContent = category.title;
-            loadData(category.endpoint);
-            navigate("category");
-        }
+        // DOM elements
+        const preloader = document.querySelector('.preloader');
+        const telegramModal = document.getElementById('telegramModal');
+        const continueWatchingModal = document.getElementById('continueWatchingModal');
+        const pages = document.querySelectorAll('.page');
+        const searchInput = document.getElementById('searchInput');
+        const dashboardButton = document.getElementById('dashboardButton');
+        const headerProfilePic = document.getElementById('headerProfilePic');
+        const profilePicture = document.getElementById('profilePicture');
+        const studentNameDisplay = document.getElementById('studentNameDisplay');
+        const dreamGradeInput = document.getElementById('dreamGradeInput');
+        const currentGradeInput = document.getElementById('currentGradeInput');
 
-        function renderTeachers(list = teachers) {
-            if (!list.length) {
-                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
-                return;
-            }
-            teachersGrid.innerHTML = "";
-            list.forEach((t, idx) => {
-                const rating = ratings[t.id] || 0;
-                const card = document.createElement("div");
-                card.className = "teacher-card";
-                card.innerHTML = `
-                    <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
-                    <h3 class="teacher-name">${t.name}</h3>
-                    <p class="teacher-subject">${t.subject}</p>
-                    <div class="teacher-rating">${renderStars(rating)}</div>
-                `;
-                card.onclick = () => showTeacher(t.id);
-                teachersGrid.appendChild(card);
-                lucide.createIcons();
+        let currentTeacher = null;
+        let currentPage = 'dashboard';
+        let lastWatched = null;
+        let activePlayer = null; // Reference to the Video.js player instance
+
+        // Helper functions
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
             });
+            document.getElementById(pageId).classList.add('active');
+            currentPage = pageId;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function renderStars(rating) {
-            let stars = "";
-            for (let i = 1; i <= 5; i++) {
-                stars += `<span class="star ${i <= rating ? "filled" : ""}">★</span>`;
+        function navigateTo(pageId) {
+            if (activePlayer) {
+                activePlayer.pause();
             }
-            return stars;
+            showPage(pageId);
         }
 
-        window.showTeacher = (id) => {
-            currentTeacher = teachers.find((t) => t.id == id);
-            if (!currentTeacher) return;
-            teacherImage.src = currentTeacher.image;
-            teacherImage.onerror = function() {
-                this.onerror = null;
-                this.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';
-            };
-            teacherName.textContent = currentTeacher.name;
-            teacherSubject.textContent = currentTeacher.subject;
-            const rating = ratings[currentTeacher.id] || 0;
-            teacherRating.innerHTML = renderStars(rating);
-            renderClasses(currentTeacher.classes);
-            navigate("classes");
-        };
-
-        function renderClasses(classesData) {
-            classesList.innerHTML = classesData.map((cls, ci) => {
-                const totalLectures = cls.lectures.length;
-                const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
-                const lectures = cls.lectures.map((lec, li) => {
-                    const isCompleted = !!completedLectures[lec.url];
-                    return `
-                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                <i data-lucide="play-circle"></i>
-                                <span>${li + 1}. ${lec.title}</span>
-                            </div>
-                            <div class="star-burst"></div>
-                            <label class="completion-checkbox">
-                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                    `;
-                }).join("");
-                return `
-                    <div class="class-card">
-                        <div class="class-header" onclick="toggleLectures(this)">
-                            <div class="class-header-content">
-                                <h3>${cls.name}</h3>
-                                <span class="class-progress" data-class-index="${ci}">المكتمل: ${completedCount} / ${totalLectures}</span>
-                            </div>
-                            <i data-lucide="chevron-down" class="chevron-icon"></i>
-                        </div>
-                        <div class="lectures-list">${lectures}</div>
-                    </div>
-                `;
-            }).join("");
-            lucide.createIcons();
-        }
-        
-        window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
-            event.stopPropagation();
-            const lectureItem = checkbox.closest('.lecture-item');
-            const isCompleted = checkbox.checked;
-            completedLectures[lectureUrl] = isCompleted;
-            localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
-            lectureItem.classList.toggle('completed', isCompleted);
-            if (isCompleted) {
-                const starBurst = lectureItem.querySelector('.star-burst');
-                starBurst.innerHTML = Array(8).fill(0).map(() => {
-                    const translateX = (Math.random() - 0.5) * 80;
-                    const translateY = (Math.random() - 0.5) * 80;
-                    return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
-                }).join('');
-                starBurst.classList.add('animate');
-                setTimeout(() => {
-                    starBurst.classList.remove('animate');
-                    starBurst.innerHTML = '';
-                }, 600);
-            }
-            updateClassProgress(lectureItem.closest('.class-card'));
-        };
-
-        function updateClassProgress(classCardElement) {
-            const progressSpan = classCardElement.querySelector('.class-progress');
-            const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
-            const classData = currentTeacher.classes[classIndex];
-            const totalLectures = classData.lectures.length;
-            const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
-            progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
+        function goBackToDashboard() {
+            navigateTo('dashboardPage');
         }
 
-        window.toggleLectures = (header) => {
-            const list = header.parentElement.querySelector(".lectures-list");
-            const icon = header.querySelector(".chevron-icon");
-            const open = list.style.display !== "flex";
-            list.style.display = open ? "flex" : "none";
-            header.classList.toggle("open", open);
-            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
-            lucide.createIcons();
-        };
-        
-        window.loadIframePlayer = (url) => {
-            videoLoader.style.display = 'flex';
-            const encodedUrl = btoa(url);
-            const iframeUrl = `https://ddpoot.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
-            const iframeHtml = `
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <iframe 
-                        src="${iframeUrl}" 
-                        allowfullscreen 
-                        loading="eager"
-                        style="width: 100%; height: 100%; border: none; border-radius: inherit;"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                        onload="document.getElementById('videoLoader').style.display='none';"
-                    ></iframe>
-                </div>
-            `;
-            playerContainer.innerHTML = iframeHtml;
+        function goBackToTeachers() {
+            navigateTo('teachersPage');
         }
 
-        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            if (player) {
-                player.destroy();
-                player = null;
-            }
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
-            }
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
-            }
-
-            playerContainer.innerHTML = "";
-            videoLoader.style.display = 'none';
-
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
-            videoTitle.textContent = title;
-            videoDescription.textContent = desc;
-            document.getElementById("videoDate").textContent = "15/10/2026";
-
-            lastWatched = {
-                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
-                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
-                classIndex: ci,
-                lectureIndex: li,
-                lectureTitle: title,
-                lectureUrl: url,
-                lectureDescription: desc
-            };
-            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
-            
-            navigate("video");
-
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url); // Autoplay iframe
-                return;
-            }
-            
-            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
-            lucide.createIcons();
-            
-            const videoElement = document.getElementById("player");
-            const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
-            
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
-
-            const finalVideoUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}` : url;
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
-
-            player = new Plyr("#player", {
-                controls: playerControls,
-                keyboard: { focused: true, global: true },
-                tooltips: { controls: true, seek: true },
-                captions: { active: false },
-                settings: ["quality", "speed"],
-                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-            });
-
-            window.progressInterval = setInterval(() => {
-                if (player && player.duration > 0) {
-                    const progress = (player.currentTime / player.duration) * 100;
-                    lectureProgress[url] = progress;
-                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
-                }
-            }, 5000);
-
-            function tryPlay() {
-                if (isHLS && Hls.isSupported()) {
-                    const hls = new Hls();
-                    window.hlsInstance = hls;
-                    hls.attachMedia(videoElement);
-                    hls.loadSource(finalVideoUrl);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-                    });
-                    hls.on(Hls.Events.ERROR, (_, data) => {
-                        if (data.fatal) {
-                            switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                                default: break;
-                            }
-                        }
-                    });
-                } else {
-                    player.source = {
-                        type: "video",
-                        sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-                    };
-                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
-                }
-            }
-            tryPlay();
-        };
-
-        /* ========= Search ========= */
-        function handleSearch() {
-            const term = searchInput.value.trim().toLowerCase();
-            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+        function goBackToClasses() {
+            navigateTo('teacherClassesPage');
         }
-
-        let searchTimeout;
-        searchInput.addEventListener("input", () => {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(handleSearch, 250);
-        });
-        searchBtn.addEventListener("click", handleSearch);
-
-        /* ========= Load Data ========= */
-        function loadData(endpoint) {
-            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-            teachersGrid.innerHTML = Array(3).fill(`
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>`).join('');
-
-            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-                .then((data) => { teachers = data.teachers; renderTeachers(); })
-                .catch(() => { teachersGrid.innerHTML = err; });
-        }
-        
-        /* ========= Dashboard Logic ========= */
-        const profilePictureEl = document.getElementById('profilePicture');
-        const profilePictureInputEl = document.getElementById('profilePictureInput');
-        const dreamInputEl = document.getElementById('dreamInput');
-        const gradeInputEl = document.getElementById('gradeInput');
-        const saveDashboardButton = document.getElementById('saveDashboardButton');
-        const headerProfilePicEl = document.getElementById('headerProfilePic');
-        const defaultUserIconEl = document.getElementById('defaultUserIcon');
-        const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
-
-        function updateHeaderProfilePic() {
-            const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-            const placeholder = "https://placehold.co/150x150";
-            if (profile.picture && !profile.picture.startsWith(placeholder)) {
-                headerProfilePicEl.src = profile.picture;
-                headerProfilePicEl.style.display = 'block';
-                defaultUserIconEl.style.display = 'none';
-            } else {
-                headerProfilePicEl.style.display = 'none';
-                defaultUserIconEl.style.display = 'block';
-            }
-        }
-
-        function loadDashboardData() {
-            const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-            if (profile.picture) {
-                profilePictureEl.src = profile.picture;
-            }
-            if (profile.dream) {
-                dreamInputEl.value = profile.dream;
-            }
-            if (profile.grade) {
-                gradeInputEl.value = profile.grade;
-            }
-            updateHeaderProfilePic();
-        }
-        
-        uploadProfilePicBtn.addEventListener('click', () => {
-            profilePictureInputEl.click();
-        });
-        
-        profilePictureInputEl.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    profilePictureEl.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-        
-        saveDashboardButton.addEventListener('click', () => {
-            const profile = {
-                picture: profilePictureEl.src,
-                dream: dreamInputEl.value,
-                grade: gradeInputEl.value
-            };
-            localStorage.setItem('userProfile', JSON.stringify(profile));
-            updateHeaderProfilePic();
-            
-            saveDashboardButton.innerHTML = '<i data-lucide="check"></i> تم الحفظ بنجاح!';
-            lucide.createIcons();
-            setTimeout(() => {
-                saveDashboardButton.innerHTML = '<i data-lucide="save"></i> حفظ التغييرات';
-                lucide.createIcons();
-            }, 2000);
-        });
-
-        /* ========= Modal Logic ========= */
-        const telegramModal = document.getElementById("telegramModal");
-        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
-        const continueWatchingModal = document.getElementById("continueWatchingModal");
-        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
-        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueNowBtn = document.getElementById("continueNowBtn");
 
         function showTelegramModal() {
-            const hasSubscribed = localStorage.getItem("telegramSubscribed");
-            if (!hasSubscribed) {
-                telegramModal.classList.add("show");
-                lucide.createIcons();
-            } else {
-                showContinueWatchingModal();
+            if (!localStorage.getItem('telegramModalShown')) {
+                telegramModal.classList.add('active');
             }
         }
 
         function hideTelegramModal() {
-            telegramModal.classList.remove("show");
+            telegramModal.classList.remove('active');
+            localStorage.setItem('telegramModalShown', 'true');
         }
-
-        continueWithoutSubscribingBtn.addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
-            showContinueWatchingModal();
-        });
-
-        document.querySelector(".btn-telegram").addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
-            showContinueWatchingModal();
-        });
 
         function showContinueWatchingModal() {
             if (lastWatched) {
-                lastWatchedTeacherName.textContent = lastWatched.teacherName;
-                lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
-                continueWatchingModal.classList.add("show");
-                lucide.createIcons();
+                document.getElementById('lastWatchedTitle').textContent = lastWatched.lectureTitle;
+                continueWatchingModal.classList.add('active');
             }
         }
 
         function hideContinueWatchingModal() {
-            continueWatchingModal.classList.remove("show");
+            continueWatchingModal.classList.remove('active');
         }
 
-        continueNowBtn.addEventListener("click", () => {
+        function toggleTheme() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const themeIcon = document.getElementById('themeIcon');
+            themeIcon.innerHTML = theme === 'dark' ? `<i data-lucide="moon"></i>` : `<i data-lucide="sun"></i>`;
+            lucide.createIcons();
+        }
+
+        function updateProfilePic(url) {
+            headerProfilePic.src = url;
+            profilePicture.src = url;
+            localStorage.setItem('profilePic', url);
+        }
+        
+        function changeProfilePicture() {
+            const newUrl = prompt('أدخل رابط صورة جديدة:');
+            if (newUrl && newUrl.trim() !== '') {
+                updateProfilePic(newUrl);
+            }
+        }
+
+        // Save and Load Dashboard Data
+        function saveDashboardData() {
+            const studentName = studentNameDisplay.textContent.replace('مرحباً بك، ', '').trim();
+            const dreamGrade = dreamGradeInput.value;
+            const currentGrade = currentGradeInput.value;
+            
+            const dashboardData = {
+                studentName: studentName,
+                dreamGrade: dreamGrade,
+                currentGrade: currentGrade,
+                profilePic: headerProfilePic.src
+            };
+            localStorage.setItem('dashboardData', JSON.stringify(dashboardData));
+        }
+
+        function loadDashboardData() {
+            const storedData = JSON.parse(localStorage.getItem('dashboardData'));
+            if (storedData) {
+                studentNameDisplay.textContent = `مرحباً بك، ${storedData.studentName}`;
+                dreamGradeInput.value = storedData.dreamGrade || '';
+                currentGradeInput.value = storedData.currentGrade || '';
+                updateProfilePic(storedData.profilePic || "https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/man-in-suit.jpg?v=1707920700812");
+            } else {
+                const defaultName = 'طالب';
+                studentNameDisplay.textContent = `مرحباً بك، ${defaultName}`;
+            }
+
+            const storedLastWatched = localStorage.getItem('lastWatched');
+            if (storedLastWatched) {
+                lastWatched = JSON.parse(storedLastWatched);
+                showContinueWatchingModal();
+            }
+        }
+        
+        // Handle last watched
+        function saveLastWatched(classIndex, lectureIndex, lectureUrl, lectureTitle, lectureDescription, teacherName, teacherId, currentTime) {
+            lastWatched = {
+                classIndex: classIndex,
+                lectureIndex: lectureIndex,
+                lectureUrl: lectureUrl,
+                lectureTitle: lectureTitle,
+                lectureDescription: lectureDescription,
+                teacherName: teacherName,
+                teacherId: teacherId,
+                currentTime: currentTime
+            };
+            localStorage.setItem('lastWatched', JSON.stringify(lastWatched));
+        }
+
+        // Handle video playback
+        function playLecture(classIndex, lectureIndex, lectureUrl, lectureTitle, lectureDescription, teacherName, teacherId) {
+            // Destroy any existing player instance
+            if (activePlayer) {
+                activePlayer.dispose();
+            }
+
+            const videoPlayerEl = document.getElementById('videoPlayer');
+            
+            // Initialize Video.js player
+            activePlayer = videojs(videoPlayerEl, {
+                controls: true,
+                autoplay: true,
+                preload: 'auto',
+                techOrder: ['html5'],
+                plugins: {
+                    httpSourceSelector: {}
+                },
+                html5: {
+                    hls: {
+                        overrideNative: true // Force HLS.js for better cross-browser support
+                    }
+                }
+            });
+            
+            // Set source and play
+            activePlayer.src({
+                src: lectureUrl,
+                type: lectureUrl.endsWith('.m3u8') ? 'application/x-mpegURL' : 'video/mp4'
+            });
+
+            // Set video information
+            document.getElementById('videoTitle').textContent = lectureTitle;
+            document.getElementById('videoDescription').textContent = lectureDescription;
+
+            // Save last watched position
+            activePlayer.on('timeupdate', () => {
+                if (activePlayer.paused() || activePlayer.ended()) {
+                    return;
+                }
+                saveLastWatched(
+                    classIndex,
+                    lectureIndex,
+                    lectureUrl,
+                    lectureTitle,
+                    lectureDescription,
+                    teacherName,
+                    teacherId,
+                    activePlayer.currentTime()
+                );
+            });
+
+            // If there's a stored last watched time, seek to it
+            if (lastWatched && lastWatched.lectureUrl === lectureUrl) {
+                activePlayer.on('loadedmetadata', () => {
+                    activePlayer.currentTime(lastWatched.currentTime);
+                });
+            }
+
+            navigateTo('playerPage');
+        }
+
+        // Event listeners
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            updateThemeIcon(savedTheme);
+
+            loadDashboardData();
+            
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            for (const key in categories) {
+                const category = categories[key];
+                const card = document.createElement('div');
+                card.classList.add('category-card');
+                card.style.setProperty('--gradient', category.gradient);
+                card.innerHTML = `
+                    <div class="category-icon">
+                        <i data-lucide="${category.icon}"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3 class="category-title">${category.name}</h3>
+                        <p class="category-description">${category.description}</p>
+                        <button class="btn btn-sm" onclick="showTeachers('${key}')">عرض الأساتذة</button>
+                    </div>
+                `;
+                categoriesGrid.appendChild(card);
+            }
+
+            lucide.createIcons();
+            preloader.classList.add('hidden');
+        });
+
+        // Function to show teachers based on category
+        function showTeachers(categoryId) {
+            const teachersGrid = document.getElementById('teachersGrid');
+            teachersGrid.innerHTML = '';
+            
+            const category = categories[categoryId];
+            fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then(response => response.json())
+                .then(data => {
+                    data.teachers.forEach(teacher => {
+                        const teacherCard = document.createElement('div');
+                        teacherCard.classList.add('teacher-card');
+                        teacherCard.innerHTML = `
+                            <img src="${teacher.profile_pic}" alt="${teacher.name}" class="teacher-img">
+                            <h4 class="teacher-name">${teacher.name}</h4>
+                            <p class="teacher-subject">${teacher.subject}</p>
+                            <div class="teacher-rating">
+                                ${Array(5).fill('').map((_, i) => `<span class="star ${i < teacher.rating ? 'filled' : ''}"><i data-lucide="star"></i></span>`).join('')}
+                            </div>
+                        `;
+                        teacherCard.addEventListener('click', () => {
+                            showTeacherClasses(teacher);
+                        });
+                        teachersGrid.appendChild(teacherCard);
+                    });
+                    lucide.createIcons();
+                })
+                .catch(error => console.error("Error loading teachers:", error));
+
+            navigateTo('teachersPage');
+        }
+        
+        // Function to show teacher's classes
+        function showTeacherClasses(teacher) {
+            currentTeacher = teacher;
+            document.getElementById('teacherImgLg').src = teacher.profile_pic;
+            document.getElementById('teacherNameLg').textContent = teacher.name;
+            document.getElementById('teacherSubjectLg').textContent = teacher.subject;
+
+            const classesList = document.getElementById('classesList');
+            classesList.innerHTML = '';
+            
+            teacher.classes.forEach((classItem, classIndex) => {
+                const classCard = document.createElement('div');
+                classCard.classList.add('class-card');
+                classCard.innerHTML = `
+                    <div class="class-header">
+                        <h4 class="class-title">${classItem.title}</h4>
+                        <div class="class-indicator">
+                            <i data-lucide="chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="class-lectures">
+                        <!-- Lectures will be injected here -->
+                    </div>
+                `;
+                
+                const lecturesContainer = classCard.querySelector('.class-lectures');
+                classItem.lectures.forEach((lecture, lectureIndex) => {
+                    const lectureCard = document.createElement('div');
+                    lectureCard.classList.add('lecture-card');
+                    lectureCard.innerHTML = `
+                        <span class="lecture-icon"><i data-lucide="play-circle"></i></span>
+                        <span class="lecture-title">${lecture.title}</span>
+                        <span class="lecture-duration">${lecture.duration}</span>
+                    `;
+                    lectureCard.addEventListener('click', () => {
+                        // Remove playing class from all lecture cards
+                        document.querySelectorAll('.lecture-card').forEach(card => card.classList.remove('playing'));
+                        // Add playing class to the clicked card
+                        lectureCard.classList.add('playing');
+                        playLecture(classIndex, lectureIndex, lecture.video_url, lecture.title, classItem.description, teacher.name, teacher.id);
+                    });
+                    lecturesContainer.appendChild(lectureCard);
+                });
+
+                classCard.querySelector('.class-header').addEventListener('click', () => {
+                    classCard.classList.toggle('open');
+                });
+
+                classesList.appendChild(classCard);
+            });
+
+            lucide.createIcons();
+            navigateTo('teacherClassesPage');
+        }
+
+        // Continue watching modal logic
+        document.getElementById('startOverBtn').addEventListener("click", () => {
+            hideContinueWatchingModal();
+            // Start from scratch: The last watched data is not used for playback
+            const categoryKeys = Object.keys(categories);
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                    .then(response => response.json())
+                    .then(data => {
+                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                        if (teacher) {
+                            showTeacherClasses(teacher);
+                            return; // Stop searching once found
+                        }
+                    })
+                    .catch(error => console.error("Error loading teacher data:", error));
+            }
+        });
+
+        document.getElementById('continueNowBtn').addEventListener("click", () => {
             hideContinueWatchingModal();
             const categoryKeys = Object.keys(categories);
             let foundTeacher = false;
@@ -2048,7 +1592,7 @@
 
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000);
-            loadDashboardData(); 
+            // This is handled by DOMContentLoaded now, but keeping it for completeness
         });
 
         // Initialize
