@@ -1941,7 +1941,7 @@
             
             navigate("video");
 
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
+            if (url.includes("iframe.mediadelivery.net/embed/") || url.includes("ddpoot")) {
                 loadIframePlayer(url);
                 return;
             }
@@ -2033,8 +2033,28 @@
                 hlsInstance = new Hls();
                 hlsInstance.attachMedia(videoEl);
                 hlsInstance.loadSource(finalVideoUrl);
+                hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
+                    // Check if savedTime exists and is greater than 0
+                    if (savedTime && savedTime > 0) {
+                        // Set the video's current time based on the saved progress percentage
+                        videoEl.currentTime = (savedTime / 100) * videoEl.duration;
+                    }
+                    videoEl.play().catch(error => {
+                        console.error('Autoplay was prevented:', error);
+                    });
+                });
             } else {
                 videoEl.src = finalVideoUrl;
+                videoEl.addEventListener('loadedmetadata', () => {
+                     // Check if savedTime exists and is greater than 0
+                    if (savedTime && savedTime > 0) {
+                        // Set the video's current time based on the saved progress percentage
+                        videoEl.currentTime = (savedTime / 100) * videoEl.duration;
+                    }
+                });
+                videoEl.play().catch(error => {
+                    console.error('Autoplay was prevented:', error);
+                });
             }
 
             // Player state and UI updates
@@ -2071,10 +2091,6 @@
             // Event Listeners
             videoEl.addEventListener('loadedmetadata', () => {
                 durationEl.textContent = formatTime(videoEl.duration);
-                // Seek to saved progress if available
-                if (savedTime > 0) {
-                    videoEl.currentTime = (savedTime / 100) * videoEl.duration;
-                }
                 videoLoader.style.display = 'none';
                 updateProgress();
             });
@@ -2125,13 +2141,8 @@
                 }
             });
 
-            // Initial play attempt
-            videoLoader.style.display = 'flex';
-            currentVideo.play().catch(() => {
-                 // Autoplay failed, hide loader and let user click play
-                videoLoader.style.display = 'none';
-                updateUI();
-            });
+            // Ensure to call updateUI for the initial state
+            updateUI();
         }
 
         /* ========= Search ========= */
