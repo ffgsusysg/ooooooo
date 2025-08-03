@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title> اديسون</title>
+    <title>منصة إديسون</title>
     
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
@@ -14,18 +14,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
-    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
-    <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
-    <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -108,9 +100,7 @@
         }
 
         /* General styles */
-        *,
-        *:before,
-        *:after {
+        *, *:before, *:after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -538,8 +528,8 @@
         }
         
         .category-card:hover {
-             transform: translateY(-8px);
-             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
         }
 
         .category-icon, .category-content {
@@ -747,7 +737,7 @@
             position: relative;
             background: var(--hover);
             border-right: 3px solid var(--primary-3);
-            border-radius: var(--radius);
+            border-radius: 6px;
             transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             display: flex;
             justify-content: space-between;
@@ -761,7 +751,7 @@
         }
         
         [data-theme="dark"] .lecture-item.completed {
-             background-color: #164e3b; /* Dark green for completed */
+            background-color: #164e3b; /* Dark green for completed */
         }
 
         .lecture-item:hover {
@@ -769,11 +759,11 @@
         }
         
         .lecture-play-area {
-             display: flex;
-             align-items: center;
-             gap: 0.75rem;
-             flex-grow: 1;
-             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-grow: 1;
+            cursor: pointer;
         }
 
         .lecture-play-area i {
@@ -904,13 +894,166 @@
             aspect-ratio: 16/9;
             box-shadow: var(--shadow-lg); /* Shadow for larger screens */
         }
-
-        .plyr {
-            border-radius: var(--radius);
-            overflow: hidden;
+        
+        /* ------------------------------------------- */
+        /* --- NEW CUSTOM VIDEO PLAYER STYLES  --- */
+        /* ------------------------------------------- */
+        .custom-player-wrapper {
+            position: relative;
             width: 100%;
             height: 100%;
+            background-color: black;
+            font-family: 'Almarai', sans-serif;
+            border-radius: inherit;
         }
+
+        .custom-player-wrapper video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .custom-player-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+            transition: opacity 0.3s ease;
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .custom-player-wrapper.is-paused .custom-player-controls,
+        .custom-player-wrapper:hover .custom-player-controls {
+            opacity: 1;
+        }
+
+        .custom-player-controls button {
+            background-color: transparent;
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .custom-player-controls button:hover {
+            transform: scale(1.1);
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary-1);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .time-display {
+            color: white;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+
+        .play-pause-btn i {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        .speed-control select {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 0.8rem;
+            padding: 0.3rem;
+            border-radius: 4px;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .volume-slider {
+            width: 80px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-1);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .custom-video-loader {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: inherit;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loader-spinner {
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid var(--primary-1);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Hide default video controls */
+        .custom-player-wrapper video::-webkit-media-controls { display: none !important; }
+        .custom-player-wrapper video::-webkit-media-controls-enclosure { display: none !important; }
+        .custom-player-wrapper video::-webkit-media-controls-panel { display: none !important; }
+        .custom-player-wrapper video::-webkit-media-controls-play-button { display: none !important; }
+        .custom-player-wrapper video::-webkit-media-controls-timeline { display: none !important; }
+        
+        /* End Custom Player Styles */
+        /* ------------------------------------------- */
+        /* ------------------------------------------- */
 
         .video-details {
             background: var(--card);
@@ -995,21 +1138,6 @@
         .iframe-placeholder:hover .play-button-overlay {
             opacity: 1;
             transform: scale(1.1);
-        }
-
-
-        .loader-spinner {
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid var(--primary-1);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         /* Modal Styles */
@@ -1203,7 +1331,7 @@
             .btn {
                 padding: 0.8rem 1rem;
             }
-
+            
             /* MODIFIED: Full-width video styles ONLY for mobile */
             #videoPage.page.active {
                 padding-left: 0;
@@ -1373,7 +1501,7 @@
             </div>
             
             <div class="category-card" onclick="loadCategory('distinguished')" style="--gradient: linear-gradient(135deg, #10b981, #047857);">
-                 <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
+                   <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
                     <h3 class="category-title">قسم المتميزين</h3>
                     <p class="category-description">مواد خاصة للطلاب المتميزين</p>
@@ -1478,7 +1606,7 @@
             <div class="profile-info">
                 <h2>مرحباً أيها البطل!</h2>
                 <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
-                 <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
+                <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
                     <i data-lucide="upload"></i> تحميل صورة جديدة
                 </button>
             </div>
@@ -1506,9 +1634,6 @@
         </button>
     </div>
 
-
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <script type="text/babel">
         // Initialize theme
@@ -1540,7 +1665,9 @@
         });
 
         // Set up player
-        let player = null;
+        let currentVideo = null;
+        let hlsInstance = null;
+        let progressAnimationId = null;
 
         // DOM references
         const teacherImage = document.getElementById("teacherImage");
@@ -1574,17 +1701,17 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
 
             if (page !== "video") {
-                if (player) {
-                    player.destroy();
-                    player = null;
+                if (currentVideo) {
+                    currentVideo.pause();
+                    currentVideo = null;
                 }
-                if (window.hlsInstance) {
-                    window.hlsInstance.destroy();
-                    window.hlsInstance = null;
+                if (hlsInstance) {
+                    hlsInstance.destroy();
+                    hlsInstance = null;
                 }
-                if (window.progressInterval) {
-                    clearInterval(window.progressInterval);
-                    window.progressInterval = null;
+                if (progressAnimationId) {
+                    cancelAnimationFrame(progressAnimationId);
+                    progressAnimationId = null;
                 }
                 playerContainer.innerHTML = "";
                 videoLoader.style.display = 'none';
@@ -1641,7 +1768,7 @@
                 return;
             }
             teachersGrid.innerHTML = "";
-            list.forEach((t, idx) => {
+            list.forEach((t) => {
                 const rating = ratings[t.id] || 0;
                 const card = document.createElement("div");
                 card.className = "teacher-card";
@@ -1780,19 +1907,19 @@
         }
 
         window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            if (player) {
-                player.destroy();
-                player = null;
+            // Clean up previous player
+            if (currentVideo) {
+                currentVideo.pause();
+                currentVideo = null;
             }
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
+            if (hlsInstance) {
+                hlsInstance.destroy();
+                hlsInstance = null;
             }
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
+            if (progressAnimationId) {
+                cancelAnimationFrame(progressAnimationId);
+                progressAnimationId = null;
             }
-
             playerContainer.innerHTML = "";
             videoLoader.style.display = 'none';
 
@@ -1815,69 +1942,197 @@
             navigate("video");
 
             if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url); // Autoplay iframe
+                loadIframePlayer(url);
                 return;
             }
             
-            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            setupCustomPlayer(url);
+        };
+        
+        // New custom player setup function
+        function setupCustomPlayer(url) {
+            // Create the main player wrapper and elements
+            const playerWrapper = document.createElement('div');
+            playerWrapper.className = 'custom-player-wrapper';
+            
+            const videoEl = document.createElement('video');
+            videoEl.controls = false; // We're building our own controls
+            videoEl.playsInline = true;
+            videoEl.preload = 'auto';
+
+            const playerControls = document.createElement('div');
+            playerControls.className = 'custom-player-controls';
+            
+            playerWrapper.appendChild(videoEl);
+            playerWrapper.appendChild(playerControls);
+            playerContainer.appendChild(playerWrapper);
+
+            // Assign the video element globally
+            currentVideo = videoEl;
+            
+            // Define the controls HTML
+            playerControls.innerHTML = `
+                <div class="progress-container">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="control-group">
+                    <div style="display: flex; align-items: center; flex: 1;">
+                        <button class="play-pause-btn">
+                            <i data-lucide="play"></i>
+                        </button>
+                        <button class="rewind-btn"><i data-lucide="rotate-ccw"></i></button>
+                        <button class="forward-btn"><i data-lucide="rotate-cw"></i></button>
+                        <div class="time-display">
+                            <span class="current-time">00:00</span> / <span class="duration">00:00</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: flex-end; gap: 1rem;">
+                        <div class="volume-container">
+                            <button class="mute-btn"><i data-lucide="volume-2"></i></button>
+                            <input type="range" class="volume-slider" min="0" max="1" step="0.05" value="1">
+                        </div>
+                        <div class="speed-control">
+                            <select>
+                                <option value="0.5">0.5x</option>
+                                <option value="0.75">0.75x</option>
+                                <option value="1" selected>1x</option>
+                                <option value="1.25">1.25x</option>
+                                <option value="1.5">1.5x</option>
+                                <option value="2">2x</option>
+                            </select>
+                        </div>
+                        <button class="fullscreen-btn"><i data-lucide="maximize"></i></button>
+                    </div>
+                </div>
+            `;
             lucide.createIcons();
-            
-            const videoElement = document.getElementById("player");
+
+            // Setup new control DOM references
+            const playPauseBtn = playerControls.querySelector('.play-pause-btn');
+            const rewindBtn = playerControls.querySelector('.rewind-btn');
+            const forwardBtn = playerControls.querySelector('.forward-btn');
+            const progressContainer = playerControls.querySelector('.progress-container');
+            const progressBar = playerControls.querySelector('.progress-bar');
+            const currentTimeEl = playerControls.querySelector('.current-time');
+            const durationEl = playerControls.querySelector('.duration');
+            const muteBtn = playerControls.querySelector('.mute-btn');
+            const volumeSlider = playerControls.querySelector('.volume-slider');
+            const speedSelect = playerControls.querySelector('.speed-control select');
+            const fullscreenBtn = playerControls.querySelector('.fullscreen-btn');
+
+            // Video source logic
             const isHLS = url.endsWith(".m3u8");
+            const savedTime = lectureProgress[url] || 0;
             const referer = "https://abwaab.com";
-            
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
-
+            const useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
             const finalVideoUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}` : url;
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
+            
+            // HLS or direct MP4
+            if (isHLS && Hls.isSupported()) {
+                hlsInstance = new Hls();
+                hlsInstance.attachMedia(videoEl);
+                hlsInstance.loadSource(finalVideoUrl);
+            } else {
+                videoEl.src = finalVideoUrl;
+            }
 
-            player = new Plyr("#player", {
-                controls: playerControls,
-                keyboard: { focused: true, global: true },
-                tooltips: { controls: true, seek: true },
-                captions: { active: false },
-                settings: ["quality", "speed"],
-                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+            // Player state and UI updates
+            const updateUI = () => {
+                if (currentVideo) {
+                    playPauseBtn.innerHTML = `<i data-lucide="${currentVideo.paused ? 'play' : 'pause'}"></i>`;
+                    playerWrapper.classList.toggle('is-paused', currentVideo.paused);
+                    lucide.createIcons();
+                }
+            };
+            
+            const formatTime = (time) => {
+                if (isNaN(time)) return '00:00';
+                const minutes = Math.floor(time / 60);
+                const seconds = Math.floor(time % 60);
+                return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            };
+            
+            const updateProgress = () => {
+                if (currentVideo && !isNaN(currentVideo.duration)) {
+                    const progress = (currentVideo.currentTime / currentVideo.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    currentTimeEl.textContent = formatTime(currentVideo.currentTime);
+                    
+                    // Save progress every 5 seconds
+                    if (Math.floor(currentVideo.currentTime) % 5 === 0) {
+                        lectureProgress[url] = progress;
+                        localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                    }
+                }
+                progressAnimationId = requestAnimationFrame(updateProgress);
+            };
+
+            // Event Listeners
+            videoEl.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(videoEl.duration);
+                // Seek to saved progress if available
+                if (savedTime > 0) {
+                    videoEl.currentTime = (savedTime / 100) * videoEl.duration;
+                }
+                videoLoader.style.display = 'none';
+                updateProgress();
             });
 
-            window.progressInterval = setInterval(() => {
-                if (player && player.duration > 0) {
-                    const progress = (player.currentTime / player.duration) * 100;
-                    lectureProgress[url] = progress;
-                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
-                }
-            }, 5000);
+            videoEl.addEventListener('play', updateUI);
+            videoEl.addEventListener('pause', updateUI);
+            videoEl.addEventListener('waiting', () => { videoLoader.style.display = 'flex'; });
+            videoEl.addEventListener('playing', () => { videoLoader.style.display = 'none'; });
 
-            function tryPlay() {
-                if (isHLS && Hls.isSupported()) {
-                    const hls = new Hls();
-                    window.hlsInstance = hls;
-                    hls.attachMedia(videoElement);
-                    hls.loadSource(finalVideoUrl);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-                    });
-                    hls.on(Hls.Events.ERROR, (_, data) => {
-                        if (data.fatal) {
-                            switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                                default: break;
-                            }
-                        }
-                    });
+            playPauseBtn.addEventListener('click', () => {
+                currentVideo.paused ? currentVideo.play() : currentVideo.pause();
+            });
+            
+            rewindBtn.addEventListener('click', () => {
+                currentVideo.currentTime -= 10;
+            });
+
+            forwardBtn.addEventListener('click', () => {
+                currentVideo.currentTime += 10;
+            });
+            
+            progressContainer.addEventListener('click', (e) => {
+                const newTime = (e.offsetX / progressContainer.offsetWidth) * currentVideo.duration;
+                currentVideo.currentTime = newTime;
+            });
+
+            volumeSlider.addEventListener('input', (e) => {
+                currentVideo.volume = e.target.value;
+                muteBtn.innerHTML = `<i data-lucide="${e.target.value > 0 ? 'volume-2' : 'volume-x'}"></i>`;
+                lucide.createIcons();
+            });
+            
+            muteBtn.addEventListener('click', () => {
+                currentVideo.muted = !currentVideo.muted;
+                muteBtn.innerHTML = `<i data-lucide="${currentVideo.muted ? 'volume-x' : 'volume-2'}"></i>`;
+                lucide.createIcons();
+            });
+
+            speedSelect.addEventListener('change', (e) => {
+                currentVideo.playbackRate = e.target.value;
+            });
+
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    playerWrapper.requestFullscreen().catch(err => console.log(err));
                 } else {
-                    player.source = {
-                        type: "video",
-                        sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-                    };
-                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                    document.exitFullscreen();
                 }
-            }
-            tryPlay();
-        };
+            });
+
+            // Initial play attempt
+            videoLoader.style.display = 'flex';
+            currentVideo.play().catch(() => {
+                 // Autoplay failed, hide loader and let user click play
+                videoLoader.style.display = 'none';
+                updateUI();
+            });
+        }
 
         /* ========= Search ========= */
         function handleSearch() {
@@ -2048,7 +2303,7 @@
 
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000);
-            loadDashboardData(); 
+            loadDashboardData();
         });
 
         // Initialize
