@@ -355,7 +355,7 @@
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
-            grid-column: 1 / -1; /* Span full width on larger screens */
+            grid-column: 1 / -1;
         }
         
         @media (min-width: 768px) {
@@ -1898,23 +1898,33 @@
             localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
             
             navigate("video");
+            
+            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+            let finalVideoUrl = url;
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalVideoUrl = `https://vz-99e5c202-ca5.becdn.net/${videoId}/playlist.m3u8`;
+            }
 
+            // Proxy logic to handle CORS
+            const isHLS = finalVideoUrl.endsWith(".m3u8");
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            const proxiedUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            
+            // For iframes, we still need to load an iframe
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 loadIframePlayer(url);
                 return;
             }
-            
+
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
             const videoElement = document.getElementById("player");
-            const isHLS = url.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
-            
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
-
-            const finalVideoUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}` : url;
             const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
             const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
@@ -1940,7 +1950,7 @@
                     const hls = new Hls();
                     window.hlsInstance = hls;
                     hls.attachMedia(videoElement);
-                    hls.loadSource(finalVideoUrl);
+                    hls.loadSource(proxiedUrl);
                     hls.on(Hls.Events.MANIFEST_PARSED, () => {
                         player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
                     });
@@ -1956,7 +1966,7 @@
                 } else {
                     player.source = {
                         type: "video",
-                        sources: [{ src: finalVideoUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
                     };
                     player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
                 }
@@ -1966,21 +1976,27 @@
 
         /* ========= Download Logic (NEW) ========= */
         window.downloadLecture = async (url, title) => {
-            const isHLS = url.endsWith(".m3u8");
+            downloadProgressModal.classList.add('show');
+            downloadProgressBar.style.width = '0%';
+            downloadProgressBar.textContent = '0%';
+            downloadStatusText.textContent = 'يتم الآن تجهيز المحاضرة للتنزيل. قد يستغرق هذا بعض الوقت.';
+            lucide.createIcons();
+
+            let finalDownloadUrl = url;
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalDownloadUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+            }
+
+            const isHLS = finalDownloadUrl.endsWith(".m3u8");
 
             if (isHLS) {
-                // Show download progress modal
-                downloadProgressModal.classList.add('show');
-                downloadProgressBar.style.width = '0%';
-                downloadProgressBar.textContent = '0%';
-                downloadStatusText.textContent = 'يتم الآن تجهيز المحاضرة للتنزيل. قد يستغرق هذا بعض الوقت.';
-                lucide.createIcons();
-
                 const referer = "https://abwaab.com";
-                const proxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`;
+                const proxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(finalDownloadUrl)}&referer=${encodeURIComponent(referer)}`;
 
                 try {
-                    // Fetch HLS playlist to get segment URLs
                     const manifestResponse = await fetch(proxyUrl);
                     if (!manifestResponse.ok) throw new Error('فشل في تحميل قائمة تشغيل HLS.');
 
@@ -1991,7 +2007,7 @@
                         throw new Error('لم يتم العثور على أجزاء فيديو في قائمة التشغيل.');
                     }
                     
-                    const baseUriMatch = url.match(/(.*\/)/);
+                    const baseUriMatch = finalDownloadUrl.match(/(.*\/)/);
                     const baseUri = baseUriMatch ? baseUriMatch[1] : '';
 
                     const videoSegments = [];
@@ -1999,7 +2015,7 @@
                         const segmentUrl = baseUri + segmentUrls[i];
                         const segmentProxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(segmentUrl)}&referer=${encodeURIComponent(referer)}`;
                         
-                        let segmentResponse = null;
+                        let segmentData = null;
                         
                         const fetchSegment = async () => {
                             let retryCount = 0;
@@ -2009,7 +2025,7 @@
                                     if (response.ok) return await response.arrayBuffer();
                                     console.error(`Fetch failed for segment ${i+1}. Status: ${response.status}`);
                                     retryCount++;
-                                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount - 1))); // Exponential backoff
+                                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount - 1)));
                                 } catch (err) {
                                     console.error(`Network error for segment ${i+1}:`, err);
                                     retryCount++;
@@ -2019,7 +2035,7 @@
                             throw new Error(`فشل تحميل الجزء رقم ${i+1} بعد عدة محاولات.`);
                         };
                         
-                        const segmentData = await fetchSegment();
+                        segmentData = await fetchSegment();
                         videoSegments.push(segmentData);
 
                         const progress = Math.round(((i + 1) / segmentUrls.length) * 100);
@@ -2030,11 +2046,9 @@
                     
                     downloadStatusText.textContent = 'جاري دمج الأجزاء...';
 
-                    // Combine segments into a single Blob
                     const combinedBlob = new Blob(videoSegments, { type: 'video/mp2t' });
                     const blobUrl = URL.createObjectURL(combinedBlob);
 
-                    // Create a link element to trigger the download
                     const a = document.createElement('a');
                     a.href = blobUrl;
                     a.download = `${title}.mp4`;
@@ -2043,23 +2057,17 @@
 
                     downloadProgressModal.classList.remove('show');
                     
-                    // Clean up
                     document.body.removeChild(a);
                     URL.revokeObjectURL(blobUrl);
 
                 } catch (error) {
                     console.error('Download error:', error);
-                    downloadStatusText.textContent = `حدث خطأ في التنزيل: ${error.message || error}`;
-                    // Keep the modal open to show the error
+                    downloadStatusModal.classList.remove('show');
+                    alert(`حدث خطأ في التنزيل: ${error.message || error}`);
                 }
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                 // For iframe links, direct download is not possible.
-                 // Show a custom alert or modal message.
-                 alert("لا يمكن تنزيل هذه المحاضرة مباشرة لأنها معروضة من خلال مشغل فيديو خارجي.");
             } else {
-                // For other direct links (e.g., .mp4), trigger a simple download
                 const a = document.createElement('a');
-                a.href = url;
+                a.href = finalDownloadUrl;
                 a.download = `${title}.mp4`;
                 document.body.appendChild(a);
                 a.click();
