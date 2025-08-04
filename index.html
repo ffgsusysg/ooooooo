@@ -888,7 +888,6 @@
             }
         }
 
-
         /* Video Page Layout */
         #videoPage.page.active {
             display: flex;
@@ -1183,6 +1182,49 @@
             filter: brightness(1.05);
         }
 
+        /* Download Modal for HLS */
+        #downloadProgressModal .modal-content {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            max-width: 400px;
+        }
+
+        #downloadProgressModal .modal-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        #downloadProgressModal .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 9999px;
+            height: 1.25rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #downloadProgressModal .progress-bar {
+            background-color: var(--accent);
+            height: 100%;
+            width: 0%;
+            border-radius: 9999px;
+            transition: width 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #111;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        #downloadProgressModal .modal-body p {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -1362,52 +1404,24 @@
     </div>
     <!-- End Continue Watching Modal -->
     
-    <!-- NEW Download HLS Modal -->
-    <div id="downloadModal" class="modal">
+    <!-- NEW Download Progress Modal -->
+    <div id="downloadProgressModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">
                     <i data-lucide="download-cloud"></i>
-                    تنزيل المحاضرة
+                    جارٍ تنزيل المحاضرة...
                 </h3>
             </div>
             <div class="modal-body">
-                <p>
-                    <strong>هذه المحاضرة من نوع HLS ولا يمكن تنزيلها مباشرة من المتصفح.</strong>
-                </p>
-                <p>
-                    للتنزيل، اتبع هذه الخطوات البسيطة:
-                </p>
-                <div style="text-align: right; margin-bottom: 2rem; color: var(--modal-text-color);">
-                    <ol style="padding-right: 1.5rem; text-align: right; list-style-position: inside;">
-                        <li>
-                            <p style="margin-bottom: 0.5rem;"><strong>1. انسخ الرابط:</strong> اضغط على الزر أدناه لنسخ رابط المحاضرة.</p>
-                            <button id="copyUrlBtn" class="btn btn-outline-telegram">
-                                <i data-lucide="copy"></i>
-                                نسخ الرابط
-                            </button>
-                        </li>
-                        <li>
-                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>2. افتح برنامج VLC:</strong> إذا لم يكن لديك، يمكنك تنزيله من <a href="https://www.videolan.org/vlc/download-windows.html" target="_blank" style="color: var(--highlight-color); text-decoration: underline;">هنا</a>.</p>
-                        </li>
-                        <li>
-                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>3. افتح الشبكة:</strong> في VLC، اذهب إلى "Media" ثم "Open Network Stream" (أو استخدم اختصار لوحة المفاتيح: <kbd>Ctrl+N</kbd>).</p>
-                        </li>
-                        <li>
-                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>4. الصق الرابط:</strong> الصق الرابط الذي نسخته واضغط "Play".</p>
-                        </li>
-                        <li>
-                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>5. ابدأ التسجيل:</strong> من قائمة "View"، اختر "Advanced Controls" لتظهر أزرار التسجيل. اضغط على زر التسجيل (الذي يشبه النقطة الحمراء) لبدء التنزيل. سيبدأ VLC بتسجيل المحاضرة وحفظها كملف MP4.</p>
-                        </li>
-                    </ol>
+                <p id="downloadStatusText">يتم الآن تجهيز المحاضرة للتنزيل. قد يستغرق هذا بعض الوقت.</p>
+                <div class="progress-container">
+                    <div id="downloadProgressBar" class="progress-bar">0%</div>
                 </div>
-                <button id="closeDownloadModalBtn" class="btn btn-outline-telegram">
-                    إغلاق
-                </button>
             </div>
         </div>
     </div>
-    <!-- End Download HLS Modal -->
+    <!-- End Download Progress Modal -->
 
     <div id="homePage" class="page active">
         <div class="section-title">
@@ -1616,6 +1630,10 @@
         const teachersGrid = document.getElementById("teachersGrid");
         const playerContainer = document.getElementById("playerContainer");
         const videoLoader = document.getElementById("videoLoader");
+        const downloadProgressModal = document.getElementById("downloadProgressModal");
+        const downloadProgressBar = document.getElementById("downloadProgressBar");
+        const downloadStatusText = document.getElementById("downloadStatusText");
+
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
@@ -1756,7 +1774,7 @@
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
-                                <button class="download-btn" onclick="showDownloadModal('${lec.url}')">
+                                <button class="download-btn" onclick="downloadLecture('${lec.url}', '${lec.title}')">
                                     <i data-lucide="download"></i>
                                 </button>
                             </div>
@@ -1946,6 +1964,110 @@
             tryPlay();
         };
 
+        /* ========= Download Logic (NEW) ========= */
+        window.downloadLecture = async (url, title) => {
+            const isHLS = url.endsWith(".m3u8");
+
+            if (isHLS) {
+                // Show download progress modal
+                downloadProgressModal.classList.add('show');
+                downloadProgressBar.style.width = '0%';
+                downloadProgressBar.textContent = '0%';
+                downloadStatusText.textContent = 'يتم الآن تجهيز المحاضرة للتنزيل. قد يستغرق هذا بعض الوقت.';
+                lucide.createIcons();
+
+                const referer = "https://abwaab.com";
+                const proxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}`;
+
+                try {
+                    // Fetch HLS playlist to get segment URLs
+                    const manifestResponse = await fetch(proxyUrl);
+                    if (!manifestResponse.ok) throw new Error('فشل في تحميل قائمة تشغيل HLS.');
+
+                    const manifestText = await manifestResponse.text();
+                    const segmentUrls = manifestText.split('\n').filter(line => line.endsWith('.ts'));
+
+                    if (segmentUrls.length === 0) {
+                        throw new Error('لم يتم العثور على أجزاء فيديو في قائمة التشغيل.');
+                    }
+                    
+                    const baseUriMatch = url.match(/(.*\/)/);
+                    const baseUri = baseUriMatch ? baseUriMatch[1] : '';
+
+                    const videoSegments = [];
+                    for (let i = 0; i < segmentUrls.length; i++) {
+                        const segmentUrl = baseUri + segmentUrls[i];
+                        const segmentProxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(segmentUrl)}&referer=${encodeURIComponent(referer)}`;
+                        
+                        let segmentResponse = null;
+                        
+                        const fetchSegment = async () => {
+                            let retryCount = 0;
+                            while (retryCount < 3) {
+                                try {
+                                    const response = await fetch(segmentProxyUrl);
+                                    if (response.ok) return await response.arrayBuffer();
+                                    console.error(`Fetch failed for segment ${i+1}. Status: ${response.status}`);
+                                    retryCount++;
+                                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount - 1))); // Exponential backoff
+                                } catch (err) {
+                                    console.error(`Network error for segment ${i+1}:`, err);
+                                    retryCount++;
+                                    await new Promise(r => setTimeout(r, 1000 * Math.pow(2, retryCount - 1)));
+                                }
+                            }
+                            throw new Error(`فشل تحميل الجزء رقم ${i+1} بعد عدة محاولات.`);
+                        };
+                        
+                        const segmentData = await fetchSegment();
+                        videoSegments.push(segmentData);
+
+                        const progress = Math.round(((i + 1) / segmentUrls.length) * 100);
+                        downloadProgressBar.style.width = `${progress}%`;
+                        downloadProgressBar.textContent = `${progress}%`;
+                        downloadStatusText.textContent = `جاري تحميل ${i + 1} من ${segmentUrls.length} جزء.`;
+                    }
+                    
+                    downloadStatusText.textContent = 'جاري دمج الأجزاء...';
+
+                    // Combine segments into a single Blob
+                    const combinedBlob = new Blob(videoSegments, { type: 'video/mp2t' });
+                    const blobUrl = URL.createObjectURL(combinedBlob);
+
+                    // Create a link element to trigger the download
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = `${title}.mp4`;
+                    document.body.appendChild(a);
+                    a.click();
+
+                    downloadProgressModal.classList.remove('show');
+                    
+                    // Clean up
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(blobUrl);
+
+                } catch (error) {
+                    console.error('Download error:', error);
+                    downloadStatusText.textContent = `حدث خطأ في التنزيل: ${error.message || error}`;
+                    // Keep the modal open to show the error
+                }
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                 // For iframe links, direct download is not possible.
+                 // Show a custom alert or modal message.
+                 alert("لا يمكن تنزيل هذه المحاضرة مباشرة لأنها معروضة من خلال مشغل فيديو خارجي.");
+            } else {
+                // For other direct links (e.g., .mp4), trigger a simple download
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${title}.mp4`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                alert(`بدأ تنزيل المحاضرة: ${title}`);
+            }
+        };
+
         /* ========= Search ========= */
         function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
@@ -2110,39 +2232,6 @@
                     })
                     .catch(error => console.error("Error loading teacher data:", error));
                 if (foundTeacher) break;
-            }
-        });
-
-        const downloadModal = document.getElementById('downloadModal');
-        const copyUrlBtn = document.getElementById('copyUrlBtn');
-        const closeDownloadModalBtn = document.getElementById('closeDownloadModalBtn');
-        let currentDownloadUrl = '';
-
-        window.showDownloadModal = (url) => {
-            currentDownloadUrl = url;
-            downloadModal.classList.add('show');
-            lucide.createIcons();
-        };
-
-        closeDownloadModalBtn.addEventListener('click', () => {
-            downloadModal.classList.remove('show');
-        });
-
-        copyUrlBtn.addEventListener('click', () => {
-            if (currentDownloadUrl) {
-                // Use the older, more compatible clipboard API for this environment
-                const tempInput = document.createElement('textarea');
-                tempInput.value = currentDownloadUrl;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand('copy');
-                document.body.removeChild(tempInput);
-                copyUrlBtn.innerHTML = '<i data-lucide="check"></i> تم النسخ!';
-                lucide.createIcons();
-                setTimeout(() => {
-                    copyUrlBtn.innerHTML = '<i data-lucide="copy"></i> نسخ الرابط';
-                    lucide.createIcons();
-                }, 2000);
             }
         });
 
