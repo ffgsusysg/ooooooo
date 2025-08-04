@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title> اديسون</title>
+    <title> منصة إديسون</title>
     
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
@@ -50,8 +50,6 @@
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
-            /* Modal colors */
             --modal-bg-start: #6a11cb;
             --modal-bg-end: #2575fc;
             --modal-text-color: #ffffff;
@@ -60,8 +58,6 @@
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
-
-            /* Continue watching modal colors */
             --continue-modal-bg-start: #4facfe;
             --continue-modal-bg-end: #00f2fe;
             --continue-modal-text: #ffffff;
@@ -86,8 +82,6 @@
             --primary-3: #2563eb;
             --accent: #fcd34d;
             --accent-2: #fbbf24;
-
-            /* Dark theme modal colors */
             --modal-bg-start: #1a2a6c;
             --modal-bg-end: #004d99;
             --modal-text-color: #e0e7ff;
@@ -96,8 +90,6 @@
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #9ec5ff;
             --modal-outline-button-text: #9ec5ff;
-
-            /* Dark theme continue watching modal colors */
             --continue-modal-bg-start: #004d99;
             --continue-modal-bg-end: #1a2a6c;
             --continue-modal-text: #e0e7ff;
@@ -108,9 +100,7 @@
         }
 
         /* General styles */
-        *,
-        *:before,
-        *:after {
+        *, *:before, *:after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -270,7 +260,7 @@
         
         /* Header Profile Button */
         #dashboardButton.btn-icon {
-            padding: 2px; /* MODIFIED: Creates space for the border */
+            padding: 2px;
             overflow: hidden;
             border: 2px solid var(--primary-2);
             background-color: var(--card);
@@ -282,7 +272,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 50%; /* MODIFIED: Makes the image inside circular */
+            border-radius: 50%;
         }
 
         .btn-accent {
@@ -415,7 +405,7 @@
         }
         
         @media (min-width: 768px) {
-             .profile-info {
+            .profile-info {
                 text-align: right;
             }
         }
@@ -538,8 +528,8 @@
         }
         
         .category-card:hover {
-             transform: translateY(-8px);
-             box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2), 0 10px 10px -5px rgba(0,0,0,0.1);
         }
 
         .category-icon, .category-content {
@@ -756,12 +746,12 @@
         }
         
         .lecture-item.completed {
-            background-color: #dcfce7; /* Light green for completed */
+            background-color: #dcfce7;
             border-right-color: var(--success);
         }
         
         [data-theme="dark"] .lecture-item.completed {
-             background-color: #164e3b; /* Dark green for completed */
+            background-color: #164e3b;
         }
 
         .lecture-item:hover {
@@ -769,11 +759,11 @@
         }
         
         .lecture-play-area {
-             display: flex;
-             align-items: center;
-             gap: 0.75rem;
-             flex-grow: 1;
-             cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-grow: 1;
+            cursor: pointer;
         }
 
         .lecture-play-area i {
@@ -781,13 +771,38 @@
             transition: color 0.3s ease;
         }
         
+        /* Download button styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-1);
+            color: white;
+            margin-right: 0.5rem;
+            transition: all 0.2s ease-in-out;
+            flex-shrink: 0;
+        }
+
+        .download-btn i {
+            width: 20px;
+            height: 20px;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-2);
+            transform: scale(1.1);
+        }
+
         /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
             width: 24px;
             height: 24px;
             cursor: pointer;
-            margin-left: 1rem; /* Spacing from play button */
+            margin-left: 1rem;
         }
 
         .completion-checkbox input {
@@ -841,10 +856,10 @@
         .star-burst {
             position: absolute;
             top: 50%;
-            left: 12px; /* Centered on the checkbox */
+            left: 12px;
             width: 1px;
             height: 1px;
-            pointer-events: none; /* Allows clicking through */
+            pointer-events: none;
         }
 
         .star-burst.animate .star-particle {
@@ -889,7 +904,7 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            max-width: 1000px; /* Constrained width for larger screens */
+            max-width: 1000px;
             width: 100%;
             margin: 0 auto;
             padding: 0;
@@ -899,10 +914,10 @@
             position: relative;
             width: 100%;
             background: #000;
-            border-radius: var(--radius); /* Rounded corners for larger screens */
+            border-radius: var(--radius);
             overflow: hidden;
             aspect-ratio: 16/9;
-            box-shadow: var(--shadow-lg); /* Shadow for larger screens */
+            box-shadow: var(--shadow-lg);
         }
 
         .plyr {
@@ -1346,6 +1361,53 @@
         </div>
     </div>
     <!-- End Continue Watching Modal -->
+    
+    <!-- NEW Download HLS Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <i data-lucide="download-cloud"></i>
+                    تنزيل المحاضرة
+                </h3>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <strong>هذه المحاضرة من نوع HLS ولا يمكن تنزيلها مباشرة من المتصفح.</strong>
+                </p>
+                <p>
+                    للتنزيل، اتبع هذه الخطوات البسيطة:
+                </p>
+                <div style="text-align: right; margin-bottom: 2rem; color: var(--modal-text-color);">
+                    <ol style="padding-right: 1.5rem; text-align: right; list-style-position: inside;">
+                        <li>
+                            <p style="margin-bottom: 0.5rem;"><strong>1. انسخ الرابط:</strong> اضغط على الزر أدناه لنسخ رابط المحاضرة.</p>
+                            <button id="copyUrlBtn" class="btn btn-outline-telegram">
+                                <i data-lucide="copy"></i>
+                                نسخ الرابط
+                            </button>
+                        </li>
+                        <li>
+                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>2. افتح برنامج VLC:</strong> إذا لم يكن لديك، يمكنك تنزيله من <a href="https://www.videolan.org/vlc/download-windows.html" target="_blank" style="color: var(--highlight-color); text-decoration: underline;">هنا</a>.</p>
+                        </li>
+                        <li>
+                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>3. افتح الشبكة:</strong> في VLC، اذهب إلى "Media" ثم "Open Network Stream" (أو استخدم اختصار لوحة المفاتيح: <kbd>Ctrl+N</kbd>).</p>
+                        </li>
+                        <li>
+                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>4. الصق الرابط:</strong> الصق الرابط الذي نسخته واضغط "Play".</p>
+                        </li>
+                        <li>
+                            <p style="margin-top: 1rem; margin-bottom: 0.5rem;"><strong>5. ابدأ التسجيل:</strong> من قائمة "View"، اختر "Advanced Controls" لتظهر أزرار التسجيل. اضغط على زر التسجيل (الذي يشبه النقطة الحمراء) لبدء التنزيل. سيبدأ VLC بتسجيل المحاضرة وحفظها كملف MP4.</p>
+                        </li>
+                    </ol>
+                </div>
+                <button id="closeDownloadModalBtn" class="btn btn-outline-telegram">
+                    إغلاق
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End Download HLS Modal -->
 
     <div id="homePage" class="page active">
         <div class="section-title">
@@ -1373,7 +1435,7 @@
             </div>
             
             <div class="category-card" onclick="loadCategory('distinguished')" style="--gradient: linear-gradient(135deg, #10b981, #047857);">
-                 <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
+                <div class="category-icon"><i data-lucide="sparkles" style="width: 48px; height: 48px;"></i></div>
                 <div class="category-content">
                     <h3 class="category-title">قسم المتميزين</h3>
                     <p class="category-description">مواد خاصة للطلاب المتميزين</p>
@@ -1478,7 +1540,7 @@
             <div class="profile-info">
                 <h2>مرحباً أيها البطل!</h2>
                 <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
-                 <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
+                <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
                     <i data-lucide="upload"></i> تحميل صورة جديدة
                 </button>
             </div>
@@ -1689,9 +1751,14 @@
                     const isCompleted = !!completedLectures[lec.url];
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                <i data-lucide="play-circle"></i>
-                                <span>${li + 1}. ${lec.title}</span>
+                            <div style="display: flex; align-items: center;">
+                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                    <i data-lucide="play-circle"></i>
+                                    <span>${li + 1}. ${lec.title}</span>
+                                </div>
+                                <button class="download-btn" onclick="showDownloadModal('${lec.url}')">
+                                    <i data-lucide="download"></i>
+                                </button>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
@@ -1815,7 +1882,7 @@
             navigate("video");
 
             if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url); // Autoplay iframe
+                loadIframePlayer(url);
                 return;
             }
             
@@ -2046,9 +2113,42 @@
             }
         });
 
+        const downloadModal = document.getElementById('downloadModal');
+        const copyUrlBtn = document.getElementById('copyUrlBtn');
+        const closeDownloadModalBtn = document.getElementById('closeDownloadModalBtn');
+        let currentDownloadUrl = '';
+
+        window.showDownloadModal = (url) => {
+            currentDownloadUrl = url;
+            downloadModal.classList.add('show');
+            lucide.createIcons();
+        };
+
+        closeDownloadModalBtn.addEventListener('click', () => {
+            downloadModal.classList.remove('show');
+        });
+
+        copyUrlBtn.addEventListener('click', () => {
+            if (currentDownloadUrl) {
+                // Use the older, more compatible clipboard API for this environment
+                const tempInput = document.createElement('textarea');
+                tempInput.value = currentDownloadUrl;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                copyUrlBtn.innerHTML = '<i data-lucide="check"></i> تم النسخ!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    copyUrlBtn.innerHTML = '<i data-lucide="copy"></i> نسخ الرابط';
+                    lucide.createIcons();
+                }, 2000);
+            }
+        });
+
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000);
-            loadDashboardData(); 
+            loadDashboardData();
         });
 
         // Initialize
