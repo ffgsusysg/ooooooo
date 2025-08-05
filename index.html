@@ -34,8 +34,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    <!-- New: ffmpeg.wasm library -->
-    <script src='https://unpkg.com/@ffmpeg/ffmpeg@0.11.1/dist/ffmpeg.min.js'></script>
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -781,36 +779,6 @@
             transition: color 0.3s ease;
         }
         
-        /* Download button styling */
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--primary-1);
-            color: white;
-            margin-right: 0.5rem;
-            transition: all 0.2s ease-in-out;
-            flex-shrink: 0;
-        }
-        
-        /* New: Hide the button until the lecture is completed */
-        .lecture-item:not(.completed) .download-btn {
-            display: none;
-        }
-
-        .download-btn i {
-            width: 20px;
-            height: 20px;
-        }
-
-        .download-btn:hover {
-            background-color: var(--primary-2);
-            transform: scale(1.1);
-        }
-
         /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
@@ -1196,49 +1164,6 @@
             filter: brightness(1.05);
         }
 
-        /* Download Modal for HLS */
-        #downloadProgressModal .modal-content {
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            max-width: 400px;
-        }
-
-        #downloadProgressModal .modal-title {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-        }
-
-        #downloadProgressModal .progress-container {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 9999px;
-            height: 1.25rem;
-            overflow: hidden;
-            margin-bottom: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        #downloadProgressModal .progress-bar {
-            background-color: var(--accent);
-            height: 100%;
-            width: 0%;
-            border-radius: 9999px;
-            transition: width 0.2s ease-in-out;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #111;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        #downloadProgressModal .modal-body p {
-            color: white;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -1418,24 +1343,6 @@
     </div>
     <!-- End Continue Watching Modal -->
     
-    <!-- NEW Download Progress Modal -->
-    <div id="downloadProgressModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <i data-lucide="download-cloud"></i>
-                    جارٍ تنزيل المحاضرة...
-                </h3>
-            </div>
-            <div class="modal-body">
-                <p id="downloadStatusText">يتم الآن تجهيز المحاضرة للتنزيل. قد يستغرق هذا بعض الوقت.</p>
-                <div class="progress-container">
-                    <div id="downloadProgressBar" class="progress-bar">0%</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Download Progress Modal -->
 
     <div id="homePage" class="page active">
         <div class="section-title">
@@ -1645,9 +1552,6 @@
         const teachersGrid = document.getElementById("teachersGrid");
         const playerContainer = document.getElementById("playerContainer");
         const videoLoader = document.getElementById("videoLoader");
-        const downloadProgressModal = document.getElementById("downloadProgressModal");
-        const downloadProgressBar = document.getElementById("downloadProgressBar");
-        const downloadStatusText = document.getElementById("downloadStatusText");
 
 
         // Progress variables
@@ -1789,9 +1693,6 @@
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
-                                <button class="download-btn" onclick="downloadLecture('${lec.url}', '${lec.title}')" ${isCompleted ? '' : 'disabled'}>
-                                    <i data-lucide="download"></i>
-                                </button>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
@@ -1823,13 +1724,6 @@
             const isCompleted = checkbox.checked;
             completedLectures[lectureUrl] = isCompleted;
             localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
-            
-            // Enable/disable download button
-            const downloadBtn = lectureItem.querySelector('.download-btn');
-            if (downloadBtn) {
-                downloadBtn.disabled = !isCompleted;
-                downloadBtn.style.display = isCompleted ? 'inline-flex' : 'none';
-            }
 
             lectureItem.classList.toggle('completed', isCompleted);
             if (isCompleted) {
@@ -1998,139 +1892,6 @@
             }
             tryPlay();
         };
-        
-        // NEW: Function to check and get the final M3U8 URL
-        function getFinalDownloadUrl(url) {
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                const urlParts = url.split('/');
-                const videoId = urlParts[urlParts.length - 1];
-                const libraryId = urlParts[urlParts.length - 2];
-                return `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-            }
-            return url;
-        }
-        
-        // NEW: Download Logic using ffmpeg.wasm
-        const { createFFmpeg, fetchFile } = FFmpeg;
-        const ffmpeg = createFFmpeg({ log: false });
-        let isFfmpegLoaded = false;
-        
-        // Load FFmpeg.wasm once
-        async function loadFfmpeg() {
-            if (!isFfmpegLoaded) {
-                downloadStatusText.textContent = 'جاري تهيئة أداة التنزيل...';
-                await ffmpeg.load();
-                isFfmpegLoaded = true;
-                console.log('ffmpeg.wasm loaded successfully.');
-            }
-        }
-        
-        window.downloadLecture = async (url, title) => {
-            const finalDownloadUrl = getFinalDownloadUrl(url);
-
-            if (!finalDownloadUrl.endsWith('.m3u8')) {
-                // For direct links, use the browser's download feature
-                const a = document.createElement('a');
-                a.href = finalDownloadUrl;
-                a.download = `${title}.mp4`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                alert(`بدأ تنزيل المحاضرة: ${title}`);
-                return;
-            }
-            
-            downloadProgressModal.classList.add('show');
-            downloadProgressBar.style.width = '0%';
-            downloadProgressBar.textContent = '0%';
-            downloadStatusText.textContent = 'جاري تهيئة أداة التنزيل...';
-            lucide.createIcons();
-            
-            try {
-                await loadFfmpeg();
-
-                downloadStatusText.textContent = 'جاري تحميل قائمة التشغيل...';
-                const referer = "https://abwaab.com";
-                const proxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(finalDownloadUrl)}&referer=${encodeURIComponent(referer)}`;
-
-                const manifestResponse = await fetch(proxyUrl);
-                if (!manifestResponse.ok) throw new Error('فشل في تحميل قائمة تشغيل HLS.');
-
-                const manifestText = await manifestResponse.text();
-                const segmentUrls = manifestText.split('\n').filter(line => line.endsWith('.ts'));
-
-                if (segmentUrls.length === 0) {
-                    throw new Error('لم يتم العثور على أجزاء فيديو في قائمة التشغيل.');
-                }
-                
-                const baseUriMatch = finalDownloadUrl.match(/(.*\/)/);
-                const baseUri = baseUriMatch ? baseUriMatch[1] : '';
-
-                // Write each segment to ffmpeg's file system
-                downloadStatusText.textContent = 'جاري تحميل أجزاء الفيديو...';
-                const fileListContent = [];
-                for (let i = 0; i < segmentUrls.length; i++) {
-                    const segmentFilename = `segment${i}.ts`;
-                    const segmentUrl = baseUri + segmentUrls[i];
-                    const segmentProxyUrl = `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(segmentUrl)}&referer=${encodeURIComponent(referer)}`;
-                    
-                    try {
-                        const fileData = await fetchFile(segmentProxyUrl);
-                        await ffmpeg.FS('writeFile', segmentFilename, fileData);
-                        fileListContent.push(`file '${segmentFilename}'`);
-                        
-                        const progress = Math.round(((i + 1) / segmentUrls.length) * 100);
-                        downloadProgressBar.style.width = `${progress}%`;
-                        downloadProgressBar.textContent = `${progress}%`;
-                        downloadStatusText.textContent = `جاري تحميل ${i + 1} من ${segmentUrls.length} جزء.`;
-                    } catch (error) {
-                        console.error(`Fetch failed for segment ${i+1}:`, error);
-                        // We can't retry from here with ffmpeg.wasm's fetchFile, so we fail.
-                        throw new Error(`فشل تحميل الجزء رقم ${i+1}.`);
-                    }
-                }
-                
-                downloadStatusText.textContent = 'جاري دمج وتحويل الفيديو...';
-                
-                // Write the input list file
-                await ffmpeg.FS('writeFile', 'input.txt', fileListContent.join('\n'));
-
-                // Run the ffmpeg command to concat and convert to mp4
-                await ffmpeg.run('-f', 'concat', '-safe', '0', '-i', 'input.txt', '-c', 'copy', 'output.mp4');
-                
-                // Read the output file
-                const data = ffmpeg.FS('readFile', 'output.mp4');
-                
-                downloadStatusText.textContent = 'اكتمل التنزيل! جاري الحفظ...';
-
-                // Create a downloadable link for the final file
-                const blob = new Blob([data.buffer], { type: 'video/mp4' });
-                const blobUrl = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = blobUrl;
-                a.download = `${title}.mp4`;
-                document.body.appendChild(a);
-                a.click();
-                
-                // Clean up
-                downloadProgressModal.classList.remove('show');
-                document.body.removeChild(a);
-                URL.revokeObjectURL(blobUrl);
-                
-                // Delete all files from ffmpeg's file system
-                ffmpeg.FS('unlink', 'input.txt');
-                ffmpeg.FS('unlink', 'output.mp4');
-                for (let i = 0; i < segmentUrls.length; i++) {
-                    ffmpeg.FS('unlink', `segment${i}.ts`);
-                }
-
-            } catch (error) {
-                console.error('Download error:', error);
-                downloadProgressModal.classList.remove('show');
-                alert(`حدث خطأ في التنزيل: ${error.message || error}`);
-            }
-        };
-
 
         /* ========= Search ========= */
         function handleSearch() {
