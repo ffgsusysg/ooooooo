@@ -602,9 +602,6 @@
             overflow: hidden;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .teacher-card:hover {
@@ -689,80 +686,106 @@
             display: grid;
             gap: 1.4rem;
         }
-        
-        /* NEW lecture card styles */
-        .lecture-item {
-            position: relative;
+
+        .class-card {
             background: var(--card);
             border-radius: var(--radius);
             border: 1px solid var(--border);
             overflow: hidden;
-            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.9rem 1.1rem;
             box-shadow: var(--shadow-sm);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
 
-        .lecture-item:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 1.3rem;
+            cursor: pointer;
+            user-select: none;
+            background: var(--bg-glass);
+            backdrop-filter: blur(8px);
+            border-right: 4px solid var(--primary-2);
+            transition: background 0.25s ease, border-color 0.3s ease;
+        }
+        
+        .class-header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        
+        .class-progress {
+            font-size: 0.85rem;
+            color: var(--text);
+            opacity: 0.8;
+            font-weight: 500;
+        }
+
+        .class-header:hover {
+            background: var(--hover);
+        }
+
+        .class-header .chevron-icon {
+            transition: transform 0.25s ease;
+        }
+
+        .class-header.open .chevron-icon {
+            transform: rotate(180deg);
+        }
+
+        .lectures-list {
+            display: none;
+            flex-direction: column;
+            gap: 0.7rem;
+            padding: 1.1rem 1.5rem 0.9rem 0;
+        }
+
+        .lecture-item {
+            position: relative;
+            background: var(--hover);
+            border-right: 3px solid var(--primary-3);
+            border-radius: var(--radius);
+            transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.9rem 1.1rem;
         }
         
         .lecture-item.completed {
-            border-left: 5px solid var(--success);
+            background-color: #dcfce7;
+            border-right-color: var(--success);
+        }
+        
+        [data-theme="dark"] .lecture-item.completed {
+            background-color: #164e3b;
         }
 
-        .lecture-item .lecture-content {
+        .lecture-item:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
+        
+        .lecture-play-area {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             flex-grow: 1;
+            cursor: pointer;
         }
 
-        .lecture-item .play-icon-container {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary-1);
-            border-radius: 50%;
-            transition: transform 0.2s ease-out;
+        .lecture-play-area i {
+            color: var(--primary-1);
+            transition: color 0.3s ease;
         }
         
-        .lecture-item:hover .play-icon-container {
-            transform: scale(1.1);
-        }
-        
-        .lecture-item .play-icon-container i {
-            color: #fff;
-        }
-        
-        .lecture-item .lecture-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text);
-            transition: color 0.2s ease;
-        }
-        
-        .lecture-item:hover .lecture-title {
-            color: var(--primary-2);
-        }
-        
-        /* New Checkbox styles */
+        /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
             cursor: pointer;
             margin-left: 1rem;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .completion-checkbox input {
@@ -775,11 +798,11 @@
             position: absolute;
             top: 0;
             left: 0;
-            height: 100%;
-            width: 100%;
+            height: 24px;
+            width: 24px;
             background-color: var(--bg);
             border: 2px solid var(--border);
-            border-radius: 8px;
+            border-radius: 6px;
             transition: all 0.2s ease;
         }
 
@@ -803,15 +826,14 @@
         }
 
         .completion-checkbox .checkmark:after {
-            left: 8px;
-            top: 4px;
-            width: 7px;
-            height: 14px;
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 12px;
             border: solid white;
             border-width: 0 3px 3px 0;
             transform: rotate(45deg);
         }
-
 
         /* Star Burst Animation */
         .star-burst {
@@ -1624,11 +1646,9 @@
                 card.className = "teacher-card";
                 card.innerHTML = `
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
-                    <div class="teacher-details">
-                        <h3 class="teacher-name">${t.name}</h3>
-                        <p class="teacher-subject">${t.subject}</p>
-                        <div class="teacher-rating">${renderStars(rating)}</div>
-                    </div>
+                    <h3 class="teacher-name">${t.name}</h3>
+                    <p class="teacher-subject">${t.subject}</p>
+                    <div class="teacher-rating">${renderStars(rating)}</div>
                 `;
                 card.onclick = () => showTeacher(t.id);
                 teachersGrid.appendChild(card);
@@ -1667,12 +1687,12 @@
                 const lectures = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
                     return `
-                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                            <div class="lecture-content">
-                                <div class="play-icon-container">
-                                    <i data-lucide="play"></i>
+                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
+                            <div style="display: flex; align-items: center;">
+                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                    <i data-lucide="play-circle"></i>
+                                    <span>${li + 1}. ${lec.title}</span>
                                 </div>
-                                <span class="lecture-title">${li + 1}. ${lec.title}</span>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
