@@ -441,7 +441,19 @@
           ]
         },
         {
-          "name": "الفصل السادس",
+         
+          "name": "الفصل2",
+          "lectures": [
+            {
+              "title": "1",
+              "description": "تم صنع المنصة من حميد تابعوني انستا ZR_bb5",
+              "url": "https://iframe.mediadelivery.net/embed/215061/c3026be0-2d67-42dc-b91c-1a540ffe1391"
+           
+            }
+          ]
+        },
+        {
+ "name": "الفصل السادس",
           "lectures": [
             {
               "title": "مقدمة",
@@ -457,7 +469,12 @@
               "title": "المحاضرة 3 (المبرهنات 2)",
               "description": "تم رفع المحاضرة بواسطة حميد",
               "url": "https://iframe.mediadelivery.net/embed/215061/cfcee43e-d475-49e7-9c7d-b1cfd1938f23"
-            }
+           },
+            {
+              "title": "المحاضرة 4 (المبرهنات 3)",
+              "description": "تم رفع المحاضرة بواسطة حميد",
+              "url": "https://iframe.mediadelivery.net/embed/215061/a764f696-126d-4529-9cfb-3a02744db04b"  
+}
           ]
         }
       ]
