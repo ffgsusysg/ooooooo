@@ -75,6 +75,13 @@
             --continue-outline-button-text: #00c896;
             --highlight-color: #ffeb3b;
             --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
+            --dash-grad-1: #8E2DE2;
+            --dash-grad-2: #4A00E0;
+            --dash-grad-3: #11998e;
+            --dash-grad-4: #38ef7d;
+            --dash-grad-5: #f2709c;
+            --dash-grad-6: #ff9472;
+            --dash-text-light: #f0f0f0;
         }
 
         /* Dark theme adjustments */
@@ -105,6 +112,12 @@
             --continue-button-hover: #005a41;
             --continue-outline-button-border: #007a5e;
             --continue-outline-button-text: #007a5e;
+            --dash-grad-1: #4e54c8;
+            --dash-grad-2: #8f94fb;
+            --dash-grad-3: #00467F;
+            --dash-grad-4: #A5CC82;
+            --dash-grad-5: #5614B0;
+            --dash-grad-6: #dbd65c;
         }
 
         /* General styles */
@@ -310,6 +323,34 @@
             display: block;
         }
         
+        /* NEW: Welcome animation for the home page */
+        #homePage.page.active {
+            animation: pageSlideIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+        }
+
+        @keyframes pageSlideIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        #homePage .section-title {
+            animation: textFadeIn 1s ease-out;
+        }
+
+        #homePage .categories-grid {
+            animation: gridFadeIn 1.2s ease-out;
+        }
+
+        @keyframes textFadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes gridFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
         /* Dashboard Page Styles */
         #dashboardPage {
             --dash-grad-1: #8E2DE2;
@@ -496,169 +537,6 @@
         
         .dashboard-save-btn:hover {
             background: var(--accent-2);
-        }
-
-        /* NEW: Student schedule styles */
-        .schedule-section {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow-md);
-            margin-top: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            transition: background 0.3s ease;
-        }
-        .schedule-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 1rem;
-        }
-        .schedule-header h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-1);
-        }
-        .schedule-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        .schedule-item {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-right: 4px solid var(--primary-1);
-            border-radius: var(--radius);
-            padding: 1rem 1.5rem;
-            box-shadow: var(--shadow-sm);
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-        .schedule-item:hover {
-            background: var(--hover);
-        }
-        .schedule-item h4 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text);
-        }
-        .schedule-item ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .schedule-item li {
-            padding: 0.4rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text);
-            opacity: 0.8;
-        }
-        .schedule-item .lucide {
-            color: var(--primary-2);
-        }
-        .schedule-add-btn {
-            padding: 1rem;
-            border-radius: var(--radius);
-            background-color: var(--primary-1);
-            color: white;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: background-color 0.3s ease;
-        }
-        .schedule-add-btn:hover {
-            background-color: var(--primary-2);
-        }
-        
-        /* Modal for adding schedule item */
-        #addScheduleModal .modal-content {
-            background: var(--card);
-            padding: 2rem;
-            text-align: right;
-            color: var(--text);
-        }
-        #addScheduleModal .modal-title {
-            color: var(--primary-1);
-        }
-        #addScheduleModal .modal-body {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        #addScheduleModal .modal-body label {
-            font-weight: 600;
-            margin-bottom: 0.2rem;
-            display: block;
-        }
-        #addScheduleModal .modal-body input {
-            width: 100%;
-            padding: 0.75rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            background: var(--bg);
-            color: var(--text);
-            transition: border-color 0.25s;
-        }
-        #addScheduleModal .modal-body input:focus {
-            outline: none;
-            border-color: var(--primary-1);
-        }
-        #lecturesContainer .lecture-inputs {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background: var(--bg);
-            border-radius: var(--radius);
-            margin-top: 0.5rem;
-        }
-        #addScheduleModal .modal-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            justify-content: center;
-        }
-        #addScheduleModal .modal-actions button {
-            width: 50%;
-        }
-
-        /* Toaster notification style */
-        .toaster-notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-1), var(--primary-2));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 3000;
-            animation: slideInUp 0.5s ease-out forwards, fadeOut 3s 3.5s forwards;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        @keyframes slideInUp {
-            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
-            to { transform: translateX(-50%) translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; display: none; }
         }
 
         /* Category grid */
@@ -1131,6 +1009,48 @@
             transition: opacity 0.3s ease;
         }
         
+        /* NEW: Custom book loading animation */
+        .book-loader {
+            display: flex;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 600px;
+        }
+
+        .book {
+            width: 60px;
+            height: 80px;
+            background-color: var(--primary-1);
+            margin: 0 -5px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            transform-origin: right center;
+            animation: book-flip 2s infinite ease-in-out;
+        }
+
+        .book-loader .book:nth-child(1) { animation-delay: 0s; }
+        .book-loader .book:nth-child(2) { background-color: var(--accent); animation-delay: 0.2s; }
+        .book-loader .book:nth-child(3) { background-color: #3b82f6; animation-delay: 0.4s; }
+        .book-loader .book:nth-child(4) { background-color: var(--accent-2); animation-delay: 0.6s; }
+
+        .book::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            opacity: 0.9;
+        }
+        
+        @keyframes book-flip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(-180deg); }
+            100% { transform: rotateY(0deg); }
+        }
+
         /* Iframe placeholder styles */
         .iframe-placeholder {
             position: absolute;
@@ -1155,20 +1075,6 @@
         .iframe-placeholder:hover .play-button-overlay {
             opacity: 1;
             transform: scale(1.1);
-        }
-
-        .loader-spinner {
-            border: 6px solid #f3f3f3;
-            border-top: 6px solid var(--primary-1);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
 
         /* Modal Styles */
@@ -1595,7 +1501,13 @@
                 <div id="playerContainer"></div>
                 <!-- Loader for iframe videos -->
                 <div id="videoLoader" class="video-loader" style="display: none;">
-                    <div class="loader-spinner"></div>
+                    <!-- REPLACED: Spinner with a custom book loader animation -->
+                    <div class="book-loader">
+                        <div class="book"></div>
+                        <div class="book"></div>
+                        <div class="book"></div>
+                        <div class="book"></div>
+                    </div>
                 </div>
             </div>
             
@@ -1619,7 +1531,7 @@
         </div>
     </div>
 
-    <!-- Dashboard Page -->
+    <!-- NEW: Dashboard Page -->
     <div id="dashboardPage" class="page">
         <div class="dashboard-header">
             <h1>لوحة التحكم</h1>
@@ -1660,54 +1572,10 @@
                 <input type="text" id="gradeInput" placeholder="مثلاً: 99.5%">
             </div>
         </div>
-        
-        <div class="schedule-section">
-            <div class="schedule-header">
-                <h3>جدول الطالب</h3>
-                <button class="btn btn-icon schedule-add-btn" id="addScheduleBtn">
-                    <i data-lucide="plus"></i>
-                </button>
-            </div>
-            <p style="opacity: 0.7;">أضف موادك ومحاضراتك اليومية مع تذكير بسيط!</p>
-            <div id="scheduleList" class="schedule-list">
-                <!-- Schedule items will be rendered here -->
-            </div>
-        </div>
-
         <button class="btn dashboard-save-btn" id="saveDashboardButton">
             <i data-lucide="save"></i>
             حفظ التغييرات
         </button>
-    </div>
-
-
-    <!-- NEW: Add Schedule Modal -->
-    <div id="addScheduleModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <i data-lucide="calendar-plus"></i>
-                    إضافة مادة جديدة
-                </h3>
-            </div>
-            <div class="modal-body">
-                <label for="subjectNameInput">اسم المادة:</label>
-                <input type="text" id="subjectNameInput" placeholder="مثلاً: الكيمياء" />
-                <label for="lectureCountInput">عدد المحاضرات اليومية:</label>
-                <input type="number" id="lectureCountInput" value="1" min="1" max="10" />
-                <div id="lecturesContainer">
-                    <!-- Dynamic lecture inputs here -->
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button id="saveScheduleBtn" class="btn btn-telegram" style="width: 100%;">
-                    <i data-lucide="save"></i> حفظ المادة
-                </button>
-                <button id="cancelScheduleBtn" class="btn btn-outline-telegram" style="width: 100%;">
-                    إلغاء
-                </button>
-            </div>
-        </div>
     </div>
 
 
@@ -2138,23 +2006,6 @@
         const headerProfilePicEl = document.getElementById('headerProfilePic');
         const defaultUserIconEl = document.getElementById('defaultUserIcon');
         const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
-        const addScheduleBtn = document.getElementById('addScheduleBtn');
-        const addScheduleModal = document.getElementById('addScheduleModal');
-        const subjectNameInput = document.getElementById('subjectNameInput');
-        const lectureCountInput = document.getElementById('lectureCountInput');
-        const lecturesContainer = document.getElementById('lecturesContainer');
-        const saveScheduleBtn = document.getElementById('saveScheduleBtn');
-        const cancelScheduleBtn = document.getElementById('cancelScheduleBtn');
-        const scheduleList = document.getElementById('scheduleList');
-        
-        // Removed reminder modal elements as they are replaced with native notifications.
-        // const reminderModal = document.getElementById('reminderModal');
-        // const reminderSubject = document.getElementById('reminderSubject');
-        // const reminderLecture = document.getElementById('reminderLecture');
-        // const closeReminderBtn = document.getElementById('closeReminderBtn');
-
-        let studentSchedule = [];
-        let reminderTimers = [];
 
         function updateHeaderProfilePic() {
             const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
@@ -2180,161 +2031,9 @@
             if (profile.grade) {
                 gradeInputEl.value = profile.grade;
             }
-            
-            studentSchedule = JSON.parse(localStorage.getItem('studentSchedule')) || [];
-            renderSchedule();
-            setAllReminders();
             updateHeaderProfilePic();
         }
         
-        // Schedule functions
-        function renderSchedule() {
-            scheduleList.innerHTML = '';
-            if (studentSchedule.length === 0) {
-                scheduleList.innerHTML = '<p style="text-align: center; color: var(--text); opacity: 0.7;">لم يتم إضافة أي مواد بعد.</p>';
-                return;
-            }
-            studentSchedule.forEach((subject) => {
-                const item = document.createElement('div');
-                item.className = 'schedule-item';
-                let lecturesHtml = subject.lectures.map(lec => `
-                    <li>
-                        <i data-lucide="book-open"></i>
-                        <span>${lec.name}</span>
-                        (التذكير: ${lec.time})
-                    </li>
-                `).join('');
-                item.innerHTML = `
-                    <h4>${subject.subjectName}</h4>
-                    <ul>${lecturesHtml}</ul>
-                `;
-                scheduleList.appendChild(item);
-            });
-            lucide.createIcons();
-        }
-
-        function showAddScheduleModal() {
-            addScheduleModal.classList.add('show');
-            generateLectureInputs();
-            lucide.createIcons();
-        }
-
-        function hideAddScheduleModal() {
-            addScheduleModal.classList.remove('show');
-            subjectNameInput.value = '';
-            lectureCountInput.value = '1';
-            lecturesContainer.innerHTML = '';
-        }
-
-        function generateLectureInputs() {
-            const count = parseInt(lectureCountInput.value) || 1;
-            lecturesContainer.innerHTML = '';
-            for (let i = 0; i < count; i++) {
-                const lectureDiv = document.createElement('div');
-                lectureDiv.className = 'lecture-inputs';
-                lectureDiv.innerHTML = `
-                    <label>محاضرة ${i + 1}:</label>
-                    <input type="text" class="lecture-name-input" placeholder="اسم المحاضرة" required/>
-                    <label>وقت التذكير:</label>
-                    <input type="time" class="lecture-time-input" required/>
-                `;
-                lecturesContainer.appendChild(lectureDiv);
-            }
-        }
-
-        async function saveSchedule() {
-            const subjectName = subjectNameInput.value.trim();
-            const lectureInputs = document.querySelectorAll('.lecture-inputs');
-            if (!subjectName) {
-                showMessage("يجب إدخال اسم المادة!", "error");
-                return;
-            }
-            if (lectureInputs.length === 0) {
-                showMessage("يجب إضافة محاضرة واحدة على الأقل!", "error");
-                return;
-            }
-
-            const lectures = [];
-            let isValid = true;
-            lectureInputs.forEach(inputDiv => {
-                const name = inputDiv.querySelector('.lecture-name-input').value.trim();
-                const time = inputDiv.querySelector('.lecture-time-input').value;
-                if (!name || !time) {
-                    isValid = false;
-                }
-                lectures.push({ name, time });
-            });
-
-            if (!isValid) {
-                showMessage("الرجاء إدخال اسم ووقت لكل محاضرة.", "error");
-                return;
-            }
-            
-            // Request notification permission if not granted
-            if (Notification.permission !== 'granted') {
-                const permission = await Notification.requestPermission();
-                if (permission !== 'granted') {
-                    showMessage("تم رفض إذن الإشعارات. لن يتم إرسال تذكيرات.", "warning");
-                }
-            }
-
-            const newSubject = { subjectName, lectures };
-            studentSchedule.push(newSubject);
-            localStorage.setItem('studentSchedule', JSON.stringify(studentSchedule));
-            renderSchedule();
-            setAllReminders();
-            hideAddScheduleModal();
-            showMessage("تم حفظ المادة بنجاح!", "success");
-        }
-
-        function setAllReminders() {
-            // Clear existing timers
-            reminderTimers.forEach(timer => clearTimeout(timer));
-            reminderTimers = [];
-
-            if (Notification.permission !== 'granted') {
-                console.log("إذن الإشعارات غير ممنوح.");
-                return;
-            }
-
-            const now = new Date();
-            studentSchedule.forEach(subject => {
-                subject.lectures.forEach(lecture => {
-                    const [hours, minutes] = lecture.time.split(':');
-                    const reminderTime = new Date();
-                    reminderTime.setHours(hours, minutes, 0, 0);
-
-                    // Check if the reminder time is for today and is in the future
-                    if (reminderTime > now) {
-                        const timeUntilReminder = reminderTime.getTime() - now.getTime();
-                        const timer = setTimeout(() => {
-                            sendNotification(subject.subjectName, lecture.name);
-                        }, timeUntilReminder);
-                        reminderTimers.push(timer);
-                    }
-                });
-            });
-        }
-        
-        function sendNotification(subject, lecture) {
-            new Notification('تذكير بمحاضرة!', {
-                body: `حان وقت دراسة مادة: ${subject}\nمحاضرة: ${lecture}`,
-                icon: document.querySelector('link[rel="icon"]').href
-            });
-        }
-
-        function showMessage(message, type) {
-            const toaster = document.createElement('div');
-            toaster.className = 'toaster-notification';
-            toaster.innerHTML = `<i data-lucide="${type === 'success' ? 'check' : 'alert-circle'}"></i><span>${message}</span>`;
-            document.body.appendChild(toaster);
-            lucide.createIcons();
-            setTimeout(() => {
-                toaster.remove();
-            }, 4000);
-        }
-
-        // Event listeners
         uploadProfilePicBtn.addEventListener('click', () => {
             profilePictureInputEl.click();
         });
@@ -2366,12 +2065,6 @@
                 lucide.createIcons();
             }, 2000);
         });
-
-        addScheduleBtn.addEventListener('click', showAddScheduleModal);
-        lectureCountInput.addEventListener('change', generateLectureInputs);
-        saveScheduleBtn.addEventListener('click', saveSchedule);
-        cancelScheduleBtn.addEventListener('click', hideAddScheduleModal);
-        // Removed closeReminderBtn event listener
 
         /* ========= Modal Logic ========= */
         const telegramModal = document.getElementById("telegramModal");
