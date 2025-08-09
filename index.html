@@ -942,7 +942,7 @@
             aspect-ratio: 16/9;
             box-shadow: var(--shadow-lg);
         }
-
+        
         .plyr {
             border-radius: var(--radius);
             overflow: hidden;
@@ -1007,20 +1007,15 @@
             align-items: center;
             z-index: 10;
             border-radius: var(--radius);
-            transition: opacity 0.3s ease;
+            transition: opacity 0.1s ease; /* Adjusted for instant disappearance */
             text-align: center;
         }
         
-        /* NEW: Custom Uiverse Loader */
+        /* Custom Uiverse Loader */
         .loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 10;
+            position: relative; /* Changed to relative for centering in flexbox */
             width: 160px;
             height: 100px;
-            margin-left: -80px;
-            margin-top: -50px;
             border-radius: 5px;
             background: #1e3f57;
             animation: dot1_ 3s cubic-bezier(0.55,0.3,0.24,0.99) infinite;
@@ -1402,6 +1397,44 @@
                 padding-bottom: 5vh;
             }
         }
+
+        /* NEW: Download button styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            background: var(--primary-1);
+            color: #fff;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            box-shadow: var(--shadow-sm);
+            font-size: 0.9rem;
+        }
+
+        .download-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .download-btn[data-downloading="true"] {
+            background-color: var(--accent-2);
+            cursor: not-allowed;
+        }
+
+        .lecture-item .download-progress {
+            width: 100px;
+            margin: 0 0.5rem;
+        }
+
+        /* Hiding plyr captions and download button */
+        .plyr__controls__item.plyr__download,
+        .plyr__controls__item.plyr__control[data-plyr="captions"] {
+            display: none !important;
+        }
     </style>
 
 </head>
@@ -1448,8 +1481,8 @@
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
                     <i data-lucide="send"></i>
                     <span>اشترك الآن</span>
-                </a
-                ><button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
+                </a>
+                <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
                     اشتركت سابقا المتابعة
                 </button>
             </div>
@@ -1818,6 +1851,73 @@
             navigate("classes");
         };
 
+        // NEW: Download functions
+        function downloadFile(url, filename, progressElement, downloadButton) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.responseType = 'blob';
+
+            xhr.onloadstart = () => {
+                progressElement.style.display = 'inline-block';
+                progressElement.value = 0;
+                downloadButton.setAttribute('data-downloading', 'true');
+            };
+
+            xhr.onprogress = (e) => {
+                if (e.lengthComputable) {
+                    const percent = Math.round((e.loaded / e.total) * 100);
+                    progressElement.value = percent;
+                }
+            };
+
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const blobUrl = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = blobUrl;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(blobUrl);
+                } else {
+                    alert('فشل تحميل الملف.');
+                }
+            };
+
+            xhr.onloadend = () => {
+                progressElement.style.display = 'none';
+                downloadButton.setAttribute('data-downloading', 'false');
+            };
+
+            xhr.onerror = () => {
+                alert('حدث خطأ أثناء التحميل.');
+                progressElement.style.display = 'none';
+                downloadButton.setAttribute('data-downloading', 'false');
+            };
+
+            xhr.send();
+        }
+
+        async function downloadHlsAsMp4(manifestUrl, outputName, progressElement, downloadButton) {
+            try {
+                progressElement.style.display = 'inline-block';
+                downloadButton.setAttribute('data-downloading', 'true');
+
+                // This is a simplified approach, a real implementation would be more complex
+                alert("Downloading HLS videos is currently not supported. This feature is under development.");
+            } catch (err) {
+                console.error(err);
+                alert('⚠️ فشل في تحميل الفيديو.');
+            } finally {
+                progressElement.style.display = 'none';
+                downloadButton.setAttribute('data-downloading', 'false');
+            }
+        }
+        // END NEW: Download functions
+
+
         function renderClasses(classesData) {
             classesList.innerHTML = classesData.map((cls, ci) => {
                 const totalLectures = cls.lectures.length;
@@ -1837,6 +1937,11 @@
                                 <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
                                 <span class="checkmark"></span>
                             </label>
+                            <!-- NEW: Download button and progress bar -->
+                            <button class="download-btn" data-downloading="false" onclick="handleDownload(event, '${lec.url}', '${lec.title}')">
+                                <i data-lucide="download"></i>
+                            </button>
+                            <progress class="download-progress" max="100" value="0" style="display: none;"></progress>
                         </div>
                     `;
                 }).join("");
@@ -1856,6 +1961,32 @@
             lucide.createIcons();
         }
         
+        // NEW: Handle download click
+        window.handleDownload = (event, url, title) => {
+            event.stopPropagation();
+            const downloadButton = event.currentTarget;
+            const progressElement = downloadButton.nextElementSibling;
+            
+            if (downloadButton.getAttribute('data-downloading') === 'true') {
+                alert('التحميل قيد التنفيذ بالفعل.');
+                return;
+            }
+
+            const teacherName = currentTeacher.name || 'مدرس';
+            const fileName = `منصة إديسون - ${title} لـ${teacherName}`;
+
+            if (url.endsWith('.mp4') || url.includes('mediadelivery.net/embed/')) {
+                 downloadFile(url, fileName + '.mp4', progressElement, downloadButton);
+            } else if (url.endsWith('.m3u8')) {
+                // Simplified HLS download logic, will show alert and do nothing for now
+                downloadHlsAsMp4(url, fileName + '.mp4', progressElement, downloadButton);
+            } else {
+                // Default for other types of files
+                downloadFile(url, fileName, progressElement, downloadButton);
+            }
+        };
+
+
         window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
             event.stopPropagation();
             const lectureItem = checkbox.closest('.lecture-item');
