@@ -1711,27 +1711,6 @@
     </div>
 
 
-    <!-- NEW: Reminder Modal (simulated notification) -->
-    <div id="reminderModal" class="modal">
-        <div class="modal-content" style="background: linear-gradient(135deg, #10b981, #047857); color: white;">
-            <div class="modal-header">
-                <h3 class="modal-title" style="color: white; border-bottom-color: white;">
-                    <i data-lucide="bell-ring"></i>
-                    تذكير بمحاضرة!
-                </h3>
-            </div>
-            <div class="modal-body">
-                <p>حان وقت دراسة:</p>
-                <p><span id="reminderSubject" class="highlight-text" style="font-size: 1.5rem;"></span></p>
-                <p>محاضرة: <span id="reminderLecture" class="highlight-text"></span></p>
-            </div>
-            <div class="modal-actions">
-                <button id="closeReminderBtn" class="btn btn-outline-telegram">حسناً، سأبدأ الآن</button>
-            </div>
-        </div>
-    </div>
-
-
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -2167,10 +2146,12 @@
         const saveScheduleBtn = document.getElementById('saveScheduleBtn');
         const cancelScheduleBtn = document.getElementById('cancelScheduleBtn');
         const scheduleList = document.getElementById('scheduleList');
-        const reminderModal = document.getElementById('reminderModal');
-        const reminderSubject = document.getElementById('reminderSubject');
-        const reminderLecture = document.getElementById('reminderLecture');
-        const closeReminderBtn = document.getElementById('closeReminderBtn');
+        
+        // Removed reminder modal elements as they are replaced with native notifications.
+        // const reminderModal = document.getElementById('reminderModal');
+        // const reminderSubject = document.getElementById('reminderSubject');
+        // const reminderLecture = document.getElementById('reminderLecture');
+        // const closeReminderBtn = document.getElementById('closeReminderBtn');
 
         let studentSchedule = [];
         let reminderTimers = [];
@@ -2261,7 +2242,7 @@
             }
         }
 
-        function saveSchedule() {
+        async function saveSchedule() {
             const subjectName = subjectNameInput.value.trim();
             const lectureInputs = document.querySelectorAll('.lecture-inputs');
             if (!subjectName) {
@@ -2289,6 +2270,14 @@
                 return;
             }
             
+            // Request notification permission if not granted
+            if (Notification.permission !== 'granted') {
+                const permission = await Notification.requestPermission();
+                if (permission !== 'granted') {
+                    showMessage("تم رفض إذن الإشعارات. لن يتم إرسال تذكيرات.", "warning");
+                }
+            }
+
             const newSubject = { subjectName, lectures };
             studentSchedule.push(newSubject);
             localStorage.setItem('studentSchedule', JSON.stringify(studentSchedule));
@@ -2303,6 +2292,11 @@
             reminderTimers.forEach(timer => clearTimeout(timer));
             reminderTimers = [];
 
+            if (Notification.permission !== 'granted') {
+                console.log("إذن الإشعارات غير ممنوح.");
+                return;
+            }
+
             const now = new Date();
             studentSchedule.forEach(subject => {
                 subject.lectures.forEach(lecture => {
@@ -2310,22 +2304,23 @@
                     const reminderTime = new Date();
                     reminderTime.setHours(hours, minutes, 0, 0);
 
+                    // Check if the reminder time is for today and is in the future
                     if (reminderTime > now) {
                         const timeUntilReminder = reminderTime.getTime() - now.getTime();
                         const timer = setTimeout(() => {
-                            showReminder(subject.subjectName, lecture.name);
+                            sendNotification(subject.subjectName, lecture.name);
                         }, timeUntilReminder);
                         reminderTimers.push(timer);
                     }
                 });
             });
         }
-
-        function showReminder(subject, lecture) {
-            reminderSubject.textContent = subject;
-            reminderLecture.textContent = lecture;
-            reminderModal.classList.add('show');
-            lucide.createIcons();
+        
+        function sendNotification(subject, lecture) {
+            new Notification('تذكير بمحاضرة!', {
+                body: `حان وقت دراسة مادة: ${subject}\nمحاضرة: ${lecture}`,
+                icon: document.querySelector('link[rel="icon"]').href
+            });
         }
 
         function showMessage(message, type) {
@@ -2376,7 +2371,7 @@
         lectureCountInput.addEventListener('change', generateLectureInputs);
         saveScheduleBtn.addEventListener('click', saveSchedule);
         cancelScheduleBtn.addEventListener('click', hideAddScheduleModal);
-        closeReminderBtn.addEventListener('click', () => reminderModal.classList.remove('show'));
+        // Removed closeReminderBtn event listener
 
         /* ========= Modal Logic ========= */
         const telegramModal = document.getElementById("telegramModal");
