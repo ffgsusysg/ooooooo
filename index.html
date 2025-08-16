@@ -1971,7 +1971,7 @@
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
             let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
-            const proxiedUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            const proxiedUrl = useProxy && isHLS ? `https://proud-butterfly-eb7b.hmyzc824-d08.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 loadIframePlayer(url);
