@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>منصة إديسون</title>
     
-    <!-- Open Graph Tags -->
+    <!-- Open Graph Tags (NEW) -->
     <meta property="og:title" content="منصة إديسون التعليمية" />
     <meta property="og:description" content="منصة اديسون التعليمية هي منصة تقدم محاضرات لطلاب السادس العلمي بشكل مجاني 2026_ 2025" />
     <meta property="og:image" content="https://i.imghippo.com/files/Baa5419rPk.jpg" />
@@ -22,25 +22,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- New Player Scripts -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
     <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
     <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
-
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
-            --primary-1: #f97316;
-            --primary-2: #ea580c;
-            --primary-3: #c2410c;
+            --primary-1: #3b82f6;
+            --primary-2: #2563eb;
+            --primary-3: #1d4ed8;
             --accent: #facc15;
             --accent-2: #eab308;
             --radius: 14px;
@@ -76,8 +75,8 @@
             --continue-outline-button-text: #00c896;
             --highlight-color: #ffeb3b;
             --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
-            --dash-grad-1: #f97316;
-            --dash-grad-2: #ea580c;
+            --dash-grad-1: #8E2DE2;
+            --dash-grad-2: #4A00E0;
             --dash-grad-3: #11998e;
             --dash-grad-4: #38ef7d;
             --dash-grad-5: #f2709c;
@@ -93,9 +92,9 @@
             --card: #334155;
             --border: #475569;
             --hover: rgba(255, 255, 255, 0.1);
-            --primary-1: #f97316;
-            --primary-2: #ea580c;
-            --primary-3: #c2410c;
+            --primary-1: #60a5fa;
+            --primary-2: #3b82f6;
+            --primary-3: #2563eb;
             --accent: #fcd34d;
             --accent-2: #fbbf24;
             --modal-bg-start: #1a2a6c;
@@ -113,8 +112,8 @@
             --continue-button-hover: #005a41;
             --continue-outline-button-border: #007a5e;
             --continue-outline-button-text: #007a5e;
-            --dash-grad-1: #f97316;
-            --dash-grad-2: #ea580c;
+            --dash-grad-1: #4e54c8;
+            --dash-grad-2: #8f94fb;
             --dash-grad-3: #00467F;
             --dash-grad-4: #A5CC82;
             --dash-grad-5: #5614B0;
@@ -354,8 +353,8 @@
         
         /* Dashboard Page Styles */
         #dashboardPage {
-            --dash-grad-1: #f97316;
-            --dash-grad-2: #ea580c;
+            --dash-grad-1: #8E2DE2;
+            --dash-grad-2: #4A00E0;
             --dash-grad-3: #11998e;
             --dash-grad-4: #38ef7d;
             --dash-grad-5: #f2709c;
@@ -364,8 +363,8 @@
         }
         
         [data-theme="dark"] #dashboardPage {
-            --dash-grad-1: #f97316;
-            --dash-grad-2: #ea580c;
+            --dash-grad-1: #4e54c8;
+            --dash-grad-2: #8f94fb;
             --dash-grad-3: #00467F;
             --dash-grad-4: #A5CC82;
             --dash-grad-5: #5614B0;
@@ -1301,24 +1300,6 @@
             filter: brightness(1.05);
         }
 
-        /* Quality selection dropdown styles */
-        .video-quality-select {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            background-color: var(--card);
-            color: var(--text);
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-        
-        .video-quality-select:focus {
-            outline: none;
-            border-color: var(--primary-1);
-            box-shadow: 0 0 0 2px var(--primary-1);
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -1467,8 +1448,8 @@
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
                     <i data-lucide="send"></i>
                     <span>اشترك الآن</span>
-                </a>
-                <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
+                </a
+                ><button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
                     اشتركت سابقا المتابعة
                 </button>
             </div>
@@ -1482,7 +1463,7 @@
             <div class="modal-header">
                 <h3 class="modal-title">
                     <i data-lucide="graduation-cap"></i>
-                    عزيزي الطالب
+                    عزيزي الطالب 
                 </h3>
             </div>
             <div class="modal-body">
@@ -1606,12 +1587,9 @@
                     </div>
                 </div>
                 
-                <div style="display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap;">
-                    <button class="btn back-button" onclick="navigate('classes')">
-                        <i data-lucide="arrow-right"></i>العودة للفصول
-                    </button>
-                    <select id="qualitySelect" class="video-quality-select" style="display:none;"></select>
-                </div>
+                <button class="btn back-button" onclick="navigate('classes')">
+                    <i data-lucide="arrow-right"></i>العودة للفصول
+                </button>
             </div>
         </div>
     </div>
@@ -1663,6 +1641,10 @@
         </button>
     </div>
 
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <script type="text/babel">
         // Initialize theme
         function initializeTheme() {
@@ -1692,152 +1674,9 @@
             updateThemeIcon(next);
         });
 
-        // Plyr and HLS player instances
-        let plyr = null;
-        let hls = null;
-        let thumbPlugin = null;
-        const qualitySelect = document.getElementById('qualitySelect');
-
-        // Function to destroy all player instances and elements
-        function destroyPlayer() {
-            if (plyr) { 
-                try { plyr.destroy(); } catch(e){} 
-                plyr = null; 
-            }
-            if (hls) { 
-                try { hls.destroy(); } catch(e){} 
-                hls = null; 
-            }
-            if (thumbPlugin && thumbPlugin.destroy) { 
-                try { thumbPlugin.destroy(); } catch(e){} 
-            }
-            thumbPlugin = null;
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
-            }
-            playerContainer.innerHTML = '';
-            videoLoader.style.display = 'none';
-        }
-
-        // Function to initialize Plyr with all controls and settings
-        function initPlyr() {
-            const videoEl = document.getElementById('player');
-            if (!videoEl) return;
-            plyr = new Plyr(videoEl, {
-                controls: ['play-large','play','progress','current-time','duration','mute','volume','settings','pip','airplay','fullscreen'],
-                i18n: {
-                    play:'تشغيل', pause:'إيقاف', settings:'الإعدادات', quality:'الجودة', captions:'الترجمة', fullscreen:'ملء الشاشة', pip:'صورة داخل صورة', airplay:'إيربلاي'
-                },
-                settings: ["quality", "speed"],
-                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-            });
-            // HLS quality selection integration
-            if (hls) {
-                plyr.on('languagechange', () => {
-                    const qualityOption = plyr.options.quality;
-                    if (qualityOption) {
-                        const level = parseInt(qualityOption, 10);
-                        hls.currentLevel = level;
-                    }
-                });
-            }
-        }
-        
-        // Function to populate the quality dropdown based on HLS levels
-        function populateQuality(levels) {
-            if (!qualitySelect) return;
-            qualitySelect.innerHTML = '<option value="auto">تلقائي</option>';
-            levels.forEach((lvl, i) => {
-                const label = lvl.height ? (lvl.height+'p') : (lvl.bitrate ? Math.round(lvl.bitrate/1000)+'kbps' : ('Level '+i));
-                const opt = document.createElement('option');
-                opt.value = String(i);
-                opt.textContent = label;
-                qualitySelect.appendChild(opt);
-            });
-            qualitySelect.style.display = 'block';
-        }
-
-        // The main function to load and play a video URL
-        window.loadVideo = (url, savedTime = 0) => {
-            destroyPlayer();
-            
-            // Check if the URL is from Mediadelivery for iframe embedding
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                videoLoader.style.display = 'flex';
-                const iframeHtml = `
-                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                        <iframe 
-                            src="${url}" 
-                            allowfullscreen 
-                            loading="eager"
-                            style="width: 100%; height: 100%; border: none; border-radius: inherit;"
-                            referrerpolicy="no-referrer-when-downgrade"
-                            allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                            onload="document.getElementById('videoLoader').style.display='none';"
-                        ></iframe>
-                    </div>
-                `;
-                playerContainer.innerHTML = iframeHtml;
-                return;
-            }
-
-            // Otherwise, set up the video tag for HLS/MP4 playback
-            const videoEl = document.createElement("video");
-            videoEl.id = "player";
-            videoEl.playsInline = true;
-            videoEl.controls = true;
-            playerContainer.innerHTML = "";
-            playerContainer.appendChild(videoEl);
-            
-            const isHls = /\.m3u8(\?|$)/i.test(url);
-            const referer = "https://abwaab.com";
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            const useProxy = !directPlayDomains.some(domain => url.startsWith(domain));
-            const proxiedUrl = useProxy && isHls ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}` : url;
-
-            if (isHls && Hls.isSupported()) {
-                hls = new Hls({ enableWorker: true, lowLatencyMode: true });
-                hls.attachMedia(videoEl);
-                hls.loadSource(proxiedUrl);
-                hls.on(Hls.Events.MANIFEST_PARSED, (_, data) => {
-                    populateQuality(data.levels || []);
-                    initPlyr();
-                    videoEl.play().then(() => { 
-                        if (savedTime > 0) videoEl.currentTime = savedTime; 
-                    }).catch(console.error);
-                });
-                hls.on(Hls.Events.ERROR, (_, data) => {
-                    if (data.fatal) {
-                        console.warn('HLS fatal error:', data);
-                        switch (data.type) {
-                            case Hls.ErrorTypes.NETWORK_ERROR:
-                                hls.startLoad();
-                                break;
-                            case Hls.ErrorTypes.MEDIA_ERROR:
-                                hls.recoverMediaError();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
-            } else {
-                videoEl.src = proxiedUrl;
-                initPlyr();
-                videoEl.play().then(() => {
-                    if (savedTime > 0) videoEl.currentTime = savedTime;
-                }).catch(() => console.log("تعذر تشغيل الفيديو"));
-            }
-            
-            window.progressInterval = setInterval(() => {
-                if (plyr && plyr.duration > 0) {
-                    const progress = (plyr.currentTime / plyr.duration) * 100;
-                    lectureProgress[currentLectureLink] = progress;
-                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
-                }
-            }, 5000);
-        };
+        // Set up player
+        let player = null;
+        let isLectureCompleted = false;
 
         // DOM references
         const teacherImage = document.getElementById("teacherImage");
@@ -1872,7 +1711,20 @@
             window.scrollTo({ top: 0, behavior: "smooth" });
 
             if (page !== "video") {
-                destroyPlayer();
+                if (player) {
+                    player.destroy();
+                    player = null;
+                }
+                if (window.hlsInstance) {
+                    window.hlsInstance.destroy();
+                    window.hlsInstance = null;
+                }
+                if (window.progressInterval) {
+                    clearInterval(window.progressInterval);
+                    window.progressInterval = null;
+                }
+                playerContainer.innerHTML = "";
+                videoLoader.style.display = 'none';
             }
             
             if (page === 'dashboard') {
@@ -2046,15 +1898,52 @@
             icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
+        
+        window.loadIframePlayer = (url) => {
+            videoLoader.style.display = 'flex';
+            const encodedUrl = btoa(url);
+            const iframeUrl = `https://server2.hmyzc824-d08.workers.dev/proxy_iframe?url=${encodedUrl}`;
+            const iframeHtml = `
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <iframe 
+                        src="${iframeUrl}" 
+                        allowfullscreen 
+                        loading="eager"
+                        style="width: 100%; height: 100%; border: none; border-radius: inherit;"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                        onload="document.getElementById('videoLoader').style.display='none';"
+                    ></iframe>
+                </div>
+            `;
+            playerContainer.innerHTML = iframeHtml;
+        }
 
         window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            // Set global variables for the current lecture
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+            if (window.hlsInstance) {
+                window.hlsInstance.destroy();
+                window.hlsInstance = null;
+            }
+            if (window.progressInterval) {
+                clearInterval(window.progressInterval);
+                window.progressInterval = null;
+            }
+            
+            // Set global variable for download button logic
+            isLectureCompleted = !!completedLectures[url];
+
+            playerContainer.innerHTML = "";
+            videoLoader.style.display = 'none';
+
             [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
             document.getElementById("videoDate").textContent = "15/10/2026";
-            
-            // Save last watched lecture to localStorage
+
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
                 teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
@@ -2068,16 +1957,79 @@
             
             navigate("video");
             
-            const savedProgress = lectureProgress[url] || 0;
-            // Call the new player loading function with the video URL and saved progress
-            loadVideo(url, savedProgress);
+            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+            let finalVideoUrl = url;
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+            }
+
+            // Proxy logic to handle CORS
+            const isHLS = finalVideoUrl.endsWith(".m3u8");
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            const proxiedUrl = useProxy && isHLS ? `https://tiny-fire-acee.hmyzc824-d08.workers.dev/proxy?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                loadIframePlayer(url);
+                return;
+            }
+
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            lucide.createIcons();
+            
+            const videoElement = document.getElementById("player");
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
+            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
+
+            player = new Plyr("#player", {
+                controls: playerControls,
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+            });
+
+            window.progressInterval = setInterval(() => {
+                if (player && player.duration > 0) {
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                }
+            }, 5000);
+
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(proxiedUrl);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
+                    });
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                    };
+                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                }
+            }
+            tryPlay();
         };
-        
-        qualitySelect.addEventListener('change', () => {
-            if (!hls) return;
-            const v = qualitySelect.value;
-            hls.currentLevel = (v === 'auto') ? -1 : parseInt(v, 10);
-        });
 
         /* ========= Search ========= */
         function handleSearch() {
