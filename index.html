@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>منصة إديسون</title>
     
-    <!-- Open Graph Tags (NEW) -->
     <meta property="og:title" content="منصة إديسون التعليمية" />
     <meta property="og:description" content="منصة اديسون التعليمية هي منصة تقدم محاضرات لطلاب السادس العلمي بشكل مجاني 2026_ 2025" />
     <meta property="og:image" content="https://i.imghippo.com/files/Baa5419rPk.jpg" />
@@ -16,7 +15,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     
-    <!-- Elegant Arabic Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
@@ -1010,113 +1008,41 @@
             transition: opacity 0.3s ease;
             text-align: center;
         }
-        
-        /* NEW: Custom Uiverse Loader */
-        .loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 10;
-            width: 160px;
-            height: 100px;
-            margin-left: -80px;
-            margin-top: -50px;
-            border-radius: 5px;
-            background: #1e3f57;
-            animation: dot1_ 3s cubic-bezier(0.55,0.3,0.24,0.99) infinite;
-        }
-        
-        .loader:nth-child(2) {
-            z-index: 11;
-            width: 150px;
-            height: 90px;
-            margin-top: -45px;
-            margin-left: -75px;
-            border-radius: 3px;
-            background: #3c517d;
-            animation-name: dot2_;
-        }
-        
-        .loader:nth-child(3) {
-            z-index: 12;
-            width: 40px;
-            height: 20px;
-            margin-top: 50px;
-            margin-left: -20px;
-            border-radius: 0 0 5px 5px;
-            background: #6bb2cd;
-            animation-name: dot3_;
-        }
-        
-        @keyframes dot1_ {
-            3%,97% {
-                width: 160px;
-                height: 100px;
-                margin-top: -50px;
-                margin-left: -80px;
-            }
-        
-            30%,36% {
-                width: 80px;
-                height: 120px;
-                margin-top: -60px;
-                margin-left: -40px;
-            }
-        
-            63%,69% {
-                width: 40px;
-                height: 80px;
-                margin-top: -40px;
-                margin-left: -20px;
-            }
-        }
-        @keyframes dot2_ {
-            3%,97% {
-                height: 90px;
-                width: 150px;
-                margin-left: -75px;
-                margin-top: -45px;
-            }
-        
-            30%,36% {
-                width: 70px;
-                height: 96px;
-                margin-left: -35px;
-                margin-top: -48px;
-            }
-        
-            63%,69% {
-                width: 32px;
-                height: 60px;
-                margin-left: -16px;
-                margin-top: -30px;
-            }
-        }
-        @keyframes dot3_ {
-            3%,97% {
-                height: 20px;
-                width: 40px;
-                margin-left: -20px;
-                margin-top: 50px;
-            }
-        
-            30%,36% {
-                width: 8px;
-                height: 8px;
-                margin-left: -5px;
-                margin-top: 49px;
-                border-radius: 8px;
-            }
-        
-            63%,69% {
-                width: 16px;
-                height: 4px;
-                margin-left: -8px;
-                margin-top: -37px;
-                border-radius: 10px;
-            }
+
+        /* New Loader Styles */
+        .new-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
         }
 
+        .new-loader .dot {
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: fadeInOut 1.4s infinite ease-in-out;
+        }
+
+        .new-loader .dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .new-loader .dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .new-loader .dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
 
         /* Iframe placeholder styles */
         .iframe-placeholder {
@@ -1434,7 +1360,6 @@
         </div>
     </header>
 
-    <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1455,9 +1380,6 @@
             </div>
         </div>
     </div>
-    <!-- End Telegram Modal -->
-
-    <!-- Continue Watching Modal -->
     <div id="continueWatchingModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1477,9 +1399,6 @@
             </div>
         </div>
     </div>
-    <!-- End Continue Watching Modal -->
-    
-
     <div id="homePage" class="page active">
         <div class="section-title">
             <i data-lucide="layout-grid"></i>
@@ -1536,8 +1455,7 @@
         </div>
         
         <div id="teachersGrid" class="teachers-grid">
-            <!-- Teachers will be loaded here -->
-        </div>
+            </div>
     </div>
 
     <div id="classesPage" class="page">
@@ -1566,11 +1484,12 @@
         <div class="video-page">
             <div id="videoContainer" class="video-container">
                 <div id="playerContainer"></div>
-                <!-- Loader for iframe videos -->
                 <div id="videoLoader" class="video-loader" style="display: none;">
-                    <div class="loader"></div>
-                    <div class="loader"></div>
-                    <div class="loader"></div>
+                    <div class="new-loader">
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                    </div>
                 </div>
             </div>
             
@@ -1594,7 +1513,6 @@
         </div>
     </div>
 
-    <!-- NEW: Dashboard Page -->
     <div id="dashboardPage" class="page">
         <div class="dashboard-header">
             <h1>لوحة التحكم</h1>
