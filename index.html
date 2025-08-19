@@ -1817,7 +1817,7 @@
 
         function updateClassProgress(classCardElement) {
             const progressSpan = classCardElement.querySelector('.class-progress');
-            const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
+            const classIndex = parseInt(progressSpan.dataset.class-index, 10);
             const classData = currentTeacher.classes[classIndex];
             const totalLectures = classData.lectures.length;
             const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
