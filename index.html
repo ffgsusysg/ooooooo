@@ -629,6 +629,15 @@
             gap: 1.8rem;
             margin-top: 1.5rem;
         }
+        
+        .favorite-teachers-section {
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        .favorite-teachers-section.active {
+            display: block;
+        }
 
         .teacher-card {
             background: var(--card);
@@ -641,6 +650,12 @@
             overflow: hidden;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             box-shadow: var(--shadow-sm);
+        }
+        
+        .teacher-card-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .teacher-card:hover {
@@ -690,7 +705,46 @@
         .teacher-rating .star.filled {
             color: var(--warning);
         }
-
+        
+        /* Favorite Button Styles */
+        .favorite-button-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
+        }
+        
+        .btn-favorite {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .btn-favorite:hover {
+            transform: scale(1.1);
+            color: #ff5252;
+            border-color: #ff5252;
+        }
+        
+        .btn-favorite.active {
+            background: #ff5252;
+            color: #fff;
+            border-color: #ff5252;
+        }
+        
+        .btn-favorite.active:hover {
+            transform: scale(1.15);
+            box-shadow: var(--shadow-md);
+        }
+        
         .back-button {
             margin-bottom: 1.5rem;
             background: var(--primary-2);
@@ -784,7 +838,7 @@
             position: relative;
             background: var(--hover);
             border-right: 3px solid var(--primary-3);
-            border-radius: var(--radius);
+            border-radius: 6px;
             transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             display: flex;
             justify-content: space-between;
@@ -1459,6 +1513,15 @@
             <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
         </button>
         
+        <!-- NEW: Favorite Teachers Section -->
+        <div id="favoriteTeachersSection" class="favorite-teachers-section">
+            <div class="section-title">
+                <i data-lucide="heart"></i>
+                <h3>مدرسيني المفضلين</h3>
+            </div>
+            <div id="favoriteTeachersGrid" class="teachers-grid"></div>
+        </div>
+        
         <div class="section-title">
             <i data-lucide="users"></i>
             <h3 id="categoryTitle">المدرسين</h3>
@@ -1515,9 +1578,9 @@
                         <span>
                             تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
                              </svg>
                         </span>
                     </div>
@@ -1625,6 +1688,8 @@
         const teachersGrid = document.getElementById("teachersGrid");
         const playerContainer = document.getElementById("playerContainer");
         const videoLoader = document.getElementById("videoLoader");
+        const favoriteTeachersSection = document.getElementById("favoriteTeachersSection");
+        const favoriteTeachersGrid = document.getElementById("favoriteTeachersGrid");
 
 
         // Progress variables
@@ -1632,6 +1697,9 @@
         let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
         let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
+        // NEW: Favorite teachers state
+        let favoriteTeachers = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+
 
         // Navigation
         const pages = {
@@ -1707,27 +1775,67 @@
             navigate("category");
         }
 
-        function renderTeachers(list = teachers) {
-            if (!list.length) {
-                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
-                return;
+        // NEW: Toggle favorite teacher status and update UI
+        window.toggleFavorite = (teacherId) => {
+            const index = favoriteTeachers.indexOf(teacherId);
+            if (index > -1) {
+                favoriteTeachers.splice(index, 1);
+            } else {
+                favoriteTeachers.push(teacherId);
             }
-            teachersGrid.innerHTML = "";
-            list.forEach((t, idx) => {
-                const rating = ratings[t.id] || 0;
-                const card = document.createElement("div");
-                card.className = "teacher-card";
-                card.innerHTML = `
+            localStorage.setItem("favoriteTeachers", JSON.stringify(favoriteTeachers));
+            renderTeachers();
+        };
+
+        function renderTeachers(list = teachers) {
+            // Filter favorite teachers from the main list
+            const favoriteTeacherData = list.filter(t => favoriteTeachers.includes(t.id));
+            const otherTeachersData = list.filter(t => !favoriteTeachers.includes(t.id));
+            
+            // Render favorite teachers section
+            if (favoriteTeacherData.length > 0) {
+                favoriteTeachersSection.classList.add("active");
+                favoriteTeachersGrid.innerHTML = "";
+                favoriteTeacherData.forEach(t => renderTeacherCard(t, favoriteTeachersGrid));
+            } else {
+                favoriteTeachersSection.classList.remove("active");
+            }
+            
+            // Render the rest of the teachers
+            if (otherTeachersData.length > 0) {
+                teachersGrid.innerHTML = "";
+                otherTeachersData.forEach(t => renderTeacherCard(t, teachersGrid));
+            } else if (list.length === 0) {
+                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
+            } else {
+                teachersGrid.innerHTML = "";
+            }
+            
+            lucide.createIcons();
+        }
+        
+        // Helper function to render a single teacher card
+        function renderTeacherCard(t, container) {
+            const isFavorite = favoriteTeachers.includes(t.id);
+            const rating = ratings[t.id] || 0;
+            const card = document.createElement("div");
+            card.className = "teacher-card";
+            card.innerHTML = `
+                <div class="favorite-button-container">
+                    <button class="btn-favorite ${isFavorite ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(${t.id});">
+                        <i data-lucide="${isFavorite ? 'heart' : 'heart'}"></i>
+                    </button>
+                </div>
+                <div class="teacher-card-inner" onclick="showTeacher(${t.id})">
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
                     <h3 class="teacher-name">${t.name}</h3>
                     <p class="teacher-subject">${t.subject}</p>
                     <div class="teacher-rating">${renderStars(rating)}</div>
-                `;
-                card.onclick = () => showTeacher(t.id);
-                teachersGrid.appendChild(card);
-                lucide.createIcons();
-            });
+                </div>
+            `;
+            container.appendChild(card);
         }
+
 
         function renderStars(rating) {
             let stars = "";
@@ -1987,10 +2095,15 @@
                     <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
                     <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
                 </div>`).join('');
+            favoriteTeachersGrid.innerHTML = '';
+            favoriteTeachersSection.classList.remove("active");
 
             fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
                 .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-                .then((data) => { teachers = data.teachers; renderTeachers(); })
+                .then((data) => { 
+                    teachers = data.teachers; 
+                    renderTeachers(); 
+                })
                 .catch(() => { teachersGrid.innerHTML = err; });
         }
         
