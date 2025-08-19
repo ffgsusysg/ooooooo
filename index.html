@@ -1683,7 +1683,7 @@
         const categories = {
             "year-2026": {
                 title: "الصفوف الدراسية 2026",
-                endpoint: "https://wild-butterfly-441e.halzyz082.workers.dev/"
+                endpoint: "https://adson.netlify.app/data2.json"
             },
             "year-2025": {
                 title: "الصفوف الدراسية 2025",
@@ -1988,25 +1988,10 @@
                     <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
                 </div>`).join('');
 
-            fetch(endpoint, {
-                method: "GET",
-                headers: {
-                    "Origin": "http://adson.netlify.app"
-                }
-            })
-            .then(res => {
-                if(!res.ok) {
-                    throw new Error("لا يمكنك الوصول للبيانات");
-                }
-                return res.json();
-            })
-            .then(data => {
-                teachers = data.teachers;
-                renderTeachers();
-            })
-            .catch(err => {
-                teachersGrid.innerHTML = err;
-            });
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+                .then((data) => { teachers = data.teachers; renderTeachers(); })
+                .catch(() => { teachersGrid.innerHTML = err; });
         }
         
         /* ========= Dashboard Logic ========= */
