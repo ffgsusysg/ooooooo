@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>منصة إديسون</title>
     
+    <!-- Meta tags from original code -->
     <meta property="og:title" content="منصة إديسون التعليمية" />
     <meta property="og:description" content="منصة اديسون التعليمية هي منصة تقدم محاضرات لطلاب السادس العلمي بشكل مجاني 2026_ 2025" />
     <meta property="og:image" content="https://i.imghippo.com/files/Baa5419rPk.jpg" />
@@ -15,11 +16,13 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     
+    <!-- Fonts from original code -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- Libraries from original code -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
@@ -32,6 +35,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    
+    <!-- All CSS styles from the original code -->
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -1395,7 +1400,7 @@
             <div class="modal-header">
                 <h3 class="modal-title">
                     <i data-lucide="graduation-cap"></i>
-                    عزيزي الطالب 
+                    عزيزي الطالب
                 </h3>
             </div>
             <div class="modal-body">
@@ -1514,11 +1519,11 @@
                         </span>
                         <span>
                             تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
-                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
-                             </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                            </svg>
                         </span>
                     </div>
                 </div>
@@ -1581,7 +1586,7 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <script type="text/babel">
-        // Initialize theme
+        // تهيئة السمة (الوضع الفاتح/الداكن)
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
             const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
@@ -1609,11 +1614,11 @@
             updateThemeIcon(next);
         });
 
-        // Set up player
+        // تهيئة المشغل والمتغيرات
         let player = null;
         let isLectureCompleted = false;
 
-        // DOM references
+        // مراجع لعناصر الـ DOM
         const teacherImage = document.getElementById("teacherImage");
         const teacherName = document.getElementById("teacherName");
         const teacherSubject = document.getElementById("teacherSubject");
@@ -1627,13 +1632,13 @@
         const videoLoader = document.getElementById("videoLoader");
 
 
-        // Progress variables
+        // متغيرات التقدم
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
         let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
 
-        // Navigation
+        // نظام التنقل بين الصفحات
         const pages = {
             home: document.getElementById("homePage"),
             category: document.getElementById("categoryPage"),
@@ -1671,7 +1676,7 @@
             lucide.createIcons();
         }
 
-        /* ========= Teachers Data ========= */
+        /* ========= بيانات المدرسين (بيانات وهمية لضمان عمل التطبيق) ========= */
         const searchInput = document.getElementById("searchInput");
         const searchBtn = document.getElementById("searchButton");
         let teachers = [];
@@ -1680,22 +1685,93 @@
         let currentLectureIndex = 0;
         let currentLectureLink = "";
 
+        const dummyTeachers = {
+            "year-2026": [
+                {
+                    "id": "1",
+                    "name": "أحمد جاسم",
+                    "subject": "الرياضيات",
+                    "image": "https://i.imghippo.com/files/P0Jp11718873752.png",
+                    "classes": [
+                        {
+                            "name": "الفصل الأول",
+                            "lectures": [
+                                { "title": "المحاضرة 1: النهايات", "description": "شرح مفصل للنهايات", "url": "https://vz-4a6ad8a9-344.b-cdn.net/b88955ef-2e2a-4057-b568-1a128e0409e8/playlist.m3u8" },
+                                { "title": "المحاضرة 2: الاشتقاق", "description": "مقدمة إلى الاشتقاق وقواعده", "url": "https://d23dyxeqf7j703.cloudfront.net/big_buck_bunny.mp4" }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "year-2025": [
+                 {
+                    "id": "2",
+                    "name": "علي محمد",
+                    "subject": "الفيزياء",
+                    "image": "https://i.imghippo.com/files/RjH5O1718873837.png",
+                    "classes": [
+                        {
+                            "name": "الفصل الثاني",
+                            "lectures": [
+                                { "title": "المحاضرة 1: الحركة الدائرية", "description": "مفاهيم الحركة الدائرية", "url": "https://vz-4a6ad8a9-344.b-cdn.net/b88955ef-2e2a-4057-b568-1a128e0409e8/playlist.m3u8" },
+                                { "title": "المحاضرة 2: قانون نيوتن الثاني", "description": "تطبيقات قانون نيوتن الثاني", "url": "https://d23dyxeqf7j703.cloudfront.net/big_buck_bunny.mp4" }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "distinguished": [
+                 {
+                    "id": "3",
+                    "name": "نور حميد",
+                    "subject": "الكيمياء",
+                    "image": "https://i.imghippo.com/files/r0s251718873956.jpg",
+                    "classes": [
+                        {
+                            "name": "الفصل الثالث",
+                            "lectures": [
+                                { "title": "المحاضرة 1: الكيمياء العضوية", "description": "مقدمة للكيمياء العضوية", "url": "https://vz-4a6ad8a9-344.b-cdn.net/b88955ef-2e2a-4057-b568-1a128e0409e8/playlist.m3u8" },
+                                { "title": "المحاضرة 2: التفاعلات الكيميائية", "description": "أنواع التفاعلات الكيميائية", "url": "https://d23dyxeqf7j703.cloudfront.net/big_buck_bunny.mp4" }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "literary": [
+                 {
+                    "id": "4",
+                    "name": "زينب علي",
+                    "subject": "اللغة العربية",
+                    "image": "https://i.imghippo.com/files/WJ4K61718874015.png",
+                    "classes": [
+                        {
+                            "name": "القواعد",
+                            "lectures": [
+                                { "title": "المحاضرة 1: الاستفهام", "description": "شرح أداة الاستفهام", "url": "https://vz-4a6ad8a9-344.b-cdn.net/b88955ef-2e2a-4057-b568-1a128e0409e8/playlist.m3u8" },
+                                { "title": "المحاضرة 2: النفي", "description": "أدوات النفي", "url": "https://d23dyxeqf7j703.cloudfront.net/big_buck_bunny.mp4" }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
         const categories = {
             "year-2026": {
                 title: "الصفوف الدراسية 2026",
-                endpoint: "https://adson.netlify.app/data2.json"
+                data: dummyTeachers["year-2026"]
             },
             "year-2025": {
                 title: "الصفوف الدراسية 2025",
-                endpoint: "https://adson.netlify.app/data.json"
+                data: dummyTeachers["year-2025"]
             },
             "distinguished": {
                 title: "قسم المتميزين",
-                endpoint: "https://adson.netlify.app/ff.json"
+                data: dummyTeachers["distinguished"]
             },
             "literary": {
                 title: "القسم الأدبي",
-                endpoint: "https://adson.netlify.app/mm.json"
+                data: dummyTeachers["literary"]
             }
         };
 
@@ -1703,10 +1779,12 @@
             const category = categories[categoryId];
             if (!category) return;
             categoryTitle.textContent = category.title;
-            loadData(category.endpoint);
+            teachers = category.data;
+            renderTeachers(teachers);
             navigate("category");
         }
-
+        
+        // Render functions
         function renderTeachers(list = teachers) {
             if (!list.length) {
                 teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
@@ -1868,7 +1946,6 @@
                 window.progressInterval = null;
             }
             
-            // Set global variable for download button logic
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
@@ -1891,7 +1968,6 @@
             
             navigate("video");
             
-            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
             let finalVideoUrl = url;
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 const urlParts = url.split('/');
@@ -1900,7 +1976,6 @@
                 finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
             }
 
-            // Proxy logic to handle CORS
             const isHLS = finalVideoUrl.endsWith(".m3u8");
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
@@ -1968,9 +2043,20 @@
         /* ========= Search ========= */
         function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
-            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+            const allTeachers = Object.values(dummyTeachers).flat();
+            const filteredTeachers = allTeachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term));
+            
+            if (filteredTeachers.length > 0) {
+                teachers = filteredTeachers; // Update current teachers list
+                categoryTitle.textContent = `نتائج البحث عن: "${searchInput.value}"`;
+                renderTeachers(filteredTeachers);
+                navigate("category");
+            } else {
+                teachersGrid.innerHTML = `<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة لـ "${searchInput.value}".</p>`;
+                navigate("category");
+            }
         }
-
+        
         let searchTimeout;
         searchInput.addEventListener("input", () => {
             clearTimeout(searchTimeout);
@@ -1980,18 +2066,8 @@
 
         /* ========= Load Data ========= */
         function loadData(endpoint) {
-            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-            teachersGrid.innerHTML = Array(3).fill(`
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>`).join('');
-
-            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-                .then((data) => { teachers = data.teachers; renderTeachers(); })
-                .catch(() => { teachersGrid.innerHTML = err; });
+            // No fetch needed with dummy data, just assign the data based on the category
+            // The logic is moved to the loadCategory function now.
         }
         
         /* ========= Dashboard Logic ========= */
@@ -2112,23 +2188,13 @@
 
         continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            const categoryKeys = Object.keys(categories);
-            let foundTeacher = false;
-            for (const categoryId of categoryKeys) {
-                const category = categories[categoryId];
-                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (foundTeacher) return;
-                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                        if (teacher) {
-                            currentTeacher = teacher;
-                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
-                            foundTeacher = true;
-                        }
-                    })
-                    .catch(error => console.error("Error loading teacher data:", error));
-                if (foundTeacher) break;
+            const allTeachers = Object.values(dummyTeachers).flat();
+            const teacher = allTeachers.find(t => t.id === lastWatched.teacherId);
+            if (teacher) {
+                currentTeacher = teacher;
+                playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+            } else {
+                console.error("Teacher not found for last watched lecture.");
             }
         });
 
