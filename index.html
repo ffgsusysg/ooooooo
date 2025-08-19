@@ -660,21 +660,35 @@
             transition: all 0.2s ease;
             z-index: 5;
             box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
         }
 
         .favorite-button:hover {
             transform: scale(1.1);
         }
-
+        
+        /* Heart icon styling */
         .favorite-button i {
-            color: var(--primary-1);
+            color: var(--text);
             font-size: 1.2rem;
             transition: color 0.2s ease;
+            fill: none; /* Default state */
         }
-
+        
         .favorite-button.is-favorite i {
             color: var(--error);
             fill: var(--error);
+            animation: heart-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.27) forwards;
+        }
+
+        @keyframes heart-pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
 
         .teacher-img {
@@ -1442,7 +1456,7 @@
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
                     <i data-lucide="send"></i>
                     <span>اشترك الآن</span>
-                </a>
+                </a
                 <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
                     اشتركت سابقا المتابعة
                 </button>
@@ -1789,7 +1803,7 @@
                 const card = document.createElement("div");
                 card.className = "teacher-card";
                 card.innerHTML = `
-                    <button class="favorite-button ${isFavorite ? 'is-favorite' : ''}" data-teacher-id="${t.id}" title="${isFavorite ? 'إزالة من المفضلين' : 'أضف إلى المفضلين'}">
+                    <button class="favorite-button ${isFavorite ? 'is-favorite' : ''}" data-teacher-id="${t.id}" title="${isFavorite ? 'إزالة من المفضلين' : 'أضف إلى المفضلين'}" onclick="event.stopPropagation(); toggleFavoriteTeacher('${t.id}')">
                         <i data-lucide="heart"></i>
                     </button>
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
@@ -2076,13 +2090,22 @@
             const index = favoriteTeachers.indexOf(teacherId);
             if (index > -1) {
                 favoriteTeachers.splice(index, 1);
+                isAdded = false;
             } else {
                 favoriteTeachers.push(teacherId);
                 isAdded = true;
             }
             localStorage.setItem("favoriteTeachers", JSON.stringify(favoriteTeachers));
             displayFavoriteMessage(isAdded);
-            renderTeachers(teachers); // Re-render the list to update the heart icon
+            // Re-render the list to update the heart icon and order
+            const currentCategory = document.querySelector("#categoryPage.active #categoryTitle").textContent;
+            if (currentCategory === "المدرسين المفضلين") {
+                const favoriteTeacherIds = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+                const favorites = teachers.filter(t => favoriteTeacherIds.includes(t.id.toString()));
+                renderTeachers(favorites);
+            } else {
+                renderTeachers(teachers);
+            }
         };
 
         favoriteTeachersBtn.addEventListener("click", () => {
