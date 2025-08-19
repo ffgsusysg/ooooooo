@@ -1988,10 +1988,25 @@
                     <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
                 </div>`).join('');
 
-            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-                .then((data) => { teachers = data.teachers; renderTeachers(); })
-                .catch(() => { teachersGrid.innerHTML = err; });
+            fetch(endpoint, {
+                method: "GET",
+                headers: {
+                    "Origin": "http://adson.netlify.app"
+                }
+            })
+            .then(res => {
+                if(!res.ok) {
+                    throw new Error("لا يمكنك الوصول للبيانات");
+                }
+                return res.json();
+            })
+            .then(data => {
+                teachers = data.teachers;
+                renderTeachers();
+            })
+            .catch(err => {
+                teachersGrid.innerHTML = err;
+            });
         }
         
         /* ========= Dashboard Logic ========= */
