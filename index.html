@@ -980,6 +980,16 @@
             gap: 0.3rem;
         }
 
+        /* Instagram logo styling */
+        .instagram-icon {
+            display: inline-flex;
+            width: 1.5em; /* Adjust size as needed */
+            height: 1.5em; /* Adjust size as needed */
+            vertical-align: middle;
+            margin-right: 0.25rem;
+            fill: #E1306C; /* Instagram pink color */
+        }
+
         .section-title {
             display: flex;
             align-items: center;
@@ -1500,7 +1510,15 @@
                 <div class="video-info">
                     <div class="video-meta">
                         <span>
-                            <i data-lucide="calendar"></i> تطوير وابداع : حميد انستا »» ZR_BB5:
+                            <i data-lucide="calendar"></i>
+                        </span>
+                        <span>
+                            تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
+                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                             </svg>
                         </span>
                     </div>
                 </div>
@@ -1859,8 +1877,7 @@
             [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
-            document.getElementById("videoDate").textContent = "15/10/2026";
-
+            
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
                 teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
