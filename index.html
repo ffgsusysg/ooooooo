@@ -647,6 +647,35 @@
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
+        
+        /* New favorite button styles */
+        .favorite-button {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.6rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            transition: all 0.2s ease;
+            z-index: 5;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .favorite-button:hover {
+            transform: scale(1.1);
+        }
+
+        .favorite-button i {
+            color: var(--primary-1);
+            font-size: 1.2rem;
+            transition: color 0.2s ease;
+        }
+
+        .favorite-button.is-favorite i {
+            color: var(--error);
+            fill: var(--error);
+        }
 
         .teacher-img {
             width: 120px;
@@ -709,6 +738,33 @@
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Message box style */
+        .favorite-message {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            z-index: 3000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .favorite-message.show {
+            opacity: 1;
+            visibility: visible;
         }
 
         .teacher-img-lg {
@@ -784,7 +840,7 @@
             position: relative;
             background: var(--hover);
             border-right: 3px solid var(--primary-3);
-            border-radius: var(--radius);
+            border-radius: 4px;
             transition: all 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             display: flex;
             justify-content: space-between;
@@ -1349,6 +1405,9 @@
         </h1>
 
         <div class="header-actions">
+            <button id="favoriteTeachersBtn" class="btn">
+                <i data-lucide="heart"></i><span class="btn-text">المدرسين المفضلين</span>
+            </button>
             <button id="dashboardButton" class="btn btn-icon" onclick="navigate('dashboard')">
                 <img id="headerProfilePic" src="https://placehold.co/42x42/E2E8F0/A0AEC0?text= " alt="صورة الملف الشخصي" style="display: none;">
                 <i data-lucide="user" id="defaultUserIcon"></i>
@@ -1408,6 +1467,9 @@
                 </button>
             </div>
         </div>
+    </div>
+    <div id="favoriteMessage" class="favorite-message" style="display: none;">
+        <i data-lucide="heart"></i> تم الإضافة إلى المدرسين المفضلين!
     </div>
     <div id="homePage" class="page active">
         <div class="section-title">
@@ -1515,9 +1577,9 @@
                         <span>
                             تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
                              </svg>
                         </span>
                     </div>
@@ -1632,7 +1694,8 @@
         let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
         let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
         let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
-
+        let favoriteTeachers = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+        
         // Navigation
         const pages = {
             home: document.getElementById("homePage"),
@@ -1713,20 +1776,36 @@
                 return;
             }
             teachersGrid.innerHTML = "";
-            list.forEach((t, idx) => {
+
+            // Prioritize favorite teachers
+            const favoriteTeacherIds = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+            const favorites = list.filter(t => favoriteTeacherIds.includes(t.id.toString()));
+            const others = list.filter(t => !favoriteTeacherIds.includes(t.id.toString()));
+            const sortedList = [...favorites, ...others];
+
+            sortedList.forEach((t) => {
                 const rating = ratings[t.id] || 0;
+                const isFavorite = favoriteTeacherIds.includes(t.id.toString());
                 const card = document.createElement("div");
                 card.className = "teacher-card";
                 card.innerHTML = `
+                    <button class="favorite-button ${isFavorite ? 'is-favorite' : ''}" data-teacher-id="${t.id}" title="${isFavorite ? 'إزالة من المفضلين' : 'أضف إلى المفضلين'}">
+                        <i data-lucide="heart"></i>
+                    </button>
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
                     <h3 class="teacher-name">${t.name}</h3>
                     <p class="teacher-subject">${t.subject}</p>
                     <div class="teacher-rating">${renderStars(rating)}</div>
                 `;
-                card.onclick = () => showTeacher(t.id);
+                card.onclick = (e) => {
+                    // Prevent navigation when clicking the favorite button
+                    if (!e.target.closest('.favorite-button')) {
+                        showTeacher(t.id);
+                    }
+                };
                 teachersGrid.appendChild(card);
-                lucide.createIcons();
             });
+            lucide.createIcons();
         }
 
         function renderStars(rating) {
@@ -1978,6 +2057,56 @@
         });
         searchBtn.addEventListener("click", handleSearch);
 
+        /* ========= Favorites Logic ========= */
+        const favoriteTeachersBtn = document.getElementById("favoriteTeachersBtn");
+        const favoriteMessage = document.getElementById("favoriteMessage");
+
+        function displayFavoriteMessage(isAdded) {
+            favoriteMessage.textContent = isAdded ? "✅ تم الإضافة إلى المدرسين المفضلين!" : "❌ تمت الإزالة من المدرسين المفضلين!";
+            favoriteMessage.style.backgroundColor = isAdded ? "var(--success)" : "var(--error)";
+            favoriteMessage.classList.add("show");
+            lucide.createIcons();
+            setTimeout(() => {
+                favoriteMessage.classList.remove("show");
+            }, 2000);
+        }
+
+        window.toggleFavoriteTeacher = (teacherId) => {
+            let isAdded = false;
+            const index = favoriteTeachers.indexOf(teacherId);
+            if (index > -1) {
+                favoriteTeachers.splice(index, 1);
+            } else {
+                favoriteTeachers.push(teacherId);
+                isAdded = true;
+            }
+            localStorage.setItem("favoriteTeachers", JSON.stringify(favoriteTeachers));
+            displayFavoriteMessage(isAdded);
+            renderTeachers(teachers); // Re-render the list to update the heart icon
+        };
+
+        favoriteTeachersBtn.addEventListener("click", () => {
+            const favoriteTeacherIds = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+            const favorites = teachers.filter(t => favoriteTeacherIds.includes(t.id.toString()));
+            if (favorites.length > 0) {
+                renderTeachers(favorites);
+                categoryTitle.textContent = "المدرسين المفضلين";
+            } else {
+                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا يوجد مدرسون مفضلون. أضف بعض المدرسين بالنقر على أيقونة القلب.</p>";
+                categoryTitle.textContent = "المدرسين المفضلين";
+            }
+            navigate("category");
+        });
+
+        teachersGrid.addEventListener('click', (event) => {
+            const favoriteButton = event.target.closest('.favorite-button');
+            if (favoriteButton) {
+                const teacherId = favoriteButton.dataset.teacherId;
+                toggleFavoriteTeacher(teacherId);
+                event.stopPropagation(); // Stop propagation to prevent navigating to teacher page
+            }
+        });
+        
         /* ========= Load Data ========= */
         function loadData(endpoint) {
             const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
