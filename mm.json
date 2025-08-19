@@ -379,9 +379,24 @@
       "name": "الفصل الثالث",
       "lectures": [
         {
-          "title": "محاضرة 1 (قواعد الاشتقاق (الجزء الاول)",
-          "description": "﴿ فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾",
-          "url": "https://iframe.mediadelivery.net/embed/215061/ae7e26f0-b3fa-46f2-b640-207b53574e55"
+          "title": "المحاضرة 1 (قواعد الاشتقاق (الجزء الاول))",
+      "url": "https://iframe.mediadelivery.net/embed/215061/ae7e26f0-b3fa-46f2-b640-207b53574e55",
+      "description": "تم صنع المنصه بواسطه حميد."
+    },
+    {
+      "title": "المحاضرة 2 (قواعد الاشتقاق (الجزء الثاني))",
+      "url": "https://iframe.mediadelivery.net/embed/215061/4118297c-8d4d-4c0a-ac4f-e56e93ce340a",
+      "description": "تم صنع المنصه بواسطه حميد."
+    },
+    {
+      "title": "المحاضرة 3 (قواعد الاشتقاق (الجزء الثالث))",
+      "url": "https://iframe.mediadelivery.net/embed/215061/542db5e3-cf5c-4d86-8c97-23304fa463b1",
+      "description": "تم صنع المنصه بواسطه حميد."
+    },
+    {
+      "title": "المحاضرة 4 (قواعد الاشتقاق (الجزء الرابع))",
+      "url": "https://iframe.mediadelivery.net/embed/215061/65b8d4ab-cdd7-4c92-bdeb-6e8e2d40507a",
+      "description": "تم صنع المنصه بواسطه حميد."
 					  }
 				]
 			  }
