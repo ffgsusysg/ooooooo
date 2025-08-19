@@ -63,12 +63,47 @@
               "title": "المحاضرة العاشرة (مفاهيم الاقتصادية المعاصرة)",
               "url": "https://iframe.mediadelivery.net/embed/215061/eb3e635a-82c4-4e91-9c77-50e82f0816ec",
               "description": "﴿ وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ ﴾ [البقرة:216]"
-            }
-          ]
-        }
+               }
       ]
     },
     {
+      "name": "لعرض والطلب وسلوك المستهلك",
+      "lectures": [
+        {
+          "title": "المحاضرة الاولى (الطلب والتغيرات في الطلب)",
+      "url": "https://iframe.mediadelivery.net/embed/215061/26e19e87-7ea8-48b6-be27-8b8827a92da1",
+      "description": "تم صنع المنصه بواسطه حميد."
+    },
+    {
+      "title": "المحاضرة الثانية(العرض والتغيرات في العرض)",
+      "url": "https://iframe.mediadelivery.net/embed/215061/2277c497-795c-455c-83f2-57c5c50e5cdf",
+      "description": "تم صنع المنصه بواسطه حميد."
+    },
+    {
+      "title": "المحاضرة الثالثة (توازن السوق وسلوك المستهلك)",
+      "url": "https://iframe.mediadelivery.net/embed/215061/f788f3d4-dda1-4c6a-864a-ebc9d4d38e37",
+      "description": "تم صنع المنصه بواسطه حميد."
+					    }
+      ]
+    },
+    {
+      "name": "الدخل والاستهلاك والادخار",
+      "lectures": [
+        {
+        "title": "محاضرة الاولى (الدخل القومي التدفق الدوري)",
+      "url": "https://iframe.mediadelivery.net/embed/215061/f80f6b62-8a74-4258-b49b-9a643ef3c134",
+      "description": "تم صنع المنصه بواسطه حميد."
+      },
+    {
+ "title": " 4 (  ( قريبا))",
+      "url": "https://iframe.mediadelivery.net/embed/215061/d4ab-cdd7-4c92-bdeb-6e8e2d40507a",
+      "description": "تم صنع المنصه بواسطه حميد."
+					  }
+				]
+			  }
+			]
+		  },
+		  {
       "id": 3,
       "name": "مضر الجبوري",
       "subject": " مادة الجغرافية",
