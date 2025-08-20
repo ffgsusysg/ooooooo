@@ -965,93 +965,61 @@
             }
         }
         
-        /* --- NEW DOWNLOAD BUTTON STYLES --- */
-        .download-button {
-            display: inline-flex;
+        /* NEW: Download button styles and progress bar */
+        .download-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .btn-download {
+            width: 38px;
+            height: 38px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-            background-color: var(--primary-1);
-            transition: all 0.3s ease;
+            border-radius: 50%;
+            background: var(--primary-1);
+            color: white;
+            transition: transform 0.2s ease;
             position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
-            z-index: 1; 
-            white-space: nowrap;
-            min-width: 150px;
+            z-index: 1;
         }
         
-        .download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+        .btn-download:hover {
+            transform: scale(1.1);
         }
-        
-        .download-button .download-icon, .download-button .download-text {
-            position: relative;
-            z-index: 3; /* Keep content on top of progress bar */
+        .btn-download[data-downloading="true"] {
+            cursor: not-allowed;
+            opacity: 0.7;
         }
 
-        /* Download in progress state */
-        .download-button.is-downloading {
-            cursor: progress;
-            color: var(--primary-1); /* Text color during download */
-            background-color: var(--card); /* Background of the button itself */
-            border: 2px solid var(--primary-1);
-        }
-        
-        .download-button.is-downloading:before {
-            content: '';
+        .download-progress {
             position: absolute;
-            top: 0;
+            bottom: -5px; /* Adjust position as needed */
             left: 0;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-1) 0%, var(--primary-2) 100%);
-            width: var(--progress-width, 0%);
+            right: 0;
+            height: 4px;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            border-radius: 2px;
+            overflow: hidden;
+            background-color: var(--border);
+        }
+        .download-progress::-webkit-progress-bar {
+            background-color: transparent;
+        }
+        .download-progress::-webkit-progress-value {
+            background-color: var(--accent);
             transition: width 0.3s linear;
-            z-index: 2; /* The progress bar on top of the button's background */
         }
-
-        /* Download complete state */
-        .download-button.is-complete {
-            cursor: default;
-            background: var(--success);
-            color: white;
-            box-shadow: var(--shadow-md);
-            pointer-events: none;
-        }
-        
-        .download-button.is-complete:hover {
-            transform: none;
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Download failed state */
-        .download-button.is-error {
-            cursor: default;
-            background: var(--error);
-            color: white;
-            box-shadow: var(--shadow-md);
-            pointer-events: none;
-        }
-        
-        .download-button.is-error:hover {
-            transform: none;
-            box-shadow: var(--shadow-md);
-        }
-        
-        /* Styles for the loading spinner */
-        .animate-spin {
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .download-progress::-moz-progress-bar {
+            background-color: var(--accent);
+            transition: width 0.3s linear;
         }
 
 
@@ -1433,34 +1401,6 @@
             .video-details {
                 padding: 1.2rem;
                 width: 100%;
-            }
-            
-            /* Fix for download button on mobile */
-            .download-container {
-              flex-shrink: 0;
-            }
-
-            .download-button {
-                min-width: 40px; /* New: fixed width for mobile icon button */
-                width: 40px; /* New: fixed width for mobile icon button */
-                height: 40px;
-                padding: 0;
-                border-radius: 50%; /* Make it circular on mobile */
-            }
-
-            .download-button .download-text {
-              display: none; /* Hide text on small screens */
-            }
-            
-            /* Show text only for download and loading states on mobile for clarity */
-            .download-button.is-downloading, .download-button.is-complete, .download-button.is-error {
-                 border-radius: var(--radius); /* Reset border radius to square for these states */
-                 width: auto; /* Allow the button to expand with text */
-                 padding: 0.75rem 1rem;
-            }
-
-            .download-button.is-downloading .download-text, .download-button.is-complete .download-text, .download-button.is-error .download-text {
-              display: inline;
             }
         }
 
@@ -1995,10 +1935,10 @@
                                 </div>
                             </div>
                             <div class="download-container">
-                                <button class="download-button" onclick="downloadVideo(event, '${lec.url}', '${lec.title}')">
-                                    <i class="download-icon" data-lucide="download"></i>
-                                    <span class="download-text">تنزيل المحاضرة</span>
+                                <button class="btn-download" onclick="downloadVideo(event, '${lec.url}', '${lec.title}')" data-downloading="false">
+                                    <i data-lucide="download"></i>
                                 </button>
+                                <progress class="download-progress" value="0" max="100" style="display: none;"></progress>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
@@ -2198,83 +2138,93 @@
             tryPlay();
         };
 
+        /**
+         * Cleans a string to be a valid filename by removing invalid characters.
+         * @param {string} str The string to clean.
+         * @returns {string} The cleaned string.
+         */
+        function sanitizeFilename(str) {
+            return str.replace(/[\\/:*?"<>|]/g, '_');
+        }
+
         /*
-        * Download Video Functionality
-        * This function now uses XMLHttpRequest to download the video as a blob and save it with a progress bar.
-        */
+         * Download Video Functionality
+         * This function uses XMLHttpRequest to download the video as a blob and save it with a progress bar.
+         */
         window.downloadVideo = (event, url, title) => {
             event.stopPropagation();
             const downloadButton = event.currentTarget;
+            const progressBar = downloadButton.nextElementSibling;
             
-            // Return if download is already in progress
-            if (downloadButton.classList.contains('is-downloading')) {
+            // Prevent multiple downloads
+            if (downloadButton.dataset.downloading === "true") {
+                console.log("Download already in progress.");
                 return;
             }
 
-            // Check if the URL is from mediadelivery, as other videos might not be downloadable
-            if (!url.includes("iframe.mediadelivery.net/embed/")) {
-                // If it's not a known downloadable video, show an error state
-                downloadButton.classList.add('is-error');
-                downloadButton.innerHTML = `<i class="download-icon" data-lucide="x-circle"></i><span class="download-text">فشل التنزيل</span>`;
-                lucide.createIcons();
-                setTimeout(() => {
-                     // Reset after 3 seconds
-                    downloadButton.classList.remove('is-error');
-                    downloadButton.innerHTML = `<i class="download-icon" data-lucide="download"></i><span class="download-text">تنزيل المحاضرة</span>`;
-                    lucide.createIcons();
-                }, 3000);
+            // Extract IDs from the original URL and construct the download URL
+            const urlMatch = url.match(/\/embed\/(\d+)\/([^\/]+)$/);
+            if (!urlMatch) {
+                // Use a non-blocking message
+                console.log('لا يمكن تنزيل هذا الفيديو، الرابط غير صالح.');
                 return;
             }
-
-            const urlParts = url.split('/');
-            const videoId = urlParts[urlParts.length - 1];
-            // The download URL is hardcoded to a specific proxy and resolution (720p)
-            const downloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=http://vz-99e5c202-ca5.becdn.net/${videoId}/play_720p.mp4`;
             
+            const libraryId = urlMatch[1];
+            const videoId = urlMatch[2];
+            
+            // Use the correct download URL format and the provided proxy
+            const directVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/play_720p.mp4`;
+            const proxiedDownloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(directVideoUrl)}`;
+
             // Start UI changes
-            downloadButton.classList.add('is-downloading');
-            downloadButton.innerHTML = `<i class="download-icon animate-spin" data-lucide="loader-2"></i><span class="download-text">جاري التنزيل...</span>`;
+            downloadButton.dataset.downloading = "true";
+            downloadButton.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i>';
             lucide.createIcons();
-            downloadButton.style.setProperty('--progress-width', '0%');
+            progressBar.style.display = 'block';
 
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', downloadUrl, true);
+            xhr.open('GET', proxiedDownloadUrl, true);
             xhr.responseType = 'blob';
 
             xhr.onprogress = (e) => {
                 if (e.lengthComputable) {
                     const percentComplete = (e.loaded / e.total) * 100;
-                    downloadButton.style.setProperty('--progress-width', `${percentComplete}%`);
+                    progressBar.value = percentComplete;
                 }
             };
 
             xhr.onload = () => {
                 if (xhr.status === 200) {
                     const blob = xhr.response;
-                    const fileName = `${title}.mp4`;
+                    // Sanitize the title for the file name
+                    const fileName = `${sanitizeFilename(title)}.mp4`;
                     saveAs(blob, fileName);
 
-                    // Update UI on successful download
-                    downloadButton.classList.remove('is-downloading');
-                    downloadButton.classList.add('is-complete');
-                    downloadButton.innerHTML = `<i class="download-icon" data-lucide="check-circle"></i><span class="download-text">تم التنزيل!</span>`;
+                    // Reset UI on successful download
+                    progressBar.style.display = 'none';
+                    progressBar.value = 0;
+                    downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                    downloadButton.dataset.downloading = "false";
                     lucide.createIcons();
                 } else {
                     console.error('Download failed:', xhr.statusText);
-                    // Update UI on failure
-                    downloadButton.classList.remove('is-downloading');
-                    downloadButton.classList.add('is-error');
-                    downloadButton.innerHTML = `<i class="download-icon" data-lucide="x-circle"></i><span class="download-text">فشل التنزيل</span>`;
+                    // Reset UI on failure
+                    progressBar.style.display = 'none';
+                    progressBar.value = 0;
+                    downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                    downloadButton.dataset.downloading = "false";
                     lucide.createIcons();
                 }
             };
             
             xhr.onerror = () => {
                 console.error('Network error during download.');
-                // Update UI on error
-                downloadButton.classList.remove('is-downloading');
-                downloadButton.classList.add('is-error');
-                downloadButton.innerHTML = `<i class="download-icon" data-lucide="x-circle"></i><span class="download-text">فشل التنزيل</span>`;
+                // Reset UI on error
+                progressBar.style.display = 'none';
+                progressBar.value = 0;
+                downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                downloadButton.dataset.downloading = "false";
                 lucide.createIcons();
             };
 
