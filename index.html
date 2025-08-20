@@ -32,6 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -2127,42 +2128,57 @@
             event.stopPropagation();
             const downloadButton = event.currentTarget;
             const progressBar = downloadButton.nextElementSibling;
-
+        
             // Simple validation to ensure it's a valid mediadelivery link
             if (!url.includes("iframe.mediadelivery.net/embed/")) {
-                alert('لا يمكن تنزيل هذا الفيديو.');
+                // Use a simple, non-blocking message box instead of alert
+                // NOTE: `alert` and `confirm` are not supported in this environment
+                console.log('لا يمكن تنزيل هذا الفيديو.');
                 return;
             }
-
+        
             // Extract the video ID from the URL
             const urlParts = url.split('/');
             const videoId = urlParts[urlParts.length - 1];
             
             // Construct the final download URL using the specified proxy and format
             const downloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=http://vz-99e5c202-ca5.becdn.net/${videoId}/play_720p.mp4`;
-            
-            // Simulate a download progress bar animation
+        
+            // Update the UI to show the download is starting
+            const originalIcon = downloadButton.innerHTML;
+            downloadButton.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i>';
+            lucide.createIcons();
+        
             progressBar.style.width = '0';
             setTimeout(() => {
-                progressBar.style.transition = 'width 1s linear';
+                progressBar.style.transition = 'width 10s linear';
                 progressBar.style.width = '100%';
             }, 10);
             
-            // Create a temporary link element and click it to trigger the download
-            const link = document.createElement('a');
-            link.href = downloadUrl;
-            link.download = `${title}.mp4`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Reset the progress bar after a short delay
+            // Use fetch to get the video blob, then use FileSaver.js to save it
+            fetch(downloadUrl)
+                .then(response => response.blob())
+                .then(blob => {
+                    saveAs(blob, `${title}.mp4`);
+                })
+                .catch(error => {
+                    console.error('Download failed:', error);
+                    // Reset UI on failure
+                    downloadButton.innerHTML = originalIcon;
+                    lucide.createIcons();
+                    progressBar.style.transition = 'none';
+                    progressBar.style.width = '0';
+                });
+        
+            // Reset the progress bar and icon after a short delay
             setTimeout(() => {
+                downloadButton.innerHTML = originalIcon;
+                lucide.createIcons();
                 progressBar.style.transition = 'none';
                 progressBar.style.width = '0';
-            }, 2000); // 2 seconds delay to show completion
+            }, 12000); // Wait for a bit longer to simulate a full download
         };
-
+        
 
         /* ========= Search ========= */
         function handleSearch() {
