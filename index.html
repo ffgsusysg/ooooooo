@@ -983,6 +983,8 @@
             box-shadow: var(--shadow-sm);
             cursor: pointer;
             z-index: 1; /* For the progress bar to be behind */
+            white-space: nowrap; /* Prevent text from wrapping */
+            min-width: 150px; /* Ensure button doesn't shrink too much */
         }
         
         .download-button:hover {
@@ -1436,6 +1438,26 @@
                 padding: 1.2rem;
                 width: 100%;
             }
+            
+            /* Fix for download button on mobile */
+            .download-container {
+              flex-shrink: 0;
+            }
+
+            .download-button {
+              min-width: 0; /* Allow button to shrink */
+              width: auto; /* Reset width to auto */
+              padding: 0.75rem; /* Make padding consistent */
+            }
+
+            .download-button .download-text {
+              display: none; /* Hide text on small screens */
+            }
+            
+            .download-button.is-downloading .download-text {
+              display: inline; /* Show text for downloading state to be clear */
+            }
+
         }
 
         @media (max-width: 480px) {
