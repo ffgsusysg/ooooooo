@@ -2,10 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>منصة إديسون</title>
     
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="منصة إديسون التعليمية" />
     <meta property="og:description" content="منصة اديسون التعليمية هي منصة تقدم محاضرات لطلاب السادس العلمي بشكل مجاني 2026_ 2025" />
     <meta property="og:image" content="https://i.imghippo.com/files/Baa5419rPk.jpg" />
@@ -13,24 +12,26 @@
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ar_AR" />
     
-    <!-- Favicon and Manifest -->
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- CSS Libraries -->
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    
-    <!-- JS Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/lucide@latest"></script>
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
+    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
+    <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-    
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -748,11 +749,6 @@
             margin-bottom: 1.5rem;
             background: var(--primary-2);
             box-shadow: var(--shadow-sm);
-            color: white; /* Make sure text is visible */
-        }
-        
-        .back-button:hover {
-            background: var(--primary-3);
         }
 
         .teacher-info {
@@ -1396,76 +1392,8 @@
                 padding-bottom: 5vh;
             }
         }
-
-        /* NEW: Styles for the download button and progress bar */
-        .btn-download-lecture {
-            padding: 0.75rem;
-            background: var(--primary-1);
-            color: white;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
-        }
-        .btn-download-lecture:hover {
-            transform: scale(1.05);
-        }
-        .download-progress {
-            appearance: none;
-            border: none;
-            height: 6px;
-            width: 80px;
-            border-radius: 3px;
-            background-color: var(--border);
-        }
-        .download-progress::-webkit-progress-bar {
-            background-color: var(--border);
-            border-radius: 3px;
-        }
-        .download-progress::-webkit-progress-value {
-            background-color: var(--success);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-        [data-theme="dark"] .download-progress::-webkit-progress-bar {
-            background-color: #475569;
-        }
-        /* New loading card skeleton styles */
-        .loading-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            padding: 1.4rem 1.1rem;
-            border: 1px solid var(--border);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            animation: pulse 1.5s infinite ease-in-out;
-            pointer-events: none;
-        }
-        
-        .loading-card > div {
-            background-color: var(--border);
-            opacity: 0.6;
-        }
-
-        @keyframes pulse {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        [data-theme="dark"] .loading-card > div {
-            background-color: #475569;
-        }
     </style>
+
 </head>
 <body>
     <header>
@@ -1482,14 +1410,14 @@
             <button id="themeToggle" class="btn btn-icon">
                 <i data-lucide="sun"></i>
             </button>
-            <a href="https://t.me/Odsonplatform" target="_blank" class="btn">
+            <button id="examsButton" class="btn">
                 <i data-lucide="file-text"></i><span class="btn-text">امتحانات الأساتذة</span>
-            </a>
+            </button>
         </div>
 
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
-            <input id="searchInput" type="text" placeholder="ابحث عن مدرس أو مادة..." />
+            <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
             <button id="searchButton" class="btn btn-icon">
                 <i data-lucide="search"></i>
             </button>
@@ -1582,7 +1510,7 @@
 
     <div id="categoryPage" class="page">
         <button class="btn back-button" onclick="navigate('home')">
-            <i data-lucide="arrow-right"></i> الرجوع واختيار قسم جديد
+            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
         </button>
         
         <!-- NEW: Favorite Teachers Section -->
@@ -1605,7 +1533,7 @@
 
     <div id="classesPage" class="page">
         <button class="btn back-button" onclick="navigate('category')">
-            <i data-lucide="arrow-right"></i> الرجوع للمدرسين
+            <i data-lucide="arrow-right"></i>الرجوع للمدرسين
         </button>
         
         <div class="teacher-info">
@@ -1644,22 +1572,22 @@
                 
                 <div class="video-info">
                     <div class="video-meta">
-                        <span id="videoDate">
+                        <span>
                             <i data-lucide="calendar"></i>
                         </span>
                         <span>
-                            تم تطوير المنصة بواسطة حميد | انستا: <a href="https://instagram.com/ZR_BB5" target="_blank" style="color: inherit; text-decoration: none;">@ZR_BB5</a>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
-                            </svg>
+                            تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
+                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                             </svg>
                         </span>
                     </div>
                 </div>
                 
                 <button class="btn back-button" onclick="navigate('classes')">
-                    <i data-lucide="arrow-right"></i> العودة للفصول
+                    <i data-lucide="arrow-right"></i>العودة للفصول
                 </button>
             </div>
         </div>
@@ -1712,13 +1640,16 @@
     </div>
 
 
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
     <script type="text/babel">
         // Initialize theme
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
-            const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "dark"
-                : "light";
+            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
+                ? "light"
+                : "dark";
             const theme = stored || preferred;
             document.documentElement.setAttribute("data-theme", theme);
             updateThemeIcon(theme);
@@ -1759,7 +1690,7 @@
         const videoLoader = document.getElementById("videoLoader");
         const favoriteTeachersSection = document.getElementById("favoriteTeachersSection");
         const favoriteTeachersGrid = document.getElementById("favoriteTeachersGrid");
-        const videoDate = document.getElementById("videoDate");
+
 
         // Progress variables
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
@@ -1768,6 +1699,7 @@
         let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
         // NEW: Favorite teachers state
         let favoriteTeachers = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+
 
         // Navigation
         const pages = {
@@ -1815,7 +1747,6 @@
         let currentClassIndex = 0;
         let currentLectureIndex = 0;
         let currentLectureLink = "";
-        let currentCategoryEndpoint = "";
 
         const categories = {
             "year-2026": {
@@ -1836,15 +1767,14 @@
             }
         };
 
-        window.loadCategory = (categoryId) => {
+        function loadCategory(categoryId) {
             const category = categories[categoryId];
             if (!category) return;
             categoryTitle.textContent = category.title;
-            currentCategoryEndpoint = category.endpoint;
-            loadData(currentCategoryEndpoint);
+            loadData(category.endpoint);
             navigate("category");
         }
-        
+
         // NEW: Toggle favorite teacher status and update UI
         window.toggleFavorite = (teacherId) => {
             const index = favoriteTeachers.indexOf(teacherId);
@@ -1906,6 +1836,7 @@
             container.appendChild(card);
         }
 
+
         function renderStars(rating) {
             let stars = "";
             for (let i = 1; i <= 5; i++) {
@@ -1938,17 +1869,10 @@
                     const isCompleted = !!completedLectures[lec.url];
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div style="display: flex; align-items: center; justify-content: space-between; flex-grow: 1;">
-                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}', '${lec.date}')">
+                            <div style="display: flex; align-items: center;">
+                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
-                                </div>
-                                <!-- NEW: Download button and progress bar container -->
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <progress id="progress-${lec.url.replace(/[^a-zA-Z0-9]/g, '')}" class="download-progress" value="0" max="100" style="display:none;"></progress>
-                                    <button id="downloadBtn-${lec.url.replace(/[^a-zA-Z0-9]/g, '')}" class="btn-icon btn-download-lecture" onclick="downloadLecture(event, '${lec.url}', '${lec.title}')">
-                                        <i data-lucide="download"></i>
-                                    </button>
                                 </div>
                             </div>
                             <div class="star-burst"></div>
@@ -1985,25 +1909,23 @@
             lectureItem.classList.toggle('completed', isCompleted);
             if (isCompleted) {
                 const starBurst = lectureItem.querySelector('.star-burst');
-                if (starBurst) { // Added null check
-                    starBurst.innerHTML = Array(8).fill(0).map(() => {
-                        const translateX = (Math.random() - 0.5) * 80;
-                        const translateY = (Math.random() - 0.5) * 80;
-                        return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
-                    }).join('');
-                    starBurst.classList.add('animate');
-                    setTimeout(() => {
-                        starBurst.classList.remove('animate');
-                        starBurst.innerHTML = '';
-                    }, 600);
-                }
+                starBurst.innerHTML = Array(8).fill(0).map(() => {
+                    const translateX = (Math.random() - 0.5) * 80;
+                    const translateY = (Math.random() - 0.5) * 80;
+                    return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
+                }).join('');
+                starBurst.classList.add('animate');
+                setTimeout(() => {
+                    starBurst.classList.remove('animate');
+                    starBurst.innerHTML = '';
+                }, 600);
             }
             updateClassProgress(lectureItem.closest('.class-card'));
         };
 
         function updateClassProgress(classCardElement) {
             const progressSpan = classCardElement.querySelector('.class-progress');
-            const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
+            const classIndex = parseInt(progressSpan.dataset.class-index, 10);
             const classData = currentTeacher.classes[classIndex];
             const totalLectures = classData.lectures.length;
             const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
@@ -2022,13 +1944,16 @@
         
         window.loadIframePlayer = (url) => {
             videoLoader.style.display = 'flex';
+            const encodedUrl = btoa(url);
+            const iframeUrl = `https://vip.halzyz082.workers.dev/proxy_iframe?url=${encodedUrl}`;
             const iframeHtml = `
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
                     <iframe 
-                        src="${url}" 
+                        src="${iframeUrl}" 
                         allowfullscreen 
                         loading="eager"
                         style="width: 100%; height: 100%; border: none; border-radius: inherit;"
+                        referrerpolicy="no-referrer-when-downgrade"
                         allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                         onload="document.getElementById('videoLoader').style.display='none';"
                     ></iframe>
@@ -2037,7 +1962,7 @@
             playerContainer.innerHTML = iframeHtml;
         }
 
-        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam, date) => {
+        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
             if (player) {
                 player.destroy();
                 player = null;
@@ -2055,12 +1980,11 @@
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
-            videoLoader.style.display = 'flex';
+            videoLoader.style.display = 'none';
 
             [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
-            videoDate.textContent = date ? `تاريخ النشر: ${date}` : '';
             
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
@@ -2075,20 +1999,34 @@
             
             navigate("video");
             
-            // Logic to handle different video URL types
+            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+            let finalVideoUrl = url;
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+            }
+
+            // Proxy logic to handle CORS
+            const isHLS = finalVideoUrl.endsWith(".m3u8");
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            const proxiedUrl = useProxy && isHLS ? `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            
             if (url.includes("iframe.mediadelivery.net/embed/")) {
                 loadIframePlayer(url);
                 return;
             }
-            
+
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
             const videoElement = document.getElementById("player");
-            const savedProgress = lectureProgress[url] || 0;
-
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
             const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
-            
+
             player = new Plyr("#player", {
                 controls: playerControls,
                 keyboard: { focused: true, global: true },
@@ -2098,52 +2036,6 @@
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
-            // If it's an HLS link, use hls.js
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                window.hlsInstance = hls;
-                hls.attachMedia(videoElement);
-                hls.loadSource(url);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    player.play().then(() => {
-                        if (savedProgress > 0) {
-                            player.currentTime = (savedProgress / 100) * player.duration;
-                        }
-                    }).catch(console.error);
-                    videoLoader.style.display = 'none';
-                });
-                hls.on(Hls.Events.ERROR, (_, data) => {
-                    console.error('HLS.js error:', data);
-                    if (data.fatal) {
-                        switch (data.type) {
-                            case Hls.ErrorTypes.NETWORK_ERROR:
-                                hls.startLoad();
-                                break;
-                            case Hls.ErrorTypes.MEDIA_ERROR:
-                                hls.recoverMediaError();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
-            } else {
-                // Fallback for browsers that don't support HLS
-                player.source = {
-                    type: "video",
-                    sources: [{ src: url, type: "video/mp4" }],
-                };
-                player.play().then(() => {
-                    if (savedProgress > 0) {
-                        player.currentTime = (savedProgress / 100) * player.duration;
-                    }
-                }).catch(() => {
-                    console.log("تعذر تشغيل الفيديو");
-                });
-                videoLoader.style.display = 'none';
-            }
-
-            // Save progress every 5 seconds
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
                     const progress = (player.currentTime / player.duration) * 100;
@@ -2151,90 +2043,40 @@
                     localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
                 }
             }, 5000);
-        };
-        
-        // NEW: Download logic based on URL type
-        window.downloadLecture = async (event, url, title) => {
-            event.stopPropagation();
-            const uniqueId = url.replace(/[^a-zA-Z0-9]/g, '');
-            const downloadBtn = document.getElementById(`downloadBtn-${uniqueId}`);
-            const progressBar = document.getElementById(`progress-${uniqueId}`);
-            
-            // Normalize the file name
-            const titleTrimmed = title.replace(/[^\w\s\u0600-\u06FF]/g, '').trim();
-            const fileName = `منصة إديسون - ${titleTrimmed}.mp4`;
 
-            if (downloadBtn.disabled) {
-                // Instead of alert, use a better UX, but for simplicity, we'll keep the alert
-                alert("التنزيل قيد التقدم، يرجى الانتظار...");
-                return;
-            }
-
-            downloadBtn.disabled = true;
-            progressBar.style.display = 'block';
-
-            let downloadUrl = url;
-            const mediadeliveryRegex = /https:\/\/iframe\.mediadelivery\.net\/embed\/([^\/]+)\/([^\/]+)/;
-            const match = url.match(mediadeliveryRegex);
-
-            if (match && match[1] && match[2]) {
-                const libraryId = match[1];
-                const videoId = match[2];
-                // Direct link to MP4 file from BunnyCDN
-                downloadUrl = `https://vz-${libraryId}.b-cdn.net/${videoId}/play_1080p.mp4`; 
-            } else {
-                // Handle other video hosts if needed
-                alert("عذراً، لا يمكن تنزيل هذا الفيديو.");
-                downloadBtn.disabled = false;
-                progressBar.style.display = 'none';
-                return;
-            }
-
-            try {
-                const response = await fetch(downloadUrl);
-                if (!response.ok) throw new Error("فشل التحميل. قد يكون الرابط غير صالح.");
-
-                const reader = response.body.getReader();
-                const contentLength = +response.headers.get('Content-Length');
-                let receivedLength = 0;
-                let chunks = [];
-
-                while(true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-
-                    chunks.push(value);
-                    receivedLength += value.length;
-                    const progress = (receivedLength / contentLength) * 100;
-                    progressBar.value = progress;
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(proxiedUrl);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
+                    });
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                    };
+                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
                 }
-                
-                const blob = new Blob(chunks, { type: 'video/mp4' });
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = fileName;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            } catch (error) {
-                alert("حدث خطأ أثناء التنزيل: " + error.message);
-            } finally {
-                downloadBtn.disabled = false;
-                progressBar.style.display = 'none';
-                progressBar.value = 0;
-                lucide.createIcons();
             }
+            tryPlay();
         };
 
         /* ========= Search ========= */
         function handleSearch() {
             const term = searchInput.value.trim().toLowerCase();
-            const filteredTeachers = teachers.filter(t => 
-                t.name.toLowerCase().includes(term) || 
-                t.subject.toLowerCase().includes(term) ||
-                t.classes.some(cls => cls.name.toLowerCase().includes(term))
-            );
-            renderTeachers(filteredTeachers);
+            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
         }
 
         let searchTimeout;
@@ -2256,7 +2098,7 @@
             favoriteTeachersGrid.innerHTML = '';
             favoriteTeachersSection.classList.remove("active");
 
-            fetch(endpoint)
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
                 .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
                 .then((data) => { 
                     teachers = data.teachers; 
@@ -2387,21 +2229,15 @@
             let foundTeacher = false;
             for (const categoryId of categoryKeys) {
                 const category = categories[categoryId];
-                fetch(category.endpoint)
+                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
                     .then(response => response.json())
                     .then(data => {
                         if (foundTeacher) return;
                         const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
                         if (teacher) {
                             currentTeacher = teacher;
-                            const classData = teacher.classes[lastWatched.classIndex];
-                            if (classData) {
-                                const lectureData = classData.lectures[lastWatched.lectureIndex];
-                                if (lectureData) {
-                                    playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lectureData.url, lectureData.title, lectureData.description, teacher.name, teacher.id, lectureData.date);
-                                    foundTeacher = true;
-                                }
-                            }
+                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                            foundTeacher = true;
                         }
                     })
                     .catch(error => console.error("Error loading teacher data:", error));
