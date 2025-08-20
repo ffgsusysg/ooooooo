@@ -970,6 +970,7 @@
             position: relative;
             display: flex;
             align-items: center;
+            gap: 0.5rem;
             margin-right: 0.5rem;
         }
 
@@ -990,18 +991,35 @@
         .btn-download:hover {
             transform: scale(1.1);
         }
+        .btn-download[data-downloading="true"] {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
 
-        .download-progress-bar {
+        .download-progress {
             position: absolute;
-            top: 50%;
-            right: 0; /* Align to the right of the button */
-            transform: translateY(-50%);
-            height: 100%;
-            width: 0;
+            bottom: -5px; /* Adjust position as needed */
+            left: 0;
+            right: 0;
+            height: 4px;
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            border: none;
+            border-radius: 2px;
+            overflow: hidden;
+            background-color: var(--border);
+        }
+        .download-progress::-webkit-progress-bar {
+            background-color: transparent;
+        }
+        .download-progress::-webkit-progress-value {
             background-color: var(--accent);
-            border-radius: 9999px;
-            z-index: 0;
-            transition: width 0.3s ease;
+            transition: width 0.3s linear;
+        }
+        .download-progress::-moz-progress-bar {
+            background-color: var(--accent);
+            transition: width 0.3s linear;
         }
 
 
@@ -1917,10 +1935,10 @@
                                 </div>
                             </div>
                             <div class="download-container">
-                                <button class="btn-download" onclick="downloadVideo(event, '${lec.url}', '${lec.title}')">
+                                <button class="btn-download" onclick="downloadVideo(event, '${lec.url}', '${lec.title}')" data-downloading="false">
                                     <i data-lucide="download"></i>
                                 </button>
-                                <div class="download-progress-bar"></div>
+                                <progress class="download-progress" value="0" max="100" style="display: none;"></progress>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
@@ -2121,64 +2139,81 @@
         };
 
         /*
-         * NEW: Download Video Functionality
-         * This function handles the logic for converting the video URL and initiating the download.
+         * Download Video Functionality
+         * This function now uses XMLHttpRequest to download the video as a blob and save it with a progress bar.
          */
         window.downloadVideo = (event, url, title) => {
             event.stopPropagation();
             const downloadButton = event.currentTarget;
             const progressBar = downloadButton.nextElementSibling;
-        
-            // Simple validation to ensure it's a valid mediadelivery link
+            
+            if (downloadButton.dataset.downloading === "true") {
+                console.log("Download already in progress.");
+                return;
+            }
+
             if (!url.includes("iframe.mediadelivery.net/embed/")) {
-                // Use a simple, non-blocking message box instead of alert
-                // NOTE: `alert` and `confirm` are not supported in this environment
                 console.log('لا يمكن تنزيل هذا الفيديو.');
                 return;
             }
-        
-            // Extract the video ID from the URL
+
             const urlParts = url.split('/');
             const videoId = urlParts[urlParts.length - 1];
-            
-            // Construct the final download URL using the specified proxy and format
             const downloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=http://vz-99e5c202-ca5.becdn.net/${videoId}/play_720p.mp4`;
-        
-            // Update the UI to show the download is starting
-            const originalIcon = downloadButton.innerHTML;
+            
+            // Start UI changes
+            downloadButton.dataset.downloading = "true";
             downloadButton.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i>';
             lucide.createIcons();
-        
-            progressBar.style.width = '0';
-            setTimeout(() => {
-                progressBar.style.transition = 'width 10s linear';
-                progressBar.style.width = '100%';
-            }, 10);
-            
-            // Use fetch to get the video blob, then use FileSaver.js to save it
-            fetch(downloadUrl)
-                .then(response => response.blob())
-                .then(blob => {
-                    saveAs(blob, `${title}.mp4`);
-                })
-                .catch(error => {
-                    console.error('Download failed:', error);
-                    // Reset UI on failure
-                    downloadButton.innerHTML = originalIcon;
+            progressBar.style.display = 'block';
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', downloadUrl, true);
+            xhr.responseType = 'blob';
+
+            xhr.onprogress = (e) => {
+                if (e.lengthComputable) {
+                    const percentComplete = (e.loaded / e.total) * 100;
+                    progressBar.value = percentComplete;
+                }
+            };
+
+            xhr.onload = () => {
+                if (xhr.status === 200) {
+                    const blob = xhr.response;
+                    const fileName = `${title}.mp4`;
+                    saveAs(blob, fileName);
+
+                    // Reset UI on successful download
+                    progressBar.style.display = 'none';
+                    progressBar.value = 0;
+                    downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                    downloadButton.dataset.downloading = "false";
                     lucide.createIcons();
-                    progressBar.style.transition = 'none';
-                    progressBar.style.width = '0';
-                });
-        
-            // Reset the progress bar and icon after a short delay
-            setTimeout(() => {
-                downloadButton.innerHTML = originalIcon;
+                } else {
+                    console.error('Download failed:', xhr.statusText);
+                    // Reset UI on failure
+                    progressBar.style.display = 'none';
+                    progressBar.value = 0;
+                    downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                    downloadButton.dataset.downloading = "false";
+                    lucide.createIcons();
+                }
+            };
+            
+            xhr.onerror = () => {
+                console.error('Network error during download.');
+                // Reset UI on error
+                progressBar.style.display = 'none';
+                progressBar.value = 0;
+                downloadButton.innerHTML = '<i data-lucide="download"></i>';
+                downloadButton.dataset.downloading = "false";
                 lucide.createIcons();
-                progressBar.style.transition = 'none';
-                progressBar.style.width = '0';
-            }, 12000); // Wait for a bit longer to simulate a full download
+            };
+
+            xhr.send();
         };
-        
+
 
         /* ========= Search ========= */
         function handleSearch() {
