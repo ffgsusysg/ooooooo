@@ -976,15 +976,15 @@
             font-size: 1rem;
             font-weight: 600;
             color: #fff;
-            background: var(--primary-1);
+            background-color: var(--primary-1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             cursor: pointer;
-            z-index: 1; /* For the progress bar to be behind */
-            white-space: nowrap; /* Prevent text from wrapping */
-            min-width: 150px; /* Ensure button doesn't shrink too much */
+            z-index: 1; 
+            white-space: nowrap;
+            min-width: 150px;
         }
         
         .download-button:hover {
@@ -994,22 +994,18 @@
         
         .download-button .download-icon, .download-button .download-text {
             position: relative;
-            z-index: 2; /* Keep content on top of progress bar */
+            z-index: 3; /* Keep content on top of progress bar */
         }
 
         /* Download in progress state */
         .download-button.is-downloading {
             cursor: progress;
-            color: var(--text);
-            background: var(--card);
+            color: var(--primary-1); /* Text color during download */
+            background-color: var(--card); /* Background of the button itself */
             border: 2px solid var(--primary-1);
         }
-
-        .download-button.is-downloading .download-icon {
-            color: var(--primary-1);
-        }
-
-        .download-button.is-downloading:after {
+        
+        .download-button.is-downloading:before {
             content: '';
             position: absolute;
             top: 0;
@@ -1018,9 +1014,9 @@
             background: linear-gradient(90deg, var(--primary-1) 0%, var(--primary-2) 100%);
             width: var(--progress-width, 0%);
             transition: width 0.3s linear;
-            z-index: 1;
+            z-index: 2; /* The progress bar on top of the button's background */
         }
-        
+
         /* Download complete state */
         .download-button.is-complete {
             cursor: default;
@@ -1445,19 +1441,27 @@
             }
 
             .download-button {
-              min-width: 0; /* Allow button to shrink */
-              width: auto; /* Reset width to auto */
-              padding: 0.75rem; /* Make padding consistent */
+                min-width: 40px; /* New: fixed width for mobile icon button */
+                width: 40px; /* New: fixed width for mobile icon button */
+                height: 40px;
+                padding: 0;
+                border-radius: 50%; /* Make it circular on mobile */
             }
 
             .download-button .download-text {
               display: none; /* Hide text on small screens */
             }
             
-            .download-button.is-downloading .download-text {
-              display: inline; /* Show text for downloading state to be clear */
+            /* Show text only for download and loading states on mobile for clarity */
+            .download-button.is-downloading, .download-button.is-complete, .download-button.is-error {
+                 border-radius: var(--radius); /* Reset border radius to square for these states */
+                 width: auto; /* Allow the button to expand with text */
+                 padding: 0.75rem 1rem;
             }
 
+            .download-button.is-downloading .download-text, .download-button.is-complete .download-text, .download-button.is-error .download-text {
+              display: inline;
+            }
         }
 
         @media (max-width: 480px) {
