@@ -1289,66 +1289,6 @@
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
             filter: brightness(1.05);
         }
-        
-        /* Download button and progress bar */
-        .download-container {
-            position: relative;
-            display: inline-block;
-            margin-left: 0.5rem;
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-        
-        .btn-download {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #55a630;
-            border-radius: 50%;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            transition: all 0.2s ease;
-            box-shadow: var(--shadow-sm);
-        }
-        .btn-download:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-md);
-            background: #458a26;
-        }
-        
-        .download-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: var(--border);
-            border-bottom-left-radius: 6px;
-            border-bottom-right-radius: 6px;
-            overflow: hidden;
-            opacity: 0;
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: all 0.4s ease-out;
-        }
-
-        .download-progress-bar {
-            height: 100%;
-            width: 0;
-            background-color: var(--primary-1);
-            transition: width 0.3s linear;
-        }
-
-        .download-container.active .download-progress {
-            opacity: 1;
-            transform: scaleX(1);
-        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -1374,24 +1314,7 @@
             
             .lecture-item {
                 padding-left: 2.5rem;
-                flex-direction: row-reverse;
-                justify-content: flex-end;
             }
-            
-            .lecture-play-area {
-                flex-grow: 1;
-            }
-            
-            .completion-checkbox {
-                order: 2;
-                margin-left: 0.5rem;
-                margin-right: 0.5rem;
-            }
-            
-            .download-container {
-                order: 3;
-            }
-
 
             .video-meta {
                 flex-direction: column;
@@ -1655,9 +1578,9 @@
                         <span>
                             تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                 <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
                              </svg>
                         </span>
                     </div>
@@ -1944,29 +1867,19 @@
                 const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
                 const lectures = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
-                    const isDownloadable = lec.url.includes("iframe.mediadelivery.net/embed/");
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div style="display: flex; align-items: center; gap: 0.5rem; flex-grow: 1;">
+                            <div style="display: flex; align-items: center;">
                                 <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
                             </div>
                             <div class="star-burst"></div>
-                            <div class="lecture-actions" style="display: flex; align-items: center; gap: 0.5rem;">
-                                ${isDownloadable ? `
-                                    <div class="download-container" data-url="${lec.url}" data-title="${lec.title}">
-                                        <button class="btn-download">
-                                            <i data-lucide="download" style="width: 20px; height: 20px;"></i>
-                                        </button>
-                                    </div>
-                                ` : ''}
-                                <label class="completion-checkbox">
-                                    <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            <label class="completion-checkbox">
+                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     `;
                 }).join("");
@@ -1984,15 +1897,6 @@
                 `;
             }).join("");
             lucide.createIcons();
-            // Add event listeners for download buttons after they are rendered
-            document.querySelectorAll('.btn-download').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const downloadContainer = event.currentTarget.closest('.download-container');
-                    const url = downloadContainer.dataset.url;
-                    const title = downloadContainer.dataset.title;
-                    downloadVideo(event, url, title);
-                });
-            });
         }
         
         window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
@@ -2018,94 +1922,6 @@
             }
             updateClassProgress(lectureItem.closest('.class-card'));
         };
-        
-        // NEW: Download Logic
-        window.downloadVideo = (event, embedUrl, title) => {
-            event.stopPropagation();
-            const downloadContainer = event.currentTarget.closest('.download-container');
-            const downloadBtn = downloadContainer.querySelector('.btn-download');
-            const icon = downloadBtn.querySelector('i');
-            downloadContainer.classList.add('active');
-            icon.setAttribute('data-lucide', 'loader-2');
-            downloadBtn.style.pointerEvents = 'none';
-            lucide.createIcons();
-            
-            const urlParts = embedUrl.split('/');
-            const videoId = urlParts.pop();
-            const libraryId = urlParts.pop();
-            
-            const directUrl = `http://vz-${libraryId}.becdn.net/${videoId}/play_720p.mp4`;
-            const proxiedUrl = `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(directUrl)}`;
-
-            fetch(proxiedUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const totalSize = response.headers.get('content-length');
-                let loaded = 0;
-                const progressBar = document.createElement('div');
-                progressBar.className = 'download-progress-bar';
-                const downloadProgressEl = document.createElement('div');
-                downloadProgressEl.className = 'download-progress';
-                downloadProgressEl.appendChild(progressBar);
-                downloadContainer.appendChild(downloadProgressEl);
-
-                const reader = response.body.getReader();
-                
-                return new ReadableStream({
-                    start(controller) {
-                        function push() {
-                            reader.read().then(({ done, value }) => {
-                                if (done) {
-                                    controller.close();
-                                    return;
-                                }
-                                loaded += value.byteLength;
-                                if (totalSize) {
-                                    const progress = (loaded / totalSize) * 100;
-                                    progressBar.style.width = `${progress}%`;
-                                }
-                                controller.enqueue(value);
-                                push();
-                            }).catch(error => {
-                                console.error(error);
-                                controller.error(error);
-                            });
-                        }
-                        push();
-                    }
-                });
-            })
-            .then(stream => new Response(stream))
-            .then(response => response.blob())
-            .then(blob => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `${title}.mp4`;
-                document.body.appendChild(a);
-                a.click();
-                window.URL.revokeObjectURL(url);
-                
-                const progressBar = downloadContainer.querySelector('.download-progress');
-                if (progressBar) progressBar.remove();
-                icon.setAttribute('data-lucide', 'download');
-                downloadContainer.classList.remove('active');
-                downloadBtn.style.pointerEvents = 'auto';
-                lucide.createIcons();
-            })
-            .catch(error => {
-                console.error('Download failed:', error);
-                const progressBar = downloadContainer.querySelector('.download-progress');
-                if (progressBar) progressBar.remove();
-                icon.setAttribute('data-lucide', 'download');
-                downloadContainer.classList.remove('active');
-                downloadBtn.style.pointerEvents = 'auto';
-                lucide.createIcons();
-            });
-        };
-
 
         function updateClassProgress(classCardElement) {
             const progressSpan = classCardElement.querySelector('.class-progress');
@@ -2160,6 +1976,7 @@
                 window.progressInterval = null;
             }
             
+            // Set global variable for download button logic
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
