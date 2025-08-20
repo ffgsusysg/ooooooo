@@ -833,7 +833,7 @@
             gap: 0.7rem;
             padding: 1.1rem 1.5rem 0.9rem 0;
         }
-
+        
         .lecture-item {
             position: relative;
             background: var(--hover);
@@ -845,7 +845,7 @@
             align-items: center;
             padding: 0.9rem 1.1rem;
         }
-        
+
         .lecture-item.completed {
             background-color: #dcfce7;
             border-right-color: var(--success);
@@ -1393,41 +1393,49 @@
             }
         }
 
-        /* NEW: Styles for the download button and progress bar */
-        .btn-download-lecture {
-            padding: 0.75rem;
-            background: var(--primary-1);
-            color: white;
-            border-radius: 50%;
-            width: 44px;
-            height: 44px;
+        /* Added CSS for download button and progress bar */
+        .download-container {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: transform 0.2s ease;
+            gap: 0.5rem;
+            margin-right: 1rem;
         }
-        .btn-download-lecture:hover {
-            transform: scale(1.05);
+        
+        .download-btn {
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            background: var(--primary-1);
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.3s ease;
         }
+        
+        .download-btn:hover {
+            background: var(--primary-2);
+        }
+        
         .download-progress {
-            appearance: none;
-            border: none;
-            height: 6px;
+            display: none;
             width: 80px;
-            border-radius: 3px;
-            background-color: var(--border);
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
         }
-        .download-progress::-webkit-progress-bar {
-            background-color: var(--border);
-            border-radius: 3px;
+        
+        .download-progress-fill {
+            height: 100%;
+            background: var(--success);
+            width: 0;
+            transition: width 0.1s linear;
         }
-        .download-progress::-webkit-progress-value {
-            background-color: var(--success);
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-        [data-theme="dark"] .download-progress::-webkit-progress-bar {
-            background-color: #475569;
+        
+        .lecture-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
     </style>
 
@@ -1550,8 +1558,7 @@
             <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
         </button>
         
-        <!-- NEW: Favorite Teachers Section -->
-        <div id="favoriteTeachersSection" class="favorite-teachers-section">
+                <div id="favoriteTeachersSection" class="favorite-teachers-section">
             <div class="section-title">
                 <i data-lucide="heart"></i>
                 <h3>مدرسيني المفضلين</h3>
@@ -1906,24 +1913,25 @@
                     const isCompleted = !!completedLectures[lec.url];
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div style="display: flex; align-items: center; justify-content: space-between; flex-grow: 1;">
+                            <div style="display: flex; align-items: center;">
                                 <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
-                                <!-- NEW: Download button and progress bar container -->
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <progress id="progress-${lec.url.replace(/[^a-zA-Z0-9]/g, '')}" class="download-progress" value="0" max="100" style="display:none;"></progress>
-                                    <button id="downloadBtn-${lec.url.replace(/[^a-zA-Z0-9]/g, '')}" class="btn-icon btn-download-lecture" onclick="downloadLecture(event, '${lec.url}', '${lec.title}')">
-                                        <i data-lucide="download"></i>
-                                    </button>
-                                </div>
                             </div>
                             <div class="star-burst"></div>
-                            <label class="completion-checkbox">
-                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
-                                <span class="checkmark"></span>
-                            </label>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div class="download-container">
+                                    <button class="download-btn" onclick="event.stopPropagation(); startDownload('${lec.url}', '${lec.title}');" data-is-downloading="false">
+                                        <i data-lucide="download"></i>
+                                    </button>
+                                    <div class="download-progress"><div class="download-progress-fill"></div></div>
+                                </div>
+                                <label class="completion-checkbox">
+                                    <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
                         </div>
                     `;
                 }).join("");
@@ -2116,68 +2124,6 @@
             }
             tryPlay();
         };
-        
-        // NEW: Download logic based on URL type
-        window.downloadLecture = async (event, url, title) => {
-            event.stopPropagation();
-            const uniqueId = url.replace(/[^a-zA-Z0-9]/g, '');
-            const downloadBtn = document.getElementById(`downloadBtn-${uniqueId}`);
-            const progressBar = document.getElementById(`progress-${uniqueId}`);
-            const titleTrimmed = title.replace(/[^\w\s\u0600-\u06FF]/g, '').trim();
-            const fileName = `منصة إديسون - ${titleTrimmed}.mp4`;
-
-            if (downloadBtn.disabled) {
-                alert("التنزيل قيد التقدم، يرجى الانتظار...");
-                return;
-            }
-
-            downloadBtn.disabled = true;
-            progressBar.style.display = 'block';
-
-            let downloadUrl = url;
-            const mediadeliveryRegex = /https:\/\/iframe\.mediadelivery\.net\/embed\/215061\/(.+)/;
-            const match = url.match(mediadeliveryRegex);
-
-            if (match && match[1]) {
-                const videoId = match[1];
-                downloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=http://vz-99e5c202-ca5.becdn.net/${videoId}/play_720p.mp4`;
-            }
-
-            try {
-                const response = await fetch(downloadUrl);
-                if (!response.ok) throw new Error("فشل التحميل. قد يكون الرابط غير صالح.");
-
-                const reader = response.body.getReader();
-                const contentLength = +response.headers.get('Content-Length');
-                let receivedLength = 0;
-                let chunks = [];
-
-                while(true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-
-                    chunks.push(value);
-                    receivedLength += value.length;
-                    const progress = (receivedLength / contentLength) * 100;
-                    progressBar.value = progress;
-                }
-                
-                const blob = new Blob(chunks);
-                const a = document.createElement('a');
-                a.href = URL.createObjectURL(blob);
-                a.download = fileName;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-            } catch (error) {
-                alert("حدث خطأ أثناء التنزيل: " + error.message);
-            } finally {
-                downloadBtn.disabled = false;
-                progressBar.style.display = 'none';
-                progressBar.value = 0;
-                lucide.createIcons();
-            }
-        };
 
         /* ========= Search ========= */
         function handleSearch() {
@@ -2358,6 +2304,89 @@
 
         // Initialize
         lucide.createIcons();
+
+        /* ========================================================= */
+        /* ====================== NEW CODE FOR DOWNLOAD ====================== */
+        /* ========================================================= */
+
+        // Function to extract Video ID and Library ID
+        function extractVideoInfo(iframeUrl) {
+            const parts = iframeUrl.split('/');
+            const videoId = parts.pop();
+            const libraryId = parts.pop();
+            return { videoId, libraryId };
+        }
+
+        // Function to start the download
+        window.startDownload = (lectureUrl, lectureTitle) => {
+            const downloadButton = event.target.closest('.download-btn');
+            const progressContainer = downloadButton.nextElementSibling;
+            const progressFill = progressContainer.querySelector('.download-progress-fill');
+
+            // Check if a download is already in progress
+            if (downloadButton.dataset.isDownloading === 'true') {
+                alert("يوجد تحميل قيد التنفيذ. يرجى الانتظار.");
+                return;
+            }
+            downloadButton.dataset.isDownloading = 'true';
+            downloadButton.style.display = 'none';
+            progressContainer.style.display = 'block';
+
+            // Check if the URL is from mediadelivery iframe
+            if (lectureUrl.includes("iframe.mediadelivery.net/embed/")) {
+                const { videoId, libraryId } = extractVideoInfo(lectureUrl);
+                const videoMP4Url = `https://vz-${libraryId}.becdn.net/${videoId}/play_720p.mp4`;
+                const proxiedUrl = `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(videoMP4Url)}`;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', proxiedUrl, true);
+                xhr.responseType = 'blob';
+
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        const blob = xhr.response;
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = url;
+                        a.download = `${lectureTitle}.mp4`;
+                        document.body.appendChild(a);
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    } else {
+                        alert('فشل التحميل. يرجى المحاولة مرة أخرى.');
+                    }
+                    // Reset state
+                    downloadButton.dataset.isDownloading = 'false';
+                    downloadButton.style.display = 'block';
+                    progressContainer.style.display = 'none';
+                    progressFill.style.width = '0%';
+                };
+
+                xhr.onprogress = (event) => {
+                    if (event.lengthComputable) {
+                        const percentComplete = (event.loaded / event.total) * 100;
+                        progressFill.style.width = `${percentComplete}%`;
+                    }
+                };
+
+                xhr.onerror = () => {
+                    alert('حدث خطأ أثناء التحميل. يرجى التحقق من الاتصال بالإنترنت.');
+                    // Reset state on error
+                    downloadButton.dataset.isDownloading = 'false';
+                    downloadButton.style.display = 'block';
+                    progressContainer.style.display = 'none';
+                    progressFill.style.width = '0%';
+                };
+
+                xhr.send();
+            } else {
+                alert("لا يمكن تنزيل هذا النوع من الروابط مباشرةً.");
+                downloadButton.dataset.isDownloading = 'false';
+                downloadButton.style.display = 'block';
+                progressContainer.style.display = 'none';
+            }
+        };
     </script>
 </body>
 </html>
