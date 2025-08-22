@@ -17439,12 +17439,701 @@
         }
       ]
     },
+{
+  "id": 1748301353208,
+  "name": "حسين",
+  "subject": "كيمياء",
+  "image": "https://yt3.googleusercontent.com/cQL3l6KUK3ydzO1fvBlCLHjpOO7iinV1pX26g6MZgn_O2JQkdN55iCz5nEGeerbW3k2ERmw4Wg=s900-c-k-c0x00ffffff-no-rj",
+  "classes": [
     {
-      "id": 1748301353208,
-      "name": "jdhehe",
-      "subject": "hsheh",
-      "image": "irueueu",
-      "classes": []
+      "name": "الفصل الأول",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/0PXiQV9dprMD2ePIQBFh3OeR5vTzMTXk_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/9UIeRXAmpqk4xVuVeKynlngOYrQxn9r0_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/caMEuBckoNaQW64BpcQdF5HFe9nhWHW3_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/zG2yfs3hTkVPT5FOCd8RkO4cfaGymMou_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/a6RuvDtVcocrcN7f4v1Z5HbHmeKJje2U_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/nWyIwYuSQVWW3qWr4Mk6sXm0koLtAsvI_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/n9ckkVzYVJzTDcXbVtjiSaEBQmj77ABz_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/ygptyZFDKxpmi5Y47fGJ7NbRndZwbnVI_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 9",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/JDzdkK1ndGSiobvauUzV62OhWohHbuIT_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 10",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/uSM0eZLZzYTSqd24iEZyoDIZ9HYethPg_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 11",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/OhJAuzuizQYll2PMrv32sUXKvO7dI5E1_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 12",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/Vxk2mDrG6IImqg1uJ5JAKOIDhSxgb0ga_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 13",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/NBwxRn1ZEkEs7nFC28t6qf9vn7ejq8LL_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 14",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/ZqpwSJNZggiO7hkSL0mcrsjtYrfySwWx_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 15",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/B2AhIkYl9OgZPb9s7JyDaGnW7zRFIzt3_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 16",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/TVPcFPPcKElT2ZsTH5WIUpNRzVUPZhuz_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 17",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/aynkC6ZgBGDaSKZNM1cQxer3BWD0kh97_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 18",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/brhoJJpQu9R8w77xcDldxSHrclHPI1Bp_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 19",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/ECPalqnuT4LThA3U6aE6S18DNjZ34KZx_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 20",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/oZyNPExye4V6ofgq3syW3RaOTvrHS3mv_720p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 21",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/N0aa1HdVbd8CSbk3NsRla3ooq3w54f1N_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 22",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/5BSVqeie3JPCTMvV6JeI8rj3DCU4mUT2_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 23",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/mkwYe74Id4rgsAuXfsrymG42ww6HqnKn_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 24",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/d7qfLnYry1UlM2bfUpooQx7kve6NO10K_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 25",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/TkfuHWTTHMdkBjPyHK0aagHoPOVCf3Kn_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 26",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/aOPOp3kLd1nTQPoVzv8VUcPTaSQtLdls_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 27",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/SjTnKvuQ2bnaJUw23lX9fP4qk39Zy9VL_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 28",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/1vvW27WOUlt60Fu4wgzCTfUxCElkTtUK_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 29",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/EEDsMUt74Q8io8RezbpTZv6VrkVXSOWw_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل الثاني",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/tSt887f7DQnzlSy9Md3K2NYt5P0g7c3r_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/nDHJFwSVhARku4L3wsomUeAYQYC1ZID5_720p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/lEUBXaQROUhmyFRwe7nWp7SZDuUJjrnY_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/WDenGvbyvjyj5JoEgaw6BqH7JIA5EYIg_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/nTeLUg9J6imRgRRM8acP8ME8w8g0R1ZV_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/L8ZLyOqEUCcUhfoOgXpnX9EYSKi5UQnT_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/I9C0j7pn525o6v6StraFydwrk1nbONEJ_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/MOTzPHA1QsOot0qmkvy9NuiGW3UEHGXl_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 9",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/AZOjzXpaB3AVbtv0Wz9zxVxULndPKnAo_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 10",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/OliyLU08zWKfX3qo0gpW0Ox9MMToKpc7_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 11",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/7QseAItONOHgWpjEVEnojTPcnLRktIrN_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 12",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/npbXOge9jdVBrfnpW0awbAGIalZphj4X_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 13",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/6QES3sp3lUcnQ9N2kNxAulajxqWSh6cG_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 14",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/yWxuJl1bdVZEQWzBGJ4i0WxVRpNz8QSV_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 15",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/NzqWLlgJPGk80DRI81xE6EMzaKR1R4ms_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 16",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/wAsoOR30SiJBEkZ8qtDN6duXHWry0LSg_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 17",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/v4xWX8E0fSTUR2h4Ditp5Ie5qxIzyRkO_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 18",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/9UwFBkI29HEyZmHYjMHSoT0E138K1cwp_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 19",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/deBbaydPCrOa684vbzxmG424uzuFKDy8_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 20",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/9ZO6qDuBMsHm0LlRHbZti0ORLS7QtAX0_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 21",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/pITD59IEQBiy8odmEAKA7zVZUD22uvzF_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 22",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/U5btx0rKt25sNBesRlTua0gyTAljRx2D_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 23",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/xq5C2KvkOzxobZULjtJE8dpns7DOUFNR_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 24",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/SPtRwNEL75rIEMbTftT6uacw7GL7RvSK_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 25",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/DXNSAykZcyyMPJYdQc8Qsp4sPcRAzjHx_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 26",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/TIykrdCtcenlLel0wlML0c3uvq3zL1UY_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل الثالث",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/5V2Anr27jgCJzuBEJH0UztXfpWxXemY2_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/O94Gzk1p0hnorfNOCneuNeaNMUJzZ9aW_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/afvg7VfRuZ2d0NplEI4vNsWjryFdshXv_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/NrLmoAmUrZppY5JYd5QdS04rm5EESNNJ_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/EUFYOfWvjrGIgXtCqLrjc0ft4ZHoYDJP_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/oI1m6PJ9XKA45lbBHJfVfKUArSrbGF7L_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/Vaj57w93teeZ6uZd6V90nrYqfckOMj8A_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/fQ7CEgIqUsMSe4rLmgcOBsDyswstlQPU_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 9",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/yBCtyZfkc4upNfVQqNgHgNbTvGusyieR_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 10",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/dFBHMLf6MebFK48GMu7dGAINxY22rlfl_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 11",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/xtRLAiikyyfFFI1QmJCOmIdYhsKGQ5l5_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 12",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/wLVxCaXOa1psmilA4uXQix5c1ogEYwWT_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 13",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/kumJCh3FKPZHgdyMro7dPuWNRT53PO1E_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 14",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/nIbZflOwGznvray7rmgdFfnPrv8kXPR0_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 15",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/1oCJyYK2qciIvIiHZ62uo2cEioNxmnQq_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 16",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/KcEh6G13YxOFae22ZUjYJf09LdiXArxa_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 17",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/qk7PG9iBZitDJHf2e6DlJLxVRBMzJRZ0_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 18",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/ocyRmqgunmbARGoyHKBTDgw1OTDmr8oY_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 19",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/BmTTBjlZFgohPwJHaIApFc9e1Qycp91K_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 20",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/kuM80AcTHt6doQcyMsDA4URiR7fO6Ras_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 21",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/7qcSPCQXmVosVJPTayqz8vYrGmMzPrUb_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 22",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/pOqp5ludZzdEPO5moKOoSBqhexvSP81b_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 23",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/YKh5uwAJmMQYWBrNSfyeNfOfXHIXH9jm_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 24",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/kxO78raJjPKbgHbHtqRDQFS2bzm7IAeB_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 25",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/UEAYDliwpsgPBxYwEx8cZGP6YiPNPl4t_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 26",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/uL9mFzGV6dmPbuiQQ42sXh9IkKPquEiZ_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 27",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/1Ep0QudNaXDCeQrdWNd37roBSaHneKcI_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 28",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/Sv215jGdcpjUfkPQw6mw75OV3M72uOOP_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 29",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/aBAhshgm5EHRDJEMPc9Esxu80Foz2hiA_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 30",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/llsB9NPTg1ChwA054FPiuuHsHrtZ4yx7_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 31",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/4oOfMR2JZ8hs7Hbwl2lemp0obwDYGptW_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 32",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/On4tjIyaJPQMl1ep2HuaFFxOpqPupSg9_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 33",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/A6lN4gcjEIWWCHaYNaG25EwPtXpicrgi_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 34",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/VOGb9JWOnhwcnBEVsteBi9FVSRLNaca2_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل الرابع",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/tXFfuIjggtS8YbucsV26fkCEhEKWCrNt_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/dT1CRTHhYqOiKov0rNoJ33rWmYAlbFtO_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/tn2P1RQ9jmiYnl1AKcySRtMWQ8hasxSN_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/xg8ahXBdgaIAWGa6RKXNUgitFjarHrnH_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/7EFvA3MoPY0TjAYnQ8TejgCDohoK7l5S_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/PkrzzBjuAcT0ydjucdOaeFJZSCjLAMnV_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/7JuPjwDz5UnPJ0896oO2bSo2tIGQA5Yz_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/0cccc9aa-17ea-41f6-9007-307d68917b3e.smil/f4b74bdb-2702-410d-8cec-22f15158b785/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 9",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/fa8fe174-d319-4562-a615-17b926603aed.smil/85711e50-b2bf-4633-8fbd-105fb2e367e6/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 10",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/1550c4a0-4aa1-4b63-8857-9389bf882aeb.smil/b8ed758b-15f1-49e1-8963-2429502f2412/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 11",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/115aee94-9132-45a0-9851-b60ba537de75.smil/d503f128-ceaa-4cbe-ac55-46a8bcd3e7bd/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 12",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/4/1e5a02a8-298c-4a29-94f7-a9c3c43f7a45.smil/72032ff3-76ca-452b-bf2f-7d85f60d3e32/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 13",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/4/6a03a0c1-a210-4a2b-b394-8271f975a664.smil/cbdc9221-98c7-4eb0-a04e-3ce37e4917cc/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 14",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/4/1950ab64-ce36-48d2-a14a-a15758dc1701.smil/99412f1e-eb94-4d7d-84b5-5f6abaabbfdc/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 15",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/e2FQbxdEJQnSsW0dve6lNs6guIfW5aiC_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 16",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/4/5b9e9219-78d3-413d-ad9b-052acc88ad6b.smil/567d5aba-6bda-4317-a54e-da74f45dae88/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 17",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/B45mPDWiBfOPCw5SedLTAwDgGmy2A2sH_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل الخامس",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/dcdd354e-e9ca-4327-ac07-3565771271c2.smil/9a5483cb-0e2a-415b-8f1f-015c6be22339/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/73eb1b60-cdbf-4b04-ab50-25bc6dc3e8ce.smil/3c90e51e-a11c-4a95-81fe-464619e8dba9/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/6da7d57e-d15b-4355-a807-20434d6c2783.smil/f6631111-d67f-4550-b8ff-b133dd03c101/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/44e3859d-f4cd-44cc-a557-7f6bf455ab14.smil/304230f2-9bc9-40f4-81f3-ad9740cb3691/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/7f09276f-1958-424c-919f-15170ab444fe.smil/049ea814-88ad-431f-9942-41eb4330bcab/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/a9dd4dc5-1d05-4a80-b1b4-9e3c172b1d55.smil/669e4552-8098-407b-b897-5e549e926402/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/cdc38f75-707b-4a6b-9b79-3e3f84976315.smil/f455a660-2120-460c-98bd-d8fd3fdfc991/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/3a04c769-2222-410e-a96e-fe8dcbcdd973.smil/d2326b96-8269-4648-a92c-60857fb17a9a/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 9",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/sbko7X9uZ78St4F3IDk785eNEhziudkO_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل السادس",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/AZyyd5WAt68JzAU1IQqtsYmeSVpNUXNx_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/eCkIGGFYGreuvM9YvsncouhBp0v61C2f_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/KeRn2Dhpx62mY6nYxgDoqVCnU7mjxKlD_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/5aMOkUnEUniVcmsH09MObNqzD9ndmTab_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/5F5W7py1CWhOvXpVjwgUWhIoRncryXIX_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 6",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/VYJRQvz6DPePG8ryUFjrvZUgutC2vdiK_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 7",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/o24bGyHnfUmZQ5otKmTxacLyeFD6ngCZ_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 8",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/6b474c26-5d5d-4fbe-ae3e-3d646990ea95.smil/1371dc85-32c7-4d25-9050-14380c0f0716/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل السابع",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/10eb8553-bb38-4707-9061-acc6cf70971b.smil/9e9faf9d-7075-48a3-8b89-e5cf1046308e/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/c9509db3-2293-48d2-9514-fd6ccb489f60.smil/5e8b8515-a000-41bc-be9e-9399137aab97/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 3",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/76ac9bc1-a13b-4e5e-a280-4e0f63f73b60.smil/37e288ac-4e63-486c-9287-0da91831afcb/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 4",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/32/666f85dd-e1e0-46c7-bf73-65a18513d6f0.smil/12a7dc70-c729-4bbd-9b19-c64c9d4c5761/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 5",
+          "url": "https://9bf9f797be0a4677a8-akamai-cdn.com/6/824a7147-3506-45bb-9fe7-ea8fc18d2774.smil/5b2c14f6-08c8-4e29-9547-1da41ea3553a/media-1/stream.m3u8",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
+    },
+    {
+      "name": "الفصل الثامن",
+      "lectures": [
+        {
+          "title": "محاضرة 1",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/hCtOn1FDo6K8yuqI9u487MDGgEWq7zLn_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        },
+        {
+          "title": "محاضرة 2",
+          "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/HA0fo8AGWNEPDpXSWiVZ9ZUijwkuxFsj_360p.mp4",
+          "description": "محاضرة في الكيمياء"
+        }
+      ]
     }
   ]
 }
