@@ -2064,27 +2064,35 @@
             
             navigate("video");
             
-            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
             let finalVideoUrl = url;
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
+            let isHLS = finalVideoUrl.endsWith(".m3u8");
+            let useProxy = true;
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            
+            // NEW: Check for the specific domain and mp4 extension
+            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+                useProxy = false;
+                isHLS = false;
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // If it's a mediadelivery iframe, use the iframe player logic
+                loadIframePlayer(url);
+                return; // Exit the function to prevent further execution
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const libraryId = urlParts[urlParts.length - 2];
                 finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                isHLS = true;
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            } else {
+                // Keep the existing proxy logic for other cases
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
-
-            // Proxy logic to handle CORS
-            const isHLS = finalVideoUrl.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            
             const proxiedUrl = useProxy && isHLS ? `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url);
-                return;
-            }
-
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
@@ -2394,6 +2402,97 @@
 
         // Initialize
         lucide.createIcons();
+    </script>
+    <script type="text/babel">
+      // نظام الحماية
+      (function () {
+        let detected = false;
+        
+        function triggerSecurity() {
+          if (detected) return;
+          detected = true;
+
+          document.documentElement.innerHTML = '';
+          alert("تم اكتشاف محاولة فحص، وتم تسجيل عنوان IP الخاص بك.");
+          // تم حذف كود fetch بناءً على طلبك
+          
+          // تأخير بسيط قبل إعادة التوجيه
+          setTimeout(() => window.location.reload(), 1000);
+        }
+
+        // كشف فتح DevTools عبر console.log + Object.defineProperty
+        const el = new Image();
+        Object.defineProperty(el, 'id', {
+          get: function () {
+            triggerSecurity();
+          }
+        });
+        console.log('%c لا تحاول العبث بالكود!', 'font-size:100px;', el);
+
+        // كشف DevTools بـ new Function بدل debugger فقط
+        function detectDebuggerDelay() {
+          const start = performance.now();
+          new Function("debugger")(); // bypass Disable Breakpoints
+          const duration = performance.now() - start;
+          if (duration > 100) {
+            triggerSecurity();
+          }
+        }
+
+        // كشف DevTools عبر حجم النافذة
+        function detectWindowResize() {
+          const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || 
+                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          if (isIOS) return; 
+
+          if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+            triggerSecurity();
+          }
+        }
+
+        // تكرار الفحص كل ثانية
+        setInterval(() => {
+          detectDebuggerDelay();
+          detectWindowResize();
+        }, 1000);
+
+        // منع جميع الاختصارات الحساسة
+        document.addEventListener("keydown", function (e) {
+            let combo = "";
+            if (e.ctrlKey) combo += "CTRL+";
+            if (e.shiftKey) combo += "SHIFT+";
+            combo += e.key.toUpperCase();
+            
+          const forbidden = [
+            "F12",
+            "CTRL+SHIFT+I",
+            "CTRL+SHIFT+C",
+            "CTRL+SHIFT+J",
+            "CTRL+U",
+            "CTRL+S",
+            "CTRL+A",
+            "CTRL+C",
+            "CTRL+P",
+            "CTRL+E",
+            "CTRL+SHIFT+E",
+            "CTRL+SHIFT+K"
+          ];
+          if (forbidden.includes(combo)) {
+            e.preventDefault();
+            triggerSecurity();
+          }
+        });
+
+        // منع الزر الأيمن
+        document.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+        });
+
+        // منع السحب والتحديد
+        document.addEventListener("selectstart", e => e.preventDefault());
+        document.addEventListener("dragstart", e => e.preventDefault());
+
+      })();
     </script>
 </body>
 </html>
