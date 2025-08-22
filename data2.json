@@ -1,5 +1,33 @@
 {
   "teachers": [
+  
+
+  {
+
+      "id": 1746651021373,
+      "name": "حسين الهاشمي 2026",
+      "subject": "مدرس مادة كيمياء",
+      "image": "https://i.imghippo.com/files/eiPJ5269dI.jpg",
+      "classes": [
+        {
+          "name": "الفصل الاول: ",
+          "lectures": [
+            {
+              "title": "11",
+              "description": "ممكن تقرأ وماتسخت ؟",
+              "url": "https://f2l-bot828-40f1f76157f8.herokuapp.com/dl/68a8341afb7640626cf9db82"
+            },
+            {
+              "title": "12",
+              "description": "ممكن تقرأ وماتسخت ؟",
+              "url": "https://f2l-bot828-40f1f76157f8.herokuapp.com/dl/68a83478fb7640626cf9db85"
+       
+  
+}
+          ]
+        }
+      ]
+    },
     {
       "id": 1746651021373,
       "name": "حسين محمد 2026",
