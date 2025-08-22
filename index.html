@@ -2064,27 +2064,35 @@
             
             navigate("video");
             
-            // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
             let finalVideoUrl = url;
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
+            let isHLS = finalVideoUrl.endsWith(".m3u8");
+            let useProxy = true;
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            
+            // NEW: Check for the specific domain and mp4 extension
+            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+                useProxy = false;
+                isHLS = false;
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // If it's a mediadelivery iframe, use the iframe player logic
+                loadIframePlayer(url);
+                return; // Exit the function to prevent further execution
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const libraryId = urlParts[urlParts.length - 2];
                 finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                isHLS = true;
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            } else {
+                // Keep the existing proxy logic for other cases
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
-
-            // Proxy logic to handle CORS
-            const isHLS = finalVideoUrl.endsWith(".m3u8");
-            const referer = "https://abwaab.com";
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            let useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            
             const proxiedUrl = useProxy && isHLS ? `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url);
-                return;
-            }
-
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
