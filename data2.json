@@ -2645,9 +2645,19 @@
           "name": "1",
           "lectures": [
             {
-              "title": "المحاضرة الأولى ",
-              "description": "",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fe816138-f66a-4ba3-bdaf-d97ec03fb9ba"
+            "title": "المحاضرة الأولى - أساسيات أحكام التلاوة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/fe816138-f66a-4ba3-bdaf-d97ec03fb9ba",
+          "description": "محاضرة عن أساسيات أحكام التلاوة."
+        },
+        {
+          "title": "المحاضرة الثانية - أنواع الأحكام وشرح التعاريف",
+          "url": "https://iframe.mediadelivery.net/embed/215061/50a82030-5aa6-4b61-8afa-0f0b8d3f25cd",
+          "description": "محاضرة عن أنواع الأحكام وشرح تعاريفها."
+        },
+        {
+          "title": "المحاضرة الثالثة - النماذج الوزارية العشرة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/c798be0c-c221-43f7-b7f8-3d1c68ef6e92",
+          "description": "محاضرة عن النماذج الوزارية العشرة."
            
 
 
