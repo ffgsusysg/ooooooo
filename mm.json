@@ -118,49 +118,84 @@
               "description": "آيات قرآنية من كل محاضرة"
             },
             {
-              "title": "جغرافية السكان",
-              "url": "https://iframe.mediadelivery.net/embed/215061/ceb207b8-a10e-4b52-bdd7-88c024d979c7",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "المحاضرة الثانية (التوزيع الجغرافي للسكان)",
-              "url": "https://iframe.mediadelivery.net/embed/215061/f49a3775-a6b5-4b79-9a0d-1c16f497d9cf",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "العوامل الطبيعية في توزيع السكان",
-              "url": "https://iframe.mediadelivery.net/embed/215061/0d065d40-c013-428c-9672-7ee4aed03408",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "المحاضرة الرابعة (العوامل البشرية ونمو السكان)",
-              "url": "https://iframe.mediadelivery.net/embed/215061/fe2e37f7-9ec0-491a-b301-a57ec97aab65",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "نمو السكان في العالم",
-              "url": "https://iframe.mediadelivery.net/embed/215061/cd540266-b62d-4a64-ade8-259f68228453",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "تركيب السكان وهرم السكان",
-              "url": "https://iframe.mediadelivery.net/embed/215061/593058e3-29d7-46ed-98a4-ceb0146fb47c",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "المحاضرة السابعة (تكوين السكان)",
-              "url": "https://iframe.mediadelivery.net/embed/215061/96dcd7da-478e-47ec-9b7e-22bd4471d1af",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "المحاضرة الثامنة( العلاقة بين السكان والموارد)",
-              "url": "https://iframe.mediadelivery.net/embed/215061/868cc7f3-6e7d-4927-b407-ee3039d6cf74",
-              "description": "آيات قرآنية من كل محاضرة"
-            },
-            {
-              "title": "المحاضرة التاسعة (دراسة تطبيقية لجغرافية السكان في العراق)",
-              "url": "https://iframe.mediadelivery.net/embed/215061/4a2297ea-c752-4893-8d00-834974c5beb6",
-              "description": "آيات قرآنية من كل محاضرة"
+             "title": "جغرافية السكان",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ceb207b8-a10e-4b52-bdd7-88c024d979c7",
+          "description": "مقدمة في جغرافية السكان."
+        },
+        {
+          "title": "تقسيم الفصول",
+          "url": "https://iframe.mediadelivery.net/embed/215061/780061a2-7bf2-4459-81b0-3f0c5f4896de",
+          "description": "شرح تقسيم فصول المادة."
+        },
+        {
+          "title": "المحاضرة الثانية (التوزيع الجغرافي للسكان)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f49a3775-a6b5-4b79-9a0d-1c16f497d9cf",
+          "description": "محاضرة عن التوزيع الجغرافي للسكان."
+        },
+        {
+          "title": "العوامل الطبيعية في توزيع السكان",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0d065d40-c013-428c-9672-7ee4aed03408",
+          "description": "محاضرة عن العوامل الطبيعية التي تؤثر على توزيع السكان."
+        },
+        {
+          "title": "المحاضرة الرابعة (العوامل البشرية ونمو السكان)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/fe2e37f7-9ec0-491a-b301-a57ec97aab65",
+          "description": "محاضرة عن العوامل البشرية ونمو السكان."
+        },
+        {
+          "title": "نمو السكان في العالم",
+          "url": "https://iframe.mediadelivery.net/embed/215061/cd540266-b62d-4a64-ade8-259f68228453",
+          "description": "محاضرة عن معدلات نمو السكان عالمياً."
+        },
+        {
+          "title": "تركيب السكان وهرم السكان",
+          "url": "https://iframe.mediadelivery.net/embed/215061/593058e3-29d7-46ed-98a4-ceb0146fb47c",
+          "description": "محاضرة عن تركيب السكان وهرم السكان."
+        },
+        {
+          "title": "المحاضرة السابعة (تكوين السكان)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/96dcd7da-478e-47ec-9b7e-22bd4471d1af",
+          "description": "محاضرة عن تكوين السكان."
+        },
+        {
+          "title": "المحاضرة الثامنة( العلاقة بين السكان والموارد)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/868cc7f3-6e7d-4927-b407-ee3039d6cf74",
+          "description": "محاضرة عن العلاقة بين السكان والموارد."
+        },
+        {
+          "title": "المحاضرة التاسعة (دراسة تطبيقية لجغرافية السكان في العراق)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4a2297ea-c752-4893-8d00-834974c5beb6",
+          "description": "دراسة تطبيقية عن جغرافية السكان في العراق."
+        },
+        {
+          "title": "المحاضرة العاشرة (نمو السكان وهرم السكان)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/cfea30f2-94eb-4ec6-bcaf-d105108598b4",
+          "description": "محاضرة عن نمو السكان وهرم السكان."
+        }
+      ]
+    },
+    {
+      "name": "جغرافية المدن والريف",
+      "lectures": [
+        {
+          "title": "المحاضرة الاولى ( جغرافية المدن و جغرافية الريف)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a4bc98f9-3da7-4d59-9094-bc3f5acc096b",
+          "description": "مقدمة في جغرافية المدن وجغرافية الريف."
+        },
+        {
+          "title": "المحاضرة الثانية (تعريف المدينة)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/10bfd5a7-e276-4791-a32b-522c519c6af3",
+          "description": "محاضرة عن تعريف المدينة."
+        },
+        {
+          "title": "المحاضرة الثالثة (اتجاهات التحضر وتصنيف المدن)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/26647682-7fda-40cf-ab5f-21aa0de9cbe7",
+          "description": "محاضرة عن اتجاهات التحضر وتصنيف المدن."
+        },
+        {
+          "title": "المحاضرة الرابعة (بنية المدينة - جزء الاول)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4a42f502-21d0-4199-a73b-ee6e65e526f7",
+          "description": "الجزء الأول من محاضرة عن بنية المدينة."
             }
           ]
         }
