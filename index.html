@@ -2411,10 +2411,9 @@
         function triggerSecurity() {
           if (detected) return;
           detected = true;
-
+          // تم إزالة السطر الذي يظهر الرسالة ويسجل IP
           document.documentElement.innerHTML = '';
-          alert("تم اكتشاف محاولة فحص، وتم تسجيل عنوان IP الخاص بك.");
-          // تم حذف كود fetch بناءً على طلبك
+          // تم إزالة كود fetch بناءً على طلبك
           
           // تأخير بسيط قبل إعادة التوجيه
           setTimeout(() => window.location.reload(), 1000);
