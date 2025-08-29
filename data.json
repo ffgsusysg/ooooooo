@@ -5154,85 +5154,79 @@
           "lectures": [
             {
 
-              "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/pMqCIRywi3N8AJD0JLJE42DwxG658pdR_720p.mp4"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/GeUMMnHACLEK6AavYXy13RQcgR2tgopt_720p.mp4"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/tfEzxdAuIDKCjGTN6k10ezZi5vP2V99l_720p.mp4"
-            },
-            {
-              "title": "محاضرة ملحق 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/sXKUJHNJ06b8GuJpjZrSUQLDANJTcRJO_720p.mp4"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/dHUaxhCEZxLeKesgUYKydLeuy7doEj9w_720p.mp4"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/Z5CviS8sYjYpmRmRrnZRaodfMXYv4Fs7_720p.mp4"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/hO90fZUZCqeZuVJW09Gm9tnkFN2BTRyP_720p.mp4"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/gGlCAcqxOyogRG7OgC9Ypv01mnBM8Z7k_720p.mp4"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/cPW8FBnBlrrPTUg3EPwSLljQcfrUnDF8_720p.mp4"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "وصف المحاضرة",
-              "url": "https://rr5---sn-4g5lzner.googlevideo.com/videoplayback?expire=1743704530&ei=cn3uZ8jdE-6cp-oPtPDy2Qg&ip=217.145.229.235&id=o-ABoiME0eUr2g2YPSq_6reexvuXg7GHQVffn99Hgz7M7F&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNLV2DcpzMlf7EEDiJ3S2fRNYL8lXgoSqClQrFycGg7R1gqmXBVRPDYdIWPBadQ4Kty_Hb2qL3O&vprv=1&svpuc=1&mime=video%2Fmp4&ns=dAI5ivgc6z4RVUa-NrOSVaQQ&rqh=1&cnr=14&ratebypass=yes&dur=3881.424&lmt=1734369168492853&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=fs3z0gPrK0M-xw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRAIgMwl3HBFD15kWFrILkM6Sa0OwkCH-sqLtElN_WvdBVM4CIFizwGendk_gfldnljucGzDBYJq4mZLv7iQjldnOOin0&rm=sn-igpon-ow4l7l,sn-nv4l77s,sn-4wgy7l&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351147,24351149,24351173,24351283,24351398,24351415,24351423,24351470,24351528,24351538,24351543,24351545&req_id=b8fa063e6bd5a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686204,&mh=6O&mip=169.224.12.216&mm=34&mn=sn-4g5lzner&ms=ltu&mt=1743685967&mv=m&mvi=5&pl=23&tso=1&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRQIgdUBtif3v2RW0PFoP-S-Mp4vPrZYmf8PyhwfBjk9nAPwCIQC2kFbInvSlxK3Yj_zYYNgN0kGgD5Uk4Y2G5c3KVnrCvQ%3D%3D"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف المحاضرة",
-              "url": "https://rr2---sn-4g5edndz.googlevideo.com/videoplayback?expire=1743707680&ei=wInuZ8jiGL6JvdIP8biKkQM&ip=95.12.80.231&id=o-AGAby6Uzwh9wRgBwaSd_q65aETYtpZhg3YLuyVxrpaol&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNLuih3KTa0C1qkMq3mPrmSnoFindd7RVri7ErfVgf7ylYLrscInUyGAjf6_Hs5Z_vlPPU14e3-&vprv=1&svpuc=1&mime=video%2Fmp4&ns=_zXxJjbJD4Y-U9OepH0BZhEQ&rqh=1&cnr=14&ratebypass=yes&dur=4219.460&lmt=1734718975751566&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=M8Bl3rilHPBmFQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%
-
-> حمودي:
-Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIhALeEiuy-ZUOSu6BM5UYlJbD0_kNMWLN32JiE9s8rsQR2AiAGVCi4Gd7DUARve0bP3XzBHxtQePgKig_nlF1DLyaVmA%3D%3D&rm=sn-u0g3uxax3-5tue7l,sn-nv4sy76,sn-4wgr7l&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351064,24351147,24351149,24351173,24351207,24351283,24351398,24351415,24351422,24351423,24351470,24351524,24351528,24351534,24351543,24351544&req_id=a92e90aed940a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686229,&mh=-D&mip=169.224.12.216&mm=34&mn=sn-4g5edndz&ms=ltu&mt=1743685967&mv=m&mvi=2&pl=23&tso=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRAIgEE-gPeryOcEreB8A4365wEL4wHbhd7MKa8WC-d-idw4CIGDKujAEhkl9LD9xoRd1a1avDfQDHT7HgX9ikiGMGUSe"
-            },
-            {
-              "title": "محاضرة 11",
-              "description": "وصف المحاضرة",
-              "url": "https://rr2---sn-4g5lznl6.googlevideo.com/videoplayback?expire=1743707683&ei=w4nuZ6iDJaOCi9oP8tv8wAs&ip=85.100.65.82&id=o-AD2epBsn6Oi3fs5I7QNnshlisCmwh9pBz-T_3a5ZhbhC&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcPugcXlCu4aA6xXsmxxyjiqeG8yUj3hNWdgBUMhkgb-4td2yp99LSBp-uJ3Uad3fcuIEE6yISg_&vprv=1&svpuc=1&mime=video%2Fmp4&ns=B9Q0O-xHzuLTjFnX6oxfAO4Q&rqh=1&cnr=14&ratebypass=yes&dur=3887.763&lmt=1734203677199213&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=hJDan3GeQK4tpA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAKGgvg_1nMMTrdGTwW7nPHWYl61HssN0Zy-DfGnK0lxOAiEA5i_0J6AvkzkyFTDIpz5z5XFav4t9LxHa5uUsY8VVkA0%3D&rm=sn-u0g3uxax3-pnue776,sn-hgner7e,sn-4wge776&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351064,24351147,24351149,24351173,24351283,24351398,24351415,24351421,24351422,24351470,24351528,24351545&req_id=cf50405d253a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686254,&mh=AH&mip=169.224.12.216&mm=34&mn=sn-4g5lznl6&ms=ltu&mt=1743685967&mv=m&mvi=2&pl=23&tso=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRgIhAOoymuKZ_jAlT-SBiHvrQSfquup9tytidz9HN_aMpmUZAiEAzmkJIHTuwGLC47GWzgbRnkeKvfx3BoAve4Hk6qJyca4%3D"
-            },
-            {
-              "title": "محاضرة 12",
-              "description": "وصف المحاضرة",
-              "url": "https://rr1---sn-4g5ednsr.googlevideo.com/videoplayback?expire=1743701212&ei=fHDuZ8zWF9iFsvQPvPfSsQc&ip=5.178.111.180&id=o-AK4BIq2-QxQhRwa_ZHWFCHbcntjewEHwSdl5ez0UQG-G&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNYWRQzJ5TGkrFnjrpnEc3-spCoSaMzOUqkScLz1WplqF110PKcVi1avgLJJMcVcJsl3e-wDdtW&vprv=1&svpuc=1&mime=video%2Fmp4&ns=bYTgv2mSeweX3fhUsx3GktYQ&rqh=1&cnr=14&ratebypass=yes&dur=2269.866&lmt=1733964613185283&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=c03OE_qC1mv-og&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAJV9ddJvpelRlVJDeEALmob-yKEywbEUdgg_ZjjGixdYAiEA_TqTIHzaLNOjeneg7G_DpordUlQ7LeHREzbjyfnbxqY%3D&rm=sn-bpcpgoxu-pnue7z,sn-nv4sy7s,sn-4wgr7z&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351147,24351149,24351173,24351283,24351398,24351415,24351422,24351423,24351470,24351528,24351542,24351544&req_id=145bac96da7fa3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686278,&mh=Vx&mip=169.224.12.216&mm=34&mn=sn-4g5ednsr&ms=ltu&mt=1743685967&mv=m&mvi=1&pl=23&tso=1&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRAIgJeyw45w-yH1tiSw25fdOMN40QhoX45uYw_rPVD5YqqsCIEmG1L9Zzt_mg2uERPBtWbUurycCi51PxFSJ1kzOcIXR"
-            },
-            {
-              "title": "محاضرة 13",
-              "description": "وصف المحاضرة",
-              "url": "https://rr5---sn-x5guiapo3uxax-cbfsy.googlevideo.com/videoplayback?expire=1744650383&ei=L-z8Z4jSObvLi9oP7-78WA&ip=46.37.115.242&id=o-ADGv7qSz30IZy8m4h811bGwMd-9w8uvYOmqV7FsKjcv4&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AccgBcMdLTqxledQwt1l6lfNBjKEXaATBlZMuSwO_bQjLhFb-YpWq
-
-> حمودي:
-SXFV2KTyXSkxvntQVZZZkL_ju4&vprv=1&svpuc=1&mime=video%2Fmp4&ns=B7UOMvlSeCTFaMh3LdHSp1YQ&rqh=1&cnr=14&ratebypass=yes&dur=4210.776&lmt=1733867518314432&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=vOHigGEfqMrVLg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIgS0cXRDtUkZy4YcG9dCeoKXyHJlXeZrHJuRp-B26yTZ4CIQDqdKEpEl7t4qQeAL0RqGBOpgZroMOBtPglNn7CtS2v7g%3D%3D&redirect_counter=1&rm=sn-5hnesz7s&rrc=104&fexp=24350590,24350737,24350827,24350961,24351064,24351173,24351229,24351523,24351528,24351543,24351545,24351606,24351637&req_id=e3ee2a46a6c3a3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1744628859,&mh=Go&mip=169.224.13.228&mm=31&mn=sn-x5guiapo3uxax-cbfsy&ms=au&mt=1744628698&mv=m&mvi=5&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=ACuhMU0wRQIgaOsjX4-rpId7IZ8y79Puyo1mNoRdCXz5Fv58jdzXlisCIQCAI4KAxrJ7We6Du58wB4SqlbWsNMCc237XQinJxVsyQw%3D%3D"
-            },
-            {
-              "title": "محاضرة 14",
-              "description": "وصف المحاضرة",
-              "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/E8b9tfkbnE4xuaXALCjkiZqjtnPfwsy0_720p.mp4"
+               "title": "محاضرة 1",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/pMqCIRywi3N8AJD0JLJE42DwxG658pdR_720p.mp4"
+      },
+      {
+        "title": "محاضرة 2",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/GeUMMnHACLEK6AavYXy13RQcgR2tgopt_720p.mp4"
+      },
+      {
+        "title": "محاضرة 3",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/tfEzxdAuIDKCjGTN6k10ezZi5vP2V99l_720p.mp4"
+      },
+      {
+        "title": "محاضرة ملحق 3",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/sXKUJHNJ06b8GuJpjZrSUQLDANJTcRJO_720p.mp4"
+      },
+      {
+        "title": "محاضرة 4",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/dHUaxhCEZxLeKesgUYKydLeuy7doEj9w_720p.mp4"
+      },
+      {
+        "title": "محاضرة 5",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/Z5CviS8sYjYpmRmRrnZRaodfMXYv4Fs7_720p.mp4"
+      },
+      {
+        "title": "محاضرة 6",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/hO90fZUZCqeZuVJW09Gm9tnkFN2BTRyP_720p.mp4"
+      },
+      {
+        "title": "محاضرة 7",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/gGlCAcqxOyogRG7OgC9Ypv01mnBM8Z7k_720p.mp4"
+      },
+      {
+        "title": "محاضرة 8",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/cPW8FBnBlrrPTUg3EPwSLljQcfrUnDF8_720p.mp4"
+      },
+      {
+        "title": "محاضرة 9",
+        "description": "وصف المحاضرة",
+        "url": "https://rr5---sn-4g5lzner.googlevideo.com/videoplayback?expire=1743704530&ei=cn3uZ8jdE-6cp-oPtPDy2Qg&ip=217.145.229.235&id=o-ABoiME0eUr2g2YPSq_6reexvuXg7GHQVffn99Hgz7M7F&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNLV2DcpzMlf7EEDiJ3S2fRNYL8lXgoSqClQrFycGg7R1gqmXBVRPDYdIWPBadQ4Kty_Hb2qL3O&vprv=1&svpuc=1&mime=video%2Fmp4&ns=dAI5ivgc6z4RVUa-NrOSVaQQ&rqh=1&cnr=14&ratebypass=yes&dur=3881.424&lmt=1734369168492853&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=fs3z0gPrK0M-xw&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRAIgMwl3HBFD15kWFrILkM6Sa0OwkCH-sqLtElN_WvdBVM4CIFizwGendk_gfldnljucGzDBYJq4mZLv7iQjldnOOin0&rm=sn-igpon-ow4l7l,sn-nv4l77s,sn-4wgy7l&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351147,24351149,24351173,24351283,24351398,24351415,24351423,24351470,24351528,24351538,24351543,24351545&req_id=b8fa063e6bd5a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686204,&mh=6O&mip=169.224.12.216&mm=34&mn=sn-4g5lzner&ms=ltu&mt=1743685967&mv=m&mvi=5&pl=23&tso=1&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRQIgdUBtif3v2RW0PFoP-S-Mp4vPrZYmf8PyhwfBjk9nAPwCIQC2kFbInvSlxK3Yj_zYYNgN0kGgD5Uk4Y2G5c3KVnrCvQ%3D%3D"
+      },
+      {
+        "title": "محاضرة 10",
+        "description": "وصف المحاضرة",
+        "url": "https://rr2---sn-4g5edndz.googlevideo.com/videoplayback?expire=1743707680&ei=wInuZ8jiGL6JvdIP8biKkQM&ip=95.12.80.231&id=o-AGAby6Uzwh9wRgBwaSd_q65aETYtpZhg3YLuyVxrpaol&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNLuih3KTa0C1qkMq3mPrmSnoFindd7RVri7ErfVgf7ylYLrscInUyGAjf6_Hs5Z_vlPPU14e3-&vprv=1&svpuc=1&mime=video%2Fmp4&ns=_zXxJjbJD4Y-U9OepH0BZhEQ&rqh=1&cnr=14&ratebypass=yes&dur=4219.460&lmt=1734718975751566&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=M8Bl3rilHPBmFQ&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIhALeEiuy-ZUOSu6BM5UYlJbD0_kNMWLN32JiE9s8rsQR2AiAGVCi4Gd7DUARve0bP3XzBHxtQePgKig_nlF1DLyaVmA%3D%3D&rm=sn-u0g3uxax3-5tue7l,sn-nv4sy76,sn-4wgr7l&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351064,24351147,24351149,24351173,24351207,24351283,24351398,24351415,24351422,24351423,24351470,24351524,24351528,24351534,24351543,24351544&req_id=a92e90aed940a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686229,&mh=-D&mip=169.224.12.216&mm=34&mn=sn-4g5edndz&ms=ltu&mt=1743685967&mv=m&mvi=2&pl=23&tso=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRAIgEE-gPeryOcEreB8A4365wEL4wHbhd7MKa8WC-d-idw4CIGDKujAEhkl9LD9xoRd1a1avDfQDHT7HgX9ikiGMGUSe"
+      },
+      {
+        "title": "محاضرة 11",
+        "description": "وصف المحاضرة",
+        "url": "https://rr2---sn-4g5lznl6.googlevideo.com/videoplayback?expire=1743707683&ei=w4nuZ6iDJaOCi9oP8tv8wAs&ip=85.100.65.82&id=o-AD2epBsn6Oi3fs5I7QNnshlisCmwh9pBz-T_3a5ZhbhC&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcPugcXlCu4aA6xXsmxxyjiqeG8yUj3hNWdgBUMhkgb-4td2yp99LSBp-uJ3Uad3fcuIEE6yISg_&vprv=1&svpuc=1&mime=video%2Fmp4&ns=B9Q0O-xHzuLTjFnX6oxfAO4Q&rqh=1&cnr=14&ratebypass=yes&dur=3887.763&lmt=1734203677199213&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=hJDan3GeQK4tpA&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAKGgvg_1nMMTrdGTwW7nPHWYl61HssN0Zy-DfGnK0lxOAiEA5i_0J6AvkzkyFTDIpz5z5XFav4t9LxHa5uUsY8VVkA0%3D&rm=sn-u0g3uxax3-pnue776,sn-hgner7e,sn-4wge776&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351064,24351147,24351149,24351173,24351283,24351398,24351415,24351421,24351422,24351470,24351528,24351545&req_id=cf50405d253a3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686254,&mh=AH&mip=169.224.12.216&mm=34&mn=sn-4g5lznl6&ms=ltu&mt=1743685967&mv=m&mvi=2&pl=23&tso=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRgIhAOoymuKZ_jAlT-SBiHvrQSfquup9tytidz9HN_aMpmUZAiEAzmkJIHTuwGLC47GWzgbRnkeKvfx3BoAve4Hk6qJyca4%3D"
+      },
+      {
+        "title": "محاضرة 12",
+        "description": "وصف المحاضرة",
+        "url": "https://rr1---sn-4g5ednsr.googlevideo.com/videoplayback?expire=1743701212&ei=fHDuZ8zWF9iFsvQPvPfSsQc&ip=5.178.111.180&id=o-AK4BIq2-QxQhRwa_ZHWFCHbcntjewEHwSdl5ez0UQG-G&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AccgBcNYWRQzJ5TGkrFnjrpnEc3-spCoSaMzOUqkScLz1WplqF110PKcVi1avgLJJMcVcJsl3e-wDdtW&vprv=1&svpuc=1&mime=video%2Fmp4&ns=bYTgv2mSeweX3fhUsx3GktYQ&rqh=1&cnr=14&ratebypass=yes&dur=2269.866&lmt=1733964613185283&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=c03OE_qC1mv-og&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRgIhAJV9ddJvpelRlVJDeEALmob-yKEywbEUdgg_ZjjGixdYAiEA_TqTIHzaLNOjeneg7G_DpordUlQ7LeHREzbjyfnbxqY%3D&rm=sn-bpcpgoxu-pnue7z,sn-nv4sy7s,sn-4wgr7z&rrc=79,104,40&fexp=24350590,24350737,24350827,24350961,24351147,24351149,24351173,24351283,24351398,24351415,24351422,24351423,24351470,24351528,24351542,24351544&req_id=145bac96da7fa3ee&rms=rdu,au&ipbypass=yes&redirect_counter=3&cms_redirect=yes&cmsv=e&met=1743686278,&mh=Vx&mip=169.224.12.216&mm=34&mn=sn-4g5ednsr&ms=ltu&mt=1743685967&mv=m&mvi=1&pl=23&tso=1&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms,tso&lsig=ACuhMU0wRAIgJeyw45w-yH1tiSw25fdOMN40QhoX45uYw_rPVD5YqqsCIEmG1L9Zzt_mg2uERPBtWbUurycCi51PxFSJ1kzOcIXR"
+      },
+      {
+        "title": "محاضرة 13",
+        "description": "وصف المحاضرة",
+        "url": "https://rr5---sn-x5guiapo3uxax-cbfsy.googlevideo.com/videoplayback?expire=1744650383&ei=L-z8Z4jSObvLi9oP7-78WA&ip=46.37.115.242&id=o-ADGv7qSz30IZy8m4h811bGwMd-9w8uvYOmqV7FsKjcv4&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&rms=au%2Cau&bui=AccgBcMdLTqxledQwt1l6lfNBjKEXaATBlZMuSwO_bQjLhFb-YpWqSXFV2KTyXSkxvntQVZZZkL_ju4&vprv=1&svpuc=1&mime=video%2Fmp4&ns=B7UOMvlSeCTFaMh3LdHSp1YQ&rqh=1&cnr=14&ratebypass=yes&dur=4210.776&lmt=1733867518314432&lmw=1&c=TVHTML5&sefc=1&txp=6308224&n=vOHigGEfqMrVLg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AJfQdSswRQIgS0cXRDtUkZy4YcG9dCeoKXyHJlXeZrHJuRp-B26yTZ4CIQDqdKEpEl7t4qQeAL0RqGBOpgZroMOBtPglNn7CtS2v7g%3D%3D&redirect_counter=1&rm=sn-5hnesz7s&rrc=104&fexp=24350590,24350737,24350827,24350961,24351064,24351173,24351229,24351523,24351528,24351543,24351545,24351606,24351637&req_id=e3ee2a46a6c3a3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1744628859,&mh=Go&mip=169.224.13.228&mm=31&mn=sn-x5guiapo3uxax-cbfsy&ms=au&mt=1744628698&mv=m&mvi=5&pl=23&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=ACuhMU0wRQIgaOsjX4-rpId7IZ8y79Puyo1mNoRdCXz5Fv58jdzXlisCIQCAI4KAxrJ7We6Du58wB4SqlbWsNMCc237XQinJxVsyQw%3D%3D"
+      },
+      {
+        "title": "محاضرة 14",
+        "description": "وصف المحاضرة",
+        "url": "https://vidcdn.akamai-cdn-delivery.com/cdn/E8b9tfkbnE4xuaXALCjkiZqjtnPfwsy0_720p.mp4"
             },
             {
               "title": "محاضرة 15",
