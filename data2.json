@@ -1,34 +1,7 @@
 {
   "teachers": [
-  
 
   {
-
-      "id": 1746651078373,
-      "name": "حسين الهاشمي 2026",
-      "subject": "مدرس مادة كيمياء",
-      "image": "https://i.imghippo.com/files/eiPJ5269dI.jpg",
-      "classes": [
-        {
-          "name": "الفصل الاول: ",
-          "lectures": [
-            {
-              "title": "11",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://f2l-bot828-40f1f76157f8.herokuapp.com/dl/68a8341afb7640626cf9db82"
-            },
-            {
-              "title": "12",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://f2l-bot828-40f1f76157f8.herokuapp.com/dl/68a83478fb7640626cf9db85"
-       
-  
-}
-          ]
-        }
-      ]
-    },
-    {
       "id": 1746651021373,
       "name": "حسين محمد 2026",
       "subject": "مدرس مادة الفيزياء",
@@ -1906,24 +1879,260 @@
           "name": "الفصل الاول: الخلية",
           "lectures": [
             {
-              "title": "محاضرة 1",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a61f4f3e-30f4-45e8-bb4b-06c70370f55a/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ea246c9f-0114-4d3e-be49-285e42de6b8b/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/a71542ed-492e-485f-baed-595f05d38a36/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "ممكن تقرأ وماتسخت ؟",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f34df3d5-d3bb-49b7-a65c-04dcbc5fdd61/1080p/video.m3u8"
+              "title": "المحاضرة الاولى (الخلية)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a61f4f3e-30f4-45e8-bb4b-06c70370f55a",
+          "description": "مقدمة عن الخلية."
+        },
+        {
+          "title": "المحاضرة الثانية (الخلية بدائية النواة)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ea246c9f-0114-4d3e-be49-285e42de6b8b",
+          "description": "محاضرة عن الخلية بدائية النواة."
+        },
+        {
+          "title": "المحاضرة الثالثة (مكونات الخلية)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a71542ed-492e-485f-baed-595f05d38a36",
+          "description": "محاضرة عن مكونات الخلية."
+        },
+        {
+          "title": "السايتوبلازم",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1a77f3b1-b04d-4d2d-b818-3ba1709fb3aa",
+          "description": "محاضرة عن السيتوبلازم."
+        },
+        {
+          "title": "المحاضرة الخامسة (المايتوكوندريا و البلاستيدات)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a6b996de-f75a-4118-ae77-2bf4b7263d12",
+          "description": "محاضرة عن المايتوكوندريا والبلاستيدات."
+        },
+        {
+          "title": "المحاضرة السادسة( الجسيمات الحالة و الهيكل الخلوي)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a640a716-6c6b-4930-bf95-0a4f57760de2",
+          "description": "محاضرة عن الجسيمات الحالة والهيكل الخلوي."
+        },
+        {
+          "title": "هيكل الخلية والمحتويات غير الحية",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0d39d9d4-760e-4e49-b934-a777eaa60eb6",
+          "description": "محاضرة عن هيكل الخلية والمحتويات غير الحية."
+        },
+        {
+          "title": "المحاضرة الثامنة (النواة)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/175f2adf-b271-4b91-afe1-db7e7ee466e4",
+          "description": "محاضرة عن النواة."
+        },
+        {
+          "title": "المحاضرة التاسعة (الانتشار والنفوذية)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b8d0ee88-563a-41f0-8a18-bc04546e1358",
+          "description": "محاضرة عن الانتشار والنفوذية."
+        },
+        {
+          "title": "المحاضرة العاشرة (التناضح)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5a96e884-6901-4418-9f24-f74b4e0acf66",
+          "description": "محاضرة عن التناضح."
+        },
+        {
+          "title": "المحاضرة الحادية عشرة (النقل الفعّال، البلعمة، الشرب الخلوي، والإخراج الخلوي)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/743f15d7-4c5b-4012-a716-47309257fd20",
+          "description": "محاضرة عن النقل الفعال والبلعمة والشرب الخلوي والإخراج الخلوي."
+        },
+        {
+          "title": "المحاضرة 12 (الأيض الخلوي)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/13e802a8-a0cc-4a95-8c66-ed78d1faa79a",
+          "description": "محاضرة عن الأيض الخلوي."
+        },
+        {
+          "title": "المحاضرة 13 (دورة كربس)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4fc36047-a084-4d53-8f44-2082956761b2",
+          "description": "محاضرة عن دورة كربس."
+        },
+        {
+          "title": "المحاضرة 14 (الانقسامات 1)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f8d8aa0e-21eb-4b2a-bb6b-48e18375983e",
+          "description": "الجزء الأول من محاضرة عن الانقسامات الخلوية."
+        },
+        {
+          "title": "المحاضرة 15 (الانقسامات 2)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/53cb5fde-c8ad-46a1-8eee-4f9990a3daed",
+          "description": "الجزء الثاني من محاضرة عن الانقسامات الخلوية."
+        },
+        {
+          "title": "المحاضرة 16 (الانقسامات 3)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3485b50f-0cb3-456b-8716-0a8e69965ab0",
+          "description": "الجزء الثالث من محاضرة عن الانقسامات الخلوية."
+        },
+        {
+          "title": "المحاضرة 17 (الانقسامات 4)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d4fcc14d-7761-4238-b91f-e0e186c80d14",
+          "description": "الجزء الرابع من محاضرة عن الانقسامات الخلوية."
+        },
+        {
+          "title": "المحاضرة 18(مراجعة الفصل الأول)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6400c392-9508-4539-88a5-544f04ce33e5",
+          "description": "مراجعة شاملة للفصل الأول."
+        },
+        {
+          "title": "التكاثر وأنواعه",
+          "url": "https://iframe.mediadelivery.net/embed/215061/bda6ddd9-ff40-4176-b7ef-45f24b0477d3",
+          "description": "محاضرة عن التكاثر وأنواعه."
+        }
+      ]
+    },
+    {
+      "name": "الأنسجة",
+      "lectures": [
+        {
+          "title": "النسيج: الأنسجة النباتية (النسيج المُرستيمي)",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1f6ff936-bc75-4bb0-acf5-3c54cff45ef9",
+          "description": "محاضرة عن الأنسجة النباتية، مع التركيز على النسيج الميرستيمي."
+        },
+        {
+          "title": "نسيج البشرة و النسيج الوعائي",
+          "url": "https://iframe.mediadelivery.net/embed/215061/60e84347-ab89-440a-b3d2-fa804db5c10e",
+          "description": "محاضرة عن نسيج البشرة والنسيج الوعائي."
+        },
+        {
+          "title": "نسيج الأساس",
+          "url": "https://iframe.mediadelivery.net/embed/215061/eea8eedb-8193-44d6-848b-af596ea93b71",
+          "description": "محاضرة عن نسيج الأساس."
+        },
+        {
+          "title": "الأنسجة الحيوانية و النسيج الظهاري البسيط",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f0301960-7e79-4cbc-8a99-ca9ee24e2417",
+          "description": "محاضرة عن الأنسجة الحيوانية والنسيج الظهاري البسيط."
+        },
+        {
+          "title": "النسيج الظهاري العمودي الكاذب الطبقي و النسيج الظهاري الطبقي",
+          "url": "https://iframe.mediadelivery.net/embed/215061/72743c13-9f12-4c0e-8fcc-56e91dddb7c5",
+          "description": "محاضرة عن النسيج الظهاري العمودي الكاذب الطبقي والنسيج الظهاري الطبقي."
+        },
+        {
+          "title": "خلايا النسيج الضام",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3a8a7b6b-6796-4c45-833b-eaf2fccae01a",
+          "description": "محاضرة عن خلايا النسيج الضام."
+        },
+        {
+          "title": "النسيج الضام: الألياف، المادة بين الخلوية، والتصنيف",
+          "url": "https://iframe.mediadelivery.net/embed/215061/df627248-204d-44b5-bab0-dcc7344fe1e7",
+          "description": "محاضرة عن ألياف ومكونات النسيج الضام وتصنيفه."
+        },
+        {
+          "title": "أنواع النسيج الضام الرخو",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1389c4c9-b4f4-4467-bb27-2b5428f27092",
+          "description": "محاضرة عن أنواع النسيج الضام الرخو."
+        },
+        {
+          "title": "الغضروف والعظم",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0efd4bd9-a3e1-4eaa-a8cc-0309fa02a12a",
+          "description": "محاضرة عن الغضروف والعظم."
+        },
+        {
+          "title": "خلايا الدم الحمراء وخلايا الدم البيضاء",
+          "url": "https://iframe.mediadelivery.net/embed/215061/06391e8d-36f8-4a6d-a7f5-2129373d052b",
+          "description": "محاضرة عن خلايا الدم الحمراء والبيضاء."
+        },
+        {
+          "title": "الصفيحات الدموية، وبلازما الدم، واللمف",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3a3d66f1-87d1-4252-899b-00051a31d99c",
+          "description": "محاضرة عن الصفيحات الدموية، بلازما الدم، واللمف."
+        },
+        {
+          "title": "النسيج العضلي",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b058c828-ae34-4a6f-b2d4-ef69849ef7ab",
+          "description": "محاضرة عن النسيج العضلي."
+        },
+        {
+          "title": "النسيج العصبي",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2c16d488-b97d-457c-a283-aba94edc488d",
+          "description": "محاضرة عن النسيج العصبي."
+        },
+        {
+          "title": "رسومات الفصل الثاني",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6a0cf8e2-99d3-4d6d-8bce-3e2b8718e9ea",
+          "description": "محاضرة مخصصة لرسومات الفصل الثاني."
+        },
+        {
+          "title": "حل أسئلة الفصل الثاني",
+          "url": "https://iframe.mediadelivery.net/embed/215061/25cf9412-6f16-4888-82b1-5b1276eb791d",
+          "description": "حل أسئلة الفصل الثاني."
+        },
+        {
+          "title": "المراجعة المركزة/ الفصل الثاني",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5d53da92-bd65-4192-9a4b-f6bb327f7c0f",
+          "description": "مراجعة مركزة للفصل الثاني."
+        }
+      ]
+    },
+    {
+      "name": "ملخصات",
+      "lectures": [
+        {
+          "title": "ملخص المحاضرة الأولى",
+          "url": "https://iframe.mediadelivery.net/embed/215061/551bfacd-7195-4c17-8f3d-dfcb03e88311",
+          "description": "ملخص للمحاضرة الأولى."
+        },
+        {
+          "title": "ملخص المحاضرة الثانية",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b73dc4ec-86bc-4ced-b180-c3ab302710e4",
+          "description": "ملخص للمحاضرة الثانية."
+        },
+        {
+          "title": "ملخص المحاضرة الثالثة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2e499328-fbb5-42b6-ba00-4e95c2a267d7",
+          "description": "ملخص للمحاضرة الثالثة."
+        },
+        {
+          "title": "ملخص المحاضرة الرابعة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5db0861d-2245-4105-b5a3-7c748db4c7ab",
+          "description": "ملخص للمحاضرة الرابعة."
+        },
+        {
+          "title": "ملخص المحاضرة الخامسة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/eb07081f-5d8b-4daf-ba93-6c65826990ae",
+          "description": "ملخص للمحاضرة الخامسة."
+        },
+        {
+          "title": "ملخص المحاضرة السادسة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f107f11b-b3fb-4f44-bf4a-3ffff6412a9a",
+          "description": "ملخص للمحاضرة السادسة."
+        },
+        {
+          "title": "ملخص المحاضرة السابعة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/389cc4ac-7304-4d82-9642-ad1db8ef3d76",
+          "description": "ملخص للمحاضرة السابعة."
+        },
+        {
+          "title": "ملخص المحاضرة الثامنة",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0be42c64-e837-4551-a8b9-afc29ee33b85",
+          "description": "ملخص للمحاضرة الثامنة."
+        },
+        {
+          "title": "مراجعات الباب الأول",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a6ec824f-1813-424d-9e9d-71a19f438010",
+          "description": "مراجعات عامة للباب الأول."
+        },
+        {
+          "title": "مقارنات الباب الأول",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2c4c5fd1-f8c5-4540-a17b-051ba7b7cc5d",
+          "description": "مقارنات مهمة في الباب الأول."
+        }
+      ]
+    },
+    {
+      "name": "رسومات",
+      "lectures": [
+        {
+          "title": "رسم البكتريا",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1f1510ee-1f01-40e8-9c28-f7dd05dfb96d",
+          "description": "محاضرة عن كيفية رسم البكتيريا."
+        },
+        {
+          "title": "رسم الغشاء البلازمي",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d6fec5f3-27f9-4b4e-ae4d-89d07ff753c4",
+          "description": "محاضرة عن كيفية رسم الغشاء البلازمي."
+        },
+        {
+          "title": "رسم البلاستيدت",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2dad5952-23a8-41f0-befb-c64bcd260e62",
+          "description": "محاضرة عن كيفية رسم البلاستيدات."
+      
             }
           ]
         },
