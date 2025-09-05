@@ -1109,14 +1109,44 @@
             gap: 0.3rem;
         }
 
-        /* Instagram logo styling */
-        .instagram-icon {
-            display: inline-flex;
-            width: 1.5em; /* Adjust size as needed */
-            height: 1.5em; /* Adjust size as needed */
-            vertical-align: middle;
-            margin-right: 0.25rem;
-            fill: #E1306C; /* Instagram pink color */
+        /* NEW: Instagram Link Styling */
+        .instagram-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .instagram-link:hover {
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        .instagram-icon-wrapper {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .instagram-icon-wrapper svg {
+            fill: #E1306C; /* Instagram pink */
+            transition: fill 0.2s ease;
+        }
+        
+        [data-theme="dark"] .instagram-icon-wrapper svg {
+            fill: #E1306C; /* Ensure it stays pink in dark mode */
+        }
+        
+        .instagram-username {
+            font-weight: 700;
+            color: var(--primary-2);
+            font-family: 'Almarai', sans-serif;
         }
 
         .section-title {
@@ -1669,12 +1699,16 @@
                             <i data-lucide="calendar"></i>
                         </span>
                         <span>
-                            تم تطوير المنصة بواسطة حميد | انستا: ZR_BB5
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="instagram-icon">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
-                            </svg>
+                            <a href="https://www.instagram.com/zr_bb5?igsh=MXdrcms5NDhqZXJhNQ==" target="_blank" class="instagram-link">
+                                <span class="instagram-icon-wrapper">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
+                                    </svg>
+                                </span>
+                                <span class="instagram-username">@ZR_BB5</span>
+                            </a>
                         </span>
                     </div>
                 </div>
