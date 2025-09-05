@@ -22,18 +22,17 @@
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
+    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
+    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
+    <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
-    <!-- New: Chart.js for dashboard progress chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- New: Firebase SDKs -->
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.3/firebase-storage.js"></script>
-
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -82,9 +81,6 @@
             --dash-grad-5: #f2709c;
             --dash-grad-6: #ff9472;
             --dash-text-light: #f0f0f0;
-            --toast-success-bg: #22c55e;
-            --toast-error-bg: #ef4444;
-            --toast-text: #ffffff;
         }
 
         /* Dark theme adjustments */
@@ -398,7 +394,7 @@
             gap: 2rem;
         }
         
-        .profile-card, .progress-card {
+        .profile-card {
             background: var(--card);
             border-radius: var(--radius);
             padding: 2rem;
@@ -407,23 +403,12 @@
             flex-direction: column;
             align-items: center;
             gap: 1.5rem;
-        }
-
-        .profile-card {
             grid-column: 1 / -1;
-        }
-
-        .progress-card {
-            grid-column: 1 / -1;
-            padding: 1.5rem;
         }
         
         @media (min-width: 768px) {
             .profile-card {
                 flex-direction: row;
-            }
-            .progress-card {
-                grid-column: span 2;
             }
         }
         
@@ -636,6 +621,7 @@
         .category-card:hover .btn {
             background: rgba(255, 255, 255, 0.3);
         }
+
 
         /* Teachers grid */
         .teachers-grid {
@@ -1363,69 +1349,6 @@
             filter: brightness(1.05);
         }
 
-        /* Toast Message */
-        .toast-message {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--toast-success-bg);
-            color: var(--toast-text);
-            padding: 12px 24px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            z-index: 10000;
-            animation: slideInUp 0.5s ease-out, fadeOut 0.5s 2.5s forwards;
-            min-width: 250px;
-            text-align: center;
-        }
-        .toast-message.toast-error { background: var(--toast-error-bg); }
-        .toast-message.toast-info { background: var(--primary-2); }
-
-        @keyframes slideInUp {
-            from { transform: translateX(-50%) translateY(100px); opacity: 0; }
-            to { transform: translateX(-50%) translateY(0); opacity: 1; }
-        }
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
-        }
-        
-        /* Loading Skeleton Styles */
-        .skeleton-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1.4rem 1.1rem;
-            border-radius: var(--radius);
-            background: var(--card);
-            border: 1px solid var(--border);
-        }
-        .skeleton-card .skeleton-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: var(--border);
-            margin-bottom: 1rem;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .skeleton-card .skeleton-line {
-            height: 1rem;
-            background-color: var(--border);
-            border-radius: 4px;
-            width: 80%;
-            margin-bottom: 0.5rem;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        .skeleton-card .skeleton-line.short {
-            width: 60%;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             header {
@@ -1664,9 +1587,6 @@
         </div>
         
         <div id="teachersGrid" class="teachers-grid">
-            <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-            <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-            <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
         </div>
     </div>
 
@@ -1698,9 +1618,9 @@
                 <div id="playerContainer"></div>
                 <div id="videoLoader" class="video-loader" style="display: none;">
                     <div class="new-loader">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
                     </div>
                 </div>
             </div>
@@ -1711,7 +1631,7 @@
                 
                 <div class="video-info">
                     <div class="video-meta">
-                        <span id="videoDate">
+                        <span>
                             <i data-lucide="calendar"></i>
                         </span>
                         <span>
@@ -1736,7 +1656,6 @@
         <div class="dashboard-header">
             <h1>لوحة التحكم</h1>
             <p>هنا تبدأ رحلتك نحو تحقيق حلمك. خصص صفحتك لتكون مصدر إلهامك اليومي!</p>
-            <p id="userIdDisplay" style="font-size: 0.8rem; opacity: 0.6; margin-top: 1rem;"></p>
         </div>
         
         <div class="profile-card">
@@ -1772,13 +1691,6 @@
                 </div>
                 <input type="text" id="gradeInput" placeholder="مثلاً: 99.5%">
             </div>
-            <div class="progress-card">
-                <div class="section-title">
-                    <i data-lucide="bar-chart-2"></i>
-                    <h3>تقدم المحاضرات</h3>
-                </div>
-                <canvas id="progressChart"></canvas>
-            </div>
         </div>
         <button class="btn dashboard-save-btn" id="saveDashboardButton">
             <i data-lucide="save"></i>
@@ -1786,52 +1698,11 @@
         </button>
     </div>
 
+
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
-        import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-storage.js";
-
-        // Global variables provided by the canvas environment
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const storage = getStorage(app);
-        
-        let userId = null;
-        let authReady = false;
-
-        async function signIn() {
-            try {
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                userId = auth.currentUser.uid;
-                authReady = true;
-                console.log("Firebase authenticated successfully with userId:", userId);
-                document.getElementById("userIdDisplay").textContent = "معرف المستخدم: " + userId;
-                
-                // Once authenticated, load user data from Firestore
-                loadDashboardData();
-                loadUserData();
-            } catch (error) {
-                console.error("Firebase Auth Error:", error);
-                showToast("فشل المصادقة مع قاعدة البيانات. يرجى إعادة تحميل الصفحة.", 'error');
-            }
-        }
-
-        signIn();
-        
+    <script type="text/babel">
         // Initialize theme
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
@@ -1878,20 +1749,16 @@
         const videoLoader = document.getElementById("videoLoader");
         const favoriteTeachersSection = document.getElementById("favoriteTeachersSection");
         const favoriteTeachersGrid = document.getElementById("favoriteTeachersGrid");
-        const videoDate = document.getElementById("videoDate");
 
-        // Firebase-synced data
-        let userProfile = {};
-        let lectureProgress = {};
-        let completedLectures = {};
-        let favoriteTeachers = [];
-        let lastWatched = {};
-        let allTeachers = [];
-        let allLecturesCount = 0;
-        let completedLecturesCount = 0;
 
-        // Progress chart
-        let progressChart = null;
+        // Progress variables
+        let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
+        let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
+        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
+        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
+        // NEW: Favorite teachers state
+        let favoriteTeachers = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
+
 
         // Navigation
         const pages = {
@@ -1966,31 +1833,25 @@
             loadData(category.endpoint);
             navigate("category");
         }
-        
-        window.toggleFavorite = async (teacherId) => {
-            if (!authReady) {
-                showToast("الرجاء انتظار تحميل بيانات المستخدم", 'info');
-                return;
-            }
+
+        // NEW: Toggle favorite teacher status and update UI
+        window.toggleFavorite = (teacherId) => {
             const index = favoriteTeachers.indexOf(teacherId);
             if (index > -1) {
                 favoriteTeachers.splice(index, 1);
             } else {
                 favoriteTeachers.push(teacherId);
             }
-            try {
-                const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-                await setDoc(userDocRef, { favoriteTeachers: favoriteTeachers }, { merge: true });
-            } catch (error) {
-                console.error("Error saving favorite teachers:", error);
-                showToast("فشل حفظ التفضيلات.", 'error');
-            }
+            localStorage.setItem("favoriteTeachers", JSON.stringify(favoriteTeachers));
+            renderTeachers();
         };
 
         function renderTeachers(list = teachers) {
+            // Filter favorite teachers from the main list
             const favoriteTeacherData = list.filter(t => favoriteTeachers.includes(t.id));
             const otherTeachersData = list.filter(t => !favoriteTeachers.includes(t.id));
             
+            // Render favorite teachers section
             if (favoriteTeacherData.length > 0) {
                 favoriteTeachersSection.classList.add("active");
                 favoriteTeachersGrid.innerHTML = "";
@@ -1999,6 +1860,7 @@
                 favoriteTeachersSection.classList.remove("active");
             }
             
+            // Render the rest of the teachers
             if (otherTeachersData.length > 0) {
                 teachersGrid.innerHTML = "";
                 otherTeachersData.forEach(t => renderTeacherCard(t, teachersGrid));
@@ -2011,8 +1873,10 @@
             lucide.createIcons();
         }
         
+        // Helper function to render a single teacher card
         function renderTeacherCard(t, container) {
             const isFavorite = favoriteTeachers.includes(t.id);
+            const rating = ratings[t.id] || 0;
             const card = document.createElement("div");
             card.className = "teacher-card";
             card.innerHTML = `
@@ -2025,9 +1889,19 @@
                     <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
                     <h3 class="teacher-name">${t.name}</h3>
                     <p class="teacher-subject">${t.subject}</p>
+                    <div class="teacher-rating">${renderStars(rating)}</div>
                 </div>
             `;
             container.appendChild(card);
+        }
+
+
+        function renderStars(rating) {
+            let stars = "";
+            for (let i = 1; i <= 5; i++) {
+                stars += `<span class="star ${i <= rating ? "filled" : ""}">★</span>`;
+            }
+            return stars;
         }
 
         window.showTeacher = (id) => {
@@ -2040,6 +1914,8 @@
             };
             teacherName.textContent = currentTeacher.name;
             teacherSubject.textContent = currentTeacher.subject;
+            const rating = ratings[currentTeacher.id] || 0;
+            teacherRating.innerHTML = renderStars(rating);
             renderClasses(currentTeacher.classes);
             navigate("classes");
         };
@@ -2050,11 +1926,10 @@
                 const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
                 const lectures = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
-                    const lectureUrlSafe = encodeURIComponent(lec.url);
                     return `
-                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lectureUrlSafe}">
+                        <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
                             <div style="display: flex; align-items: center; flex: 1;">
-                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lectureUrlSafe}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                     <i data-lucide="play-circle"></i>
                                     <span>${li + 1}. ${lec.title}</span>
                                 </div>
@@ -2067,7 +1942,7 @@
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
-                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lectureUrlSafe}', this)"/>
+                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -2089,39 +1964,28 @@
             lucide.createIcons();
         }
         
-        window.toggleLectureCompletion = async (event, lectureUrlEncoded, checkbox) => {
-            if (!authReady) {
-                showToast("الرجاء انتظار تحميل بيانات المستخدم", 'info');
-                return;
-            }
+        window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
             event.stopPropagation();
-            const lectureUrl = decodeURIComponent(lectureUrlEncoded);
             const lectureItem = checkbox.closest('.lecture-item');
             const isCompleted = checkbox.checked;
-            
             completedLectures[lectureUrl] = isCompleted;
-            
-            try {
-                const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-                await setDoc(userDocRef, { completedLectures: completedLectures }, { merge: true });
-                if (isCompleted) {
-                    showToast('تم إكمال المحاضرة بنجاح! 🎉', 'success');
-                    const starBurst = lectureItem.querySelector('.star-burst');
-                    starBurst.innerHTML = Array(8).fill(0).map(() => {
-                        const translateX = (Math.random() - 0.5) * 80;
-                        const translateY = (Math.random() - 0.5) * 80;
-                        return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
-                    }).join('');
-                    starBurst.classList.add('animate');
-                    setTimeout(() => {
-                        starBurst.classList.remove('animate');
-                        starBurst.innerHTML = '';
-                    }, 600);
-                }
-            } catch (error) {
-                console.error("Error saving lecture completion:", error);
-                showToast('فشل حفظ حالة الإكمال. يرجى المحاولة مرة أخرى.', 'error');
+            localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
+
+            lectureItem.classList.toggle('completed', isCompleted);
+            if (isCompleted) {
+                const starBurst = lectureItem.querySelector('.star-burst');
+                starBurst.innerHTML = Array(8).fill(0).map(() => {
+                    const translateX = (Math.random() - 0.5) * 80;
+                    const translateY = (Math.random() - 0.5) * 80;
+                    return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
+                }).join('');
+                starBurst.classList.add('animate');
+                setTimeout(() => {
+                    starBurst.classList.remove('animate');
+                    starBurst.innerHTML = '';
+                }, 600);
             }
+            updateClassProgress(lectureItem.closest('.class-card'));
         };
 
         function updateClassProgress(classCardElement) {
@@ -2131,7 +1995,6 @@
             const totalLectures = classData.lectures.length;
             const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
             progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
-            updateProgressChart();
         }
 
         window.toggleLectures = (header) => {
@@ -2164,7 +2027,7 @@
             playerContainer.innerHTML = iframeHtml;
         }
 
-        window.playLecture = async (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
+        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
             if (player) {
                 player.destroy();
                 player = null;
@@ -2178,6 +2041,7 @@
                 window.progressInterval = null;
             }
             
+            // Set global variable for download button logic
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
@@ -2187,7 +2051,7 @@
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
             
-            const lastWatchedData = {
+            lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
                 teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
                 classIndex: ci,
@@ -2196,34 +2060,46 @@
                 lectureUrl: url,
                 lectureDescription: desc
             };
-            
-            if (authReady) {
-                try {
-                    const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-                    await setDoc(userDocRef, { lastWatched: lastWatchedData }, { merge: true });
-                } catch (error) {
-                    console.error("Error saving last watched:", error);
-                }
-            } else {
-                lastWatched = lastWatchedData;
-            }
+            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
             
             navigate("video");
             
-            const finalVideoUrl = decodeURIComponent(url);
-            const isHLS = finalVideoUrl.endsWith(".m3u8");
+            let finalVideoUrl = url;
+            let isHLS = finalVideoUrl.endsWith(".m3u8");
+            let useProxy = true;
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            const useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            
+            // NEW: Check for the specific domain and mp4 extension
+            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+                useProxy = false;
+                isHLS = false;
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // If it's a mediadelivery iframe, use the iframe player logic
+                loadIframePlayer(url);
+                return; // Exit the function to prevent further execution
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                isHLS = true;
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            } else {
+                // Keep the existing proxy logic for other cases
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            }
+            
             const proxiedUrl = useProxy && isHLS ? `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
             
             const videoElement = document.getElementById("player");
-            
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
             const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
-            
+
             player = new Plyr("#player", {
                 controls: playerControls,
                 keyboard: { focused: true, global: true },
@@ -2232,33 +2108,48 @@
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
-            
-            if (isHLS && Hls.isSupported()) {
-                const hls = new Hls();
-                window.hlsInstance = hls;
-                hls.attachMedia(videoElement);
-                hls.loadSource(proxiedUrl);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                    player.play().catch(console.error);
-                });
-                hls.on(Hls.Events.ERROR, (_, data) => {
-                    if (data.fatal) {
-                        switch (data.type) {
-                            case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                            case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                            default: break;
+
+            window.progressInterval = setInterval(() => {
+                if (player && player.duration > 0) {
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                }
+            }, 5000);
+
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(proxiedUrl);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
+                    });
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
+                            }
                         }
-                    }
-                });
-            } else {
-                player.source = {
-                    type: "video",
-                    sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-                };
-                player.play().catch(() => console.log("تعذر تشغيل الفيديو"));
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                    };
+                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                }
             }
+            tryPlay();
         };
 
+        /*
+         * Download Video Functionality - IMPROVED VERSION
+         * This function now uses XMLHttpRequest to download the video as a blob and save it with a progress bar.
+         */
         window.downloadVideo = async (event, url, title) => {
             event.stopPropagation();
             
@@ -2266,17 +2157,20 @@
             const progressContainer = downloadButton.closest('.download-container');
             const progressBar = progressContainer.querySelector('.download-progress');
             
+            // منع تنزيل مزدوج
             if (downloadButton.dataset.downloading === "true") {
-                showToast("التنزيل قيد التقدم بالفعل.", 'info');
+                console.log("التنزيل قيد التقدم بالفعل");
                 return;
             }
 
+            // التحقق من أن الفيديو قابلة للتحميل (فيديوهات mediadelivery فقط)
             if (!url.includes("iframe.mediadelivery.net/embed/")) {
-                showToast('عذراً، هذا الفيديو غير متاح للتحميل المباشر.', 'error');
+                alert('عذراً، هذا الفيديو غير متاح للتحميل المباشر.');
                 return;
             }
 
             try {
+                // إعداد واجهة المستخدم للتحميل
                 downloadButton.dataset.downloading = "true";
                 downloadButton.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i>';
                 lucide.createIcons();
@@ -2284,14 +2178,17 @@
                 progressBar.style.display = 'block';
                 progressBar.value = 0;
                 
+                // استخراج معرّف الفيديو من الرابط
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const downloadUrl = `https://oxgeccc.halzyz082.workers.dev/?url=http://vz-99e5c202-ca5.becdn.net/${videoId}/play_720p.mp4`;
                 
+                // إنشاء طلب AJAX للتحميل
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', downloadUrl, true);
                 xhr.responseType = 'blob';
                 
+                // تحديث شريط التقدم أثناء التحميل
                 xhr.onprogress = (e) => {
                     if (e.lengthComputable) {
                         const percentComplete = (e.loaded / e.total) * 100;
@@ -2299,26 +2196,34 @@
                     }
                 };
                 
+                // عند اكتمال التحميل
                 xhr.onload = () => {
                     if (xhr.status === 200) {
                         const blob = xhr.response;
                         const fileName = `${title}.mp4`;
+                        
+                        // حفظ الملف باستخدام FileSaver.js
                         saveAs(blob, fileName);
+                        
+                        // إظهار رسالة نجاح
                         showToast('تم تنزيل الفيديو بنجاح!', 'success');
                     } else {
                         console.error('فشل التنزيل:', xhr.statusText);
                         showToast('فشل تنزيل الفيديو. يرجى المحاولة مرة أخرى.', 'error');
                     }
                     
+                    // إعادة تعيين واجهة المستخدم
                     resetDownloadUI(downloadButton, progressBar);
                 };
                 
+                // عند حدوث خطأ
                 xhr.onerror = () => {
                     console.error('خطأ في الشبكة أثناء التنزيل.');
                     showToast('حدث خطأ في الشبكة. يرجى التحقق من اتصالك.', 'error');
                     resetDownloadUI(downloadButton, progressBar);
                 };
                 
+                // إرسال الطلب
                 xhr.send();
                 
             } catch (error) {
@@ -2328,6 +2233,7 @@
             }
         };
 
+        // دالة مساعدة لإعادة تعيين واجهة المستخدم بعد التحميل
         function resetDownloadUI(downloadButton, progressBar) {
             downloadButton.dataset.downloading = "false";
             downloadButton.innerHTML = '<i data-lucide="download"></i>';
@@ -2336,18 +2242,30 @@
             lucide.createIcons();
         }
 
+        // دالة مساعدة لعرض رسائل التنبيه
         function showToast(message, type = 'info') {
+            // إنصراف عنصر الرسالة إذا كان موجوداً
             const existingToast = document.querySelector('.toast-message');
             if (existingToast) {
                 existingToast.remove();
             }
             
+            // إنشاء عنصر الرسالة
             const toast = document.createElement('div');
             toast.className = `toast-message toast-${type}`;
-            toast.textContent = message;
+            toast.innerHTML = `
+                <div style="position: fixed; bottom: 20px; left: 20px; right: 20px; 
+                            background: ${type === 'success' ? 'var(--success)' : type === 'error' ? 'var(--error)' : 'var(--primary-1)'}; 
+                            color: white; padding: 12px 16px; border-radius: var(--radius); 
+                            box-shadow: var(--shadow-lg); z-index: 10000; text-align: center;">
+                    ${message}
+                </div>
+            `;
             
+            // إضافة الرسالة إلى الصفحة
             document.body.appendChild(toast);
             
+            // إزالة الرسالة تلقائياً بعد 3 ثوان
             setTimeout(() => {
                 if (toast.parentNode) {
                     toast.remove();
@@ -2367,58 +2285,26 @@
             searchTimeout = setTimeout(handleSearch, 250);
         });
         searchBtn.addEventListener("click", handleSearch);
-        
+
         /* ========= Load Data ========= */
-        const dataEndpoints = Object.values(categories).map(c => c.endpoint);
-        let allTeachersData = [];
-
-        async function loadAllTeachers() {
-            teachersGrid.innerHTML = `
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-            `;
-            
-            try {
-                const fetchPromises = dataEndpoints.map(url => 
-                    fetch(url, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } }).then(res => res.json())
-                );
-                
-                const results = await Promise.all(fetchPromises);
-                allTeachersData = results.flatMap(data => data.teachers);
-                
-                allLecturesCount = allTeachersData.reduce((total, teacher) => {
-                    return total + teacher.classes.reduce((classTotal, cls) => classTotal + cls.lectures.length, 0);
-                }, 0);
-
-                teachers = allTeachersData;
-                renderTeachers();
-                updateProgressChart();
-            } catch (error) {
-                console.error("Error loading teachers data:", error);
-                teachersGrid.innerHTML = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-            }
-        }
-        
-        async function loadData(endpoint) {
-            teachersGrid.innerHTML = `
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-                <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
-            `;
+        function loadData(endpoint) {
+            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+            teachersGrid.innerHTML = Array(3).fill(`
+                <div class="loading-card teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>`).join('');
             favoriteTeachersGrid.innerHTML = '';
             favoriteTeachersSection.classList.remove("active");
 
-            try {
-                const response = await fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } });
-                if (!response.ok) throw new Error("Network response was not ok.");
-                const data = await response.json();
-                teachers = data.teachers;
-                renderTeachers();
-            } catch (error) {
-                console.error("Error loading data:", error);
-                teachersGrid.innerHTML = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-            }
+            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+                .then((data) => { 
+                    teachers = data.teachers; 
+                    renderTeachers(); 
+                })
+                .catch(() => { teachersGrid.innerHTML = err; });
         }
         
         /* ========= Dashboard Logic ========= */
@@ -2430,47 +2316,12 @@
         const headerProfilePicEl = document.getElementById('headerProfilePic');
         const defaultUserIconEl = document.getElementById('defaultUserIcon');
         const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
-        const progressChartCanvas = document.getElementById('progressChart');
 
-        async function uploadImage(file) {
-            if (!userId) {
-                showToast("الرجاء انتظار المصادقة قبل التحميل.", 'error');
-                return null;
-            }
-            try {
-                const imageRef = ref(storage, `artifacts/${appId}/users/${userId}/profile.jpg`);
-                await uploadBytes(imageRef, file);
-                const url = await getDownloadURL(imageRef);
-                return url;
-            } catch (error) {
-                console.error("Error uploading image:", error);
-                showToast("فشل في تحميل الصورة.", 'error');
-                return null;
-            }
-        }
-
-        async function loadDashboardData() {
-            if (!authReady) return;
-            const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-            try {
-                const userDocSnap = await getDoc(userDocRef);
-                if (userDocSnap.exists()) {
-                    userProfile = userDocSnap.data().userProfile || {};
-                    dreamInputEl.value = userProfile.dream || '';
-                    gradeInputEl.value = userProfile.grade || '';
-                    if (userProfile.picture) {
-                        profilePictureEl.src = userProfile.picture;
-                    }
-                    updateHeaderProfilePic();
-                }
-            } catch (error) {
-                console.error("Error loading dashboard data:", error);
-            }
-        }
-        
         function updateHeaderProfilePic() {
-            if (userProfile.picture) {
-                headerProfilePicEl.src = userProfile.picture;
+            const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+            const placeholder = "https://placehold.co/150x150";
+            if (profile.picture && !profile.picture.startsWith(placeholder)) {
+                headerProfilePicEl.src = profile.picture;
                 headerProfilePicEl.style.display = 'block';
                 defaultUserIconEl.style.display = 'none';
             } else {
@@ -2478,103 +2329,52 @@
                 defaultUserIconEl.style.display = 'block';
             }
         }
+
+        function loadDashboardData() {
+            const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+            if (profile.picture) {
+                profilePictureEl.src = profile.picture;
+            }
+            if (profile.dream) {
+                dreamInputEl.value = profile.dream;
+            }
+            if (profile.grade) {
+                gradeInputEl.value = profile.grade;
+            }
+            updateHeaderProfilePic();
+        }
         
         uploadProfilePicBtn.addEventListener('click', () => {
             profilePictureInputEl.click();
         });
         
-        profilePictureInputEl.addEventListener('change', async (event) => {
+        profilePictureInputEl.addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
-                const imageUrl = URL.createObjectURL(file);
-                profilePictureEl.src = imageUrl;
-                
-                const savedUrl = await uploadImage(file);
-                if (savedUrl) {
-                    userProfile.picture = savedUrl;
-                    await setDoc(doc(db, `artifacts/${appId}/users/${userId}/data/user_data`), { userProfile: userProfile }, { merge: true });
-                    updateHeaderProfilePic();
-                    showToast("تم تحديث صورة الملف الشخصي بنجاح!", 'success');
-                }
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profilePictureEl.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
             }
         });
         
-        saveDashboardButton.addEventListener('click', async () => {
-            if (!authReady) {
-                showToast("الرجاء انتظار تحميل بيانات المستخدم", 'info');
-                return;
-            }
-            userProfile.dream = dreamInputEl.value;
-            userProfile.grade = gradeInputEl.value;
-            try {
-                const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-                await setDoc(userDocRef, { userProfile: userProfile }, { merge: true });
-                showToast("تم حفظ التغييرات بنجاح!", 'success');
-                updateHeaderProfilePic();
-            } catch (error) {
-                console.error("Error saving dashboard data:", error);
-                showToast("فشل حفظ التغييرات. يرجى المحاولة مرة أخرى.", 'error');
-            }
-        });
-        
-        function updateProgressChart() {
-            completedLecturesCount = Object.values(completedLectures).filter(isCompleted => isCompleted).length;
-            const progressPercentage = allLecturesCount > 0 ? (completedLecturesCount / allLecturesCount) * 100 : 0;
-            const progress = progressPercentage.toFixed(1);
+        saveDashboardButton.addEventListener('click', () => {
+            const profile = {
+                picture: profilePictureEl.src,
+                dream: dreamInputEl.value,
+                grade: gradeInputEl.value
+            };
+            localStorage.setItem('userProfile', JSON.stringify(profile));
+            updateHeaderProfilePic();
             
-            const data = {
-                labels: ['محاضرات مكتملة', 'محاضرات متبقية'],
-                datasets: [{
-                    label: 'التقدم',
-                    data: [completedLecturesCount, allLecturesCount - completedLecturesCount],
-                    backgroundColor: ['var(--primary-2)', 'var(--border)'],
-                    borderColor: ['var(--card)', 'var(--card)'],
-                    borderWidth: 1
-                }]
-            };
-
-            const options = {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            color: 'var(--text)',
-                            font: {
-                                family: 'Almarai',
-                            },
-                        },
-                    },
-                    tooltip: {
-                        enabled: true,
-                        callbacks: {
-                            label: function(context) {
-                                let label = context.label || '';
-                                if (label) {
-                                    label += ': ';
-                                }
-                                label += context.raw;
-                                return label;
-                            }
-                        }
-                    }
-                }
-            };
-
-            const chartStatus = Chart.getChart("progressChart");
-            if (chartStatus != undefined) {
-                chartStatus.data.datasets[0].data = data.datasets[0].data;
-                chartStatus.update();
-            } else {
-                progressChart = new Chart(progressChartCanvas, {
-                    type: 'doughnut',
-                    data: data,
-                    options: options,
-                });
-            }
-        }
+            saveDashboardButton.innerHTML = '<i data-lucide="check"></i> تم الحفظ بنجاح!';
+            lucide.createIcons();
+            setTimeout(() => {
+                saveDashboardButton.innerHTML = '<i data-lucide="save"></i> حفظ التغييرات';
+                lucide.createIcons();
+            }, 2000);
+        });
 
         /* ========= Modal Logic ========= */
         const telegramModal = document.getElementById("telegramModal");
@@ -2583,7 +2383,7 @@
         const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
         const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
         const continueNowBtn = document.getElementById("continueNowBtn");
-        
+
         function showTelegramModal() {
             const hasSubscribed = localStorage.getItem("telegramSubscribed");
             if (!hasSubscribed) {
@@ -2611,7 +2411,7 @@
         });
 
         function showContinueWatchingModal() {
-            if (lastWatched && lastWatched.teacherName && lastWatched.lectureTitle) {
+            if (lastWatched) {
                 lastWatchedTeacherName.textContent = lastWatched.teacherName;
                 lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
                 continueWatchingModal.classList.add("show");
@@ -2625,53 +2425,123 @@
 
         continueNowBtn.addEventListener("click", () => {
             hideContinueWatchingModal();
-            if (lastWatched && lastWatched.teacherId) {
-                const teacher = allTeachersData.find(t => t.id === lastWatched.teacherId);
-                if (teacher) {
-                    currentTeacher = teacher;
-                    playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
-                } else {
-                    showToast("لا يمكن العثور على بيانات المدرس.", 'error');
-                }
+            const categoryKeys = Object.keys(categories);
+            let foundTeacher = false;
+            for (const categoryId of categoryKeys) {
+                const category = categories[categoryId];
+                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (foundTeacher) return;
+                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                        if (teacher) {
+                            currentTeacher = teacher;
+                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                            foundTeacher = true;
+                        }
+                    })
+                    .catch(error => console.error("Error loading teacher data:", error));
+                if (foundTeacher) break;
             }
         });
 
-        // Load user data from Firestore and subscribe to changes
-        function loadUserData() {
-            if (!userId) return;
-            const userDocRef = doc(db, `artifacts/${appId}/users/${userId}/data/user_data`);
-            
-            onSnapshot(userDocRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    const data = docSnap.data();
-                    userProfile = data.userProfile || {};
-                    favoriteTeachers = data.favoriteTeachers || [];
-                    completedLectures = data.completedLectures || {};
-                    lastWatched = data.lastWatched || {};
-                    
-                    updateHeaderProfilePic();
-                    renderTeachers(); // Re-render to show favorite status
-                    updateProgressChart(); // Update chart with new data
-                } else {
-                    // Initialize document if it doesn't exist
-                    setDoc(userDocRef, {
-                        userProfile: {},
-                        favoriteTeachers: [],
-                        completedLectures: {},
-                        lastWatched: {}
-                    }, { merge: true });
-                }
-            }, (error) => {
-                console.error("Error listening to user data:", error);
-            });
-        }
-        
         window.addEventListener("load", () => {
             setTimeout(showTelegramModal, 1000);
-            loadAllTeachers();
+            loadDashboardData();
         });
-        
+
+        // Initialize
         lucide.createIcons();
+    </script>
+    <script type="text/babel">
+      // نظام الحماية
+      (function () {
+        let detected = false;
+        
+        function triggerSecurity() {
+          if (detected) return;
+          detected = true;
+          // تم إزالة السطر الذي يظهر الرسالة ويسجل IP
+          document.documentElement.innerHTML = '';
+          // تم إزالة كود fetch بناءً على طلبك
+          
+          // تأخير بسيط قبل إعادة التوجيه
+          setTimeout(() => window.location.reload(), 1000);
+        }
+
+        // كشف فتح DevTools عبر console.log + Object.defineProperty
+        const el = new Image();
+        Object.defineProperty(el, 'id', {
+          get: function () {
+            triggerSecurity();
+          }
+        });
+        console.log('%c لا تحاول العبث بالكود!', 'font-size:100px;', el);
+
+        // كشف DevTools بـ new Function بدل debugger فقط
+        function detectDebuggerDelay() {
+          const start = performance.now();
+          new Function("debugger")(); // bypass Disable Breakpoints
+          const duration = performance.now() - start;
+          if (duration > 100) {
+            triggerSecurity();
+          }
+        }
+
+        // كشف DevTools عبر حجم النافذة
+        function detectWindowResize() {
+          const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent) || 
+                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          if (isIOS) return; 
+
+          if (window.outerWidth - window.innerWidth > 160 || window.outerHeight - window.innerHeight > 160) {
+            triggerSecurity();
+          }
+        }
+
+        // تكرار الفحص كل ثانية
+        setInterval(() => {
+          detectDebuggerDelay();
+          detectWindowResize();
+        }, 1000);
+
+        // منع جميع الاختصارات الحساسة
+        document.addEventListener("keydown", function (e) {
+            let combo = "";
+            if (e.ctrlKey) combo += "CTRL+";
+            if (e.shiftKey) combo += "SHIFT+";
+            combo += e.key.toUpperCase();
+            
+          const forbidden = [
+            "F12",
+            "CTRL+SHIFT+I",
+            "CTRL+SHIFT+C",
+            "CTRL+SHIFT+J",
+            "CTRL+U",
+            "CTRL+S",
+            "CTRL+A",
+            "CTRL+C",
+            "CTRL+P",
+            "CTRL+E",
+            "CTRL+SHIFT+E",
+            "CTRL+SHIFT+K"
+          ];
+          if (forbidden.includes(combo)) {
+            e.preventDefault();
+            triggerSecurity();
+          }
+        });
+
+        // منع الزر الأيمن
+        document.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+        });
+
+        // منع السحب والتحديد
+        document.addEventListener("selectstart", e => e.preventDefault());
+        document.addEventListener("dragstart", e => e.preventDefault());
+
+      })();
     </script>
 </body>
 </html>
