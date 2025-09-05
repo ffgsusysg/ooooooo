@@ -42,10 +42,10 @@
             --accent: #facc15;
             --accent-2: #eab308;
             --radius: 14px;
-            --bg: #f8fafc;
-            --bg-glass: rgba(255, 255, 255, 0.95);
+            --bg: #f0f4f8; /* Softer background */
+            --bg-glass: rgba(255, 255, 255, 0.65); /* Less opaque glass */
             --text: #1f2937;
-            --card: #ffffff;
+            --card: rgba(255, 255, 255, 0.75); /* Glass card */
             --border: #e2e8f0;
             --hover: rgba(0, 0, 0, 0.06);
             --success: #22c55e;
@@ -81,14 +81,18 @@
             --dash-grad-5: #f2709c;
             --dash-grad-6: #ff9472;
             --dash-text-light: #f0f0f0;
+
+            /* NEW: Gradients for the main layout */
+            --main-bg-grad-1: #e0f2fe;
+            --main-bg-grad-2: #f0f9ff;
         }
 
         /* Dark theme adjustments */
         [data-theme="dark"] {
             --bg: #1e293b;
-            --bg-glass: rgba(30, 41, 59, 0.95);
+            --bg-glass: rgba(30, 41, 59, 0.85);
             --text: #f1f5f9;
-            --card: #334155;
+            --card: rgba(51, 65, 85, 0.7);
             --border: #475569;
             --hover: rgba(255, 255, 255, 0.1);
             --primary-1: #60a5fa;
@@ -117,6 +121,9 @@
             --dash-grad-4: #A5CC82;
             --dash-grad-5: #5614B0;
             --dash-grad-6: #dbd65c;
+            /* NEW: Dark mode gradients for the main layout */
+            --main-bg-grad-1: #1e293b;
+            --main-bg-grad-2: #0f172a;
         }
 
         /* General styles */
@@ -129,23 +136,21 @@
         body {
             font-family: 'Almarai', 'Tajawal', sans-serif;
             background: var(--bg);
+            background: linear-gradient(180deg, var(--main-bg-grad-1), var(--main-bg-grad-2)); /* Elegant gradient */
+            background-attachment: fixed;
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
             overflow-y: auto;
             transition: background 0.3s ease, color 0.3s ease;
         }
-
-        img {
-            max-width: 100%;
-            display: block;
-        }
-
-        button {
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
+        
+        /* NEW: Glassmorphism effect for cards and elements */
+        .card-glass {
+            background: var(--card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* Header styles */
@@ -217,6 +222,7 @@
             border: 2px solid var(--border);
             border-radius: var(--radius);
             transition: border 0.25s, box-shadow 0.25s, background 0.3s ease, color 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
         .search-container input:focus {
@@ -404,6 +410,9 @@
             align-items: center;
             gap: 1.5rem;
             grid-column: 1 / -1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         @media (min-width: 768px) {
@@ -641,10 +650,12 @@
         }
 
         .teacher-card {
-            background: var(--card);
+            background: var(--card); /* NEW: Apply glassmorphism background */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
             padding: 1.4rem 1.1rem;
             border-radius: var(--radius);
-            border: 1px solid var(--border);
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -727,6 +738,7 @@
             color: var(--border);
             box-shadow: var(--shadow-sm);
             transition: all 0.2s ease-in-out;
+            backdrop-filter: blur(10px);
         }
         
         .btn-favorite:hover {
@@ -764,6 +776,7 @@
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(20px);
         }
 
         .teacher-img-lg {
@@ -783,6 +796,8 @@
 
         .class-card {
             background: var(--card);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-radius: var(--radius);
             border: 1px solid var(--border);
             overflow: hidden;
@@ -1069,6 +1084,7 @@
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
+            backdrop-filter: blur(20px);
         }
 
         .video-info {
@@ -1297,56 +1313,70 @@
             box-shadow: var(--shadow-md);
         }
 
-        /* Continue Watching Modal Styles */
-        #continueWatchingModal .modal-content {
-            background: linear-gradient(135deg, var(--continue-modal-bg-start), var(--continue-modal-bg-end));
-            max-width: 450px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        /* NEW: Continue Watching Toast Notification */
+        #continueWatchingToast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            max-width: 400px;
+            width: 90%;
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(120%);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text);
+            backdrop-filter: blur(20px);
         }
 
-        #continueWatchingModal .modal-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
-            color: var(--continue-modal-text);
+        #continueWatchingToast.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
         }
 
-        #continueWatchingModal .modal-body p {
-            font-size: 1rem;
-            color: var(--continue-modal-text);
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
-            font-weight: 500;
+        .toast-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
         }
         
-        #continueWatchingModal .modal-body p .highlight-text {
-            color: var(--highlight-color);
-            font-weight: bold;
-            text-shadow: var(--highlight-shadow);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-        }
-
-        .btn-continue-now {
-            background-color: var(--continue-button-bg);
-            color: var(--continue-modal-text);
-            padding: 1rem 2rem;
+        .toast-content h3 {
             font-size: 1.1rem;
-            margin-top: 1.5rem;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: var(--radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
+            font-weight: 700;
+            color: var(--primary-1);
+        }
+        
+        .toast-content p {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+            margin: 0;
+        }
+        
+        .toast-buttons {
+            display: flex;
             gap: 0.5rem;
+            flex-shrink: 0;
         }
 
-        .btn-continue-now:hover {
-            background-color: var(--continue-button-hover);
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-            filter: brightness(1.05);
+        .toast-buttons .btn {
+            padding: 0.6rem 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .toast-buttons .btn-outline {
+            border-color: var(--primary-1);
+            color: var(--primary-1);
         }
 
         /* Responsive adjustments */
@@ -1450,6 +1480,14 @@
                 padding-top: 1rem;
                 padding-bottom: 5vh;
             }
+            
+            #continueWatchingToast {
+                right: 10px;
+                left: 10px;
+                max-width: none;
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 
@@ -1503,23 +1541,20 @@
             </div>
         </div>
     </div>
-    <div id="continueWatchingModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">
-                    <i data-lucide="graduation-cap"></i>
-                    عزيزي الطالب 
-                </h3>
-            </div>
-            <div class="modal-body">
-                <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
-                <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
-                <p>لاتنسى تكمل محاضراتك وبس حبيت اذكرك ❤️</p>
-                <button id="continueNowBtn" class="btn btn-continue-now">
-                    <i data-lucide="play"></i>
-                    متابعة 
-                </button>
-            </div>
+    <div id="continueWatchingToast" class="toast">
+        <div class="toast-content">
+            <h3>تذكير: متابعة المحاضرة</h3>
+            <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
+            <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
+        </div>
+        <div class="toast-buttons">
+            <button id="continueNowBtn" class="btn">
+                <i data-lucide="play"></i>
+                متابعة
+            </button>
+            <button id="closeToastBtn" class="btn btn-outline">
+                <i data-lucide="x"></i>
+            </button>
         </div>
     </div>
     <div id="homePage" class="page active">
@@ -1572,7 +1607,6 @@
             <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
         </button>
         
-        <!-- NEW: Favorite Teachers Section -->
         <div id="favoriteTeachersSection" class="favorite-teachers-section">
             <div class="section-title">
                 <i data-lucide="heart"></i>
@@ -1595,7 +1629,7 @@
             <i data-lucide="arrow-right"></i>الرجوع للمدرسين
         </button>
         
-        <div class="teacher-info">
+        <div class="teacher-info card-glass">
             <img id="teacherImage" class="teacher-img-lg" alt="" />
             <div>
                 <h2 id="teacherName"></h2>
@@ -1625,7 +1659,7 @@
                 </div>
             </div>
             
-            <div class="video-details">
+            <div class="video-details card-glass">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
                 
@@ -1949,7 +1983,7 @@
                     `;
                 }).join("");
                 return `
-                    <div class="class-card">
+                    <div class="class-card card-glass">
                         <div class="class-header" onclick="toggleLectures(this)">
                             <div class="class-header-content">
                                 <h3>${cls.name}</h3>
@@ -2379,10 +2413,11 @@
         /* ========= Modal Logic ========= */
         const telegramModal = document.getElementById("telegramModal");
         const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
-        const continueWatchingModal = document.getElementById("continueWatchingModal");
+        const continueWatchingToast = document.getElementById("continueWatchingToast");
         const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
         const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
         const continueNowBtn = document.getElementById("continueNowBtn");
+        const closeToastBtn = document.getElementById("closeToastBtn");
 
         function showTelegramModal() {
             const hasSubscribed = localStorage.getItem("telegramSubscribed");
@@ -2390,7 +2425,7 @@
                 telegramModal.classList.add("show");
                 lucide.createIcons();
             } else {
-                showContinueWatchingModal();
+                showContinueWatchingToast();
             }
         }
 
@@ -2401,47 +2436,60 @@
         continueWithoutSubscribingBtn.addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal();
+            showContinueWatchingToast();
         });
 
         document.querySelector(".btn-telegram").addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
             hideTelegramModal();
-            showContinueWatchingModal();
+            showContinueWatchingToast();
         });
 
-        function showContinueWatchingModal() {
+        function showContinueWatchingToast() {
+            const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
             if (lastWatched) {
                 lastWatchedTeacherName.textContent = lastWatched.teacherName;
                 lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
-                continueWatchingModal.classList.add("show");
+                continueWatchingToast.classList.add("show");
                 lucide.createIcons();
+                
+                // Automatically hide after 10 seconds
+                setTimeout(() => {
+                    hideContinueWatchingToast();
+                }, 10000);
             }
         }
 
-        function hideContinueWatchingModal() {
-            continueWatchingModal.classList.remove("show");
+        function hideContinueWatchingToast() {
+            continueWatchingToast.classList.remove("show");
         }
+        
+        closeToastBtn.addEventListener("click", () => {
+            hideContinueWatchingToast();
+        });
 
         continueNowBtn.addEventListener("click", () => {
-            hideContinueWatchingModal();
-            const categoryKeys = Object.keys(categories);
-            let foundTeacher = false;
-            for (const categoryId of categoryKeys) {
-                const category = categories[categoryId];
-                fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (foundTeacher) return;
-                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                        if (teacher) {
-                            currentTeacher = teacher;
-                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
-                            foundTeacher = true;
-                        }
-                    })
-                    .catch(error => console.error("Error loading teacher data:", error));
-                if (foundTeacher) break;
+            hideContinueWatchingToast();
+            const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
+            if (lastWatched) {
+                const categoryKeys = Object.keys(categories);
+                let foundTeacher = false;
+                for (const categoryId of categoryKeys) {
+                    const category = categories[categoryId];
+                    fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (foundTeacher) return;
+                            const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                            if (teacher) {
+                                currentTeacher = teacher;
+                                playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                                foundTeacher = true;
+                            }
+                        })
+                        .catch(error => console.error("Error loading teacher data:", error));
+                    if (foundTeacher) break;
+                }
             }
         });
 
