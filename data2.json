@@ -834,7 +834,7 @@
       "name": "اليونت الثاني",
       "lectures": [
         {
-          "title": "المحاضرة 1 - الضرورة وعدم الضرورة",
+        "title": "المحاضرة 1 - الضرورة وعدم الضرورة",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/fcd0f854-db59-4ead-a0d2-7abede248c7e"
         },
@@ -864,7 +864,7 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/b0f04557-01b7-4f45-a2d0-e5ad60d6ff1a"
         },
         {
-           "title": "أسئلة واجبات الشرطة (الجزء الثاني)",
+          "title": "أسئلة واجبات الشرطة (الجزء الثاني)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/c78e23b8-3f7c-4a77-a149-9791aee7c97f"
         },
@@ -897,6 +897,11 @@
           "title": "أسئلة قطعة الرادار (الجزء الاول)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/09f7e620-93e5-4536-a093-c51781702835"
+        },
+        {
+          "title": "أسئلة قطعة الرادار (الجزء الثاني)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/06d70ee5-84b4-44a9-a4b6-9824a38b64d3"
 
 }
 ]
