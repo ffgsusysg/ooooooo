@@ -22,16 +22,6 @@
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
-    <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
-    <script src="https://assets.mediadelivery.net/plyr-plugin-thumbnail.js"></script>
-    <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
-    <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
         :root {
@@ -50,9 +40,6 @@
             --success: #22c55e;
             --warning: #facc15;
             --error: #ef4444;
-            --telegram-blue: #0088cc;
-            --telegram-light: #2aabee;
-            --telegram-text: #ffffff;
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -64,15 +51,6 @@
             --modal-button-text: #ffffff;
             --modal-outline-button-border: #ffffff;
             --modal-outline-button-text: #ffffff;
-            --continue-modal-bg-start: #4facfe;
-            --continue-modal-bg-end: #00f2fe;
-            --continue-modal-text: #ffffff;
-            --continue-button-bg: #00c896;
-            --continue-button-hover: #00a87a;
-            --continue-outline-button-border: #00c896;
-            --continue-outline-button-text: #00c896;
-            --highlight-color: #ffeb3b;
-            --highlight-shadow: 0 0 8px rgba(255, 235, 59, 0.6);
             --dash-grad-1: #8E2DE2;
             --dash-grad-2: #4A00E0;
             --dash-grad-3: #11998e;
@@ -104,16 +82,8 @@
             --modal-text-color: #e0e7ff;
             --modal-button-gradient-start: #007bff;
             --modal-button-gradient-end: #0056b3;
-            --modal-button-text: #ffffff;
             --modal-outline-button-border: #9ec5ff;
             --modal-outline-button-text: #9ec5ff;
-            --continue-modal-bg-start: #004d99;
-            --continue-modal-bg-end: #1a2a6c;
-            --continue-modal-text: #e0e7ff;
-            --continue-button-bg: #007a5e;
-            --continue-button-hover: #005a41;
-            --continue-outline-button-border: #007a5e;
-            --continue-outline-button-text: #007a5e;
             --dash-grad-1: #4e54c8;
             --dash-grad-2: #8f94fb;
             --dash-grad-3: #00467F;
@@ -253,6 +223,9 @@
             transition: all 0.25s ease, background 0.3s ease, color 0.3s ease;
             white-space: nowrap;
             box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
         }
 
         .btn:hover {
@@ -298,15 +271,6 @@
             height: 100%;
             object-fit: cover;
             border-radius: 50%;
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            color: white;
-        }
-
-        .btn-accent:hover {
-            background: var(--accent-2);
         }
 
         /* Page layout */
@@ -356,25 +320,6 @@
         }
         
         /* Dashboard Page Styles */
-        #dashboardPage {
-            --dash-grad-1: #8E2DE2;
-            --dash-grad-2: #4A00E0;
-            --dash-grad-3: #11998e;
-            --dash-grad-4: #38ef7d;
-            --dash-grad-5: #f2709c;
-            --dash-grad-6: #ff9472;
-            --dash-text-light: #f0f0f0;
-        }
-        
-        [data-theme="dark"] #dashboardPage {
-            --dash-grad-1: #4e54c8;
-            --dash-grad-2: #8f94fb;
-            --dash-grad-3: #00467F;
-            --dash-grad-4: #A5CC82;
-            --dash-grad-5: #5614B0;
-            --dash-grad-6: #dbd65c;
-        }
-
         .dashboard-header {
             text-align: center;
             margin-bottom: 2.5rem;
@@ -459,17 +404,38 @@
             text-align: center;
             flex-grow: 1;
         }
+
+        /* NEW: Dashboard name input styling */
+        .profile-name-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid var(--border);
+            color: var(--text);
+            font-size: 1.8rem;
+            font-weight: 700;
+            padding: 0.5rem;
+            text-align: center;
+            font-family: 'Almarai', sans-serif;
+            margin-bottom: 0.5rem;
+            transition: border-color 0.3s;
+        }
+        .profile-name-input:focus {
+            outline: none;
+            border-bottom-color: var(--primary-1);
+        }
+        .profile-name-input::placeholder {
+            color: var(--text);
+            opacity: 0.6;
+        }
         
         @media (min-width: 768px) {
             .profile-info {
                 text-align: right;
             }
-        }
-        
-        .profile-info h2 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--text);
+             .profile-name-input {
+                text-align: right;
+            }
         }
 
         .goal-card {
@@ -538,7 +504,7 @@
             padding: 1rem;
             font-size: 1.2rem;
             border-radius: var(--radius);
-            margin-top: 1rem;
+            margin-top: 2rem;
             box-shadow: var(--shadow-md);
         }
         
@@ -567,6 +533,8 @@
             color: white;
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: var(--radius);
+            cursor: pointer;
         }
 
         .category-card::before {
@@ -700,22 +668,6 @@
             opacity: 0.7;
             transition: color 0.3s ease;
         }
-
-        .teacher-rating {
-            display: flex;
-            justify-content: center;
-            gap: 0.2rem;
-            margin: 0.5rem 0;
-        }
-
-        .teacher-rating .star {
-            color: #ddd;
-            font-size: 1.1rem;
-        }
-
-        .teacher-rating .star.filled {
-            color: var(--warning);
-        }
         
         /* Favorite Button Styles */
         .favorite-button-container {
@@ -734,27 +686,35 @@
             justify-content: center;
             background: var(--card);
             border: 1px solid var(--border);
-            color: var(--border);
+            color: var(--text);
+            opacity: 0.7;
             box-shadow: var(--shadow-sm);
             transition: all 0.2s ease-in-out;
             backdrop-filter: blur(10px);
+        }
+
+        .btn-favorite .lucide-heart {
+            transition: all 0.2s ease-in-out;
         }
         
         .btn-favorite:hover {
             transform: scale(1.1);
             color: #ff5252;
             border-color: #ff5252;
+            opacity: 1;
         }
         
         .btn-favorite.active {
-            background: #ff5252;
-            color: #fff;
-            border-color: #ff5252;
+            color: #ff5252;
+            opacity: 1;
+        }
+
+        .btn-favorite.active .lucide-heart {
+             fill: #ff5252;
         }
         
         .btn-favorite.active:hover {
             transform: scale(1.15);
-            box-shadow: var(--shadow-md);
         }
         
         .back-button {
@@ -767,7 +727,6 @@
             display: flex;
             align-items: center;
             gap: 1.4rem;
-            background: var(--card);
             padding: 1.6rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
@@ -775,7 +734,6 @@
             margin-bottom: 1.5rem;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
-            backdrop-filter: blur(20px);
         }
 
         .teacher-img-lg {
@@ -1018,14 +976,12 @@
         }
 
         .video-details {
-            background: var(--card);
             padding: 1.5rem;
             border-radius: var(--radius);
             border: 1px solid var(--border);
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: background 0.3s ease, border-color 0.3s ease;
-            backdrop-filter: blur(20px);
         }
 
         .video-info {
@@ -1065,23 +1021,6 @@
         .instagram-link:hover {
             transform: translateY(-2px);
             opacity: 1;
-        }
-
-        .instagram-icon-wrapper {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .instagram-icon-wrapper svg {
-            fill: #E1306C; /* Instagram pink */
-            transition: fill 0.2s ease;
-        }
-        
-        [data-theme="dark"] .instagram-icon-wrapper svg {
-            fill: #E1306C; /* Ensure it stays pink in dark mode */
         }
         
         .instagram-username {
@@ -1136,48 +1075,14 @@
             animation: fadeInOut 1.4s infinite ease-in-out;
         }
 
-        .new-loader .dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .new-loader .dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .new-loader .dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
+        .new-loader .dot:nth-child(1) { animation-delay: 0s; }
+        .new-loader .dot:nth-child(2) { animation-delay: 0.2s; }
+        .new-loader .dot:nth-child(3) { animation-delay: 0.4s; }
 
         @keyframes fadeInOut {
             0% { opacity: 0; transform: scale(0.8); }
             50% { opacity: 1; transform: scale(1.2); }
             100% { opacity: 0; transform: scale(0.8); }
-        }
-
-        /* Iframe placeholder styles */
-        .iframe-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: inherit;
-        }
-
-        .play-button-overlay {
-            color: white;
-            opacity: 0.8;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .iframe-placeholder:hover .play-button-overlay {
-            opacity: 1;
-            transform: scale(1.1);
         }
 
         /* Modal Styles */
@@ -1210,19 +1115,21 @@
             max-width: 550px;
             width: 90%;
             text-align: center;
-            transform: translateY(-20px);
+            transform: translateY(-20px) scale(0.95);
             transition: transform 0.3s ease, background 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .modal.show .modal-content {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         .modal-header {
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent);
             padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .modal-title {
@@ -1233,6 +1140,7 @@
             justify-content: center;
             gap: 0.75rem;
             font-weight: 700;
+            width: 100%;
         }
 
         .modal-body p {
@@ -1274,14 +1182,15 @@
             margin-left: auto;
             margin-right: auto;
             border-radius: var(--radius);
-            box-shadow: none;
         }
 
         .btn-outline-telegram:hover {
             background: rgba(255, 255, 255, 0.1);
-            color: var(--modal-outline-button-text);
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+        }
+        
+        #closeExamsModalBtn:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
         }
 
         /* NEW: Continue Watching Toast Notification */
@@ -1344,11 +1253,6 @@
             padding: 0.6rem 1rem;
             font-size: 0.9rem;
         }
-        
-        .toast-buttons .btn-outline {
-            border-color: var(--primary-1);
-            color: var(--primary-1);
-        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -1386,7 +1290,6 @@
                 padding: 0.8rem 1rem;
             }
 
-            /* MODIFIED: Full-width video styles ONLY for mobile */
             #videoPage.page.active {
                 padding-left: 0;
                 padding-right: 0;
@@ -1402,6 +1305,7 @@
             .video-details {
                 padding: 1.2rem;
                 width: 100%;
+                border-radius: 0;
             }
         }
 
@@ -1441,12 +1345,7 @@
                 padding: 0.7rem 1.2rem;
                 font-size: 0.9rem;
             }
-            .btn-continue-now {
-                padding: 0.9rem 1.5rem;
-                font-size: 1rem;
-            }
             
-            /* Ensure video page padding is correct on smallest screens */
             #videoPage.page.active {
                 padding-top: 1rem;
                 padding-bottom: 5vh;
@@ -1472,7 +1371,7 @@
 
         <div class="header-actions">
             <button id="dashboardButton" class="btn btn-icon" onclick="navigate('dashboard')">
-                <img id="headerProfilePic" src="https://placehold.co/42x42/E2E8F0/A0AEC0?text= " alt="صورة الملف الشخصي" style="display: none;">
+                <img id="headerProfilePic" src="https://placehold.co/52x52/E2E8F0/A0AEC0?text= " alt="صورة الملف الشخصي" style="display: none;">
                 <i data-lucide="user" id="defaultUserIcon"></i>
             </button>
             <button id="themeToggle" class="btn btn-icon">
@@ -1486,12 +1385,10 @@
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
             <input id="searchInput" type="text" placeholder="ابحث عن مدرس…" />
-            <button id="searchButton" class="btn btn-icon">
-                <i data-lucide="search"></i>
-            </button>
         </div>
     </header>
 
+    <!-- Telegram Modal -->
     <div id="telegramModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1501,22 +1398,45 @@
                 </h3>
             </div>
             <div class="modal-body">
-                <p>لا تنسى تشترك في قناتنا على تيلجرام حتى توصلك أحدث التحديثات والأخبار الجديدة.</p>
+                <p>لا تنسى الاشتراك في قناتنا على تيلجرام حتى تصلك أحدث التحديثات والأخبار الجديدة.</p>
                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
                     <i data-lucide="send"></i>
                     <span>اشترك الآن</span>
                 </a>
                 <button id="continueWithoutSubscribingBtn" class="btn btn-outline-telegram">
-                    اشتركت سابقا المتابعة
+                    المتابعة دون اشتراك
                 </button>
             </div>
         </div>
     </div>
+
+    <!-- Exams Modal (New) -->
+    <div id="examsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                 <h3 class="modal-title">
+                    <i data-lucide="file-text"></i>
+                    امتحانات الأساتذة
+                </h3>
+                <button id="closeExamsModalBtn" class="btn btn-icon btn-outline-telegram" style="background: transparent; border: none;">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>سيتم إضافة الامتحانات قريبًا. تابعنا على تليجرام للحصول على آخر التحديثات!</p>
+                 <a href="https://t.me/od7cc" target="_blank" class="btn btn-telegram">
+                    <i data-lucide="send"></i>
+                    <span>الانتقال إلى تليجرام</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Continue Watching Toast -->
     <div id="continueWatchingToast" class="toast">
         <div class="toast-content">
-            <h3>تذكير: متابعة المحاضرة</h3>
-            <p>لقد كنت تشاهد الأستاذ <span id="lastWatchedTeacherName" class="highlight-text"></span></p>
-            <p>في المحاضرة: <span id="lastWatchedLectureTitle" class="highlight-text"></span></p>
+            <h3>متابعة المشاهدة</h3>
+            <p>كنت تشاهد <strong id="lastWatchedTeacherName"></strong> - <span id="lastWatchedLectureTitle"></span></p>
         </div>
         <div class="toast-buttons">
             <button id="continueNowBtn" class="btn">
@@ -1528,6 +1448,8 @@
             </button>
         </div>
     </div>
+
+    <!-- Home Page -->
     <div id="homePage" class="page active">
         <div class="section-title">
             <i data-lucide="layout-grid"></i>
@@ -1573,9 +1495,10 @@
         </div>
     </div>
 
+    <!-- Category Page -->
     <div id="categoryPage" class="page">
         <button class="btn back-button" onclick="navigate('home')">
-            <i data-lucide="arrow-right"></i> ارجوع واختيار قسم جديد
+            <i data-lucide="arrow-right"></i> الرجوع للأقسام
         </button>
         
         <div id="favoriteTeachersSection" class="favorite-teachers-section">
@@ -1592,9 +1515,11 @@
         </div>
         
         <div id="teachersGrid" class="teachers-grid">
+            <!-- Teacher cards will be populated here -->
         </div>
     </div>
 
+    <!-- Classes Page -->
     <div id="classesPage" class="page">
         <button class="btn back-button" onclick="navigate('category')">
             <i data-lucide="arrow-right"></i>الرجوع للمدرسين
@@ -1605,7 +1530,8 @@
             <div>
                 <h2 id="teacherName"></h2>
                 <p id="teacherSubject" class="teacher-subject"></p>
-                <div id="teacherRating" class="teacher-rating"></div>
+                <!-- Instagram link will be dynamically added here -->
+                <div id="teacherSocialLink"></div>
             </div>
         </div>
         
@@ -1617,15 +1543,16 @@
         <div id="classesList" class="classes-list"></div>
     </div>
 
+    <!-- Video Page -->
     <div id="videoPage" class="page">
         <div class="video-page">
             <div id="videoContainer" class="video-container">
                 <div id="playerContainer"></div>
                 <div id="videoLoader" class="video-loader" style="display: none;">
                     <div class="new-loader">
-                      <div class="dot"></div>
-                      <div class="dot"></div>
-                      <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
                     </div>
                 </div>
             </div>
@@ -1633,38 +1560,18 @@
             <div class="video-details card-glass">
                 <h2 id="videoTitle"></h2>
                 <p id="videoDescription"></p>
-                
-                <div class="video-info">
-                    <div class="video-meta">
-                        <span>
-                            <i data-lucide="calendar"></i>
-                        </span>
-                        <span>
-                            <a href="https://www.instagram.com/zr_bb5?igsh=MXdrcms5NDhqZXJhNQ==" target="_blank" class="instagram-link">
-                                <span class="instagram-icon-wrapper">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
-                                    </svg>
-                                </span>
-                                <span class="instagram-username">@ZR_BB5</span>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-                
-                <button class="btn back-button" onclick="navigate('classes')">
+                <button class="btn back-button" onclick="navigate('classes')" style="margin-top: 1rem;">
                     <i data-lucide="arrow-right"></i>العودة للفصول
                 </button>
             </div>
         </div>
     </div>
 
+    <!-- Dashboard Page (Updated) -->
     <div id="dashboardPage" class="page">
         <div class="dashboard-header">
             <h1>لوحة التحكم</h1>
-            <p>هنا تبدأ رحلتك نحو تحقيق حلمك. خصص صفحتك لتكون مصدر إلهامك اليومي!</p>
+            <p id="dashboardWelcome">هنا تبدأ رحلتك نحو تحقيق حلمك. خصص صفحتك لتكون مصدر إلهامك اليومي!</p>
         </div>
         
         <div class="profile-card">
@@ -1677,11 +1584,8 @@
             <input type="file" id="profilePictureInput" accept="image/*" style="display: none;">
             
             <div class="profile-info">
-                <h2>مرحباً أيها البطل!</h2>
-                <p>هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
-                <button id="uploadProfilePicBtn" class="btn btn-outline" style="margin-top: 1rem;">
-                    <i data-lucide="upload"></i> تحميل صورة جديدة
-                </button>
+                 <input type="text" id="studentNameInput" class="profile-name-input" placeholder="اكتب اسمك هنا...">
+                 <p id="dashboardGreeting">هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.</p>
             </div>
         </div>
         
@@ -1711,26 +1615,20 @@
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <script type="text/babel">
+    <script type="module">
         // Initialize theme
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
-            const preferred = window.matchMedia("(prefers-color-scheme: light)").matches
-                ? "light"
-                : "dark";
+            const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
             const theme = stored || preferred;
             document.documentElement.setAttribute("data-theme", theme);
             updateThemeIcon(theme);
         }
 
         function updateThemeIcon(theme) {
-            document
-                .querySelector("#themeToggle i")
-                .setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
+            document.querySelector("#themeToggle i").setAttribute("data-lucide", theme === "dark" ? "sun" : "moon");
             lucide.createIcons();
         }
-
-        initializeTheme();
 
         document.getElementById("themeToggle").addEventListener("click", () => {
             const cur = document.documentElement.getAttribute("data-theme");
@@ -1740,36 +1638,20 @@
             updateThemeIcon(next);
         });
 
-        // Set up player
+        // =====================================================================
+        // State and Global Variables
+        // =====================================================================
         let player = null;
-        let isLectureCompleted = false;
-
-        // DOM references
-        const teacherImage = document.getElementById("teacherImage");
-        const teacherName = document.getElementById("teacherName");
-        const teacherSubject = document.getElementById("teacherSubject");
-        const teacherRating = document.getElementById("teacherRating");
-        const videoTitle = document.getElementById("videoTitle");
-        const videoDescription = document.getElementById("videoDescription");
-        const categoryTitle = document.getElementById("categoryTitle");
-        const classesList = document.getElementById("classesList");
-        const teachersGrid = document.getElementById("teachersGrid");
-        const playerContainer = document.getElementById("playerContainer");
-        const videoLoader = document.getElementById("videoLoader");
-        const favoriteTeachersSection = document.getElementById("favoriteTeachersSection");
-        const favoriteTeachersGrid = document.getElementById("favoriteTeachersGrid");
-
-
-        // Progress variables
+        let teachers = [];
+        let currentTeacher = null;
+        let currentCategoryEndpoint = null;
+        
+        // Load persistent data from localStorage
         let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")) || {};
         let completedLectures = JSON.parse(localStorage.getItem("completedLectures")) || {};
-        let ratings = JSON.parse(localStorage.getItem("ratings")) || {};
-        let lastWatched = JSON.parse(localStorage.getItem("lastWatched")) || null;
-        // NEW: Favorite teachers state
         let favoriteTeachers = JSON.parse(localStorage.getItem("favoriteTeachers")) || [];
 
-
-        // Navigation
+        // DOM References
         const pages = {
             home: document.getElementById("homePage"),
             category: document.getElementById("categoryPage"),
@@ -1777,15 +1659,24 @@
             video: document.getElementById("videoPage"),
             dashboard: document.getElementById("dashboardPage")
         };
-
-        function navigate(page) {
+        const teachersGrid = document.getElementById("teachersGrid");
+        const favoriteTeachersSection = document.getElementById("favoriteTeachersSection");
+        const favoriteTeachersGrid = document.getElementById("favoriteTeachersGrid");
+        const categoryTitle = document.getElementById("categoryTitle");
+        const classesList = document.getElementById("classesList");
+        const playerContainer = document.getElementById("playerContainer");
+        const videoLoader = document.getElementById("videoLoader");
+        const searchInput = document.getElementById("searchInput");
+        
+        // =====================================================================
+        // Navigation Logic
+        // =====================================================================
+        window.navigate = (page) => {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
-            if (page !== "video") {
-                if (player) {
-                    player.destroy();
-                    player = null;
-                }
+            if (page !== "video" && player) {
+                player.destroy();
+                player = null;
                 if (window.hlsInstance) {
                     window.hlsInstance.destroy();
                     window.hlsInstance = null;
@@ -1807,44 +1698,93 @@
             lucide.createIcons();
         }
 
-        /* ========= Teachers Data ========= */
-        const searchInput = document.getElementById("searchInput");
-        const searchBtn = document.getElementById("searchButton");
-        let teachers = [];
-        let currentTeacher = null;
-        let currentClassIndex = 0;
-        let currentLectureIndex = 0;
-        let currentLectureLink = "";
-
+        // =====================================================================
+        // Data Fetching and Rendering
+        // =====================================================================
         const categories = {
-            "year-2026": {
-                title: "الصفوف الدراسية 2026",
-                endpoint: "https://adson.netlify.app/data2.json"
-            },
-            "year-2025": {
-                title: "الصفوف الدراسية 2025",
-                endpoint: "https://adson.netlify.app/data.json"
-            },
-            "distinguished": {
-                title: "قسم المتميزين",
-                endpoint: "https://adson.netlify.app/ff.json"
-            },
-            "literary": {
-                title: "القسم الأدبي",
-                endpoint: "https://adson.netlify.app/mm.json"
-            }
+            "year-2026": { title: "الصفوف الدراسية 2026", endpoint: "https://adson.netlify.app/data2.json" },
+            "year-2025": { title: "الصفوف الدراسية 2025", endpoint: "https://adson.netlify.app/data.json" },
+            "distinguished": { title: "قسم المتميزين", endpoint: "https://adson.netlify.app/ff.json" },
+            "literary": { title: "القسم الأدبي", endpoint: "https://adson.netlify.app/mm.json" }
         };
 
-        function loadCategory(categoryId) {
+        window.loadCategory = (categoryId) => {
             const category = categories[categoryId];
             if (!category) return;
             categoryTitle.textContent = category.title;
+            currentCategoryEndpoint = category.endpoint; // Store endpoint for later use
             loadData(category.endpoint);
             navigate("category");
         }
 
-        // NEW: Toggle favorite teacher status and update UI
-        window.toggleFavorite = (teacherId) => {
+        function loadData(endpoint) {
+            const skeletonCard = `
+                <div class="teacher-card">
+                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+                </div>`;
+            teachersGrid.innerHTML = Array(6).fill(skeletonCard).join('');
+            favoriteTeachersGrid.innerHTML = '';
+            favoriteTeachersSection.classList.remove("active");
+
+            fetch(endpoint, { cache: "no-store" })
+                .then(r => {
+                    if (!r.ok) throw new Error(`HTTP error! status: ${r.status}`);
+                    return r.json();
+                })
+                .then(data => {
+                    teachers = data.teachers;
+                    renderTeachers();
+                })
+                .catch(() => {
+                    teachersGrid.innerHTML = `<p style="color:var(--error); text-align: center; grid-column: 1 / -1;">حدث خطأ في تحميل البيانات. يرجى المحاولة مرة أخرى.</p>`;
+                });
+        }
+        
+        function renderTeachers(list = teachers) {
+            const favoriteTeacherData = list.filter(t => favoriteTeachers.includes(t.id));
+            const otherTeachersData = list.filter(t => !favoriteTeachers.includes(t.id));
+            
+            favoriteTeachersGrid.innerHTML = "";
+            if (favoriteTeacherData.length > 0) {
+                favoriteTeachersSection.classList.add("active");
+                favoriteTeacherData.forEach(t => renderTeacherCard(t, favoriteTeachersGrid));
+            } else {
+                favoriteTeachersSection.classList.remove("active");
+            }
+            
+            teachersGrid.innerHTML = "";
+            if (otherTeachersData.length > 0) {
+                otherTeachersData.forEach(t => renderTeacherCard(t, teachersGrid));
+            }
+            
+            if (list.length === 0) {
+                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text); grid-column: 1 / -1;'>لا توجد نتائج مطابقة.</p>";
+            }
+            
+            lucide.createIcons();
+        }
+
+        function renderTeacherCard(t, container) {
+            const isFavorite = favoriteTeachers.includes(t.id);
+            const card = document.createElement("div");
+            card.className = "teacher-card";
+            card.innerHTML = `
+                <div class="favorite-button-container">
+                    <button class="btn-favorite ${isFavorite ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(${t.id}, this);">
+                        <i data-lucide="heart"></i>
+                    </button>
+                </div>
+                <div class="teacher-card-inner" onclick="showTeacher(${t.id})">
+                    <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=Error';">
+                    <h3 class="teacher-name">${t.name}</h3>
+                    <p class="teacher-subject">${t.subject}</p>
+                </div>`;
+            container.appendChild(card);
+        }
+        
+        window.toggleFavorite = (teacherId, button) => {
             const index = favoriteTeachers.indexOf(teacherId);
             if (index > -1) {
                 favoriteTeachers.splice(index, 1);
@@ -1852,79 +1792,28 @@
                 favoriteTeachers.push(teacherId);
             }
             localStorage.setItem("favoriteTeachers", JSON.stringify(favoriteTeachers));
-            renderTeachers();
+            renderTeachers(); 
         };
-
-        function renderTeachers(list = teachers) {
-            // Filter favorite teachers from the main list
-            const favoriteTeacherData = list.filter(t => favoriteTeachers.includes(t.id));
-            const otherTeachersData = list.filter(t => !favoriteTeachers.includes(t.id));
-            
-            // Render favorite teachers section
-            if (favoriteTeacherData.length > 0) {
-                favoriteTeachersSection.classList.add("active");
-                favoriteTeachersGrid.innerHTML = "";
-                favoriteTeacherData.forEach(t => renderTeacherCard(t, favoriteTeachersGrid));
-            } else {
-                favoriteTeachersSection.classList.remove("active");
-            }
-            
-            // Render the rest of the teachers
-            if (otherTeachersData.length > 0) {
-                teachersGrid.innerHTML = "";
-                otherTeachersData.forEach(t => renderTeacherCard(t, teachersGrid));
-            } else if (list.length === 0) {
-                teachersGrid.innerHTML = "<p style='text-align: center; color: var(--text);'>لا توجد نتائج مطابقة.</p>";
-            } else {
-                teachersGrid.innerHTML = "";
-            }
-            
-            lucide.createIcons();
-        }
-        
-        // Helper function to render a single teacher card
-        function renderTeacherCard(t, container) {
-            const isFavorite = favoriteTeachers.includes(t.id);
-            const rating = ratings[t.id] || 0;
-            const card = document.createElement("div");
-            card.className = "teacher-card";
-            card.innerHTML = `
-                <div class="favorite-button-container">
-                    <button class="btn-favorite ${isFavorite ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite(${t.id});">
-                        <i data-lucide="${isFavorite ? 'heart' : 'heart'}"></i>
-                    </button>
-                </div>
-                <div class="teacher-card-inner" onclick="showTeacher(${t.id})">
-                    <img class="teacher-img" src="${t.image}" alt="${t.name}" onerror="this.onerror=null;this.src='https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';">
-                    <h3 class="teacher-name">${t.name}</h3>
-                    <p class="teacher-subject">${t.subject}</p>
-                    <div class="teacher-rating">${renderStars(rating)}</div>
-                </div>
-            `;
-            container.appendChild(card);
-        }
-
-
-        function renderStars(rating) {
-            let stars = "";
-            for (let i = 1; i <= 5; i++) {
-                stars += `<span class="star ${i <= rating ? "filled" : ""}">★</span>`;
-            }
-            return stars;
-        }
 
         window.showTeacher = (id) => {
             currentTeacher = teachers.find((t) => t.id == id);
             if (!currentTeacher) return;
-            teacherImage.src = currentTeacher.image;
-            teacherImage.onerror = function() {
-                this.onerror = null;
-                this.src = 'https://placehold.co/120x120/E2E8F0/A0AEC0?text=No+Image';
-            };
-            teacherName.textContent = currentTeacher.name;
-            teacherSubject.textContent = currentTeacher.subject;
-            const rating = ratings[currentTeacher.id] || 0;
-            teacherRating.innerHTML = renderStars(rating);
+
+            document.getElementById("teacherImage").src = currentTeacher.image;
+            document.getElementById("teacherName").textContent = currentTeacher.name;
+            document.getElementById("teacherSubject").textContent = currentTeacher.subject;
+            
+            const socialContainer = document.getElementById("teacherSocialLink");
+            if (currentTeacher.social && currentTeacher.social.instagram) {
+                socialContainer.innerHTML = `
+                 <a href="${currentTeacher.social.instagram}" target="_blank" class="instagram-link">
+                    <i data-lucide="instagram"></i>
+                    <span class="instagram-username">حساب الأستاذ</span>
+                 </a>`;
+            } else {
+                 socialContainer.innerHTML = '';
+            }
+
             renderClasses(currentTeacher.classes);
             navigate("classes");
         };
@@ -1933,24 +1822,22 @@
             classesList.innerHTML = classesData.map((cls, ci) => {
                 const totalLectures = cls.lectures.length;
                 const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
-                const lectures = cls.lectures.map((lec, li) => {
+                const lecturesHTML = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div style="display: flex; align-items: center; flex: 1;">
-                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                    <i data-lucide="play-circle"></i>
-                                    <span>${li + 1}. ${lec.title}</span>
-                                </div>
+                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description || ''}')">
+                                <i data-lucide="play-circle"></i>
+                                <span>${li + 1}. ${lec.title}</span>
                             </div>
                             <div class="star-burst"></div>
                             <label class="completion-checkbox">
                                 <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
                                 <span class="checkmark"></span>
                             </label>
-                        </div>
-                    `;
+                        </div>`;
                 }).join("");
+
                 return `
                     <div class="class-card card-glass">
                         <div class="class-header" onclick="toggleLectures(this)">
@@ -1960,13 +1847,19 @@
                             </div>
                             <i data-lucide="chevron-down" class="chevron-icon"></i>
                         </div>
-                        <div class="lectures-list">${lectures}</div>
-                    </div>
-                `;
+                        <div class="lectures-list">${lecturesHTML}</div>
+                    </div>`;
             }).join("");
             lucide.createIcons();
         }
         
+        window.toggleLectures = (header) => {
+            const list = header.nextElementSibling;
+            const open = list.style.display !== "flex";
+            list.style.display = open ? "flex" : "none";
+            header.classList.toggle("open", open);
+        };
+
         window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
             event.stopPropagation();
             const lectureItem = checkbox.closest('.lecture-item');
@@ -1977,11 +1870,7 @@
             lectureItem.classList.toggle('completed', isCompleted);
             if (isCompleted) {
                 const starBurst = lectureItem.querySelector('.star-burst');
-                starBurst.innerHTML = Array(8).fill(0).map(() => {
-                    const translateX = (Math.random() - 0.5) * 80;
-                    const translateY = (Math.random() - 0.5) * 80;
-                    return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
-                }).join('');
+                starBurst.innerHTML = Array(8).fill(0).map(() => `<div class="star-particle" style="--translateX: ${(Math.random() - 0.5) * 80}px; --translateY: ${(Math.random() - 0.5) * 80}px;"></div>`).join('');
                 starBurst.classList.add('animate');
                 setTimeout(() => {
                     starBurst.classList.remove('animate');
@@ -1992,6 +1881,7 @@
         };
 
         function updateClassProgress(classCardElement) {
+            if (!classCardElement) return;
             const progressSpan = classCardElement.querySelector('.class-progress');
             const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
             const classData = currentTeacher.classes[classIndex];
@@ -2000,118 +1890,72 @@
             progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
         }
 
-        window.toggleLectures = (header) => {
-            const list = header.parentElement.querySelector(".lectures-list");
-            const icon = header.querySelector(".chevron-icon");
-            const open = list.style.display !== "flex";
-            list.style.display = open ? "flex" : "none";
-            header.classList.toggle("open", open);
-            icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
-            lucide.createIcons();
-        };
-        
-        window.loadIframePlayer = (url) => {
-            videoLoader.style.display = 'flex';
-            const encodedUrl = btoa(url);
-            const iframeUrl = `https://vip3.halzyz082.workers.dev/proxy_iframe?url=${encodedUrl}`;
-            const iframeHtml = `
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-                    <iframe 
-                        src="${iframeUrl}" 
-                        allowfullscreen 
-                        loading="eager"
-                        style="width: 100%; height: 100%; border: none; border-radius: inherit;"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                        onload="document.getElementById('videoLoader').style.display='none';"
-                    ></iframe>
-                </div>
-            `;
-            playerContainer.innerHTML = iframeHtml;
-        }
-
-        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
+        // =====================================================================
+        // Video Player Logic
+        // =====================================================================
+        window.playLecture = (classIndex, lectureIndex, url, title, description) => {
             if (player) {
                 player.destroy();
                 player = null;
             }
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
-            }
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
-            }
             
-            // Set global variable for download button logic
-            isLectureCompleted = !!completedLectures[url];
+            document.getElementById("videoTitle").textContent = title;
+            document.getElementById("videoDescription").textContent = description;
 
-            playerContainer.innerHTML = "";
-            videoLoader.style.display = 'none';
-
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
-            videoTitle.textContent = title;
-            videoDescription.textContent = desc;
-            
-            lastWatched = {
-                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
-                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
-                classIndex: ci,
-                lectureIndex: li,
+            // Save last watched info for "continue watching" feature
+            localStorage.setItem("lastWatched", JSON.stringify({
+                teacherId: currentTeacher.id,
+                teacherName: currentTeacher.name,
+                classIndex,
+                lectureIndex,
                 lectureTitle: title,
                 lectureUrl: url,
-                lectureDescription: desc
-            };
-            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+                lectureDescription: description,
+                categoryEndpoint: currentCategoryEndpoint
+            }));
             
             navigate("video");
             
-            let finalVideoUrl = url;
-            let isHLS = finalVideoUrl.endsWith(".m3u8");
-            let useProxy = true;
-            const referer = "https://abwaab.com";
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            
-            // NEW: Check for the specific domain and mp4 extension
-            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
-                useProxy = false;
-                isHLS = false;
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // If it's a mediadelivery iframe, use the iframe player logic
+            // Handle different video URL types
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
                 loadIframePlayer(url);
-                return; // Exit the function to prevent further execution
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
-                const urlParts = url.split('/');
-                const videoId = urlParts[urlParts.length - 1];
-                const libraryId = urlParts[urlParts.length - 2];
-                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-                isHLS = true;
-                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
-            } else {
-                // Keep the existing proxy logic for other cases
-                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+                return;
             }
             
-            const proxiedUrl = useProxy && isHLS ? `https://oxgeccc.halzyz082.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
-            
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
-            lucide.createIcons();
-            
             const videoElement = document.getElementById("player");
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
-
-            player = new Plyr("#player", {
-                controls: playerControls,
+            
+            player = new Plyr(videoElement, {
+                controls: ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"],
                 keyboard: { focused: true, global: true },
-                tooltips: { controls: true, seek: true },
-                captions: { active: false },
                 settings: ["quality", "speed"],
                 speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
             });
 
+            const isHLS = url.endsWith(".m3u8");
+
+            if (isHLS && Hls.isSupported()) {
+                const hls = new Hls();
+                window.hlsInstance = hls;
+                hls.loadSource(url);
+                hls.attachMedia(videoElement);
+                hls.on(Hls.Events.ERROR, (_, data) => {
+                    if (data.fatal) hls.destroy();
+                });
+            } else {
+                videoElement.src = url;
+            }
+            
+            // Restore progress
+            player.on('ready', () => {
+                const savedTime = lectureProgress[url] || 0;
+                 if (player.duration) {
+                    player.currentTime = (player.duration * savedTime) / 100;
+                 }
+                player.play();
+            });
+
+            // Save progress
             window.progressInterval = setInterval(() => {
                 if (player && player.duration > 0) {
                     const progress = (player.currentTime / player.duration) * 100;
@@ -2119,84 +1963,47 @@
                     localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
                 }
             }, 5000);
-
-            function tryPlay() {
-                if (isHLS && Hls.isSupported()) {
-                    const hls = new Hls();
-                    window.hlsInstance = hls;
-                    hls.attachMedia(videoElement);
-                    hls.loadSource(proxiedUrl);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-                    });
-                    hls.on(Hls.Events.ERROR, (_, data) => {
-                        if (data.fatal) {
-                            switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                                default: break;
-                            }
-                        }
-                    });
-                } else {
-                    player.source = {
-                        type: "video",
-                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-                    };
-                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
-                }
-            }
-            tryPlay();
         };
-
-        /* ========= Search ========= */
-        function handleSearch() {
-            const term = searchInput.value.trim().toLowerCase();
-            renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+        
+        window.loadIframePlayer = (url) => {
+            videoLoader.style.display = 'flex';
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.setAttribute('allowfullscreen', '');
+            iframe.setAttribute('loading', 'eager');
+            iframe.style.cssText = 'width: 100%; height: 100%; border: none; border-radius: inherit;';
+            iframe.onload = () => { videoLoader.style.display = 'none'; };
+            playerContainer.innerHTML = '';
+            playerContainer.appendChild(iframe);
         }
 
+        // =====================================================================
+        // Search Logic
+        // =====================================================================
         let searchTimeout;
         searchInput.addEventListener("input", () => {
             clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(handleSearch, 250);
+            searchTimeout = setTimeout(() => {
+                const term = searchInput.value.trim().toLowerCase();
+                renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+            }, 300);
         });
-        searchBtn.addEventListener("click", handleSearch);
 
-        /* ========= Load Data ========= */
-        function loadData(endpoint) {
-            const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-            teachersGrid.innerHTML = Array(3).fill(`
-                <div class="loading-card teacher-card">
-                    <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-                    <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-                    <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-                </div>`).join('');
-            favoriteTeachersGrid.innerHTML = '';
-            favoriteTeachersSection.classList.remove("active");
-
-            fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-                .then((data) => { 
-                    teachers = data.teachers; 
-                    renderTeachers(); 
-                })
-                .catch(() => { teachersGrid.innerHTML = err; });
-        }
-        
-        /* ========= Dashboard Logic ========= */
+        // =====================================================================
+        // Dashboard Logic (Updated)
+        // =====================================================================
         const profilePictureEl = document.getElementById('profilePicture');
-        const profilePictureInputEl = document.getElementById('profilePictureInput');
+        const studentNameInputEl = document.getElementById('studentNameInput');
         const dreamInputEl = document.getElementById('dreamInput');
         const gradeInputEl = document.getElementById('gradeInput');
         const saveDashboardButton = document.getElementById('saveDashboardButton');
         const headerProfilePicEl = document.getElementById('headerProfilePic');
         const defaultUserIconEl = document.getElementById('defaultUserIcon');
-        const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
+        const dashboardGreetingEl = document.getElementById('dashboardGreeting');
 
         function updateHeaderProfilePic() {
             const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-            const placeholder = "https://placehold.co/150x150";
-            if (profile.picture && !profile.picture.startsWith(placeholder)) {
+            if (profile.picture && !profile.picture.startsWith("https://placehold.co")) {
                 headerProfilePicEl.src = profile.picture;
                 headerProfilePicEl.style.display = 'block';
                 defaultUserIconEl.style.display = 'none';
@@ -2208,38 +2015,37 @@
 
         function loadDashboardData() {
             const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-            if (profile.picture) {
-                profilePictureEl.src = profile.picture;
-            }
-            if (profile.dream) {
-                dreamInputEl.value = profile.dream;
-            }
-            if (profile.grade) {
-                gradeInputEl.value = profile.grade;
-            }
+            profilePictureEl.src = profile.picture || "https://placehold.co/150x150/E2E8F0/A0AEC0?text=صورتك";
+            studentNameInputEl.value = profile.name || "";
+            dreamInputEl.value = profile.dream || "";
+            gradeInputEl.value = profile.grade || "";
+            updateDashboardGreeting(profile.name);
             updateHeaderProfilePic();
         }
         
-        uploadProfilePicBtn.addEventListener('click', () => {
-            profilePictureInputEl.click();
-        });
+        function updateDashboardGreeting(name) {
+            dashboardGreetingEl.textContent = name 
+                ? `مرحباً ${name}! هذه مساحتك الخاصة لتتبع أهدافك.`
+                : 'هذه هي مساحتك الخاصة لتتبع أهدافك وإنجازاتك.';
+        }
         
-        profilePictureInputEl.addEventListener('change', (event) => {
+        studentNameInputEl.addEventListener('input', () => updateDashboardGreeting(studentNameInputEl.value));
+
+        document.getElementById('profilePictureInput').addEventListener('change', (event) => {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = (e) => {
-                    profilePictureEl.src = e.target.result;
-                };
+                reader.onload = (e) => profilePictureEl.src = e.target.result;
                 reader.readAsDataURL(file);
             }
         });
-        
+
         saveDashboardButton.addEventListener('click', () => {
             const profile = {
                 picture: profilePictureEl.src,
-                dream: dreamInputEl.value,
-                grade: gradeInputEl.value
+                name: studentNameInputEl.value.trim(),
+                dream: dreamInputEl.value.trim(),
+                grade: gradeInputEl.value.trim()
             };
             localStorage.setItem('userProfile', JSON.stringify(profile));
             updateHeaderProfilePic();
@@ -2251,97 +2057,87 @@
                 lucide.createIcons();
             }, 2000);
         });
-
-        /* ========= Modal Logic ========= */
+        
+        // =====================================================================
+        // Modals and Toasts Logic
+        // =====================================================================
         const telegramModal = document.getElementById("telegramModal");
-        const continueWithoutSubscribingBtn = document.getElementById("continueWithoutSubscribingBtn");
+        const examsModal = document.getElementById("examsModal");
         const continueWatchingToast = document.getElementById("continueWatchingToast");
-        const lastWatchedTeacherName = document.getElementById("lastWatchedTeacherName");
-        const lastWatchedLectureTitle = document.getElementById("lastWatchedLectureTitle");
-        const continueNowBtn = document.getElementById("continueNowBtn");
-        const closeToastBtn = document.getElementById("closeToastBtn");
 
-        function showTelegramModal() {
-            const hasSubscribed = localStorage.getItem("telegramSubscribed");
-            if (!hasSubscribed) {
-                telegramModal.classList.add("show");
-                lucide.createIcons();
-            } else {
-                showContinueWatchingToast();
-            }
+        function showModal(modal) {
+            modal.classList.add("show");
+            lucide.createIcons();
+        }
+        function hideModal(modal) {
+            modal.classList.remove("show");
         }
 
-        function hideTelegramModal() {
-            telegramModal.classList.remove("show");
-        }
-
-        continueWithoutSubscribingBtn.addEventListener("click", () => {
+        // Exams Modal
+        document.getElementById("examsButton").addEventListener('click', () => showModal(examsModal));
+        document.getElementById("closeExamsModalBtn").addEventListener('click', () => hideModal(examsModal));
+        
+        // Telegram Modal
+        document.getElementById("continueWithoutSubscribingBtn").addEventListener("click", () => {
             localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
+            hideModal(telegramModal);
             showContinueWatchingToast();
         });
-
-        document.querySelector(".btn-telegram").addEventListener("click", () => {
-            localStorage.setItem("telegramSubscribed", "true");
-            hideTelegramModal();
-            showContinueWatchingToast();
+        document.querySelector("#telegramModal .btn-telegram").addEventListener("click", () => {
+             localStorage.setItem("telegramSubscribed", "true");
         });
-
+        
+        // Continue Watching Toast (Optimized)
         function showContinueWatchingToast() {
             const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
             if (lastWatched) {
-                lastWatchedTeacherName.textContent = lastWatched.teacherName;
-                lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
+                document.getElementById("lastWatchedTeacherName").textContent = lastWatched.teacherName;
+                document.getElementById("lastWatchedLectureTitle").textContent = lastWatched.lectureTitle;
                 continueWatchingToast.classList.add("show");
                 lucide.createIcons();
-                
-                // Automatically hide after 10 seconds
-                setTimeout(() => {
-                    hideContinueWatchingToast();
-                }, 10000);
+                setTimeout(() => continueWatchingToast.classList.remove("show"), 10000);
             }
         }
 
-        function hideContinueWatchingToast() {
+        document.getElementById("closeToastBtn").addEventListener("click", () => continueWatchingToast.classList.remove("show"));
+        document.getElementById("continueNowBtn").addEventListener("click", () => {
             continueWatchingToast.classList.remove("show");
-        }
-        
-        closeToastBtn.addEventListener("click", () => {
-            hideContinueWatchingToast();
-        });
-
-        continueNowBtn.addEventListener("click", () => {
-            hideContinueWatchingToast();
             const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
-            if (lastWatched) {
-                const categoryKeys = Object.keys(categories);
-                let foundTeacher = false;
-                for (const categoryId of categoryKeys) {
-                    const category = categories[categoryId];
-                    fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-                        .then(response => response.json())
-                        .then(data => {
-                            if (foundTeacher) return;
-                            const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                            if (teacher) {
-                                currentTeacher = teacher;
-                                playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
-                                foundTeacher = true;
-                            }
-                        })
-                        .catch(error => console.error("Error loading teacher data:", error));
-                    if (foundTeacher) break;
-                }
+            if (lastWatched && lastWatched.categoryEndpoint) {
+                fetch(lastWatched.categoryEndpoint)
+                  .then(r => r.json())
+                  .then(data => {
+                      const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                      if (teacher) {
+                          currentTeacher = teacher;
+                          currentCategoryEndpoint = lastWatched.categoryEndpoint;
+                          playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription);
+                      } else {
+                          alert("لم يتم العثور على بيانات المحاضرة.");
+                      }
+                  })
+                  .catch(err => console.error("Error reloading last session:", err));
             }
         });
-
+        
+        // =====================================================================
+        // Initial Load
+        // =====================================================================
         window.addEventListener("load", () => {
-            setTimeout(showTelegramModal, 1000);
+            initializeTheme();
+            lucide.createIcons();
             loadDashboardData();
+            
+            // Show Telegram modal or continue watching toast after a short delay
+            setTimeout(() => {
+                if (!localStorage.getItem("telegramSubscribed")) {
+                    showModal(telegramModal);
+                } else {
+                    showContinueWatchingToast();
+                }
+            }, 1000);
         });
 
-        // Initialize
-        lucide.createIcons();
     </script>
 </body>
 </html>
