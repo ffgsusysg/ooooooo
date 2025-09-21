@@ -131,6 +131,10 @@
             margin: 0;
             padding: 0;
         }
+        
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Almarai', 'Tajawal', sans-serif;
@@ -142,6 +146,9 @@
             min-height: 100vh;
             overflow-y: auto;
             transition: background 0.3s ease, color 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         
         /* NEW: Glassmorphism effect for cards and elements */
@@ -253,12 +260,14 @@
             transition: all 0.25s ease, background 0.3s ease, color 0.3s ease;
             white-space: nowrap;
             box-shadow: var(--shadow-sm);
+            touch-action: manipulation;
         }
 
         .btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
             box-shadow: var(--shadow-md);
+            will-change: transform, box-shadow;
         }
 
         .btn-outline {
@@ -567,6 +576,7 @@
             color: white;
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform, box-shadow;
         }
 
         .category-card::before {
@@ -661,6 +671,7 @@
             overflow: hidden;
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease, border-color 0.3s ease;
             box-shadow: var(--shadow-sm);
+            will-change: transform, box-shadow;
         }
         
         .teacher-card-inner {
@@ -1048,46 +1059,6 @@
             display: flex;
             align-items: center;
             gap: 0.3rem;
-        }
-
-        /* NEW: Instagram Link Styling */
-        .instagram-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: transform 0.2s ease, opacity 0.2s ease;
-        }
-
-        .instagram-link:hover {
-            transform: translateY(-2px);
-            opacity: 1;
-        }
-
-        .instagram-icon-wrapper {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .instagram-icon-wrapper svg {
-            fill: #E1306C; /* Instagram pink */
-            transition: fill 0.2s ease;
-        }
-        
-        [data-theme="dark"] .instagram-icon-wrapper svg {
-            fill: #E1306C; /* Ensure it stays pink in dark mode */
-        }
-        
-        .instagram-username {
-            font-weight: 700;
-            color: var(--primary-2);
-            font-family: 'Almarai', sans-serif;
         }
 
         .section-title {
@@ -1637,19 +1608,12 @@
                 <div class="video-info">
                     <div class="video-meta">
                         <span>
-                            <i data-lucide="calendar"></i>
+                            <i data-lucide="user"></i>
+                            <span id="videoTeacherName"></span>
                         </span>
                         <span>
-                            <a href="https://www.instagram.com/zr_bb5?igsh=MXdrcms5NDhqZXJhNQ==" target="_blank" class="instagram-link">
-                                <span class="instagram-icon-wrapper">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                        <line x1="17.5" x2="17.5" y1="6.5" y2="6.5"></line>
-                                    </svg>
-                                </span>
-                                <span class="instagram-username">@ZR_BB5</span>
-                            </a>
+                            <i data-lucide="book"></i>
+                            <span id="videoSubjectName"></span>
                         </span>
                     </div>
                 </div>
@@ -2053,6 +2017,8 @@
             [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
             videoTitle.textContent = title;
             videoDescription.textContent = desc;
+            document.getElementById('videoTeacherName').textContent = teacherNameParam || (currentTeacher ? currentTeacher.name : 'اسم الأستاذ');
+            document.getElementById('videoSubjectName').textContent = currentTeacher ? currentTeacher.subject : 'المادة';
             
             lastWatched = {
                 teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
