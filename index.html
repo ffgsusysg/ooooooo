@@ -1594,9 +1594,9 @@
                 <div id="playerContainer"></div>
                 <div id="videoLoader" class="video-loader" style="display: none;">
                     <div class="new-loader">
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
+                      <div class="dot"></div>
                     </div>
                 </div>
             </div>
@@ -2035,45 +2035,32 @@
             
             let finalVideoUrl = url;
             let isHLS = finalVideoUrl.endsWith(".m3u8");
-            let useProxy = true; // Default to true
+            let useProxy = true;
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-    
-            // ===== START: MODIFIED CODE BLOCK =====
-            if (url.startsWith("https://iframe.mediadelivery.net/embed/215061/")) {
-                const urlParts = url.split('/');
-                const videoId = urlParts[urlParts.length - 1];
-                finalVideoUrl = `https://vz-215061.becdn.net/${videoId}/playlist.m3u8`;
-                isHLS = true;
-                useProxy = true; // Use proxy for this ID
-            } else if (url.startsWith("https://iframe.mediadelivery.net/embed/157276/")) {
-                const urlParts = url.split('/');
-                const videoId = urlParts[urlParts.length - 1];
-                finalVideoUrl = `https://vz-157276.becdn.net/${videoId}/playlist.m3u8`;
-                isHLS = true;
-                useProxy = false; // Do NOT use proxy for this ID
-            }
-            // General fallback for any other mediadelivery URL
-            else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                 const urlParts = url.split('/');
-                 const videoId = urlParts[urlParts.length - 1];
-                 const libraryId = urlParts[urlParts.length - 2];
-                 finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-                 isHLS = true;
-                 useProxy = true; // Default to proxy for any other library ID
-            }
-            // Other special cases
-            else if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+            
+            // NEW: Check for the specific domain and mp4 extension
+            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
                 useProxy = false;
                 isHLS = false;
-            } 
-            // Default logic for other URLs
-            else {
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // If it's a mediadelivery iframe, use the iframe player logic
+                loadIframePlayer(url);
+                return; // Exit the function to prevent further execution
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+                const urlParts = url.split('/');
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                isHLS = true;
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            } else {
+                // Keep the existing proxy logic for other cases
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
-    
+            
             const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
-            // ===== END: MODIFIED CODE BLOCK =====
             
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
