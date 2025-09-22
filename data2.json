@@ -661,14 +661,14 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/992f6356-9550-45b4-9bd6-2275cecdf571"
         },
         {
-          "title": "المحاضرة 21 (انسحاب القطع المكافئ)",
+         "title": "المحاضرة 21 (انسحاب القطع المكافئ)",
           "description": "ممكن تقرأ وماتسخت ؟",
-          "url": "https://vz-d76a0a73-48e.becdn.net/a63d5269-1ac2-42c5-b293-21bf711c8be6/play_720p.mp4"
+          "url": "https://iframe.mediadelivery.net/embed/215061/4b50ab7d-6935-405e-b034-72d4264ffdc8"
         },
         {
           "title": "المحاضرة 22 (انسحاب القطع الناقص والزائد)",
           "description": "ممكن تقرأ وماتسخت ؟",
-          "url": "https://vz-d76a0a73-48e.becdn.net/94a5f7a4-7d8f-4d60-a4db-692025b5a6ea/play_720p.mp4"
+          "url": "https://iframe.mediadelivery.net/embed/215061/5e688afe-8d19-49e0-83e0-93c5e9d191e8"
         }
           ]
         },
@@ -1686,7 +1686,7 @@
  "name": "النفي",
       "lectures": [
         {
-            "title": "أسلوب النفي - أنواعه والأداة (ليس)",
+           "title": "أسلوب النفي - أنواعه والأداة (ليس)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/74074696-62d3-45c0-9403-07d5e0505433"
         },
@@ -1711,9 +1711,24 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/7afa9f38-9fe1-4a36-8fc2-1c0155758333"
         },
         {
-          "title": "مَا النافية",
+          "title": "مَا النافية (غير العاملة)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/f65a9450-15cf-4a00-8ae1-e8c9d11403a8"
+        },
+        {
+          "title": "مَا الحجازية",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/1e3ae107-046a-4ed1-b39b-b871cf5f317d"
+        },
+        {
+          "title": "مَا المهملة",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/39305c40-fefa-493a-bbf0-082151b03b1f"
+        },
+        {
+          "title": "حرف النفي (إنْ)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d248d387-f113-43ae-a4ff-b5b7cc83ab6b"
 }
           ]
         },
@@ -1781,9 +1796,14 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/ed3fd3be-2f5f-4dc9-8193-651b416efe78"
         },
         {
-          "title": "ميخائيل نعيمة (القصيدة والتعليق النقدي)",
+         "title": "ميخائيل نعيمة (القصيدة والتعليق النقدي)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/a9e7d62b-178a-4d91-9fda-8e9a1f85a57d"
+        },
+        {
+          "title": "مدرسة الشعر الحر",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3f4a1392-3ad8-428e-a65d-75b9cae38876"
 }
 
           ]
