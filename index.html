@@ -1594,9 +1594,9 @@
                 <div id="playerContainer"></div>
                 <div id="videoLoader" class="video-loader" style="display: none;">
                     <div class="new-loader">
-                      <div class="dot"></div>
-                      <div class="dot"></div>
-                      <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
                     </div>
                 </div>
             </div>
@@ -2035,26 +2035,23 @@
             
             let finalVideoUrl = url;
             let isHLS = finalVideoUrl.endsWith(".m3u8");
-            let useProxy = true;
+            let useProxy = true; // Default to using proxy
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
             
-            // NEW: Check for the specific domain and mp4 extension
             if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
                 useProxy = false;
                 isHLS = false;
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // If it's a mediadelivery iframe, use the iframe player logic
-                loadIframePlayer(url);
-                return; // Exit the function to prevent further execution
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
+                // *** تعديل مطلوب: تحويل الرابط وعدم استخدام البروكسي ***
+                // Convert mediadelivery embed URL to a direct HLS link
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const libraryId = urlParts[urlParts.length - 2];
                 finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
                 isHLS = true;
-                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+                // Play directly without proxy as requested
+                useProxy = false; 
             } else {
                 // Keep the existing proxy logic for other cases
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
