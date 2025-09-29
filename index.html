@@ -898,13 +898,40 @@
             transition: color 0.3s ease;
         }
         
+        /* NEW: Lecture Actions & Download Button */
+        .lecture-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Space between download button and checkbox */
+            margin-left: 0.5rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--primary-1);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--hover);
+            border-color: var(--primary-1);
+            transform: scale(1.1);
+        }
+
         /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
             width: 24px;
             height: 24px;
             cursor: pointer;
-            margin-left: 1rem;
         }
 
         .completion-checkbox input {
@@ -1449,13 +1476,10 @@
             <button id="themeToggle" class="btn btn-icon">
                 <i data-lucide="sun"></i>
             </button>
-            <button id="examsButton" class="btn">
-                <i data-lucide="file-text"></i><span class="btn-text">امتحانات الأساتذة</span>
-            </button>
-            <button id="helpButton" class="btn" onclick="window.location.href='help.html'">
+             <button id="helpButton" class="btn" onclick="window.location.href='help.html'">
                 <i data-lucide="help-circle"></i><span class="btn-text">هل تحتاج إلى مساعدة؟</span>
             </button>
-            </div>
+        </div>
 
         <div class="search-container">
             <i class="search-icon" data-lucide="search"></i>
@@ -1902,19 +1926,23 @@
                 const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
                 const lectures = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
+                    const safeTitle = lec.title.replace(/'/g, "\\'");
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div style="display: flex; align-items: center; flex: 1;">
-                                <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
-                                    <i data-lucide="play-circle"></i>
-                                    <span>${li + 1}. ${lec.title}</span>
-                                </div>
+                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${safeTitle}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                                <i data-lucide="play-circle"></i>
+                                <span>${li + 1}. ${lec.title}</span>
                             </div>
-                            <div class="star-burst"></div>
-                            <label class="completion-checkbox">
-                                <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
-                                <span class="checkmark"></span>
-                            </label>
+                            <div class="lecture-actions">
+                                <button class="btn-download" onclick="event.stopPropagation(); downloadLecture('${lec.url}', '${safeTitle}')" title="تحميل المحاضرة">
+                                    <i data-lucide="download"></i>
+                                </button>
+                                <div class="star-burst"></div>
+                                <label class="completion-checkbox">
+                                    <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
                         </div>
                     `;
                 }).join("");
@@ -1976,6 +2004,47 @@
             icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
+
+        // NEW: Download Lecture Function
+        window.downloadLecture = (url, title) => {
+            let downloadUrl = url;
+            let isHLS = url.endsWith('.m3u8');
+
+            if (url.includes("iframe.mediadelivery.net/embed/")) {
+                try {
+                    const urlParts = url.split('/');
+                    const videoId = urlParts[urlParts.length - 1];
+                    const libraryId = urlParts[urlParts.length - 2];
+                    downloadUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                    isHLS = true;
+                } catch (e) {
+                    alert("حدث خطأ أثناء محاولة تحويل رابط الفيديو للتحميل.");
+                    return;
+                }
+            }
+
+            if (downloadUrl.endsWith('.mp4') && !isHLS) {
+                try {
+                    const link = document.createElement('a');
+                    link.href = downloadUrl;
+                    const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '_');
+                    link.setAttribute('download', `${safeTitle}.mp4`);
+                    link.setAttribute('target', '_blank');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (e) {
+                    alert("فشل بدء التحميل. قد يكون بسبب قيود المتصفح.");
+                    window.open(downloadUrl, '_blank');
+                }
+            } else if (isHLS) {
+                alert(
+                    'هذا الرابط هو للبث (HLS) ولا يمكن تحميله مباشرة.\n\nيمكنك استخدام برامج خارجية مثل (VLC) لتحميله عن طريق نسخ الرابط التالي:\n\n' + downloadUrl
+                );
+            } else {
+                alert('لا يمكن تحميل هذا النوع من الفيديوهات مباشرة.');
+            }
+        };
         
         window.loadIframePlayer = (url) => {
             videoLoader.style.display = 'flex';
@@ -2011,7 +2080,6 @@
                 window.progressInterval = null;
             }
             
-            // Set global variable for download button logic
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
@@ -2042,16 +2110,13 @@
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
             
-            // NEW: Check for the specific domain and mp4 extension
             if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
                 useProxy = false;
                 isHLS = false;
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // If it's a mediadelivery iframe, use the iframe player logic
                 loadIframePlayer(url);
-                return; // Exit the function to prevent further execution
+                return;
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const libraryId = urlParts[urlParts.length - 2];
@@ -2059,7 +2124,6 @@
                 isHLS = true;
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             } else {
-                // Keep the existing proxy logic for other cases
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
             
