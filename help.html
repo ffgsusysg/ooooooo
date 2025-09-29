@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌌  اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇  </title>
+  <title>🌌  اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇 </title>
   <style>
     /* خطوط وتأثيرات عالمية */
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
@@ -158,7 +158,7 @@
 </head>
 <body>
   <form id="problemForm">
-    <h2>🌌 اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇  </h2>
+    <h2>🌌 اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇 </h2>
 
     <label for="name">اسمك</label>
     <input type="text" id="name" name="name" placeholder="اكتب اسمك هنا..." required>
@@ -191,11 +191,11 @@
       const image = form.image.files[0];
 
       // الرسالة اللي راح تروح للتليجرام
-      const message = 🚨 *تقرير مشكلة جديد*\n\n👤 *الاسم*: ${name}\n\n📌 *المشكلة*:\n${problem}\n\n🔗 *تليجرام*: @${telegram};
+      const message = `🚨 *تقرير مشكلة جديد*\n\n👤 *الاسم*: ${name}\n\n📌 *المشكلة*:\n${problem}\n\n🔗 *تليجرام*: @${telegram}`;
 
       try {
         // 1. ندز النص أول شي
-        const textResponse = await fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
+        const textResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({
@@ -206,7 +206,7 @@
         });
 
         if (!textResponse.ok) {
-          throw new Error(مشكلة بالـ API: ${textResponse.statusText});
+          throw new Error(`مشكلة بالـ API: ${textResponse.statusText}`);
         }
 
         // 2. ندز الصورة (إذا موجودة)
@@ -214,24 +214,24 @@
           const formData = new FormData();
           formData.append("chat_id", chatId);
           formData.append("photo", image);
-          formData.append("caption", صورة مرفقة من: ${name}); // نكتب تعليق بسيط ويا الصورة
+          formData.append("caption", `صورة مرفقة من: ${name}`); // نكتب تعليق بسيط ويا الصورة
 
-          const photoResponse = await fetch(https://api.telegram.org/bot${botToken}/sendPhoto, {
+          const photoResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, {
             method: "POST",
             body: formData
           });
 
           if (!photoResponse.ok) {
-            throw new Error(مشكلة بتحميل الصورة: ${photoResponse.statusText});
+            throw new Error(`مشكلة بتحميل الصورة: ${photoResponse.statusText}`);
           }
         }
 
-        alert("✅   ، التقرير انرسل بنجاح!");
+        alert("✅ رحم الله والديك، التقرير انرسل بنجاح!");
         form.reset(); // نفرغ الفورم
 
       } catch (error) {
         console.error("صار خطأ بالإرسال:", error);
-        alert(❌ فشل الإرسال! تأكد من التوكن والـ ID، أو شوف الـ Console. التفاصيل: ${error.message});
+        alert(`❌ فشل الإرسال! تأكد من التوكن والـ ID، أو شوف الـ Console. التفاصيل: ${error.message}`);
       }
     });
   </script>
