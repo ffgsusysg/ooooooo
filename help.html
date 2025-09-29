@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌌 نموذج تقديم مشاكل مستقبلي</title>
+  <style>
+    /* خطوط وتأثيرات عالمية */
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    :root {
+      --bg-color: #0d1117; /* لون الخلفية سويناه غامق مثل "كوزموس" */
+      --card-bg: rgba(255, 255, 255, 0.05); /* خلفية شفافة، بيها شوية ضباب (Blur) */
+      --border-color: rgba(60, 169, 255, 0.3); /* حدود لونها نيوني أزرق شفاف */
+      --neon-blue: #3ca9ff; /* الأزرق النيوني الفاقع */
+      --neon-shadow: 0 0 10px rgba(60, 169, 255, 0.6), 0 0 20px rgba(60, 169, 255, 0.4); /* توهج النيون */
+      --font-color: #e2e8f0; /* لون الخط فاتح */
+      --placeholder-color: #94a3b8;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg-color);
+      color: var(--font-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      /* خلفية بيها "نجوم" خفيفة */
+      background-image: radial-gradient(circle at center, rgba(60, 169, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: background-move 120s linear infinite;
+    }
+
+    @keyframes background-move {
+      from {background-position: 0 0;}
+      to {background-position: 5000px 5000px;}
+    }
+
+    form {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px); /* هذا يسوي تأثير الزجاج الضبابي "الشكل الشفاف" */
+      padding: 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border-color); /* حد نيوني خفيف */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    form:hover {
+      transform: translateY(-5px); /* يصعد شوية لي فوق لما تأشر عليه */
+      box-shadow: 0 10px 40px rgba(60, 169, 255, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--neon-blue);
+      text-shadow: var(--neon-shadow); /* التوهج مال الخط */
+      letter-spacing: 1px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: 700;
+      color: var(--neon-blue); /* لون التسمية نيوني */
+      font-size: 0.95rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      background: rgba(255, 255, 255, 0.03); /* خلفية الإدخال شفافة وداكنة */
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: var(--font-color);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 8px rgba(60, 169, 255, 0.8); /* لما تدوس عليه يتوهج */
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    /* تغيير لون الكتابة اللي داخل الحقل قبل لا تكتب (placeholder) */
+    ::placeholder {
+      color: var(--placeholder-color);
+      opacity: 0.7;
+    }
+
+    /* تصميم مال تحميل الملفات (الصورة) */
+    input[type="file"] {
+      border: none;
+      padding: 12px 0;
+      cursor: pointer;
+      color: var(--neon-blue);
+    }
+
+    input[type="file"]::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    input[type="file"]::before {
+      content: '🖼️ اختار صورة المشكلة...';
+      display: inline-block;
+      background: rgba(60, 169, 255, 0.1);
+      border: 1px solid var(--neon-blue);
+      border-radius: 8px;
+      padding: 8px 15px;
+      outline: none;
+      white-space: nowrap;
+      cursor: pointer;
+      font-weight: 400;
+      color: var(--neon-blue);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    input[type="file"]:hover::before {
+      background: rgba(60, 169, 255, 0.2);
+      border-color: #fff;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      padding: 12px;
+      background: var(--neon-blue);
+      color: var(--bg-color); /* لون الخط صار غامق حتى يبين على الزر النيوني */
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: var(--neon-shadow);
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    button:hover {
+      background: #7dd3fc; /* يصير أفتح شوية لما تأشر عليه */
+      box-shadow: 0 0 15px rgba(125, 211, 252, 1), 0 0 25px rgba(125, 211, 252, 0.8);
+      transform: scale(1.02); /* يكبر شوية */
+    }
+  </style>
+</head>
+<body>
+  <form id="problemForm">
+    <h2>🌌 نموذج التقرير المستقبلي</h2>
+
+    <label for="name">اسمك</label>
+    <input type="text" id="name" name="name" placeholder="اكتب اسمك هنا..." required>
+
+    <label for="problem">وصف المشكلة</label>
+    <textarea id="problem" name="problem" rows="4" placeholder="اشرح المشكلة بالتفصيل الممل..." required></textarea>
+
+    <label for="telegram">معرف التليجرام مالتك</label>
+    <input type="text" id="telegram" name="telegram" placeholder="مثال: YourUsername" required>
+
+    <label for="image">حمّل صورة للمشكلة (إذا عندك)</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+    <button type="submit">🚀 دز التقرير</button>
+  </form>
+
+  <script>
+    // ملاحظة مهمة: بدّل هاي القيم بالتوكن والـ ID الحقيقي مال بوتك يلا يشتغل الكود!
+    const botToken = "ضع_توكن_البوت_هنا";
+    const chatId   = "ضع_ID_التشات_هنا";
+
+    document.getElementById("problemForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const form = e.target;
+      const name = form.name.value;
+      const problem = form.problem.value;
+      // ننظف اليوزرنيم ونشيل الـ '@' إذا انكتبت
+      const telegram = form.telegram.value.startsWith('@') ? form.telegram.value.substring(1) : form.telegram.value;
+      const image = form.image.files[0];
+
+      // الرسالة اللي راح تروح للتليجرام
+      const message = 🚨 *تقرير مشكلة جديد*\n\n👤 *الاسم*: ${name}\n\n📌 *المشكلة*:\n${problem}\n\n🔗 *تليجرام*: @${telegram};
+
+      try {
+        // 1. ندز النص أول شي
+        const textResponse = await fetch(https://api.telegram.org/bot${botToken}/sendMessage, {
+          method: "POST",
+          headers: {"Content-Type": "application/json"},
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+            parse_mode: 'Markdown' // حتى يسوي الخطوط الغامقة والشكل الحلو بالرسالة
+          })
+        });
+
+        if (!textResponse.ok) {
+          throw new Error(مشكلة بالـ API: ${textResponse.statusText});
+        }
+
+        // 2. ندز الصورة (إذا موجودة)
+        if (image) {
+          const formData = new FormData();
+          formData.append("chat_id", chatId);
+          formData.append("photo", image);
+          formData.append("caption", صورة مرفقة من: ${name}); // نكتب تعليق بسيط ويا الصورة
+
+          const photoResponse = await fetch(https://api.telegram.org/bot${botToken}/sendPhoto, {
+            method: "POST",
+            body: formData
+          });
+
+          if (!photoResponse.ok) {
+            throw new Error(مشكلة بتحميل الصورة: ${photoResponse.statusText});
+          }
+        }
+
+        alert("✅ رحم الله والديك، التقرير انرسل بنجاح!");
+        form.reset(); // نفرغ الفورم
+
+      } catch (error) {
+        console.error("صار خطأ بالإرسال:", error);
+        alert(❌ فشل الإرسال! تأكد من التوكن والـ ID، أو شوف الـ Console. التفاصيل: ${error.message});
+      }
+    });
+  </script>
+</body>
+</html>
