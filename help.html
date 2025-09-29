@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌌  اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇 </title>
+  <title>🌌  اهلا بقسم حل مشاكل المنصة اكتب مشكلتك 👇  </title>
   <style>
     /* خطوط وتأثيرات عالمية */
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
@@ -190,8 +190,9 @@
       const telegram = form.telegram.value.startsWith('@') ? form.telegram.value.substring(1) : form.telegram.value;
       const image = form.image.files[0];
 
-      // الرسالة اللي راح تروح للتليجرام
-      const message = `🚨 *تقرير مشكلة جديد*\n\n👤 *الاسم*: ${name}\n\n📌 *المشكلة*:\n${problem}\n\n🔗 *تليجرام*: @${telegram}`;
+      // ----- بداية التعديل -----
+      // سوينا الرسالة بصيغة HTML حتى نتجنب الأخطاء
+      const message = `<b>🚨 تقرير مشكلة جديد</b>\n\n<b>👤 الاسم:</b> ${name}\n\n<b>📌 المشكلة:</b>\n${problem}\n\n<b>🔗 تليجرام:</b> @${telegram}`;
 
       try {
         // 1. ندز النص أول شي
@@ -201,9 +202,10 @@
           body: JSON.stringify({
             chat_id: chatId,
             text: message,
-            parse_mode: 'Markdown' // حتى يسوي الخطوط الغامقة والشكل الحلو بالرسالة
+            parse_mode: 'HTML' // غيرنا هاي إلى HTML
           })
         });
+        // ----- نهاية التعديل -----
 
         if (!textResponse.ok) {
           throw new Error(`مشكلة بالـ API: ${textResponse.statusText}`);
