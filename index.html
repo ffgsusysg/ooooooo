@@ -261,6 +261,8 @@
             white-space: nowrap;
             box-shadow: var(--shadow-sm);
             touch-action: manipulation;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -577,6 +579,7 @@
             box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             will-change: transform, box-shadow;
+            cursor: pointer;
         }
 
         .category-card::before {
@@ -892,55 +895,44 @@
             flex-grow: 1;
             cursor: pointer;
         }
+        
+        .lecture-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
+        .btn-download {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.4rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-download:hover {
+            background: var(--hover);
+            border-color: var(--primary-1);
+            color: var(--primary-1);
+        }
+        
         .lecture-play-area i {
             color: var(--primary-1);
             transition: color 0.3s ease;
         }
         
-        /* NEW: Lecture Actions & Download Button */
-        .lecture-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* Space between download button and checkbox */
-            margin-left: 0.5rem;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: transparent;
-            border: 1px solid var(--border);
-            color: var(--primary-1);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-download:hover {
-            background-color: var(--hover);
-            border-color: var(--primary-1);
-            transform: scale(1.1);
-        }
-        
-        /* NEW: Spinner animation */
-        @keyframes lucide-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .lucide-spin {
-            animation: lucide-spin 1s linear infinite;
-        }
-
         /* Completion Checkbox Styles */
         .completion-checkbox {
             position: relative;
             width: 24px;
             height: 24px;
             cursor: pointer;
+            margin-left: 1rem;
         }
 
         .completion-checkbox input {
@@ -1468,7 +1460,6 @@
             }
         }
     </style>
-
 </head>
 <body>
     <header>
@@ -1484,6 +1475,9 @@
             </button>
             <button id="themeToggle" class="btn btn-icon">
                 <i data-lucide="sun"></i>
+            </button>
+            <button id="examsButton" class="btn">
+                <i data-lucide="file-text"></i><span class="btn-text">امتحانات الأساتذة</span>
             </button>
             <button id="helpButton" class="btn" onclick="window.location.href='help.html'">
                 <i data-lucide="help-circle"></i><span class="btn-text">هل تحتاج إلى مساعدة؟</span>
@@ -1935,23 +1929,22 @@
                 const completedCount = cls.lectures.filter(lec => completedLectures[lec.url]).length;
                 const lectures = cls.lectures.map((lec, li) => {
                     const isCompleted = !!completedLectures[lec.url];
-                    const safeTitle = lec.title.replace(/'/g, "\\'");
                     return `
                         <div class="lecture-item ${isCompleted ? 'completed' : ''}" data-lecture-url="${lec.url}">
-                            <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${safeTitle}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
+                             <div class="lecture-play-area" onclick="playLecture(${ci}, ${li}, '${lec.url}', '${lec.title}', '${lec.description}', '${currentTeacher.name}', '${currentTeacher.id}')">
                                 <i data-lucide="play-circle"></i>
                                 <span>${li + 1}. ${lec.title}</span>
                             </div>
                             <div class="lecture-actions">
-                                <button class="btn-download" onclick="downloadLecture('${lec.url}', '${safeTitle}', event)" title="تحميل المحاضرة">
+                                <button class="btn btn-icon btn-download" onclick="event.stopPropagation(); downloadVideo('${lec.url}', '${lec.title}')" title="تحميل المحاضرة">
                                     <i data-lucide="download"></i>
                                 </button>
-                                <div class="star-burst"></div>
                                 <label class="completion-checkbox">
                                     <input type="checkbox" ${isCompleted ? 'checked' : ''} onchange="toggleLectureCompletion(event, '${lec.url}', this)"/>
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
+                            <div class="star-burst"></div>
                         </div>
                     `;
                 }).join("");
@@ -2013,73 +2006,7 @@
             icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
             lucide.createIcons();
         };
-
-        // NEW / FIXED: Download Lecture Function
-        window.downloadLecture = async (url, title, event) => {
-            event.stopPropagation();
-            let downloadUrl = url;
-            let isHLS = url.endsWith('.m3u8');
-
-            if (url.includes("iframe.mediadelivery.net/embed/")) {
-                try {
-                    const urlParts = url.split('/');
-                    const videoId = urlParts[urlParts.length - 1];
-                    const libraryId = urlParts[urlParts.length - 2];
-                    downloadUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-                    isHLS = true;
-                } catch (e) {
-                    alert("حدث خطأ أثناء محاولة تحويل رابط الفيديو للتحميل.");
-                    return;
-                }
-            }
-
-            if (isHLS) {
-                 alert(
-                    'هذا الرابط هو للبث (HLS) ولا يمكن تحميله مباشرة.\n\nيمكنك استخدام برامج خارجية مثل (VLC) لتحميله عن طريق نسخ الرابط التالي:\n\n' + downloadUrl
-                );
-                return;
-            }
-            
-            if (downloadUrl.endsWith('.mp4')) {
-                const downloadButton = event.target.closest('.btn-download');
-                const downloadIcon = downloadButton.querySelector('i');
-
-                try {
-                    downloadButton.disabled = true;
-                    downloadIcon.setAttribute('data-lucide', 'loader-2');
-                    downloadIcon.classList.add('lucide-spin');
-                    lucide.createIcons();
-                    
-                    const response = await fetch(downloadUrl);
-                    if (!response.ok) throw new Error(`فشل استجابة الشبكة: ${response.statusText}`);
-
-                    const blob = await response.blob();
-                    const blobUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.style.display = 'none';
-                    a.href = blobUrl;
-                    const safeTitle = title.replace(/[^a-zA-Z0-9\u0600-\u06FF\s]/g, '_');
-                    a.download = `${safeTitle}.mp4`;
-                    document.body.appendChild(a);
-                    a.click();
-                    
-                    window.URL.revokeObjectURL(blobUrl);
-                    document.body.removeChild(a);
-
-                } catch (e) {
-                    console.error('خطأ في التحميل:', e);
-                    alert('عذراً، تعذر تحميل الفيديو. قد يكون هناك مشكلة في الشبكة أو قيود المتصفح (CORS).');
-                } finally {
-                    downloadButton.disabled = false;
-                    downloadIcon.classList.remove('lucide-spin');
-                    downloadIcon.setAttribute('data-lucide', 'download');
-                    lucide.createIcons();
-                }
-            } else {
-                alert('لا يمكن تحميل هذا النوع من الفيديوهات مباشرة.');
-            }
-        };
-
+        
         window.loadIframePlayer = (url) => {
             videoLoader.style.display = 'flex';
             const encodedUrl = btoa(url);
@@ -2114,6 +2041,7 @@
                 window.progressInterval = null;
             }
             
+            // Set global variable for download button logic
             isLectureCompleted = !!completedLectures[url];
 
             playerContainer.innerHTML = "";
@@ -2144,13 +2072,16 @@
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
             
+            // NEW: Check for the specific domain and mp4 extension
             if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
                 useProxy = false;
                 isHLS = false;
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // If it's a mediadelivery iframe, use the iframe player logic
                 loadIframePlayer(url);
-                return;
+                return; // Exit the function to prevent further execution
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // NEW: Automatically convert and load mediadelivery if it's not a direct HLS link
                 const urlParts = url.split('/');
                 const videoId = urlParts[urlParts.length - 1];
                 const libraryId = urlParts[urlParts.length - 2];
@@ -2158,6 +2089,7 @@
                 isHLS = true;
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             } else {
+                // Keep the existing proxy logic for other cases
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
             
@@ -2215,6 +2147,50 @@
             }
             tryPlay();
         };
+        
+        // --- Download Logic ---
+        function getDownloadUrl(originalUrl) {
+            if (originalUrl.includes("iframe.mediadelivery.net/embed/")) {
+                const parts = originalUrl.split('/');
+                const videoId = parts[parts.length - 1];
+                const libraryId = parts[parts.length - 2].replace('vz-', '');
+                 // Heuristic approach to guess the hostname prefix, might need adjustment
+                const hostnamePrefix = libraryId.substring(0, libraryId.indexOf('-'));
+                const directLink = `https://vz-${hostnamePrefix}.becdn.net/${videoId}/play_720p.mp4`;
+                return `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(directLink)}`;
+            }
+            if (originalUrl.endsWith('.m3u8')) {
+                 // Cannot directly download HLS, show an alert.
+                return null;
+            }
+             // For other direct mp4 links etc.
+            return `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(originalUrl)}`;
+        }
+
+
+        async function downloadVideo(originalUrl, title) {
+            const downloadUrl = getDownloadUrl(originalUrl);
+            
+            if (!downloadUrl) {
+                alert("التنزيل غير مدعوم لمقاطع الفيديو من نوع البث المباشر (HLS).");
+                return;
+            }
+
+            try {
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = title.replace(/[\\/:*?"<>|]/g, '_') + '.mp4'; // Sanitize filename
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch (error) {
+                console.error('Download failed:', error);
+                alert('فشل بدء التحميل. قد يكون بسبب قيود المتصفح.');
+                // As a fallback, open the link in a new tab
+                window.open(downloadUrl, '_blank');
+            }
+        }
+
 
         /* ========= Search ========= */
         function handleSearch() {
