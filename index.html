@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
+        <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="preconnect" href="https://iframe.mediadelivery.net" crossorigin />
     <script src="https://assets.mediadelivery.net/hls/1.6.6/hls.min.js"></script>
     <script src="https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js"></script>
@@ -1174,7 +1174,7 @@
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+     D, 0.3s ease;
         }
 
         .modal.show {
@@ -1676,11 +1676,7 @@
         </button>
     </div>
 
-
-    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-    <script type="text/babel">
+        <script type="text/babel">
         // Initialize theme
         function initializeTheme() {
             const stored = localStorage.getItem("theme");
@@ -2061,7 +2057,6 @@
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
             
-            // --- 🔥 هذا هو السطر الذي تم تعديله ---
             const proxiedUrl = useProxy && isHLS ? `https://worker-proxy-six.vercel.app/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
