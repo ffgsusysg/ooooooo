@@ -1999,121 +1999,127 @@
             playerContainer.innerHTML = iframeHtml;
         }
 
-        window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-            if (player) {
-                player.destroy();
-                player = null;
-            }
-            if (window.hlsInstance) {
-                window.hlsInstance.destroy();
-                window.hlsInstance = null;
-            }
-            if (window.progressInterval) {
-                clearInterval(window.progressInterval);
-                window.progressInterval = null;
-            }
-            
-            isLectureCompleted = !!completedLectures[url];
+     window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
+            if (player) {
+                player.destroy();
+                player = null;
+            }
+            if (window.hlsInstance) {
+                window.hlsInstance.destroy();
+                window.hlsInstance = null;
+            }
+            if (window.progressInterval) {
+                clearInterval(window.progressInterval);
+                window.progressInterval = null;
+            }
+            
+            isLectureCompleted = !!completedLectures[url];
 
-            playerContainer.innerHTML = "";
-            videoLoader.style.display = 'none';
+            playerContainer.innerHTML = "";
+            videoLoader.style.display = 'none';
 
-            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
-            videoTitle.textContent = title;
-            videoDescription.textContent = desc;
-            document.getElementById('videoTeacherName').textContent = teacherNameParam || (currentTeacher ? currentTeacher.name : 'اسم الأستاذ');
-            document.getElementById('videoSubjectName').textContent = currentTeacher ? currentTeacher.subject : 'المادة';
-            
-            lastWatched = {
-                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
-                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
-                classIndex: ci,
-                lectureIndex: li,
-                lectureTitle: title,
-                lectureUrl: url,
-                lectureDescription: desc
-            };
-            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
-            
-            navigate("video");
-            
-            let finalVideoUrl = url;
-            let isHLS = finalVideoUrl.endsWith(".m3u8");
-            let useProxy = true;
-            const referer = "https://abwaab.com";
-            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            
-            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
-                useProxy = false;
-                isHLS = false;
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                loadIframePlayer(url);
-                return; 
-            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                const urlParts = url.split('/');
-                const videoId = urlParts[urlParts.length - 1];
-                const libraryId = urlParts[urlParts.length - 2];
-                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-                isHLS = true;
-                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
-            } else {
-                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
-            }
-            
-            const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
-            
-            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
-            lucide.createIcons();
-            
-            const videoElement = document.getElementById("player");
-            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
+            [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
+            videoTitle.textContent = title;
+            videoDescription.textContent = desc;
+            document.getElementById('videoTeacherName').textContent = teacherNameParam || (currentTeacher ? currentTeacher.name : 'اسم الأستاذ');
+            document.getElementById('videoSubjectName').textContent = currentTeacher ? currentTeacher.subject : 'المادة';
+            
+            lastWatched = {
+                teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
+                teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
+                classIndex: ci,
+                lectureIndex: li,
+                lectureTitle: title,
+                lectureUrl: url,
+                lectureDescription: desc
+            };
+            localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+            
+            navigate("video");
+            
+            let finalVideoUrl = url;
+            let isHLS = finalVideoUrl.endsWith(".m3u8");
+            let useProxy = true; // القيمة الافتراضية هي استخدام البروكسي
+            const referer = "https://abwaab.com";
+            const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+            
+            if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+                useProxy = false;
+                isHLS = false;
+            } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+                // تحليل الرابط لاستخراج معرف المكتبة والفيديو
+                const urlParts = url.trim().split('/').filter(part => part);
+                const videoId = urlParts[urlParts.length - 1];
+                const libraryId = urlParts[urlParts.length - 2];
+                
+                // بناء رابط التشغيل
+                finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                isHLS = true;
+                
+                // التحقق من معرف المكتبة لتحديد استخدام البروكسي
+                if (libraryId === '384338') {
+                    useProxy = false; // لا تستخدم البروكسي لهذه المكتبة
+                } else {
+                    useProxy = true; // استخدم البروكسي لباقي المكتبات
+                }
+            } else {
+                useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+            }
+            
+            const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            
+            playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+            lucide.createIcons();
+            
+            const videoElement = document.getElementById("player");
+            const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
+            const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
-            player = new Plyr("#player", {
-                controls: playerControls,
-                keyboard: { focused: true, global: true },
-                tooltips: { controls: true, seek: true },
-                captions: { active: false },
-                settings: ["quality", "speed"],
-                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-            });
+            player = new Plyr("#player", {
+                controls: playerControls,
+                keyboard: { focused: true, global: true },
+                tooltips: { controls: true, seek: true },
+                captions: { active: false },
+                settings: ["quality", "speed"],
+                speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+            });
 
-            window.progressInterval = setInterval(() => {
-                if (player && player.duration > 0) {
-                    const progress = (player.currentTime / player.duration) * 100;
-                    lectureProgress[url] = progress;
-                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
-                }
-            }, 5000);
+            window.progressInterval = setInterval(() => {
+                if (player && player.duration > 0) {
+                    const progress = (player.currentTime / player.duration) * 100;
+                    lectureProgress[url] = progress;
+                    localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+                }
+            }, 5000);
 
-            function tryPlay() {
-                if (isHLS && Hls.isSupported()) {
-                    const hls = new Hls();
-                    window.hlsInstance = hls;
-                    hls.attachMedia(videoElement);
-                    hls.loadSource(proxiedUrl);
-                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-                    });
-                    hls.on(Hls.Events.ERROR, (_, data) => {
-                        if (data.fatal) {
-                            switch (data.type) {
-                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                                default: break;
-                            }
-                        }
-                    });
-                } else {
-                    player.source = {
-                        type: "video",
-                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-                    };
-                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
-                }
-            }
-            tryPlay();
-        };
+            function tryPlay() {
+                if (isHLS && Hls.isSupported()) {
+                    const hls = new Hls();
+                    window.hlsInstance = hls;
+                    hls.attachMedia(videoElement);
+                    hls.loadSource(proxiedUrl);
+                    hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
+                    });
+                    hls.on(Hls.Events.ERROR, (_, data) => {
+                        if (data.fatal) {
+                            switch (data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                                default: break;
+                            }
+                        }
+                    });
+                } else {
+                    player.source = {
+                        type: "video",
+                        sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+                    };
+                    player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
+                }
+            }
+            tryPlay();
+        };
 
         /* ========= Search ========= */
         function handleSearch() {
