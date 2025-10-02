@@ -379,7 +379,7 @@
         
         [data-theme="dark"] #dashboardPage {
             --dash-grad-1: #4e54c8;
-            --dash-grad-2: #8f94fb;
+      _2-1_        --dash-grad-2: #8f94fb;
             --dash-grad-3: #00467F;
             --dash-grad-4: #A5CC82;
             --dash-grad-5: #5614B0;
@@ -822,7 +822,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.1rem 1.3rem;
+  _2-1_       padding: 1.1rem 1.3rem;
             cursor: pointer;
             user-select: none;
             background: var(--bg-glass);
@@ -1623,7 +1623,7 @@
                     </div>
                 </div>
                 
-                <button class="btn back-button" onclick="navigate('classes')">
+            _2-1_   <button class="btn back-button" onclick="navigate('classes')">
                     <i data-lucide="arrow-right"></i>العودة للفصول
                 </button>
             </div>
@@ -1929,7 +1929,7 @@
                             </div>
                             <i data-lucide="chevron-down" class="chevron-icon"></i>
                         </div>
-          _2-1_         <div class="lectures-list">${lectures}</div>
+                        <div class="lectures-list">${lectures}</div>
                     </div>
                 `;
             }).join("");
@@ -2037,43 +2037,45 @@
             
             navigate("video");
             
+            // ===== START: MODIFIED LOGIC =====
             let finalVideoUrl = url;
             let isHLS = finalVideoUrl.endsWith(".m3u8");
             let useProxy = true; // Default to using a proxy for HLS streams
             const referer = "https://abwaab.com";
             const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
-            const noProxyLibraryIds = ["384338"]; // The library that works directly
+            const noProxyLibraryIds = ["384338"]; // The library that works directly
 
             if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
                 useProxy = false;
                 isHLS = false;
             } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-                const urlParts = url.split('/');
-                const embedIndex = urlParts.indexOf('embed');
-                
-                // Check if the URL structure is as expected: [...]/embed/[libraryId]/[videoId]
-                if (embedIndex !== -1 && urlParts.length > embedIndex + 2) {
-                    const libraryId = urlParts[embedIndex + 1];
-                    const videoId = urlParts[embedIndex + 2];
-                    
-                    finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
-                    isHLS = true;
-                    
-                    // NEW LOGIC: Decide on proxy based on libraryId
-                    if (noProxyLibraryIds.includes(libraryId)) {
-                        useProxy = false; // This library ID works directly.
-                    } else {
-                        useProxy = true; // Other library IDs (like 215061) need the proxy.
-                    }
-                } else {
-                    console.warn("Could not parse library/video ID from mediadelivery URL:", url);
-                    useProxy = true; // Fallback to using proxy
-                }
+                const urlParts = url.split('/');
+                const embedIndex = urlParts.indexOf('embed');
+                
+                // Check if the URL structure is as expected: [...]/embed/[libraryId]/[videoId]
+                if (embedIndex !== -1 && urlParts.length > embedIndex + 1) {
+                    const libraryId = urlParts[embedIndex + 1];
+                    const videoId = urlParts[embedIndex + 2];
+                    
+                    finalVideoUrl = `https://vz-${libraryId}.becdn.net/${videoId}/playlist.m3u8`;
+                    isHLS = true;
+                    
+                    // NEW LOGIC: Decide on proxy based on libraryId
+                    if (noProxyLibraryIds.includes(libraryId)) {
+                        useProxy = false; // This library ID works directly.
+                    } else {
+                        useProxy = true; // Other library IDs (like 215061) need the proxy.
+                    }
+                } else {
+                    console.warn("Could not parse library/video ID from mediadelivery URL:", url);
+                    useProxy = true; // Fallback to using proxy
+                }
             } else {
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
             
             const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            // ===== END: MODIFIED LOGIC =====
             
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
