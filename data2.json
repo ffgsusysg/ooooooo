@@ -1265,14 +1265,19 @@
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/ff41a093-4cad-4f8e-9498-c848127b83a4"
    
-  }
+   }
           ]
         }
       ]
     },
     {
       "id": 1746651647110,
-      "name": "الفصل الأول: المتسعات (Capacitors)",
+      "name": "علي السوداني 2026",
+      "subject": "مدرس مادة الفيزياء",
+      "image": "https://i.imghippo.com/files/vQEt1997wIc.jpg",
+      "classes": [
+        {
+          "name": "1",
       "lectures": [
         {
           "title": "اساسيات الفيزياء",
