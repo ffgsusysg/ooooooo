@@ -3,430 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>منصة إديسون</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>حدث خطأ من جانبنا</title>
 
-  <!-- Meta -->
-  <meta property="og:title" content="منصة إديسون التعليمية" />
-  <meta property="og:description" content="محاضرات ومتابعة تقدّم بشكل بسيط وخفيف" />
+  <!-- Arabic Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Meta / Social -->
+  <meta name="description" content="حدث خطأ من جانبنا، يُرجى المحاولة لاحقًا." />
+  <meta property="og:title" content="حدث خطأ من جانبنا" />
+  <meta property="og:description" content="يُرجى المحاولة لاحقًا." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
-
-  <!-- Icon & fonts -->
-  <link rel="icon" href="https://cdn.glitch.global/c07dc79d-c056-48b0-8b0b-912783754321/5424770778815132543.jpg?v=1751739020203">
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Player -->
-  <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.min.js"></script>
-
-  <!-- Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="theme-color" content="#0f172a" />
 
   <style>
     :root{
-      --bg:#f7fafc;--bg2:#ffffff;--text:#0f172a;--muted:#64748b;--pri:#2563eb;--pri-2:#1d4ed8;--acc:#f59e0b;
-      --border:#e2e8f0;--r:14px;--shadow:0 8px 20px rgba(0,0,0,.06)
+      --bg-1:#0b1020; /* deep navy */
+      --bg-2:#141a31; /* slate */
+      --ac-1:#6ee7f9; /* cyan */
+      --ac-2:#a78bfa; /* violet */
+      --ac-3:#f472b6; /* pink */
+      --text:#e6e9f2; /* soft white */
+      --muted:#a7b0c2;
+      --glass:255,255,255; /* rgb for backdrop glass */
+      --radius:20px;
     }
-    [data-theme="dark"]{
-      --bg:#0b1220;--bg2:#0f172a;--text:#e2e8f0;--muted:#94a3b8;--pri:#60a5fa;--pri-2:#3b82f6;--acc:#fbbf24;--border:#1f2a44
+
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0; overflow:hidden; color:var(--text);
+      font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Kufi Arabic", "Cairo", sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(167,139,250,.25), transparent 60%),
+                  radial-gradient(800px 600px at 10% 120%, rgba(110,231,249,.2), transparent 60%),
+                  linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      letter-spacing:.1px;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Almarai,Tajawal,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1200px;margin:auto;padding:1rem}
-    .hidden{display:none}
 
-    /* Header */
-    header{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:saturate(140%) blur(10px);
-      border-bottom:1px solid var(--border);z-index:10}
-    [data-theme="dark"] header{background:rgba(15,23,42,.7)}
-    .row{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;justify-content:space-between;padding:.8rem 1rem}
-    .brand{display:flex;align-items:center;gap:.6rem;font-weight:800;color:var(--pri);cursor:pointer}
-    .logo{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--pri);color:#fff;font-weight:800}
-    .actions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
-    .btn{display:inline-flex;gap:.45rem;align-items:center;justify-content:center;border:none;border-radius:var(--r);
-      background:var(--pri);color:#fff;padding:.7rem 1rem;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
-    .btn:hover{background:var(--pri-2)}
-    .btn-outline{background:transparent;color:var(--pri);border:2px solid var(--pri)}
-    .btn-icon{width:44px;height:44px;border-radius:50%;padding:0;display:grid;place-items:center;background:var(--bg2);border:1px solid var(--border);color:var(--pri)}
-    .search{display:flex;gap:.5rem;align-items:center;flex:1;min-width:240px;max-width:560px}
-    .search input{flex:1;border:1px solid var(--border);background:var(--bg2);color:var(--text);border-radius:var(--r);padding:.75rem .9rem}
+    /* Animated grain for subtle texture */
+    .grain{ position:fixed; inset:-50%; pointer-events:none; opacity:.06; mix-blend:overlay; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 100 100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="1"/></svg>'); animation: grain 7s steps(10) infinite; }
+    @keyframes grain{ 0%{transform:translate(0,0)} 10%{transform:translate(-2%,1%)} 20%{transform:translate(-1%,-2%)} 30%{transform:translate(1%,2%)} 40%{transform:translate(2%,1%)} 50%{transform:translate(-1%,0)} 60%{transform:translate(1%,-1%)} 70%{transform:translate(0,2%)} 80%{transform:translate(-2%,-1%)} 90%{transform:translate(2%,1%)} 100%{transform:translate(0,0)} }
 
-    /* Bot button (cute) */
-    .bot{display:inline-flex;align-items:center;gap:.6rem;background:#229ED9;color:#fff;padding:.7rem 1rem;border-radius:999px;
-      box-shadow:var(--shadow);font-weight:800}
-    .bot i{width:18px;height:18px}
-    .bot:hover{filter:brightness(1.05)}
+    /* Layered intro panels (التداخل الجميل) */
+    .intro{ position:fixed; inset:0; display:grid; grid-template-columns:1fr 1fr 1fr; z-index:50; }
+    .intro__panel{ position:relative; }
+    .intro__panel::before{
+      content:""; position:absolute; inset:0; transform:translateY(0);
+      background:linear-gradient(135deg, rgba(110,231,249,.7), rgba(167,139,250,.7));
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+    }
+    .intro__panel:nth-child(2)::before{ background:linear-gradient(135deg, rgba(167,139,250,.8), rgba(244,114,182,.8)); }
+    .intro__panel:nth-child(3)::before{ background:linear-gradient(135deg, rgba(244,114,182,.8), rgba(110,231,249,.8)); }
 
-    /* Pages */
-    .page{display:none;padding:1rem}
-    .page.active{display:block}
-    .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem;box-shadow:var(--shadow)}
-    .cat{cursor:pointer;position:relative}
-    .cat h3{margin:.25rem 0 0;font-size:1.15rem}
-    .muted{color:var(--muted);font-size:.95rem}
-    .title{display:flex;align-items:center;gap:.6rem;margin:1rem 0 .8rem;color:var(--pri);font-weight:800}
-    .teacher-card{text-align:center;cursor:pointer}
-    .t-img{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--acc);display:block;margin:.2rem auto .6rem}
-    .row-s{display:flex;gap:.5rem;align-items:center;justify-content:space-between}
-    .fav{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--bg2);display:grid;place-items:center;cursor:pointer}
-    .fav.active{background:#ff5252;color:#fff;border-color:#ff5252}
+    .intro__overlay{ position:fixed; inset:0; display:grid; place-items:center; z-index:60; background:rgba(10,14,30,.15); backdrop-filter:blur(8px); }
+    .intro__logo{ font-weight:700; letter-spacing:.5px; font-size:clamp(22px,3.3vw,36px); color:white; text-shadow:0 10px 40px rgba(0,0,0,.4); opacity:.95 }
 
-    .list{display:grid;gap:.7rem}
-    .item{background:var(--bg2);border:1px solid var(--border);border-right:4px solid var(--pri);border-radius:10px;padding:.8rem;display:flex;align-items:center;justify-content:space-between}
-    .play{display:flex;gap:.6rem;align-items:center;cursor:pointer}
-    .video-wrap{max-width:980px;margin:auto}
-    .video{aspect-ratio:16/9;background:#000;border-radius:var(--r);overflow:hidden}
-    .meta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:.6rem 0;color:var(--muted)}
+    /* Main container */
+    .shell{ position:relative; height:100dvh; display:grid; place-items:center; padding:24px; isolation:isolate; }
 
-    /* Toast */
-    .toast{position:fixed;bottom:14px;right:14px;left:14px;max-width:420px;margin-inline:auto;background:var(--bg2);border:1px solid var(--border);
-      border-radius:var(--r);padding:.8rem;display:none;gap:.6rem;align-items:center;box-shadow:var(--shadow)}
-    .toast.show{display:flex}
+    /* Floating decorative blobs */
+    .blob{ position:absolute; filter:blur(30px); opacity:.35; z-index:-1; }
+    .blob--a{ width:420px; height:420px; right:-120px; top:-80px; background:radial-gradient(circle at 30% 30%, var(--ac-1), transparent 70%); animation: float 10s ease-in-out infinite; }
+    .blob--b{ width:520px; height:520px; left:-150px; bottom:-130px; background:radial-gradient(circle at 60% 60%, var(--ac-2), transparent 70%); animation: float 12s ease-in-out infinite reverse; }
+    .blob--c{ width:400px; height:400px; left:50%; top:20%; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--ac-3), transparent 70%); animation: float 14s ease-in-out infinite; }
+    @keyframes float{ 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-20px)} }
 
-    /* Simple helpers */
-    .center{text-align:center}
-    .mb1{margin-bottom:1rem}
-    .mb2{margin-bottom:2rem}
+    /* Card */
+    .card{
+      width:min(900px, 92vw);
+      border-radius:var(--radius);
+      background:rgba(var(--glass), .07);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.07);
+      backdrop-filter: blur(16px) saturate(130%);
+      padding: clamp(20px, 4vw, 42px);
+      transform:translateY(8px) scale(.98);
+      opacity:0;
+      will-change: transform, opacity;
+    }
+
+    .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.6px; color:var(--muted); text-transform:uppercase; }
+    .eyebrow i{ width:8px; height:8px; border-radius:999px; background:conic-gradient(from 0deg, var(--ac-1), var(--ac-2), var(--ac-3)); box-shadow:0 0 10px rgba(167,139,250,.7); }
+
+    h1{ margin:12px 0 8px; font-size:clamp(28px, 4.8vw, 48px); line-height:1.15; letter-spacing:.2px; }
+    .lead{ color:var(--muted); font-size:clamp(16px, 2.2vw, 18px); line-height:1.8; }
+
+    .actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+    .btn{
+      appearance:none; border:none; cursor:pointer; user-select:none; outline:none;
+      padding:14px 20px; border-radius:14px; font-weight:600; letter-spacing:.3px;
+      background: linear-gradient(135deg, rgba(110,231,249,.25), rgba(167,139,250,.25));
+      color:var(--text); border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 8px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
+      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+      backdrop-filter: blur(10px);
+    }
+    .btn:hover{ transform: translateY(-2px); box-shadow:0 14px 40px rgba(0,0,0,.3); }
+
+    .btn.secondary{ background: rgba(255,255,255,.06); }
+
+    .meta{ display:flex; flex-wrap:wrap; gap:14px; margin-top:26px; color:var(--muted); font-size:14px; }
+    .meta .tag{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.14); }
+    .tag b{ color:var(--text); font-weight:600 }
+
+    .footer{ position:fixed; inset-inline:0; bottom:12px; text-align:center; font-size:12.5px; color:var(--muted); opacity:.85 }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .intro, .blob, .grain{ animation:none !important }
+    }
+
+    /* Small screens */
+    @media (max-width:420px){ .actions{ flex-direction:column } }
   </style>
 </head>
 <body>
-  <header>
-    <div class="row wrap">
-      <div class="brand" onclick="go('home')">
-        <div class="logo">إ</div>
-        <span>منصة إديسون</span>
-      </div>
-
-      <div class="actions" style="flex:1;justify-content:center">
-        <div class="search">
-          <input id="q" placeholder="ابحث عن مدرس…" />
-          <button class="btn" id="searchBtn"><i data-lucide="search"></i><span>بحث</span></button>
-        </div>
-      </div>
-
-      <div class="actions">
-        <!-- Cute Telegram bot button -->
-        <a class="bot" href="https://t.me/edson1bot" target="_blank" rel="noopener">
-          <i data-lucide="send"></i><span>بوت الامتحانات</span>
-        </a>
-        <button id="dashBtn" class="btn-icon" title="لوحة التحكم"><i data-lucide="user"></i></button>
-        <button id="themeBtn" class="btn-icon" title="الوضع الليلي/النهاري"><i data-lucide="moon"></i></button>
-      </div>
-    </div>
-  </header>
-
-  <main class="wrap">
-    <!-- Home -->
-    <section id="home" class="page active">
-      <div class="title"><i data-lucide="layout-grid"></i><h3>اختر القسم</h3></div>
-      <div class="grid" id="cats">
-        <div class="card cat" onclick="loadCat('year-2026')">
-          <i data-lucide="calendar-days"></i>
-          <h3>مدرسين سنة 2026</h3>
-          <div class="muted">محاضرات ومواد 2026</div>
-        </div>
-        <div class="card cat" onclick="loadCat('year-2025')">
-          <i data-lucide="calendar-days"></i>
-          <h3>مدرسين سنة 2025</h3>
-          <div class="muted">محاضرات ومواد 2025</div>
-        </div>
-        <div class="card cat" onclick="loadCat('distinguished')">
-          <i data-lucide="sparkles"></i>
-          <h3>قسم المتميزين</h3>
-          <div class="muted">مواد خاصة للمتفوقين</div>
-        </div>
-        <div class="card cat" onclick="loadCat('literary')">
-          <i data-lucide="scroll-text"></i>
-          <h3>القسم الأدبي</h3>
-          <div class="muted">مواد ومناهج الأدبي</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category / teachers -->
-    <section id="category" class="page">
-      <div class="row-s mb1">
-        <button class="btn btn-outline" onclick="go('home')"><i data-lucide="arrow-right"></i> رجوع</button>
-        <h3 id="catTitle" class="muted" style="margin:0"></h3>
-      </div>
-
-      <div id="favWrap" class="hidden">
-        <div class="title"><i data-lucide="heart"></i><h3>المفضلون</h3></div>
-        <div id="favGrid" class="grid"></div>
-      </div>
-
-      <div class="title"><i data-lucide="users"></i><h3>المدرسون</h3></div>
-      <div id="tGrid" class="grid"></div>
-    </section>
-
-    <!-- Classes -->
-    <section id="classes" class="page">
-      <div class="row-s mb1">
-        <button class="btn btn-outline" onclick="go('category')"><i data-lucide="arrow-right"></i> المدرسون</button>
-        <div class="muted" id="tHead"></div>
-      </div>
-      <div id="clsList" class="list"></div>
-    </section>
-
-    <!-- Video -->
-    <section id="video" class="page">
-      <div class="video-wrap">
-        <div class="video"><video id="player" playsinline controls></video></div>
-        <div class="center">
-          <h3 id="vTitle" class="mb1"></h3>
-          <div class="meta">
-            <span><i data-lucide="user"></i><span id="vTeacher"></span></span>
-            <span><i data-lucide="book"></i><span id="vSubject"></span></span>
-          </div>
-          <button class="btn btn-outline" onclick="go('classes')"><i data-lucide="arrow-right"></i> العودة للفصول</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Dashboard (lightweight) -->
-    <section id="dash" class="page">
-      <div class="title"><i data-lucide="settings-2"></i><h3>لوحة التحكم</h3></div>
-      <div class="grid">
-        <div class="card">
-          <label class="muted">هدفي:</label>
-          <input id="goal" placeholder="مثلاً: كلية الطب" style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);color:var(--text)">
-        </div>
-        <div class="card">
-          <label class="muted">المعدل المستهدف:</label>
-          <input id="grade" placeholder="مثلاً: 99.5%" style="width:100%;padding:.7rem;border:1px solid var(--border);border-radius:10px;background:var(--bg2);color:var(--text)">
-        </div>
-      </div>
-      <div class="center mb2"><button class="btn" id="saveDash"><i data-lucide="save"></i> حفظ</button></div>
-    </section>
-  </main>
-
-  <!-- Continue toast -->
-  <div id="toast" class="toast">
-    <i data-lucide="play"></i>
-    <div style="flex:1">
-      <strong>متابعة آخر محاضرة</strong>
-      <div class="muted" id="toastX"></div>
-    </div>
-    <button class="btn btn-outline" onclick="resumeLast()">متابعة</button>
-    <button class="btn-icon" onclick="hideToast()"><i data-lucide="x"></i></button>
+  <!-- Layered animated intro (تداخل) -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro__panel"></div>
+    <div class="intro__panel"></div>
+    <div class="intro__panel"></div>
+  </div>
+  <div class="intro__overlay" aria-hidden="true">
+    <div class="intro__logo">جاري التحميل…</div>
   </div>
 
-<script>
-/* ========= Theme ========= */
-const themeBtn = document.getElementById("themeBtn");
-(function initTheme(){
-  const saved = localStorage.getItem("theme") || (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-  document.documentElement.setAttribute('data-theme', saved);
-  themeBtn.querySelector('i').setAttribute('data-lucide', saved==='dark'?'sun':'moon');
-})();
-themeBtn.onclick = () => {
-  const cur = document.documentElement.getAttribute('data-theme');
-  const next = cur==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
-  themeBtn.querySelector('i').setAttribute('data-lucide', next==='dark'?'sun':'moon');
-  lucide.createIcons();
-};
+  <!-- Subtle grain texture -->
+  <div class="grain" aria-hidden="true"></div>
 
-/* ========= Nav ========= */
-const pages = {home:byId('home'), category:byId('category'), classes:byId('classes'), video:byId('video'), dash:byId('dash')};
-function go(k){ Object.values(pages).forEach(p=>p.classList.remove('active')); pages[k].classList.add('active'); window.scrollTo({top:0}); lucide.createIcons(); }
-byId('dashBtn').onclick = ()=>{loadDash(); go('dash')};
-function byId(id){return document.getElementById(id);}
+  <!-- Decorative blobs -->
+  <div class="blob blob--a" aria-hidden="true"></div>
+  <div class="blob blob--b" aria-hidden="true"></div>
+  <div class="blob blob--c" aria-hidden="true"></div>
 
-/* ========= Data ========= */
-const catMeta={
-  "year-2026":{title:"الصفوف الدراسية 2026",endpoint:"https://adson1.netlify.app/data2.json"},
-  "year-2025":{title:"الصفوف الدراسية 2025",endpoint:"https://adson1.netlify.app/data.json"},
-  "distinguished":{title:"قسم المتميزين",endpoint:"https://adson1.netlify.app/ff.json"},
-  "literary":{title:"القسم الأدبي",endpoint:"https://adson1.netlify.app/mm.json"}
-};
-let teachers=[], currentTeacher=null;
-let lectureProgress = JSON.parse(localStorage.getItem("lectureProgress")||"{}");
-let completed = JSON.parse(localStorage.getItem("completedLectures")||"{}");
-let favs = JSON.parse(localStorage.getItem("favoriteTeachers")||"[]");
-let last = JSON.parse(localStorage.getItem("lastWatched")||"null");
+  <!-- Main content -->
+  <main class="shell">
+    <article class="card" role="group" aria-label="رسالة الخطأ">
+      <span class="eyebrow"><i></i> رسالة من الخادم</span>
+      <h1>حدث خطأ من جانبنا</h1>
+      <p class="lead">يبدو أن هناك خللاً مؤقتًا لدينا. <br/>
+        <strong>يُرجى المحاولة لاحقًا</strong> أو استخدام الخيارات التالية.
+      </p>
 
-/* ========= Search ========= */
-const q = byId('q'); byId('searchBtn').onclick = doSearch; q.addEventListener('input', debounce(doSearch,200));
-function doSearch(){
-  const term=(q.value||'').toLowerCase().trim();
-  const list = term? teachers.filter(t=>t.name.toLowerCase().includes(term)||t.subject.toLowerCase().includes(term)): teachers;
-  renderTeachers(list);
-}
+      <div class="actions">
+        <button class="btn" id="retryBtn" aria-label="إعادة المحاولة">إعادة المحاولة</button>
+        <button class="btn secondary" id="copyBtn" aria-label="نسخ تفاصيل الخطأ">نسخ تفاصيل الخطأ</button>
+      </div>
 
-/* ========= Load Category ========= */
-function loadCat(id){
-  const meta = catMeta[id]; if(!meta) return;
-  byId('catTitle').textContent = meta.title;
-  go('category');
-  byId('tGrid').innerHTML = skeletonCards(6);
-  fetch(meta.endpoint,{cache:'no-store'})
-    .then(r=>r.json())
-    .then(d=>{ teachers=d.teachers||[]; renderTeachers(teachers); })
-    .catch(()=>{ byId('tGrid').innerHTML='<div class="card center">تعذر تحميل البيانات</div>'; });
-}
+      <div class="meta" id="meta">
+        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" stroke="currentColor" stroke-width="1.5"/></svg> رمز الخطأ: <b id="code">500</b></span>
+        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="16.5" r=".9" fill="currentColor"/></svg> المعرّف: <b id="rid">—</b></span>
+        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12" stroke="currentColor" stroke-width="1.5"/></svg> الوقت: <b id="ts">—</b></span>
+      </div>
+    </article>
+  </main>
 
-/* ========= Render ========= */
-function renderTeachers(list){
-  // favorites section
-  const favData = list.filter(t=>favs.includes(t.id));
-  const rest = list.filter(t=>!favs.includes(t.id));
-  const favWrap = byId('favWrap');
-  if(favData.length){ favWrap.classList.remove('hidden'); fillGrid(byId('favGrid'), favData); }
-  else { favWrap.classList.add('hidden'); byId('favGrid').innerHTML=''; }
-  fillGrid(byId('tGrid'), rest);
-  lucide.createIcons();
-}
-function fillGrid(container, list){
-  container.innerHTML='';
-  list.forEach(t=>{
-    const card = document.createElement('div');
-    card.className='card teacher-card';
-    card.innerHTML = `
-      <div class="row-s">
-        <div style="text-align:right">
-          <img class="t-img" src="${t.image}" onerror="this.src='https://placehold.co/110x110?text=No+Img'">
-          <div><strong>${t.name}</strong></div>
-          <div class="muted">${t.subject||''}</div>
-        </div>
-        <button class="fav ${favs.includes(t.id)?'active':''}" title="مفضلة" onclick="event.stopPropagation();toggleFav(${t.id})">
-          <i data-lucide="heart"></i>
-        </button>
-      </div>`;
-    card.onclick=()=>showTeacher(t.id);
-    container.appendChild(card);
-  });
-}
-function toggleFav(id){
-  const i=favs.indexOf(id); if(i>-1) favs.splice(i,1); else favs.push(id);
-  localStorage.setItem("favoriteTeachers",JSON.stringify(favs));
-  renderTeachers(teachers);
-}
-function showTeacher(id){
-  currentTeacher = teachers.find(x=>x.id==id); if(!currentTeacher) return;
-  byId('tHead').textContent = `${currentTeacher.name} • ${currentTeacher.subject||''}`;
-  renderClasses(currentTeacher.classes||[]);
-  go('classes');
-}
-function renderClasses(cls){
-  const root = byId('clsList'); root.innerHTML='';
-  cls.forEach((c,ci)=>{
-    const card = document.createElement('div'); card.className='card';
-    const done = (c.lectures||[]).filter(l=>completed[l.url]).length;
-    const total = (c.lectures||[]).length;
-    const head = document.createElement('div');
-    head.className='row-s'; head.innerHTML=`<strong>${c.name}</strong><span class="muted">المكتمل: ${done}/${total}</span>`;
-    const list = document.createElement('div'); list.className='list';
-    (c.lectures||[]).forEach((lec,li)=>{
-      const it = document.createElement('div'); it.className='item';
-      it.innerHTML = `
-        <div class="play" onclick="play(${ci},${li},'${lec.url}','${escapeStr(lec.title)}','${escapeStr(lec.description||'')}')">
-          <i data-lucide="play-circle"></i><span>${li+1}. ${lec.title}</span>
-        </div>
-        <label class="row-s" style="gap:.4rem">
-          <input type="checkbox" ${completed[lec.url]?'checked':''} onchange="markDone('${lec.url}',this)">
-          <span class="muted">تم</span>
-        </label>`;
-      list.appendChild(it);
+  <footer class="footer">إذا استمرت المشكلة، راسل الدعم واذكر رمز الخطأ والمعرّف.</footer>
+
+  <script>
+    // Helper: random ID
+    const randId = () => Math.random().toString(36).slice(2, 10).toUpperCase();
+
+    // Animate layered intro panels (tearing/reveal)
+    const panels = document.querySelectorAll('.intro__panel');
+    const overlay = document.querySelector('.intro__overlay');
+    const card = document.querySelector('.card');
+
+    function playIntro(){
+      // Staggered slide-up for panels
+      panels.forEach((p, i) => {
+        p.animate([
+          { transform: 'translateY(0)' },
+          { transform: 'translateY(-100%)' }
+        ], { duration: 820 + i*130, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+      });
+
+      // Fade out overlay
+      overlay.animate([
+        { opacity: 1 },
+        { opacity: 0 }
+      ], { duration: 640, delay: 380, easing: 'ease', fill: 'forwards' })
+      .addEventListener('finish', () => {
+        overlay.remove();
+        document.querySelector('.intro').remove();
+
+        // Reveal card
+        card.animate([
+          { opacity: 0, transform: 'translateY(16px) scale(.98)' },
+          { opacity: 1, transform: 'translateY(0) scale(1)' }
+        ], { duration: 520, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+      });
+    }
+
+    // Parallax on mouse move for a gentle depth effect
+    function parallax(){
+      const root = document.body;
+      const strength = 18; // px
+      window.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1..1
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        root.style.backgroundPosition = `${50 - x*2}% ${50 - y*2}%`;
+        document.querySelectorAll('.blob').forEach((el, i) => {
+          const s = (i+1)/3; // layers
+          el.style.transform = `translate(${x*strength*s}px, ${y*strength*s}px)`;
+        });
+      });
+    }
+
+    // Populate error meta
+    function setMeta(){
+      const ts = new Date();
+      const rid = `REQ-${randId()}-${randId()}`;
+      document.getElementById('rid').textContent = rid;
+      document.getElementById('ts').textContent = ts.toLocaleString('ar-IQ', { hour12:false });
+      // Optionally rotate codes 500/502/503
+      const codes = [500, 502, 503];
+      document.getElementById('code').textContent = codes[Math.floor(Math.random()*codes.length)];
+
+      // Copy button
+      const btnCopy = document.getElementById('copyBtn');
+      btnCopy.addEventListener('click', async () => {
+        const text = `خطأ من جانب الخادم\nرمز الخطأ: ${document.getElementById('code').textContent}\nالمعرّف: ${rid}\nالوقت: ${document.getElementById('ts').textContent}`;
+        try{ await navigator.clipboard.writeText(text); btnCopy.textContent = 'تم النسخ ✦'; }
+        catch{ btnCopy.textContent = 'تعذّر النسخ'; }
+        setTimeout(()=> btnCopy.textContent = 'نسخ تفاصيل الخطأ', 1300);
+      });
+
+      // Retry button (reload)
+      document.getElementById('retryBtn').addEventListener('click', () => { location.reload(); });
+    }
+
+    // Respect prefers-reduced-motion: if user asks to reduce, skip fancy intro
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.addEventListener('load', () => {
+      setMeta();
+      if(!prefersReduced){ playIntro(); parallax(); }
+      else{
+        document.querySelector('.intro').remove();
+        document.querySelector('.intro__overlay').remove();
+        card.style.opacity = 1; card.style.transform = 'none';
+      }
     });
-    card.appendChild(head); card.appendChild(list); root.appendChild(card);
-  });
-  lucide.createIcons();
-}
-
-/* ========= Player ========= */
-let plyr=null, hls=null, curURL='';
-function play(ci,li,url,title,desc){
-  curURL=url;
-  const p = document.getElementById('player');
-  if(plyr){ try{ plyr.destroy(); }catch(_){} }
-  if(hls){ try{ hls.destroy(); }catch(_){} }
-  plyr = new Plyr(p,{controls:["play","progress","current-time","mute","volume","settings","fullscreen"],speed:{selected:1,options:[0.75,1,1.25,1.5,2]}});
-  const isHls = url.endsWith('.m3u8');
-  if(isHls && Hls.isSupported()){
-    hls = new Hls(); hls.attachMedia(p); hls.loadSource(url);
-  }else{
-    p.src = url; p.type = isHls? "application/x-mpegURL":"video/mp4";
-  }
-  // save last watched
-  const tName = (currentTeacher&&currentTeacher.name)||'';
-  const tId   = (currentTeacher&&currentTeacher.id)||null;
-  localStorage.setItem('lastWatched',JSON.stringify({teacherId:tId,teacherName:tName,classIndex:ci,lectureIndex:li,lectureTitle:title,lectureUrl:url,lectureDescription:desc}));
-  last = JSON.parse(localStorage.getItem('lastWatched'));
-  updateToast();
-  // progress saver
-  plyr.on('timeupdate',()=>{
-    if(plyr.duration>0){
-      lectureProgress[url] = (plyr.currentTime/plyr.duration)*100;
-      localStorage.setItem('lectureProgress',JSON.stringify(lectureProgress));
-    }
-  });
-  // UI
-  byId('vTitle').textContent = title;
-  byId('vTeacher').textContent = tName;
-  byId('vSubject').textContent = (currentTeacher&&currentTeacher.subject)||'';
-  go('video');
-}
-function markDone(url,el){
-  completed[url]=el.checked; localStorage.setItem('completedLectures',JSON.stringify(completed));
-  // refresh counts
-  renderClasses(currentTeacher.classes||[]);
-}
-
-/* ========= Toast ========= */
-function updateToast(){
-  if(!last) return;
-  byId('toastX').textContent = `${last.teacherName||''} — ${last.lectureTitle||''}`;
-  byId('toast').classList.add('show'); lucide.createIcons();
-}
-function hideToast(){ byId('toast').classList.remove('show'); }
-function resumeLast(){
-  if(!last) return; hideToast();
-  // try to jump to that lecture; we need teacher from categories (light attempt)
-  const metaList=Object.values(catMeta);
-  (async ()=>{
-    for(const m of metaList){
-      try{
-        const d = await (await fetch(m.endpoint,{cache:'no-store'})).json();
-        const t = (d.teachers||[]).find(x=>x.id===last.teacherId);
-        if(t){ currentTeacher=t; play(last.classIndex,last.lectureIndex,last.lectureUrl,last.lectureTitle,last.lectureDescription); break; }
-      }catch(_){}
-    }
-  })();
-}
-
-/* ========= Dashboard ========= */
-const saveDash = byId('saveDash');
-function loadDash(){
-  const p = JSON.parse(localStorage.getItem('userProfile')||"{}");
-  byId('goal').value = p.goal||'';
-  byId('grade').value = p.grade||'';
-}
-saveDash.onclick = ()=>{
-  const p = {goal:byId('goal').value, grade:byId('grade').value};
-  localStorage.setItem('userProfile',JSON.stringify(p));
-  saveDash.innerHTML = '<i data-lucide="check"></i> تم الحفظ';
-  lucide.createIcons();
-  setTimeout(()=>{saveDash.innerHTML='<i data-lucide="save"></i> حفظ'; lucide.createIcons();},1500);
-};
-
-/* ========= Utils ========= */
-function skeletonCards(n){return Array.from({length:n}).map(()=>`<div class="card"><div class="muted">جاري التحميل…</div></div>`).join('')}
-function debounce(fn,ms){let t;return (...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}}
-function escapeStr(s){return String(s||'').replace(/["'`]/g,'')}
-
-window.addEventListener('load',()=>{
-  lucide.createIcons();
-  if(last) updateToast();
-});
-</script>
+  </script>
 </body>
 </html>
-"""
-open('/mnt/data/edison_slim.html','w').write(content)
-print("Saved to /mnt/data/edison_slim.html")
