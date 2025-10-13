@@ -4,24 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>حدث خطأ من جانبنا</title>
+  <title>حدث خطأ من جانبنا | خطأ 500</title>
 
-  <!-- Arabic Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Meta / Social -->
   <meta name="description" content="حدث خطأ من جانبنا، يُرجى المحاولة لاحقًا." />
   <meta property="og:title" content="حدث خطأ من جانبنا" />
   <meta property="og:description" content="يُرجى المحاولة لاحقًا." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="ar_AR" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0b1020" />
 
   <style>
+    /* Variables */
     :root{
-      --bg-1:#0b1020; /* deep navy */
+      --bg-1:#0a0e1b; /* deep navy/black */
       --bg-2:#141a31; /* slate */
       --ac-1:#6ee7f9; /* cyan */
       --ac-2:#a78bfa; /* violet */
@@ -30,17 +29,23 @@
       --muted:#a7b0c2;
       --glass:255,255,255; /* rgb for backdrop glass */
       --radius:20px;
+      --shadow-color: rgba(10, 14, 30, 0.45);
     }
 
-    *{ box-sizing:border-box }
+    /* Base Reset & Typography */
+    *, *::before, *::after { box-sizing:border-box }
     html,body{ height:100% }
     body{
       margin:0; overflow:hidden; color:var(--text);
       font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Kufi Arabic", "Cairo", sans-serif;
+      /* Using 'dvh' for better mobile viewport height handling */
+      height: 100dvh; 
+      /* Enhanced Gradient Background */
       background: radial-gradient(1200px 800px at 80% -10%, rgba(167,139,250,.25), transparent 60%),
                   radial-gradient(800px 600px at 10% 120%, rgba(110,231,249,.2), transparent 60%),
                   linear-gradient(180deg, var(--bg-1), var(--bg-2));
       letter-spacing:.1px;
+      will-change: background-position; /* For smoother parallax */
     }
 
     /* Animated grain for subtle texture */
@@ -53,99 +58,140 @@
     .intro__panel::before{
       content:""; position:absolute; inset:0; transform:translateY(0);
       background:linear-gradient(135deg, rgba(110,231,249,.7), rgba(167,139,250,.7));
-      box-shadow:0 30px 80px rgba(0,0,0,.35);
+      box-shadow:0 30px 80px var(--shadow-color);
+      will-change: transform;
     }
     .intro__panel:nth-child(2)::before{ background:linear-gradient(135deg, rgba(167,139,250,.8), rgba(244,114,182,.8)); }
     .intro__panel:nth-child(3)::before{ background:linear-gradient(135deg, rgba(244,114,182,.8), rgba(110,231,249,.8)); }
 
-    .intro__overlay{ position:fixed; inset:0; display:grid; place-items:center; z-index:60; background:rgba(10,14,30,.15); backdrop-filter:blur(8px); }
-    .intro__logo{ font-weight:700; letter-spacing:.5px; font-size:clamp(22px,3.3vw,36px); color:white; text-shadow:0 10px 40px rgba(0,0,0,.4); opacity:.95 }
+    .intro__overlay{ position:fixed; inset:0; display:grid; place-items:center; z-index:60; background:rgba(10,14,30,.15); backdrop-filter:blur(8px); will-change: opacity; }
+    .intro__logo{ font-weight:700; letter-spacing:.5px; font-size:clamp(22px,3.3vw,36px); color:white; text-shadow:0 10px 40px var(--shadow-color); opacity:.95 }
 
     /* Main container */
     .shell{ position:relative; height:100dvh; display:grid; place-items:center; padding:24px; isolation:isolate; }
 
-    /* Floating decorative blobs */
-    .blob{ position:absolute; filter:blur(30px); opacity:.35; z-index:-1; }
-    .blob--a{ width:420px; height:420px; right:-120px; top:-80px; background:radial-gradient(circle at 30% 30%, var(--ac-1), transparent 70%); animation: float 10s ease-in-out infinite; }
-    .blob--b{ width:520px; height:520px; left:-150px; bottom:-130px; background:radial-gradient(circle at 60% 60%, var(--ac-2), transparent 70%); animation: float 12s ease-in-out infinite reverse; }
-    .blob--c{ width:400px; height:400px; left:50%; top:20%; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--ac-3), transparent 70%); animation: float 14s ease-in-out infinite; }
-    @keyframes float{ 0%,100%{ transform:translateY(0)} 50%{ transform:translateY(-20px)} }
+    /* Floating decorative blobs - Improved animation */
+    .blob{ position:absolute; filter:blur(40px); opacity:.3; z-index:-1; will-change: transform; }
+    .blob--a{ width:450px; height:450px; right:-150px; top:-100px; background:radial-gradient(circle at 30% 30%, var(--ac-1), transparent 70%); animation: floatA 10s ease-in-out infinite; }
+    .blob--b{ width:550px; height:550px; left:-180px; bottom:-150px; background:radial-gradient(circle at 60% 60%, var(--ac-2), transparent 70%); animation: floatB 12s ease-in-out infinite reverse; }
+    .blob--c{ width:420px; height:420px; left:50%; top:25%; transform:translateX(-50%); background:radial-gradient(circle at 50% 50%, var(--ac-3), transparent 70%); animation: floatC 14s ease-in-out infinite; }
+    @keyframes floatA{ 0%,100%{ transform:translateY(0) translateX(0)} 50%{ transform:translateY(-25px) translateX(15px)} }
+    @keyframes floatB{ 0%,100%{ transform:translateY(0) translateX(0)} 50%{ transform:translateY(20px) translateX(-20px)} }
+    @keyframes floatC{ 0%,100%{ transform:translateY(0) translateX(0)} 50%{ transform:translateY(-15px) translateX(10px)} }
 
-    /* Card */
+    /* Card - Enhanced Glassmorphism & Animation */
     .card{
       width:min(900px, 92vw);
+      max-width: 100%;
       border-radius:var(--radius);
       background:rgba(var(--glass), .07);
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.07);
-      backdrop-filter: blur(16px) saturate(130%);
-      padding: clamp(20px, 4vw, 42px);
-      transform:translateY(8px) scale(.98);
+      border:1px solid rgba(255,255,255,.1);
+      /* Enhanced inner shadow for depth */
+      box-shadow: 0 25px 50px -12px var(--shadow-color), 0 8px 30px -4px var(--shadow-color), inset 0 1px 0 rgba(255,255,255,.12);
+      backdrop-filter: blur(20px) saturate(150%);
+      padding: clamp(24px, 5vw, 48px);
+      transform:translateY(12px) scale(.95);
       opacity:0;
       will-change: transform, opacity;
+      transition: box-shadow .3s ease;
+    }
+    .card:hover {
+        /* Subtle hover lift effect */
+        box-shadow: 0 35px 70px -15px var(--shadow-color), 0 10px 40px -5px var(--shadow-color), inset 0 1px 0 rgba(255,255,255,.12);
     }
 
-    .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.6px; color:var(--muted); text-transform:uppercase; }
-    .eyebrow i{ width:8px; height:8px; border-radius:999px; background:conic-gradient(from 0deg, var(--ac-1), var(--ac-2), var(--ac-3)); box-shadow:0 0 10px rgba(167,139,250,.7); }
+    .eyebrow{ display:inline-flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.8px; color:var(--muted); text-transform:uppercase; font-weight:600; }
+    .eyebrow i{ width:8px; height:8px; border-radius:999px; background:conic-gradient(from 0deg, var(--ac-1), var(--ac-2), var(--ac-3)); box-shadow:0 0 12px rgba(167,139,250,.9); }
 
-    h1{ margin:12px 0 8px; font-size:clamp(28px, 4.8vw, 48px); line-height:1.15; letter-spacing:.2px; }
-    .lead{ color:var(--muted); font-size:clamp(16px, 2.2vw, 18px); line-height:1.8; }
+    h1{ margin:14px 0 10px; font-size:clamp(32px, 5.5vw, 56px); line-height:1.1; letter-spacing:.2px; }
+    .lead{ color:var(--muted); font-size:clamp(17px, 2.5vw, 20px); line-height:1.7; margin-bottom: 0; }
+    .lead strong { color: var(--ac-1); font-weight: 700; }
 
-    .actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+    .actions{ display:flex; flex-wrap:wrap; gap:16px; margin-top:30px; }
     .btn{
       appearance:none; border:none; cursor:pointer; user-select:none; outline:none;
-      padding:14px 20px; border-radius:14px; font-weight:600; letter-spacing:.3px;
-      background: linear-gradient(135deg, rgba(110,231,249,.25), rgba(167,139,250,.25));
-      color:var(--text); border:1px solid rgba(255,255,255,.12);
-      box-shadow: 0 8px 20px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.08);
-      transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
-      backdrop-filter: blur(10px);
+      padding:16px 24px; border-radius:16px; font-weight:700; letter-spacing:.3px;
+      /* Gradient background for a modern look */
+      background: linear-gradient(135deg, rgba(110,231,249,.3), rgba(167,139,250,.3));
+      color:var(--text); border:1px solid rgba(255,255,255,.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.12);
+      transition: transform .2s ease, box-shadow .3s ease, background .3s ease, filter .3s ease;
+      backdrop-filter: blur(12px);
+      position: relative; /* For the glow effect */
+      overflow: hidden;
     }
-    .btn:hover{ transform: translateY(-2px); box-shadow:0 14px 40px rgba(0,0,0,.3); }
+    .btn:hover{ transform: translateY(-3px); box-shadow:0 20px 50px rgba(0,0,0,.4); }
 
-    .btn.secondary{ background: rgba(255,255,255,.06); }
+    /* Glowing effect on hover */
+    .btn::before {
+        content: ""; position: absolute; inset: 0;
+        background: radial-gradient(circle at center, rgba(167,139,250, .4), transparent 70%);
+        opacity: 0;
+        transition: opacity .4s ease;
+        z-index: -1;
+    }
+    .btn:hover::before { opacity: 1; }
 
-    .meta{ display:flex; flex-wrap:wrap; gap:14px; margin-top:26px; color:var(--muted); font-size:14px; }
-    .meta .tag{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.14); }
-    .tag b{ color:var(--text); font-weight:600 }
+    .btn.secondary{ 
+        background: rgba(255,255,255,.08); 
+        color: var(--ac-1);
+        border-color: rgba(255,255,255,.2);
+    }
+    .btn.secondary:hover { color: var(--text); }
 
-    .footer{ position:fixed; inset-inline:0; bottom:12px; text-align:center; font-size:12.5px; color:var(--muted); opacity:.85 }
+    .meta{ display:flex; flex-wrap:wrap; gap:16px; margin-top:32px; color:var(--muted); font-size:14px; }
+    .meta .tag{ 
+        display:inline-flex; align-items:center; gap:8px; 
+        padding:10px 16px; border-radius:999px; 
+        border:1px dashed rgba(255,255,255,.1); 
+        background: rgba(255,255,255,.04);
+        font-weight: 500;
+        transition: transform .2s ease;
+    }
+    .meta .tag:hover { transform: translateY(-1px); }
+    .tag b{ color:var(--text); font-weight:700 }
+    .tag svg{ width:18px; height:18px; } /* Slightly larger icons */
 
-    /* Reduced motion */
+    .footer{ position:fixed; inset-inline:0; bottom:16px; text-align:center; font-size:13px; color:var(--muted); opacity:.85 }
+
+    /* Media Queries for Responsiveness */
+    @media (max-width: 600px) {
+        /* Stack buttons on small screens */
+        .actions{ flex-direction:column; gap:12px; }
+        .btn{ width:100%; padding:14px 20px; }
+        .meta{ justify-content: center; gap:10px; }
+    }
+    
+    /* Reduced motion - Essential for accessibility */
     @media (prefers-reduced-motion: reduce){
-      .intro, .blob, .grain{ animation:none !important }
+      .intro, .blob, .grain, .intro__overlay, .intro__panel::before { animation:none !important; transition: none !important; }
+      .blob { transform: none !important; } /* Disable parallax on blobs */
+      .card { opacity: 1 !important; transform: none !important; } /* Instantly show card */
     }
-
-    /* Small screens */
-    @media (max-width:420px){ .actions{ flex-direction:column } }
   </style>
 </head>
 <body>
-  <!-- Layered animated intro (تداخل) -->
   <div class="intro" aria-hidden="true">
     <div class="intro__panel"></div>
     <div class="intro__panel"></div>
     <div class="intro__panel"></div>
   </div>
   <div class="intro__overlay" aria-hidden="true">
-    <div class="intro__logo">جاري التحميل…</div>
+    <div class="intro__logo">جاري التحميل...</div>
   </div>
 
-  <!-- Subtle grain texture -->
   <div class="grain" aria-hidden="true"></div>
 
-  <!-- Decorative blobs -->
   <div class="blob blob--a" aria-hidden="true"></div>
   <div class="blob blob--b" aria-hidden="true"></div>
   <div class="blob blob--c" aria-hidden="true"></div>
 
-  <!-- Main content -->
   <main class="shell">
     <article class="card" role="group" aria-label="رسالة الخطأ">
       <span class="eyebrow"><i></i> رسالة من الخادم</span>
       <h1>حدث خطأ من جانبنا</h1>
-      <p class="lead">يبدو أن هناك خللاً مؤقتًا لدينا. <br/>
-        <strong>يُرجى المحاولة لاحقًا</strong> أو استخدام الخيارات التالية.
+      <p class="lead">يبدو أن هناك خللاً **مؤقتًا** لدينا. <br/>
+        **يُرجى المحاولة لاحقًا** أو استخدام الخيارات التالية.
       </p>
 
       <div class="actions">
@@ -154,14 +200,14 @@
       </div>
 
       <div class="meta" id="meta">
-        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" stroke="currentColor" stroke-width="1.5"/></svg> رمز الخطأ: <b id="code">500</b></span>
-        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="16.5" r=".9" fill="currentColor"/></svg> المعرّف: <b id="rid">—</b></span>
-        <span class="tag"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12" stroke="currentColor" stroke-width="1.5"/></svg> الوقت: <b id="ts">—</b></span>
+        <span class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" stroke="currentColor" stroke-width="1.7"/></svg> رمز الخطأ: <b id="code">500</b></span>
+        <span class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="16.5" r=".9" fill="currentColor"/></svg> المعرّف: <b id="rid">—</b></span>
+        <span class="tag"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h12" stroke="currentColor" stroke-width="1.7"/></svg> الوقت: <b id="ts">—</b></span>
       </div>
     </article>
   </main>
 
-  <footer class="footer">إذا استمرت المشكلة، راسل الدعم واذكر رمز الخطأ والمعرّف.</footer>
+  <footer class="footer">إذا استمرت المشكلة، يُرجى **مراسلة الدعم** واذكر رمز الخطأ والمعرّف.</footer>
 
   <script>
     // Helper: random ID
@@ -171,80 +217,106 @@
     const panels = document.querySelectorAll('.intro__panel');
     const overlay = document.querySelector('.intro__overlay');
     const card = document.querySelector('.card');
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function playIntro(){
+      if(prefersReduced) return; // Skip animation if reduced motion is preferred
+
       // Staggered slide-up for panels
       panels.forEach((p, i) => {
         p.animate([
           { transform: 'translateY(0)' },
           { transform: 'translateY(-100%)' }
-        ], { duration: 820 + i*130, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+        ], { duration: 850 + i*150, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
       });
 
       // Fade out overlay
       overlay.animate([
         { opacity: 1 },
         { opacity: 0 }
-      ], { duration: 640, delay: 380, easing: 'ease', fill: 'forwards' })
+      ], { duration: 700, delay: 400, easing: 'ease', fill: 'forwards' })
       .addEventListener('finish', () => {
         overlay.remove();
         document.querySelector('.intro').remove();
 
-        // Reveal card
+        // Reveal card with a bounce/spring effect
         card.animate([
-          { opacity: 0, transform: 'translateY(16px) scale(.98)' },
+          { opacity: 0, transform: 'translateY(16px) scale(.95)' },
           { opacity: 1, transform: 'translateY(0) scale(1)' }
-        ], { duration: 520, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
+        ], { duration: 600, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' });
       });
     }
 
     // Parallax on mouse move for a gentle depth effect
-    function parallax(){
+    function setupParallax(){
+      if(prefersReduced) return;
       const root = document.body;
-      const strength = 18; // px
+      const strength = 22; // px - Increased strength for more depth
       window.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1..1
+        // Normalized coordinates (-1 to 1)
+        const x = (e.clientX / window.innerWidth - 0.5) * 2; 
         const y = (e.clientY / window.innerHeight - 0.5) * 2;
-        root.style.backgroundPosition = `${50 - x*2}% ${50 - y*2}%`;
+
+        // Subtle background shift (less prominent)
+        root.style.backgroundPosition = `${50 - x*1}% ${50 - y*1}%`; 
+        
+        // Blobs move in reverse direction
         document.querySelectorAll('.blob').forEach((el, i) => {
-          const s = (i+1)/3; // layers
-          el.style.transform = `translate(${x*strength*s}px, ${y*strength*s}px)`;
+          const s = (i+1)/2.5; // Different layers have different speeds (stronger effect)
+          el.style.transform = `translate(${x*strength*s*-1}px, ${y*strength*s*-1}px)`;
         });
+        
+        // Card moves slightly with the mouse
+        card.style.transform = `translate(${x*4}px, ${y*4}px) scale(1)`; 
       });
     }
 
     // Populate error meta
     function setMeta(){
       const ts = new Date();
-      const rid = `REQ-${randId()}-${randId()}`;
+      // Generate a more robust request ID
+      const rid = `REQ-${randId()}-${randId()}-${randId()}`;
       document.getElementById('rid').textContent = rid;
-      document.getElementById('ts').textContent = ts.toLocaleString('ar-IQ', { hour12:false });
-      // Optionally rotate codes 500/502/503
+      // Format time for Arab countries (e.g., Iraq)
+      document.getElementById('ts').textContent = ts.toLocaleString('ar-IQ', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12:false });
+      
+      // Optionally rotate codes 500/502/503 for variety
       const codes = [500, 502, 503];
       document.getElementById('code').textContent = codes[Math.floor(Math.random()*codes.length)];
 
-      // Copy button
+      // Copy button logic
       const btnCopy = document.getElementById('copyBtn');
       btnCopy.addEventListener('click', async () => {
-        const text = `خطأ من جانب الخادم\nرمز الخطأ: ${document.getElementById('code').textContent}\nالمعرّف: ${rid}\nالوقت: ${document.getElementById('ts').textContent}`;
-        try{ await navigator.clipboard.writeText(text); btnCopy.textContent = 'تم النسخ ✦'; }
-        catch{ btnCopy.textContent = 'تعذّر النسخ'; }
-        setTimeout(()=> btnCopy.textContent = 'نسخ تفاصيل الخطأ', 1300);
+        const text = `خطأ من جانب الخادم\nرمز الخطأ: ${document.getElementById('code').textContent}\nالمعرّف: ${rid}\nالوقت: ${document.getElementById('ts').textContent}\n\nيرجى المحاولة لاحقاً.`;
+        try{ await navigator.clipboard.writeText(text); btnCopy.textContent = 'تم النسخ بنجاح! ✦'; }
+        catch{ btnCopy.textContent = 'تعذّر النسخ! 😔'; }
+        setTimeout(()=> btnCopy.textContent = 'نسخ تفاصيل الخطأ', 1800);
       });
 
       // Retry button (reload)
-      document.getElementById('retryBtn').addEventListener('click', () => { location.reload(); });
+      document.getElementById('retryBtn').addEventListener('click', () => { 
+        // Optional: Add a smooth fade-out before reload
+        document.body.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 400, easing: 'ease-out' })
+        .addEventListener('finish', () => { location.reload(); });
+      });
     }
 
-    // Respect prefers-reduced-motion: if user asks to reduce, skip fancy intro
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Initialize on load
     window.addEventListener('load', () => {
       setMeta();
-      if(!prefersReduced){ playIntro(); parallax(); }
-      else{
-        document.querySelector('.intro').remove();
-        document.querySelector('.intro__overlay').remove();
-        card.style.opacity = 1; card.style.transform = 'none';
+      playIntro();
+      setupParallax();
+      
+      // Instant reveal for reduced motion preference
+      if(prefersReduced){
+        // Ensure card is visible instantly if no animation is played
+        card.style.opacity = 1; 
+        card.style.transform = 'none';
+        // Cleanup intro elements
+        const intro = document.querySelector('.intro');
+        const introOverlay = document.querySelector('.intro__overlay');
+        if(intro) intro.remove();
+        if(introOverlay) introOverlay.remove();
       }
     });
   </script>
