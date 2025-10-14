@@ -2041,39 +2041,35 @@
             let isHLS = finalVideoUrl.endsWith(".m3u8");
             let useProxy = true;
             const referer = "https://abwaab.com";
-            const directPlayDomains = [
+          const directPlayDomains = [
   "https://9bf9f797be0a4677a8-akamai-cdn.com",
   "https://vidcdn.akamai-cdn-delivery.com",
   "https://iframe.mediadelivery.net/embed/157276"
 ];
 
-// حالة ملفات MP4 من هيروكو
 if (
   url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") &&
   url.endsWith(".mp4")
 ) {
   useProxy = false;
   isHLS = false;
-}
+} 
 
-// حالة iframe من mediadelivery
+// iframe من mediadelivery
 else if (url.includes("iframe.mediadelivery.net/embed/")) {
-  // إذا الرابط يبدأ بالمصدر الثابت نمنع البروكسي
-  if (url.startsWith("https://iframe.mediadelivery.net/embed/157276")) {
-    useProxy = false;
-  }
-
-  // نشغل iframe player
+  // نحط البروكسي false مباشرة
+  useProxy = false;
   loadIframePlayer(url);
   return;
-}
+} 
 
 // باقي الحالات
 else {
   useProxy = !directPlayDomains.some(domain =>
-    finalVideoUrl.startsWith(domain)
+    url.startsWith(domain)
   );
 }
+
             
             const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
