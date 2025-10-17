@@ -819,8 +819,48 @@
     },
     {
      
-
- "name": "اليونت الاول",
+ "name": "اإضافات اليونت الأول",
+      "lectures": [
+        {
+        "title": "خطة اضافات اليونت الاول",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b7331fdc-95ed-4058-b4dc-68852203f78d"
+        },
+        {
+          "title": "قطعة نجله",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d43dafaf-b228-4f5d-922e-5ef86f0faee4"
+        },
+        {
+          "title": "أسئلة قطعة نجله",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f20f3f5d-1b76-4f39-98e1-b343dfceb52c"
+        },
+        {
+          "title": "الاسئلة الإضافية المتعلقة بقطعة نجله",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/017d91f7-754e-45cc-8d4c-cb74797e84e7"
+        },
+        {
+          "title": "قطعة عمار",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/aa2d91ce-01bf-453d-a3da-0b29ff3d46a7"
+        },
+        {
+          "title": "أسئلة قطعة عمار",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/7d687b28-c070-4f0c-ac0d-5820b446b5fd"
+        },
+        {
+          "title": "إنشاء تقليل حوادث السيارات",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6ed548c1-a5e5-4575-b3a8-e3640045865e"
+   }
+      ]
+    },
+    {
+          
+          "name": "اليونت الاول",
       "lectures": [
         {
           "title": "محاضرة 1",
@@ -1008,10 +1048,55 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/09f7e620-93e5-4536-a093-c51781702835"
         },
         {
-          "title": "أسئلة قطعة الرادار (الجزء الثاني)",
+         "title": "أسئلة قطعة الرادار (الجزء الثاني)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/06d70ee5-84b4-44a9-a4b6-9824a38b64d3"
+        },
+        {
+          "title": "أسئلة قطعة الرادار (الجزء الثالث)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2646136c-be58-4986-a8b1-7db4310fc049"
+        },
+        {
+          "title": "تمارين التوصيل عن التوقعات والضرورة",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/285854fa-6496-46f7-9bb0-b575beb4bbb8"
+        },
+        {
+          "title": "الافعال السببية (الجزء الاول)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/63beedee-5c15-4bb4-a1db-69a7dbbf4577"
+        },
+        {
+          "title": "الافعال السببية (الجزء الثاني)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/09f9ed02-8e89-4213-8298-677f94f393ff"
+        },
+        {
+          "title": "مرادفات و اسقاطات مقالة العسكرية ومقالة السرقة",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ca533548-f6df-4911-b6ad-2f7c55c48deb"
 
+             }
+      ]
+    },
+    {
+          "name": "القطعة الخارجية",
+      "lectures": [
+        {
+        "title": "أساسيات القطعة الخارجية",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6c122843-9506-4ecb-a042-b1b91f250c6e"
+        },
+        {
+          "title": "القطعة الأولى",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3ea80940-93e6-451c-b0a7-36dd1816a6ac"
+        },
+        {
+          "title": "القطعة الثانية",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/21ffc683-8aaa-429c-94e5-8e61bd9d7eba"
 }
 ]
 }
