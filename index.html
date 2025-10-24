@@ -29,7 +29,6 @@
     <script src="https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js"></script>
     <script src="https://assets.mediadelivery.net/chartist.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.2.8/es6-promise.auto.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/3.6.2/fetch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         /* CSS Variables for a more vibrant and smooth theme */
@@ -1803,7 +1802,7 @@
             }
         };
 
-        function loadCategory(categoryId) {
+window.loadCategory = function(categoryId) {
             const category = categories[categoryId];
             if (!category) return;
             categoryTitle.textContent = category.title;
