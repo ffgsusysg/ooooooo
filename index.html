@@ -1745,7 +1745,7 @@
             dashboard: document.getElementById("dashboardPage")
         };
 
-        function navigate(page) {
+window.navigate = function(page) {
             window.scrollTo({ top: 0, behavior: "smooth" });
 
             if (page !== "video") {
