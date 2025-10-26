@@ -2058,7 +2058,7 @@ window.loadCategory = function(categoryId) {
                 useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
             }
             
-            const proxiedUrl = useProxy && isHLS ? `https://khdj.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+            const proxiedUrl = useProxy && isHLS ? `https://silent-unit-7b94.hweeriew.workers.dev/?url=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
             
             playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
             lucide.createIcons();
