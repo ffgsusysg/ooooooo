@@ -344,15 +344,81 @@
           "title": "جميع مسائل الفصل الثاني",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/99b73275-4f5f-4b6c-acb4-05207edb5295"
-
-
-
-
-
-
-
-
-
+}
+      ]
+    },
+    {
+      "name": "التيار المتناوب",
+      "lectures": [
+        {
+          "title": "المحاضرة 1: التيار المتناوب",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/da80d81e-aa88-4f77-9e9f-95279d74f0cb"
+        },
+        {
+          "title": "المحاضرة 2: المقاومة الصرف",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a863da20-9446-494a-ab17-533d3f3bc498"
+        },
+        {
+          "title": "المحاضرة 3 : المقاومة صرف (الجزء الثاني ) + ملاحظات حول المسائل",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6b1bd555-6a52-4608-a2ac-ba8ebcff7467"
+        },
+        {
+          "title": "المحاضرة 4: حل مسائل المقاومة صرف",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4300983d-f35a-41ab-967c-d11396c028ac"
+        },
+        {
+          "title": "المحاضرة 5: المحث الصرف",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/7b336ea3-1ad5-4b14-b0c1-b0d76d9a4900"
+        },
+        {
+          "title": "المحاضرة 6 : المحث الصرف( الجزء الثاني )",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/9d952d3c-a075-4851-bb8c-6f097215ef8d"
+        },
+        {
+          "title": "المحاضرة 7 : المتسعة صرف",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/9515b8fb-4852-41ce-987c-b94f1dc98642"
+        },
+        {
+          "title": "المحاضرة 8 : أنشطة المتسعة صرف",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b888b90b-f1bc-46c4-9d07-863c10ccde45"
+        },
+        {
+          "title": "المحاضرة 9 : مسائل المحث و المتسعة +الربط التوالي والتوازي",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/9669c8f8-5566-4afd-8038-78eb27774767"
+        },
+        {
+          "title": "المحاضرة 10 : تجربة نيكولا تسلا + ملاحظات حول المجموعة الأولى",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/dc1d66f7-721f-473a-8207-59d3e209a48b"
+        },
+        {
+          "title": "المحاضرة 11: حل مسائل التوالي",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6897e2d4-85f8-485a-a326-0f215eb871c9"
+        },
+        {
+          "title": "المحاضرة 12: حل مسائل التوالي (الجزء الثاني )",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6b7ec9a8-9191-4ca1-99c0-4e39dc5eaedf"
+        },
+        {
+          "title": "المحاضرة 13: حل مسائل التوالي( الجزء )الثالث",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/2ed31009-5e4a-4167-aeeb-4a9b2d8222e0"
+        },
+        {
+          "title": "المحاضرة 14 : حل مسائل التوالي( الجزء الرابع )",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/e9ec5df3-190f-4c45-8ae8-df22502d03d8"
 
 
 
@@ -712,16 +778,6 @@
  "name": " التفاضل",
       "lectures": [
         {
-          "title": "محاضرة 1",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-          "url": "https://iframe.mediadelivery.net/embed/215061/060ea369-6829-4b06-bf08-6572a6e73c73"
-        },
-        {
-          "title": "محاضرة 2",
-          "description": "{وأن ليس للإنسان إلا ما سعى} ✨",
-          "url": "https://iframe.mediadelivery.net/embed/215061/0d141dc7-429f-47b6-8b5a-aac50cca4366"
-      },
-        {
           "title": "المحاضرة 3 - أساسيات التفاضل (الجزء الثالث)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/60d26a13-fe2e-4190-8fe7-46ae690cfe65"
@@ -760,6 +816,41 @@
           "title": "المحاضرة السادسة: المعدلات الزمنية (الجزء السادس)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/a2e4768f-fc8a-4a1c-9d86-781b553598b5"
+        },
+        {
+          "title": "المحاضرة السابعة: المعدلات الزمنية (الجزء السابع)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b9ccb01c-9eab-48e1-904d-5968682f142e"
+        },
+        {
+          "title": "المحاضرة الثامنة : المعدلات الزمنية (الجزء الثامن)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0a424658-4f67-42ce-b6c2-46692144fae1"
+        },
+        {
+          "title": "مراجعة الفصل الثالث (ج1)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/20862552-c94f-4d40-8ad0-afa542394e14"
+        },
+        {
+          "title": "المحاضرة التاسعة : مبرهنة رول",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5ce170c1-c7c1-42f5-b33f-8801904dde3b"
+        },
+        {
+          "title": "المحاضرة العاشرة :مبرهنة رول (الجزء الثاني)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5f7d6609-3471-48e4-90f4-a6cb2bf5a3c9"
+        },
+        {
+          "title": "المحاضرة الحادية عشر : مبرهنة رول (الجزء الثالث)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f27db73e-598c-4f2c-aeba-0ae6ce5a4c52"
+        },
+        {
+          "title": "المحاضرة الثانية عشر : مبرهنة رول (الجزء الرابع)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ffcf1670-bb50-4e7e-a10b-7b9251b1af73"
 }
       ]
     },
@@ -3965,7 +4056,7 @@
           "name": "  الانسجه",
           "lectures": [
             {
-           "title": "المحاضرة 1(مقدمة في الأنسجة)",
+          "title": "المحاضرة 1(مقدمة في الأنسجة)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/bd8395e7-c0a8-4a30-8d93-0f9d7ce40dd6"
         },
@@ -3998,6 +4089,56 @@
           "title": "المحاضرة 7 (النسيج الضام (الجزء الثاني))",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/fe554f3b-c3d8-4f09-a5fb-e6cbe87ad4e7"
+        },
+        {
+          "title": "المحاضرة 8 (النسيج الضام (الجزء الثالث))",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0c68d4ca-3079-4b39-aa02-89bb18a9c4de"
+        },
+        {
+          "title": "المحاضرة 9 (النسيج الضام (الجزء الرابع))",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/367192ff-301b-43eb-bf70-c81a7714d369"
+        },
+        {
+          "title": "المحاضرة 10 (النسيج الضام (الجزء الخامس))",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b0e8a151-52f5-4080-b0a3-6e5899f1fdda"
+        },
+        {
+          "title": "المحاضرة 11 (الدم و اللمف)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/b14537ce-bdd5-4df1-b5c3-840d91ee4ca5"
+        },
+        {
+          "title": "المحاضرة 12 (النسيج العضلي والنسيج العصبي)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/a5961785-6476-4e0a-a52f-4b1c1ac36e1a"
+        }
+      ]
+    },
+    {
+      "name": "التكاثر  ",
+      "lectures": [
+        {
+          "title": "المحاضرة الأولى: التكاثر",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/be84ad06-a259-4b5e-ab31-0e897c120951"
+        },
+        {
+          "title": "المحاضرة 2 (تكوين النطف والبيوض)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8ca6183a-038c-4c39-b7fb-f649cb5ad42b"
+        },
+        {
+          "title": "المحاضرة 3 (التكاثر في الفايروسات)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/96947334-a445-4d79-b3a6-e0a752fc61fd"
+        },
+        {
+          "title": "المحاضرة 4 (التكاثر في البكتيريا)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/8e8dd158-575e-409c-ad11-0d93f7b19f1f"
  }
           ]
         }
@@ -4048,9 +4189,44 @@
           "url": "https://iframe.mediadelivery.net/embed/215061/106366a1-eaf4-4d77-ae26-cc80ea94b2b3"
         },
         {
-          "title": "حديث التعاون بين المسلمين - ج2",
+         "title": "حديث التعاون بين المسلمين - ج2",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/46b1df08-5b69-47cb-9bb4-b0287c05a752"
+        },
+        {
+          "title": "النهي عن الغضب",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/c5bbb091-3373-4592-aa8a-fc8ce7faa0f3"
+        },
+        {
+          "title": "نظام الأسرة في الإسلام - ج1",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/dbe2b2cf-b394-4f33-8345-145d4432b153"
+        },
+        {
+          "title": "نظام الأسرة في الإسلام - ج2",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/48af92bd-6408-481a-97f5-bf8e8ccb093b"
+        }
+      ]
+    },
+    {
+      "name": "الوحدة الثانية",
+      "lectures": [
+        {
+          "title": "المحاضرة 1: سورة آل عمران",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/fea65f81-9da7-4ef1-9145-70cef941fb13"
+        },
+        {
+          "title": "المحاضرة 2: الشرح و التفسير لسورة آل عمران",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/6bb24f09-8a70-4560-bbea-17a5105c4e4d"
+        },
+        {
+          "title": "(المحاضرة 3: الشرح و التفسير لسورة آل عمران (الجزء الثاني",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d19b1b74-bc64-4c34-84c2-f770dc8658fa"
 
   }
           ]
