@@ -12006,54 +12006,54 @@
           "name": "الاساسيات",
           "lectures": [
             {
-              "title": "محاضرة 1",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4820d628-1d44-4852-8e4c-cf848a0a6bfc/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 2",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/4c881392-ca24-438c-9802-67503af260ea/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 3",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/3cf94d21-7cc1-4221-af03-e890d48b31d7/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 4",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/f15b8471-1dd2-4bbc-b15c-6457a2465685/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 5",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/630ba405-ef63-4edd-8805-b43f5b607648/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 6",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/06ceebd3-aa2b-43d1-9b04-dd0d37768e6a/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 7",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/d0e1375b-68bf-4741-9e48-462127b3f9e3/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 8",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/ebcb6365-b333-4904-9f3b-a244bf21fc62/720p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 9",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/13ea04f6-4a7f-4c87-b00c-c27d7d4e8fac/1080p/video.m3u8"
-            },
-            {
-              "title": "محاضرة 10",
-              "description": "وصف المحاضرة",
-              "url": "https://vz-99e5c202-ca5.b-cdn.net/de542718-1b4f-4a53-895e-74bfe383c0b2/720p/video.m3u8"
+             "title": "محاضرة 1",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4820d628-1d44-4852-8e4c-cf848a0a6bfc"
+        },
+        {
+          "title": "محاضرة 2",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/4c881392-ca24-438c-9802-67503af260ea"
+        },
+        {
+          "title": "محاضرة 3",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/3cf94d21-7cc1-4221-af03-e890d48b31d7"
+        },
+        {
+          "title": "محاضرة 4",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/f15b8471-1dd2-4bbc-b15c-6457a2465685"
+        },
+        {
+          "title": "محاضرة 5",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/630ba405-ef63-4edd-8805-b43f5b607648"
+        },
+        {
+          "title": "محاضرة 6",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/06ceebd3-aa2b-43d1-9b04-dd0d37768e6a"
+        },
+        {
+          "title": "محاضرة 7",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/d0e1375b-68bf-4741-9e48-462127b3f9e3"
+        },
+        {
+          "title": "محاضرة 8",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/ebcb6365-b333-4904-9f3b-a244bf21fc62"
+        },
+        {
+          "title": "محاضرة 9",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/13ea04f6-4a7f-4c87-b00c-c27d7d4e8fac"
+        },
+        {
+          "title": "محاضرة 10",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/de542718-1b4f-4a53-895e-74bfe383c0b2"
             }
           ]
         },
