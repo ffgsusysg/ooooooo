@@ -778,6 +778,16 @@
  "name": " التفاضل",
       "lectures": [
         {
+         "title": "المحاضرة 1 - أساسيات التفاضل",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/060ea369-6829-4b06-bf08-6572a6e73c73"
+        },
+        {
+          "title": "المحاضرة 2 - أساسيات التفاضل (الجزء الثاني)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/0d141dc7-429f-47b6-8b5a-aac50cca4366"
+        },
+        {
           "title": "المحاضرة 3 - أساسيات التفاضل (الجزء الثالث)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/60d26a13-fe2e-4190-8fe7-46ae690cfe65"
@@ -786,7 +796,12 @@
           "title": "المحاضرة 4 - أساسيات التفاضل (الجزء الرابع)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/91ddec80-5eda-4c2c-9906-a935d270d71e"
-        },
+        }
+      ]
+    },
+    {
+      "name": "المعدلات الزمنية",
+      "lectures": [
         {
           "title": "المحاضرة الاولى (المعدلات الزمنية)",
           "description": "ممكن تقرأ وماتسخت ؟",
@@ -826,7 +841,12 @@
           "title": "المحاضرة الثامنة : المعدلات الزمنية (الجزء الثامن)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/0a424658-4f67-42ce-b6c2-46692144fae1"
-        },
+        }
+      ]
+    },
+    {
+      "name": "مبرهنة رول ومراجعة الفصل",
+      "lectures": [
         {
           "title": "مراجعة الفصل الثالث (ج1)",
           "description": "ممكن تقرأ وماتسخت ؟",
@@ -851,6 +871,11 @@
           "title": "المحاضرة الثانية عشر : مبرهنة رول (الجزء الرابع)",
           "description": "ممكن تقرأ وماتسخت ؟",
           "url": "https://iframe.mediadelivery.net/embed/215061/ffcf1670-bb50-4e7e-a10b-7b9251b1af73"
+        },
+        {
+          "title": "المحاضرة الثالثة عشر : مبرهنة رول (الجزء الخامس)",
+          "description": "ممكن تقرأ وماتسخت ؟",
+          "url": "https://iframe.mediadelivery.net/embed/215061/5f1151f9-f989-4a82-b9af-7d96e04bffc2"
 }
       ]
     },
