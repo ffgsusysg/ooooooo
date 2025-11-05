@@ -2315,7 +2315,7 @@ continueWithoutSubscribingBtn.addEventListener("click", () => {
             for (const categoryId of categoryKeys) {
                 const category = categories[categoryId];
                 fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-      _           .then(response => response.json())
+                 .then(response => response.json())
                     .then(data => {
                         if (foundTeacher) return;
                         const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
