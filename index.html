@@ -1978,45 +1978,32 @@ window.toggleLectures = (header) => {
     lucide.createIcons();
 };
 
-const iframeProxyList = [
-    "https://lively-moon-54da.poiuhtrf.workers.dev/proxy_iframe", // البروكسي 1 (الأصلي)
-    "https://restless-term-070b.hmyzc824-d08.workers.dev/proxy_iframe", // البروكسي 2 (استبدل بالرابط الفعلي)
-    "https://snowy-butterfly-858b.smyzx66.workers.dev/proxy_iframe", // البروكسي 3 (استبدل بالرابط الفعلي)
-    "https://aged-cl.halzyz082.workers.dev/proxy_iframe", // البروكسي 4 (استبدل بالرابط الفعلي)
-    "https://steep-leaf-b5ea.smyzxc99.workers.dev/proxy_iframe", // البروكسي 5 (استبدل بالرابط الفعلي)
-    "https://purple-cake-6d2c.smyzx12.workers.dev/proxy_iframe", // البروكسي 6 (استبدل بالرابط الفعلي)
-    "https://purple-cake-6d2c.smyzx12.workers.dev/proxy_iframe", // البروكسي 7 (استبدل بالرابط الفعلي)
-    "https://purple-cake-6d2c.smyzx12.workers.dev/proxy_iframe", // البروكسي 8 (استبدل بالرابط الفعلي)
-    "https://steep-leaf-b5ea.smyzxc99.workers.dev/proxy_iframe", // البروكسي 9 (استبدل بالرابط الفعلي)
-    "https://snowy-butterfly-858b.smyzx66.workers.dev/proxy_iframe" // البروكسي 10 (استبدل بالرابط الفعلي)
-];
+// تم حذف مصفوفة البروكسيات (iframeProxyList) من هنا
 
 window.loadIframePlayer = (url) => {
-    videoLoader.style.display = 'flex';
-    const encodedUrl = btoa(url);
+    videoLoader.style.display = 'flex';
+    const encodedUrl = btoa(url);
 
-    /* ========= تعديل: اختيار البروكسي بشكل عشوائي لكل طلب ========= */
-    const proxyIndex = Math.floor(Math.random() * iframeProxyList.length);
-    const selectedProxyBaseUrl = iframeProxyList[proxyIndex];
-    const iframeUrl = `${selectedProxyBaseUrl}?url=${encodedUrl}`;
-    /* ========= نهاية التعديل ========= */
+    /* ========= تعديل: استخدام البروكسي الثابت المطلوب ========= */
+    const selectedProxyBaseUrl = "https://ddd7787.b-cdn.net/proxy_iframe";
+    const iframeUrl = `${selectedProxyBaseUrl}?url=${encodedUrl}`;
+    /* ========= نهاية التعديل ========= */
 
-    const iframeHtml = `
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
-            <iframe 
-                src="${iframeUrl}" 
-                allowfullscreen 
-                loading="eager"
-                style="width: 100%; height: 100%; border: none; border-radius: inherit;"
-                referrerpolicy="no-referrer-when-downgrade"
-                allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                onload="document.getElementById('videoLoader').style.display='none';"
-            ></iframe>
-        </div>
-    `;
-    playerContainer.innerHTML = iframeHtml;
+    const iframeHtml = `
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+            <iframe 
+                src="${iframeUrl}" 
+                allowfullscreen 
+                loading="eager"
+                style="width: 100%; height: 100%; border: none; border-radius: inherit;"
+                referrerpolicy="no-referrer-when-downgrade"
+                allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                onload="document.getElementById('videoLoader').style.display='none';"
+            ></iframe>
+        </div>
+    `;
+    playerContainer.innerHTML = iframeHtml;
 }
-
 
 window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
     if (player) {
@@ -2076,7 +2063,7 @@ window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam
     }
 
     // إذا لم يكن iframe، نعد حاوية Plyr ونبدأ التشغيل العادي
-    const proxiedUrl = useProxy && isHLS ? `https://ytouguf.netlify.app/?videoUrl=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+    const proxiedUrl = useProxy && isHLS ? `https://erdftgh-handc.bunny.run/?videoUrl=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
 
     playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
     lucide.createIcons();
