@@ -1936,46 +1936,46 @@ function renderClasses(classesData) {
 }
 
 window.toggleLectureCompletion = (event, lectureUrl, checkbox) => {
-    event.stopPropagation();
-    const lectureItem = checkbox.closest('.lecture-item');
-    const isCompleted = checkbox.checked;
-    completedLectures[lectureUrl] = isCompleted;
-    localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
+    event.stopPropagation();
+    const lectureItem = checkbox.closest('.lecture-item');
+    const isCompleted = checkbox.checked;
+    completedLectures[lectureUrl] = isCompleted;
+    localStorage.setItem("completedLectures", JSON.stringify(completedLectures));
 
-    lectureItem.classList.toggle('completed', isCompleted);
-    if (isCompleted) {
-        const starBurst = lectureItem.querySelector('.star-burst');
-        starBurst.innerHTML = Array(8).fill(0).map(() => {
-            const translateX = (Math.random() - 0.5) * 80;
-            const translateY = (Math.random() - 0.5) * 80;
-            return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
-        }).join('');
-        starBurst.classList.add('animate');
-        setTimeout(() => {
-            starBurst.classList.remove('animate');
-            starBurst.innerHTML = '';
-        }, 600);
-    }
-    updateClassProgress(lectureItem.closest('.class-card'));
+    lectureItem.classList.toggle('completed', isCompleted);
+    if (isCompleted) {
+        const starBurst = lectureItem.querySelector('.star-burst');
+        starBurst.innerHTML = Array(8).fill(0).map(() => {
+            const translateX = (Math.random() - 0.5) * 80;
+            const translateY = (Math.random() - 0.5) * 80;
+            return `<div class="star-particle" style="--translateX: ${translateX}px; --translateY: ${translateY}px;"></div>`;
+        }).join('');
+        starBurst.classList.add('animate');
+        setTimeout(() => {
+            starBurst.classList.remove('animate');
+            starBurst.innerHTML = '';
+        }, 600);
+    }
+    updateClassProgress(lectureItem.closest('.class-card'));
 };
 
 function updateClassProgress(classCardElement) {
-    const progressSpan = classCardElement.querySelector('.class-progress');
-    const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
-    const classData = currentTeacher.classes[classIndex];
-    const totalLectures = classData.lectures.length;
-    const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
-    progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
+    const progressSpan = classCardElement.querySelector('.class-progress');
+    const classIndex = parseInt(progressSpan.dataset.classIndex, 10);
+    const classData = currentTeacher.classes[classIndex];
+    const totalLectures = classData.lectures.length;
+    const completedCount = classData.lectures.filter(lec => completedLectures[lec.url]).length;
+    progressSpan.textContent = `المكتمل: ${completedCount} / ${totalLectures}`;
 }
 
 window.toggleLectures = (header) => {
-    const list = header.parentElement.querySelector(".lectures-list");
-    const icon = header.querySelector(".chevron-icon");
-    const open = list.style.display !== "flex";
-    list.style.display = open ? "flex" : "none";
-    header.classList.toggle("open", open);
-    icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
-    lucide.createIcons();
+    const list = header.parentElement.querySelector(".lectures-list");
+    const icon = header.querySelector(".chevron-icon");
+    const open = list.style.display !== "flex";
+    list.style.display = open ? "flex" : "none";
+    header.classList.toggle("open", open);
+    icon.setAttribute("data-lucide", open ? "chevron-up" : "chevron-down");
+    lucide.createIcons();
 };
 
 // تم حذف مصفوفة البروكسيات (iframeProxyList) من هنا
@@ -2006,150 +2006,150 @@ window.loadIframePlayer = (url) => {
 }
 
 window.playLecture = (ci, li, url, title, desc, teacherNameParam, teacherIdParam) => {
-    if (player) {
-        player.destroy();
-        player = null;
-    }
-    if (window.hlsInstance) {
-        window.hlsInstance.destroy();
-        window.hlsInstance = null;
-    }
-    if (window.progressInterval) {
-        clearInterval(window.progressInterval);
-        window.progressInterval = null;
-    }
+    if (player) {
+        player.destroy();
+        player = null;
+    }
+    if (window.hlsInstance) {
+        window.hlsInstance.destroy();
+        window.hlsInstance = null;
+    }
+    if (window.progressInterval) {
+        clearInterval(window.progressInterval);
+        window.progressInterval = null;
+    }
 
-    isLectureCompleted = !!completedLectures[url];
+    isLectureCompleted = !!completedLectures[url];
 
-    // **التعديل هنا: عدم مسح playerContainer إلا بعد تحديد نوع المشغل**
-    videoLoader.style.display = 'none';
+    // **التعديل هنا: عدم مسح playerContainer إلا بعد تحديد نوع المشغل**
+    videoLoader.style.display = 'none';
 
-    [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
-    videoTitle.textContent = title;
-    videoDescription.textContent = desc;
-    document.getElementById('videoTeacherName').textContent = teacherNameParam || (currentTeacher ? currentTeacher.name : 'اسم الأستاذ');
-    document.getElementById('videoSubjectName').textContent = currentTeacher ? currentTeacher.subject : 'المادة';
+    [currentClassIndex, currentLectureIndex, currentLectureLink] = [ci, li, url];
+    videoTitle.textContent = title;
+    videoDescription.textContent = desc;
+    document.getElementById('videoTeacherName').textContent = teacherNameParam || (currentTeacher ? currentTeacher.name : 'اسم الأستاذ');
+    document.getElementById('videoSubjectName').textContent = currentTeacher ? currentTeacher.subject : 'المادة';
 
-    lastWatched = {
-        teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
-        teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
-        classIndex: ci,
-        lectureIndex: li,
-        lectureTitle: title,
-        lectureUrl: url,
-        lectureDescription: desc
-    };
-    localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
+    lastWatched = {
+        teacherId: teacherIdParam || (currentTeacher ? currentTeacher.id : null),
+        teacherName: teacherNameParam || (currentTeacher ? currentTeacher.name : null),
+        classIndex: ci,
+        lectureIndex: li,
+        lectureTitle: title,
+        lectureUrl: url,
+        lectureDescription: desc
+    };
+    localStorage.setItem("lastWatched", JSON.stringify(lastWatched));
 
-    navigate("video");
+    navigate("video");
 
-    let finalVideoUrl = url;
-    let isHLS = finalVideoUrl.endsWith(".m3u8");
-    let useProxy = true;
-    const referer = "https://abwaab.com";
-    const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
+    let finalVideoUrl = url;
+    let isHLS = finalVideoUrl.endsWith(".m3u8");
+    let useProxy = true;
+    const referer = "https://abwaab.com";
+    const directPlayDomains = ["https://9bf9f797be0a4677a8-akamai-cdn.com", "https://vidcdn.akamai-cdn-delivery.com"];
 
-    if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
-        useProxy = false;
-        isHLS = false;
-    } else if (url.includes("iframe.mediadelivery.net/embed/")) {
-        // إذا كان رابط الـ iframe، يتم استدعاء المشغل الخاص بالإطار والخروج
-        playerContainer.innerHTML = ""; // تنظيف الحاوية لضمان عدم تداخل Plyr
-        loadIframePlayer(url);
-        return;
-    }
-    else {
-        useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
-    }
+    if (url.startsWith("https://f2l-bot828-40f1f76157f8.herokuapp.com") && url.endsWith(".mp4")) {
+        useProxy = false;
+        isHLS = false;
+    } else if (url.includes("iframe.mediadelivery.net/embed/")) {
+        // إذا كان رابط الـ iframe، يتم استدعاء المشغل الخاص بالإطار والخروج
+        playerContainer.innerHTML = ""; // تنظيف الحاوية لضمان عدم تداخل Plyr
+        loadIframePlayer(url);
+        return;
+    }
+    else {
+        useProxy = !directPlayDomains.some(domain => finalVideoUrl.startsWith(domain));
+    }
 
-    // إذا لم يكن iframe، نعد حاوية Plyr ونبدأ التشغيل العادي
-    const proxiedUrl = useProxy && isHLS ? `https://erdftgh-handc.bunny.run/?videoUrl=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
+    // إذا لم يكن iframe، نعد حاوية Plyr ونبدأ التشغيل العادي
+    const proxiedUrl = useProxy && isHLS ? `https://erdftgh-handc.bunny.run/?videoUrl=${encodeURIComponent(finalVideoUrl)}&referer=${encodeURIComponent(referer)}` : finalVideoUrl;
 
-    playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
-    lucide.createIcons();
+    playerContainer.innerHTML = `<video id="player" playsinline controls></video>`;
+    lucide.createIcons();
 
-    const videoElement = document.getElementById("player");
-    const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
-    const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
+    const videoElement = document.getElementById("player");
+    const savedTime = lectureProgress[url] ? (lectureProgress[url] / 100) * (player?.duration || 0) : 0;
+    const playerControls = ["rewind", "play-large", "play", "fast-forward", "progress", "current-time", "settings", "fullscreen"];
 
-    player = new Plyr("#player", {
-        controls: playerControls,
-        keyboard: { focused: true, global: true },
-        tooltips: { controls: true, seek: true },
-        captions: { active: false },
-        settings: ["quality", "speed"],
-        speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-    });
+    player = new Plyr("#player", {
+        controls: playerControls,
+        keyboard: { focused: true, global: true },
+        tooltips: { controls: true, seek: true },
+        captions: { active: false },
+        settings: ["quality", "speed"],
+        speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+    });
 
-    window.progressInterval = setInterval(() => {
-        if (player && player.duration > 0) {
-            const progress = (player.currentTime / player.duration) * 100;
-            lectureProgress[url] = progress;
-            localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
-        }
-    }, 5000);
+    window.progressInterval = setInterval(() => {
+        if (player && player.duration > 0) {
+            const progress = (player.currentTime / player.duration) * 100;
+            lectureProgress[url] = progress;
+            localStorage.setItem("lectureProgress", JSON.stringify(lectureProgress));
+        }
+    }, 5000);
 
-    function tryPlay() {
-        if (isHLS && Hls.isSupported()) {
-            const hls = new Hls();
-            window.hlsInstance = hls;
-            hls.attachMedia(videoElement);
-            hls.loadSource(proxiedUrl);
-            hls.on(Hls.Events.MANIFEST_PARSED, () => {
-                player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
-            });
-            hls.on(Hls.Events.ERROR, (_, data) => {
-                if (data.fatal) {
-                    switch (data.type) {
-                        case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
-                        case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
-                        default: break;
-                    }
-                }
-            });
-        } else {
-            player.source = {
-                type: "video",
-                sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
-            };
-            player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
-        }
-    }
-    tryPlay();
+    function tryPlay() {
+      _B_L_A_C_K_L_I_S_T_E_D_P_R_O_M_P_T_  if (isHLS && Hls.isSupported()) {
+            const hls = new Hls();
+            window.hlsInstance = hls;
+            hls.attachMedia(videoElement);
+            hls.loadSource(proxiedUrl);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(console.error);
+            });
+            hls.on(Hls.Events.ERROR, (_, data) => {
+                if (data.fatal) {
+                    switch (data.type) {
+                        case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                        case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                        default: break;
+                    }
+                }
+            });
+        } else {
+            player.source = {
+                type: "video",
+                sources: [{ src: proxiedUrl, type: isHLS ? "application/x-mpegURL" : "video/mp4" }],
+            };
+            player.play().then(() => { if (savedTime > 0) player.currentTime = savedTime; }).catch(() => console.log("تعذر تشغيل الفيديو"));
+CH_BLACKLİSTED_PROMPT      }
+    }
+    tryPlay();
 };
 
 /* ========= Search ========= */
 function handleSearch() {
-    const term = searchInput.value.trim().toLowerCase();
-    renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
+    const term = searchInput.value.trim().toLowerCase();
+    renderTeachers(teachers.filter(t => t.name.toLowerCase().includes(term) || t.subject.toLowerCase().includes(term)));
 }
 
 let searchTimeout;
 searchInput.addEventListener("input", () => {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(handleSearch, 250);
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(handleSearch, 250);
 });
 searchBtn.addEventListener("click", handleSearch);
 
 /* ========= Load Data ========= */
 function loadData(endpoint) {
-    const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
-    teachersGrid.innerHTML = Array(3).fill(`
-        <div class="loading-card teacher-card">
-            <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
-            <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
-            <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
-        </div>`).join('');
-    favoriteTeachersGrid.innerHTML = '';
-    favoriteTeachersSection.classList.remove("active");
+    const err = '<p style="color:var(--error); text-align: center;">حدث خطأ في تحميل البيانات.</p><button class="btn back-button" onclick="location.reload()" style="display: block; margin: 1rem auto;">إعادة المحاولة</button>';
+    teachersGrid.innerHTML = Array(3).fill(`
+        <div class="loading-card teacher-card">
+            <div style="width: 120px; height: 120px; background: var(--border); border-radius: 50%; margin: 0 auto 1rem;"></div>
+            <div style="height: 1.2rem; background: var(--border); border-radius: 4px; margin-bottom: 0.5rem; width: 80%; margin-left: auto; margin-right: auto;"></div>
+            <div style="height: 1rem; background: var(--border); border-radius: 4px; width: 60%; margin-left: auto; margin-right: auto;"></div>
+        </div>`).join('');
+    favoriteTeachersGrid.innerHTML = '';
+    favoriteTeachersSection.classList.remove("active");
 
-    fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-        .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
-        .then((data) => { 
-            teachers = data.teachers; 
-            renderTeachers(); 
-        })
-        .catch(() => { teachersGrid.innerHTML = err; });
+    fetch(endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+        .then((r) => { if (!r.ok) throw new Error(); return r.json(); })
+        .then((data) => { 
+            teachers = data.teachers; 
+            renderTeachers(); 
+        })
+        .catch(() => { teachersGrid.innerHTML = err; });
 }
 
 /* ========= Dashboard Logic ========= */
@@ -2163,62 +2163,62 @@ const defaultUserIconEl = document.getElementById('defaultUserIcon');
 const uploadProfilePicBtn = document.getElementById('uploadProfilePicBtn');
 
 function updateHeaderProfilePic() {
-    const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-    const placeholder = "https://placehold.co/150x150";
-    if (profile.picture && !profile.picture.startsWith(placeholder)) {
-        headerProfilePicEl.src = profile.picture;
-        headerProfilePicEl.style.display = 'block';
-        defaultUserIconEl.style.display = 'none';
-    } else {
-        headerProfilePicEl.style.display = 'none';
-        defaultUserIconEl.style.display = 'block';
-    }
+    const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+    const placeholder = "https://placehold.co/150x150";
+    if (profile.picture && !profile.picture.startsWith(placeholder)) {
+        headerProfilePicEl.src = profile.picture;
+        headerProfilePicEl.style.display = 'block';
+        defaultUserIconEl.style.display = 'none';
+    } else {
+        headerProfilePicEl.style.display = 'none';
+        defaultUserIconEl.style.display = 'block';
+    }
 }
 
 function loadDashboardData() {
-    const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
-    if (profile.picture) {
-        profilePictureEl.src = profile.picture;
-    }
-    if (profile.dream) {
-        dreamInputEl.value = profile.dream;
-    }
-    if (profile.grade) {
-        gradeInputEl.value = profile.grade;
-    }
-    updateHeaderProfilePic();
+    const profile = JSON.parse(localStorage.getItem('userProfile')) || {};
+    if (profile.picture) {
+        profilePictureEl.src = profile.picture;
+    }
+    if (profile.dream) {
+        dreamInputEl.value = profile.dream;
+    }
+    if (profile.grade) {
+        gradeInputEl.value = profile.grade;
+    }
+    updateHeaderProfilePic();
 }
 
 uploadProfilePicBtn.addEventListener('click', () => {
-    profilePictureInputEl.click();
+    profilePictureInputEl.click();
 });
 
 profilePictureInputEl.addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            profilePictureEl.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-    }
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            profilePictureEl.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
 });
 
 saveDashboardButton.addEventListener('click', () => {
-    const profile = {
-        picture: profilePictureEl.src,
-        dream: dreamInputEl.value,
-        grade: gradeInputEl.value
-    };
-    localStorage.setItem('userProfile', JSON.stringify(profile));
-    updateHeaderProfilePic();
+    const profile = {
+        picture: profilePictureEl.src,
+        dream: dreamInputEl.value,
+        grade: gradeInputEl.value
+    };
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    updateHeaderProfilePic();
 
-    saveDashboardButton.innerHTML = '<i data-lucide="check"></i> تم الحفظ بنجاح!';
-    lucide.createIcons();
-    setTimeout(() => {
-        saveDashboardButton.innerHTML = '<i data-lucide="save"></i> حفظ التغييرات';
-        lucide.createIcons();
-    }, 2000);
+    saveDashboardButton.innerHTML = '<i data-lucide="check"></i> تم الحفظ بنجاح!';
+    lucide.createIcons();
+    setTimeout(() => {
+        saveDashboardButton.innerHTML = '<i data-lucide="save"></i> حفظ التغييرات';
+        lucide.createIcons();
+    }, 2000);
 });
 
 /* ========= Modal Logic ========= */
@@ -2231,83 +2231,83 @@ const continueNowBtn = document.getElementById("continueNowBtn");
 const closeToastBtn = document.getElementById("closeToastBtn");
 
 function showTelegramModal() {
-    const hasSubscribed = localStorage.getItem("telegramSubscribed");
-    if (!hasSubscribed) {
-        telegramModal.classList.add("show");
-        lucide.createIcons();
-    } else {
-        showContinueWatchingToast();
-    }
+    const hasSubscribed = localStorage.getItem("telegramSubscribed");
+    if (!hasSubscribed) {
+        telegramModal.classList.add("show");
+        lucide.createIcons();
+    } else {
+        showContinueWatchingToast();
+    }
 }
 
 function hideTelegramModal() {
-    telegramModal.classList.remove("show");
+    telegramModal.classList.remove("show");
 }
 
 continueWithoutSubscribingBtn.addEventListener("click", () => {
-    localStorage.setItem("telegramSubscribed", "true");
-    hideTelegramModal();
-    showContinueWatchingToast();
+    localStorage.setItem("telegramSubscribed", "true");
+    hideTelegramModal();
+    showContinueWatchingToast();
 });
 
 
 document.querySelector(".btn-telegram").addEventListener("click", () => {
-    localStorage.setItem("telegramSubscribed", "true");
-    hideTelegramModal();
-    showContinueWatchingToast();
+    localStorage.setItem("telegramSubscribed", "true");
+    hideTelegramModal();
+    showContinueWatchingToast();
 });
 
 function showContinueWatchingToast() {
-    const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
-    if (lastWatched) {
-        lastWatchedTeacherName.textContent = lastWatched.teacherName;
-        lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
-        continueWatchingToast.classList.add("show");
-        lucide.createIcons();
+    const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
+    if (lastWatched) {
+        lastWatchedTeacherName.textContent = lastWatched.teacherName;
+        lastWatchedLectureTitle.textContent = lastWatched.lectureTitle;
+        continueWatchingToast.classList.add("show");
+        lucide.createIcons();
 
-        // Automatically hide after 10 seconds
-        setTimeout(() => {
-            hideContinueWatchingToast();
-        }, 10000);
-    }
+        // Automatically hide after 10 seconds
+        setTimeout(() => {
+            hideContinueWatchingToast();
+        }, 10000);
+    }
 }
 
 function hideContinueWatchingToast() {
-    continueWatchingToast.classList.remove("show");
+    continueWatchingToast.classList.remove("show");
 }
 
 closeToastBtn.addEventListener("click", () => {
-    hideContinueWatchingToast();
+    hideContinueWatchingToast();
 });
 
 continueNowBtn.addEventListener("click", () => {
-    hideContinueWatchingToast();
-    const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
-    if (lastWatched) {
-        const categoryKeys = Object.keys(categories);
-        let foundTeacher = false;
-        for (const categoryId of categoryKeys) {
-            const category = categories[categoryId];
-            fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
-               .then(response => response.json())
-                    .then(data => {
-                        if (foundTeacher) return;
-                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
-                        if (teacher) {
-                            currentTeacher = teacher;
-                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
-                            foundTeacher = true;
-                        }
-                    })
-                    .catch(error => console.error("Error loading teacher data:", error));
-            if (foundTeacher) break;
-        }
-    }
+    hideContinueWatchingToast();
+    const lastWatched = JSON.parse(localStorage.getItem("lastWatched"));
+    if (lastWatched) {
+        const categoryKeys = Object.keys(categories);
+        let foundTeacher = false;
+        for (const categoryId of categoryKeys) {
+            const category = categories[categoryId];
+            fetch(category.endpoint, { headers: { Referer: "https://careful-burnt-honesty.glitch.me/", "Cache-Control": "no-cache" } })
+               .then(response => response.json())
+                    .then(data => {
+                        if (foundTeacher) return;
+                        const teacher = data.teachers.find(t => t.id === lastWatched.teacherId);
+                        if (teacher) {
+                            currentTeacher = teacher;
+                            playLecture(lastWatched.classIndex, lastWatched.lectureIndex, lastWatched.lectureUrl, lastWatched.lectureTitle, lastWatched.lectureDescription, lastWatched.teacherName, lastWatched.teacherId);
+                            foundTeacher = true;
+                        }
+                    })
+                    .catch(error => console.error("Error loading teacher data:", error));
+            if (foundTeacher) break;
+        }
+    }
 });
 
 window.addEventListener("load", () => {
-    setTimeout(showTelegramModal, 1000);
-    loadDashboardData();
+    setTimeout(showTelegramModal, 1000);
+    loadDashboardData();
 });
 
 // Initialize
